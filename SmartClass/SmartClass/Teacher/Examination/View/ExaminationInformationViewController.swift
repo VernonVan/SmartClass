@@ -15,7 +15,6 @@ class ExaminationInformationViewController: UIViewController
     
     @IBOutlet weak var examinationNameTextField: UITextField!
     @IBOutlet weak var summaryTextView: UITextView!
-    @IBOutlet weak var examDurationPicker: UIDatePicker!
     @IBOutlet weak var editExamButton: UIButton!
     @IBOutlet weak var startExaminationButton: UIButton!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -42,7 +41,6 @@ class ExaminationInformationViewController: UIViewController
         title = viewModel?.name?.length==0 ? NSLocalizedString("试卷信息", comment: "") : viewModel?.name
         examinationNameTextField.text = viewModel?.name
         summaryTextView.text = viewModel?.summary
-        examDurationPicker.countDownDuration = viewModel!.duration
         
         examinationNameTextField.rac_textSignal() ~> RAC(viewModel, "name")
         summaryTextView.rac_textSignal() ~> RAC(viewModel, "summary")
@@ -56,9 +54,5 @@ class ExaminationInformationViewController: UIViewController
         doneButton.rac_command = viewModel?.doneCommand
     }
     
-    @IBAction func dateChange(sender: UIDatePicker)
-    {
-        viewModel?.duration = sender.countDownDuration
-    }
     
 }

@@ -15,7 +15,6 @@ class ExaminationViewModel: NSObject
     
     var name: String?
     var summary: String?
-    var duration: NSTimeInterval = 3600     // 1小时
     var examination: Examination?
     var doneCommand: RACCommand?
     

@@ -100,18 +100,6 @@ enum InitialViewControllerIdentifier: String {
     case TeacherMainInterface, StudentMainInterface
 }
 
-extension CALayer {
-    var borderUIColor: UIColor {
-        set {
-            self.borderColor = newValue.CGColor
-        }
-        
-        get {
-            return UIColor(CGColor: self.borderColor!)
-        }
-    }
-}
-
 extension String {
     var length : Int {
         return characters.count

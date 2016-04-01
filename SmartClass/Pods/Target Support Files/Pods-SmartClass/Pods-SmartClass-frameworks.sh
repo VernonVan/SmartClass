@@ -85,14 +85,14 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-SmartClass/DZNEmptyDataSet.framework"
-  install_framework "Pods-SmartClass/IQKeyboardManagerSwift.framework"
+  install_framework "Pods-SmartClass/IQKeyboardManager.framework"
   install_framework "Pods-SmartClass/ReactiveCocoa.framework"
   install_framework "Pods-SmartClass/Result.framework"
   install_framework "Pods-SmartClass/Toast.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-SmartClass/DZNEmptyDataSet.framework"
-  install_framework "Pods-SmartClass/IQKeyboardManagerSwift.framework"
+  install_framework "Pods-SmartClass/IQKeyboardManager.framework"
   install_framework "Pods-SmartClass/ReactiveCocoa.framework"
   install_framework "Pods-SmartClass/Result.framework"
   install_framework "Pods-SmartClass/Toast.framework"
