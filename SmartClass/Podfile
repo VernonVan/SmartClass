@@ -1,0 +1,14 @@
+platform :ios, '8.0'
+use_frameworks!
+inhibit_all_warnings!
+
+target 'SmartClass' do
+
+pod 'IQKeyboardManagerSwift'
+pod 'BmobSDK'
+pod 'ReactiveCocoa', '~> 4.0.4-alpha-4', :inhibit_warnings => true
+pod 'Toast', '~> 3.0'
+pod 'DZNEmptyDataSet', '~> 1.7.3'
+
+end
+
