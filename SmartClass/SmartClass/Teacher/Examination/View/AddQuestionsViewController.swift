@@ -20,22 +20,15 @@ class AddQuestionsViewController: UIViewController
 {
     // MARK: - constants
     
-    private let VerticalSpace: CGFloat = 8.0
-    private let ExtraSpace: CGFloat = 50.0
-    private let CellHeight: CGFloat = 40.0
-    
     // MARK: - variable
     
     private var questionType = QuestionType.SingleChoice
-    private var cellNumber = 4
     
     // MARK: - outlets
     
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var topicTextView: UITextView!
-    @IBOutlet weak var scoreTextField: UITextField!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var questionView: QuestionView!
     
     // MARK: - life process
     
@@ -49,5 +42,6 @@ class AddQuestionsViewController: UIViewController
         navigationBar?.shadowImage = UIImage()
         
     }
+    
     
 }

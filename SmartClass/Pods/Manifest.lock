@@ -14,6 +14,7 @@ PODS:
     - ReactiveCocoa/Core
     - Result (~> 1.0)
   - Result (1.0.2)
+  - SnapKit (0.20.0)
   - Toast (3.0)
 
 DEPENDENCIES:
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - DZNEmptyDataSet (~> 1.7.3)
   - IQKeyboardManager
   - ReactiveCocoa (~> 4.0.4-alpha-4)
+  - SnapKit (~> 0.20.0)
   - Toast (~> 3.0)
 
 SPEC CHECKSUMS:
@@ -29,6 +31,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: b91928f7927ba55a5829b4dcf4b7a6736ac9fc22
   ReactiveCocoa: e459ea92099447802df20c4735e31e8139b06094
   Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
+  SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
 
 COCOAPODS: 0.39.0

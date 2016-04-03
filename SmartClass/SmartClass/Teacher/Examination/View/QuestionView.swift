@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class QuestionView: UIView, UITableViewDataSource
+class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
 {
     // MARK: - Properties
     
@@ -23,7 +24,6 @@ class QuestionView: UIView, UITableViewDataSource
     }
     private let topicCell = UITableViewCell()
  //   private let choiceCells =  [UITableViewCell]()
-    private let scoreCell = UITableViewCell()
     
     
     // MARK: - Initialization
@@ -32,11 +32,32 @@ class QuestionView: UIView, UITableViewDataSource
     {
         super.init(coder: aDecoder)
         
-        tableview.frame = bounds
+        tableview.frame = CGRect(x: 0, y: 0, width: UIScreen.mainScreen().bounds.width, height: frame.height)
         tableview.dataSource = self
-        topicCell.frame = CGRect(x: 12, y: 20, width: 40, height: 50)
-        topicCell.textLabel?.text = "123fewwwwwwwwwwwwwwwwwwwwwwwwwwwww"
+        tableview.delegate = self
         self.addSubview(tableview)
+        
+        let textView = UIPlaceHolderTextView()
+        let label = UILabel()
+        
+        let text = "单选"
+        let attributes = [NSFontAttributeName : UIFont.systemFontOfSize(12) ,
+                          NSForegroundColorAttributeName : UIColor.blackColor()]
+        label.attributedText = NSAttributedString(string: text, attributes: attributes)
+        label.layer.borderWidth = 1
+        topicCell.contentView.addSubview(label)
+        label.snp_makeConstraints { (make) in
+            make.centerY.equalTo(topicCell)
+            make.left.equalTo(topicCell).offset(3)
+        }
+        
+        textView.backgroundColor = UIColor.lightGrayColor()
+        textView.placeholder = NSLocalizedString("输入问题描述", comment: "")
+        textView.placeholderColor = UIColor.redColor()
+        topicCell.contentView.addSubview(textView)
+        textView.snp_makeConstraints { (make) in
+            make.edges.equalTo(topicCell).inset(UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0))
+        }
     }
     
     override func layoutSubviews()
@@ -48,7 +69,7 @@ class QuestionView: UIView, UITableViewDataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 2
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -58,8 +79,6 @@ class QuestionView: UIView, UITableViewDataSource
             return 1
 //        case 1:
 //            return 0
-        case 1:
-            return 1
         default:
             return 0
         }
@@ -72,11 +91,21 @@ class QuestionView: UIView, UITableViewDataSource
             return topicCell
 //        case 1:
 //            return choiceCells[indexPath.row]
-        case 1:
-            return scoreCell
         default:
             return UITableViewCell()
         }
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        switch indexPath.section {
+        case 0:
+            return 50
+        default:
+            return 44
+        }
+    }
+    
+    // TODO: - 处理屏幕旋转
     
 }

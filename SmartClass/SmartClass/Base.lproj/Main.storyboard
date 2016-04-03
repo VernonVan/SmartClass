@@ -434,21 +434,30 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODF-yw-WQE">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQF-Nj-ghP" customClass="QuestionView" customModule="SmartClass" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="250"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55q-Tp-wyZ" customClass="QuestionView" customModule="SmartClass" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="260"/>
                                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="250" id="8Hx-kJ-ejM"/>
+                                                    <constraint firstAttribute="height" constant="260" id="z9W-dx-UYY"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDT-iM-Kf3">
-                                                <rect key="frame" x="12" y="270" width="576" height="35"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="分值" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XQ0-NA-AaE">
+                                                <rect key="frame" x="547" y="268" width="45" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Eiu-ku-67W"/>
+                                                    <constraint firstAttribute="width" constant="45" id="RrL-of-qn1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sep-oq-tpe">
+                                                <rect key="frame" x="8" y="306" width="584" height="35"/>
                                                 <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="4VS-B8-Cw7"/>
+                                                    <constraint firstAttribute="height" constant="35" id="z8s-Xv-drO"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                <state key="normal" title="下一题">
+                                                <state key="normal" title="发布试卷">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -472,13 +481,15 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="JQF-Nj-ghP" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" id="Dkm-Z8-B2E"/>
-                                            <constraint firstItem="HDT-iM-Kf3" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" constant="12" id="ExI-m9-vvm"/>
-                                            <constraint firstAttribute="trailing" secondItem="JQF-Nj-ghP" secondAttribute="trailing" id="frV-Hc-1Wt"/>
-                                            <constraint firstItem="JQF-Nj-ghP" firstAttribute="top" secondItem="ODF-yw-WQE" secondAttribute="top" id="fsF-3Q-Tbn"/>
+                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" constant="8" id="EQq-jF-kre"/>
+                                            <constraint firstItem="55q-Tp-wyZ" firstAttribute="top" secondItem="ODF-yw-WQE" secondAttribute="top" id="N1X-fk-Nr3"/>
+                                            <constraint firstAttribute="trailing" secondItem="XQ0-NA-AaE" secondAttribute="trailing" constant="8" id="PtZ-0K-IHJ"/>
+                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="top" secondItem="XQ0-NA-AaE" secondAttribute="bottom" constant="8" id="QWS-q6-Xqz"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sep-oq-tpe" secondAttribute="trailing" constant="8" id="V0x-SJ-8F0"/>
+                                            <constraint firstItem="55q-Tp-wyZ" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" id="b2R-eA-lkz"/>
                                             <constraint firstAttribute="height" constant="492" id="jYd-hc-QwC"/>
-                                            <constraint firstItem="HDT-iM-Kf3" firstAttribute="top" secondItem="JQF-Nj-ghP" secondAttribute="bottom" constant="20" id="lvg-Fl-OjX"/>
-                                            <constraint firstAttribute="trailing" secondItem="HDT-iM-Kf3" secondAttribute="trailing" constant="12" id="mt8-JB-hw9"/>
+                                            <constraint firstItem="XQ0-NA-AaE" firstAttribute="top" secondItem="55q-Tp-wyZ" secondAttribute="bottom" constant="8" id="pdm-6H-f6q"/>
+                                            <constraint firstAttribute="trailing" secondItem="55q-Tp-wyZ" secondAttribute="trailing" id="vGd-pr-Wu9"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -506,6 +517,7 @@
                         <barButtonItem key="rightBarButtonItem" image="list" id="pAY-Qz-58E"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="questionView" destination="55q-Tp-wyZ" id="Cjw-zL-Y9Q"/>
                         <outlet property="scrollViewHeight" destination="jYd-hc-QwC" id="FdA-kI-at0"/>
                         <outlet property="toolBar" destination="kvk-Ef-HyI" id="cKe-36-mRw"/>
                     </connections>
