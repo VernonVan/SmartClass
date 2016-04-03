@@ -12,14 +12,8 @@ enum QuestionType: Int {
     case SingleChoice=0, MultipleChoice, TrueOrFalse
 }
 
-enum Options: Int {
-    case optionA, optionB, optionC, optionD
-}
-
 class AddQuestionsViewController: UIViewController
 {
-    // MARK: - constants
-    
     // MARK: - variable
     
     private var questionType = QuestionType.SingleChoice
@@ -43,5 +37,9 @@ class AddQuestionsViewController: UIViewController
         
     }
     
+    @IBAction func changeQuestionType(sender: UISegmentedControl)
+    {
+        questionView.changeQuestionType(QuestionType(rawValue: sender.selectedSegmentIndex)!)
+    }
     
 }

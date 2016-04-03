@@ -25,6 +25,8 @@
 		AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
+		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
+		AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308671CB10028000DEC59 /* UIImage+extension.swift */; };
 		AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */; };
 		AD86A8CF1C82DBCC009CEE87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */; };
 		AD86A8D11C82DBCC009CEE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8D01C82DBCC009CEE87 /* Assets.xcassets */; };
@@ -70,6 +72,8 @@
 		AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = SignInAndSignUp/SignUpViewController.swift; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
+		AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "Util/Extension/UIColor+extension.swift"; sourceTree = "<group>"; };
+		AD6308671CB10028000DEC59 /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+extension.swift"; path = "Util/Extension/UIImage+extension.swift"; sourceTree = "<group>"; };
 		AD86A8C61C82DBCC009CEE87 /* SmartClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD86A8CE1C82DBCC009CEE87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -381,6 +385,8 @@
 			isa = PBXGroup;
 			children = (
 				ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */,
+				AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */,
+				AD6308671CB10028000DEC59 /* UIImage+extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -510,6 +516,8 @@
 				AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */,
 				AD0B21D01C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift in Sources */,
 				ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */,
+				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
+				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
 				AD0B21D21C8D185F0080BF50 /* ExaminationInformationViewController.swift in Sources */,
 				AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */,
 				AD98B4451C92CBB500421CC3 /* Examination.swift in Sources */,

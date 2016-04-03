@@ -6,8 +6,6 @@
 //  Copyright © 2016年 Vernon. All rights reserved.
 //
 
-import UIKit
-
 extension CALayer
 {
     var borderUIColor: UIColor {
