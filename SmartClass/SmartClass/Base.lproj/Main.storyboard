@@ -358,7 +358,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="7ee-Vx-iPc" kind="show" id="bsg-9t-CEN"/>
+                                    <segue destination="7ee-Vx-iPc" kind="show" identifier="editPaper" id="bsg-9t-CEN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -516,10 +516,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="第一题" id="zUV-1q-RTV">
-                        <barButtonItem key="rightBarButtonItem" image="list" id="pAY-Qz-58E"/>
+                        <barButtonItem key="rightBarButtonItem" image="list" id="pAY-Qz-58E">
+                            <connections>
+                                <segue destination="ILl-yH-xWt" kind="show" id="wca-HM-8cn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="nextButton" destination="Sep-oq-tpe" id="ua8-an-TCy"/>
                         <outlet property="questionView" destination="55q-Tp-wyZ" id="Cjw-zL-Y9Q"/>
+                        <outlet property="questionViewHeight" destination="z9W-dx-UYY" id="7gU-tN-w42"/>
                         <outlet property="scrollViewHeight" destination="jYd-hc-QwC" id="FdA-kI-at0"/>
                         <outlet property="toolBar" destination="kvk-Ef-HyI" id="cKe-36-mRw"/>
                     </connections>
@@ -527,6 +533,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezr-vl-XSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1659" y="2827"/>
+        </scene>
+        <!--题目列表-->
+        <scene sceneID="DVM-Gg-5xT">
+            <objects>
+                <tableViewController title="题目列表" id="ILl-yH-xWt" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ODa-6R-cGD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3fh-1a-fBh">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fh-1a-fBh" id="WuS-Cf-Fkp">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ILl-yH-xWt" id="ElC-zO-ySN"/>
+                            <outlet property="delegate" destination="ILl-yH-xWt" id="Rdo-ih-HgH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="题目列表" id="T1o-BL-pXp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Bo7-km-qBW"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="erz-oS-rIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="3528"/>
         </scene>
         <!--设置-->
         <scene sceneID="SP3-R6-Khq">

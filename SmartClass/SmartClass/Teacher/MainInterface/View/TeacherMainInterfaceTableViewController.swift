@@ -40,14 +40,6 @@ class TeacherMainInterfaceTableViewController: UITableViewController, DZNEmptyDa
         return viewModel!.numberOfItems()
     }
     
-    // MARK: - actions
-    
-    @IBAction func createExaminationAction(sender: UIBarButtonItem)
-    {
-        let examViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ExaminationInformation") as! ExaminationInformationViewController
-        examViewController.viewModel = viewModel?.editViewModelForNewExam()
-        navigationController?.pushViewController(examViewController, animated: true)
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {

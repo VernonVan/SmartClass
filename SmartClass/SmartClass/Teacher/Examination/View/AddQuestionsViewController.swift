@@ -14,27 +14,29 @@ enum QuestionType: Int {
 
 class AddQuestionsViewController: UIViewController
 {
-    // MARK: - variable
-    
-    private var questionType = QuestionType.SingleChoice
     
     // MARK: - outlets
     
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     @IBOutlet weak var questionView: QuestionView!
+    @IBOutlet weak var questionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - life process
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+
         // 去除NavigationBar的边界
         let navigationBar = navigationController?.navigationBar
         navigationBar?.setBackgroundImage(UIImage.imageWithColor(ThemeGreenColor), forBarPosition: .Any, barMetrics: .Default)
         navigationBar?.shadowImage = UIImage()
         
+        scrollViewHeight.constant = nextButton.frame.maxY + 50.0
+        
+        RACObserve(self.questionView, keyPath: "viewHeight") ~> RAC(questionViewHeight, "constant")
     }
     
     @IBAction func changeQuestionType(sender: UISegmentedControl)

@@ -11,27 +11,28 @@ import SnapKit
 
 class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
 {
-    
-    
     // MARK: - Properties
+    dynamic var viewHeight: CGFloat = 244.0
     
     private let tableview = UITableView()
     private let topicCell = UITableViewCell()
     private let topicTextView = UIPlaceHolderTextView()
     private var choiceCells =  [UITableViewCell]()
     private var choiceTextFields = [UITextField]()
-    private var choiceCount: Int {
-        return questionType==QuestionType.TrueOrFalse ? 2 : 4
-    }
+//    private var choiceCount: Int {
+//        return questionType==QuestionType.TrueOrFalse ? 2 : 4
+//    }
     private var questionType = QuestionType.SingleChoice {
         didSet {
-            setNeedsDisplay()
+            viewHeight = (questionType == .TrueOrFalse) ? TrueOrFalseHeight : ChoiceViewHeight
         }
     }
     private var previousType = QuestionType.SingleChoice
     
     // MARK: - Constants
     
+    private let ChoiceViewHeight: CGFloat = 244.0
+    private let TrueOrFalseHeight: CGFloat = 156.0
     private let TopicCellHeight: CGFloat = 68.0
     private let ChoiceCellHeight: CGFloat = 44.0
     
@@ -45,18 +46,14 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         tableview.dataSource = self
         tableview.delegate = self
         self.addSubview(tableview)
-        tableview.alwaysBounceVertical = false
+        tableview.scrollEnabled = false
         tableview.snp_makeConstraints { (make) in
             make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         }
         
         configureTopicCell()
         configureChoiceCells()
-    }
-    
-    override func layoutSubviews()
-    {
-        tableview.reloadData()
+        
     }
     
     // MARK: - TableView
@@ -168,11 +165,17 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func changeToSingleChoice()
     {
         tableview.allowsMultipleSelection = false
+        if previousType == .TrueOrFalse {
+            clearAllChoiceText()
+        }
     }
     
     func changeToMultipleChoice()
     {
         tableview.allowsMultipleSelection = true
+        if previousType == .TrueOrFalse {
+            clearAllChoiceText()
+        }
     }
     
     func changeToTrueOrFalse()
@@ -180,6 +183,13 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         tableview.allowsMultipleSelection = false
         choiceTextFields[0].text = NSLocalizedString("正确", comment: "")
         choiceTextFields[1].text = NSLocalizedString("错误", comment: "")
+    }
+    
+    func clearAllChoiceText()
+    {
+        for textField in choiceTextFields {
+            textField.text = ""
+        }
     }
     
 }
