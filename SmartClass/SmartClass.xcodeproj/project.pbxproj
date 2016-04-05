@@ -10,28 +10,23 @@
 		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
 		AD0B21D01C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21CF1C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift */; };
 		AD0B21D21C8D185F0080BF50 /* ExaminationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D11C8D185F0080BF50 /* ExaminationInformationViewController.swift */; };
-		AD0B21D61C8E600C0080BF50 /* Questionnair.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D51C8E600C0080BF50 /* Questionnair.swift */; };
 		AD0B21D81C8E64D10080BF50 /* ExaminationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D71C8E64D10080BF50 /* ExaminationViewModel.swift */; };
 		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
 		AD0B21E41C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21E31C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift */; };
-		AD1D182D1C898896009B9390 /* ChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D182C1C898896009B9390 /* ChoiceQuestion.swift */; };
-		AD1D182F1C8990D3009B9390 /* SingleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D182E1C8990D3009B9390 /* SingleChoiceQuestion.swift */; };
-		AD1D18311C899286009B9390 /* GeneralSingleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D18301C899286009B9390 /* GeneralSingleChoiceQuestion.swift */; };
-		AD1D18331C8992A9009B9390 /* TrueOrFalseQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D18321C8992A9009B9390 /* TrueOrFalseQuestion.swift */; };
-		AD1D18371C8992E7009B9390 /* MultipleChoiceQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1D18361C8992E7009B9390 /* MultipleChoiceQuestion.swift */; };
 		AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46061C83DA3200FA30AA /* SignInViewController.swift */; };
 		AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
+		AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */; };
+		AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */; };
 		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
 		AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308671CB10028000DEC59 /* UIImage+extension.swift */; };
 		AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */; };
 		AD86A8CF1C82DBCC009CEE87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */; };
 		AD86A8D11C82DBCC009CEE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8D01C82DBCC009CEE87 /* Assets.xcassets */; };
 		AD86A8D41C82DBCC009CEE87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8D21C82DBCC009CEE87 /* LaunchScreen.storyboard */; };
-		AD876A781C93B279000E9978 /* AnswerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD876A771C93B279000E9978 /* AnswerSheet.swift */; };
 		AD876A7C1C93C053000E9978 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD876A7B1C93C053000E9978 /* UIPlaceHolderTextView.m */; };
 		AD876A801C940F32000E9978 /* AddQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD876A7F1C940F32000E9978 /* AddQuestionsViewController.swift */; };
 		AD884BBC1C83F2AF005A37AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BBB1C83F2AF005A37AE /* Foundation.framework */; };
@@ -48,31 +43,29 @@
 		AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD11C83F340005A37AE /* libsqlite3.tbd */; };
 		AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD31C83F357005A37AE /* libicucore.tbd */; };
 		AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9737891C92AF060066873E /* SegueHandlerType.swift */; };
-		AD98B4451C92CBB500421CC3 /* Examination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD98B4441C92CBB500421CC3 /* Examination.swift */; };
 		ADB1B0AC1CB2070900F702CE /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB1B0AB1CB2070900F702CE /* QuestionListViewController.swift */; };
 		ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */; };
 		ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */; };
 		ADF3BB7F1CAE67C400638D3B /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7E1CAE67C400638D3B /* QuestionView.swift */; };
+		ADFE13391CB389B900A864D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADFE13371CB389B900A864D0 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AD0B21CF1C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeacherMainInterfaceTableViewController.swift; path = Teacher/MainInterface/View/TeacherMainInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		AD0B21D11C8D185F0080BF50 /* ExaminationInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExaminationInformationViewController.swift; path = Teacher/Examination/View/ExaminationInformationViewController.swift; sourceTree = "<group>"; };
-		AD0B21D51C8E600C0080BF50 /* Questionnair.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Questionnair.swift; path = Teacher/Examination/Model/Questionnair.swift; sourceTree = "<group>"; };
 		AD0B21D71C8E64D10080BF50 /* ExaminationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExaminationViewModel.swift; path = Teacher/Examination/ViewModel/ExaminationViewModel.swift; sourceTree = "<group>"; };
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		AD0B21E31C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeacherMainInterfaceViewModel.swift; path = Teacher/MainInterface/ViewModel/TeacherMainInterfaceViewModel.swift; sourceTree = "<group>"; };
-		AD1D182C1C898896009B9390 /* ChoiceQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChoiceQuestion.swift; path = Teacher/Examination/Model/ChoiceQuestion.swift; sourceTree = "<group>"; };
-		AD1D182E1C8990D3009B9390 /* SingleChoiceQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleChoiceQuestion.swift; path = Teacher/Examination/Model/SingleChoiceQuestion.swift; sourceTree = "<group>"; };
-		AD1D18301C899286009B9390 /* GeneralSingleChoiceQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralSingleChoiceQuestion.swift; path = Teacher/Examination/Model/GeneralSingleChoiceQuestion.swift; sourceTree = "<group>"; };
-		AD1D18321C8992A9009B9390 /* TrueOrFalseQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrueOrFalseQuestion.swift; path = Teacher/Examination/Model/TrueOrFalseQuestion.swift; sourceTree = "<group>"; };
-		AD1D18361C8992E7009B9390 /* MultipleChoiceQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultipleChoiceQuestion.swift; path = Teacher/Examination/Model/MultipleChoiceQuestion.swift; sourceTree = "<group>"; };
 		AD2F46061C83DA3200FA30AA /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = SignInAndSignUp/SignInViewController.swift; sourceTree = "<group>"; };
 		AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = SignInAndSignUp/SignUpViewController.swift; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
+		AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		AD4AF5141CB3AE5D006129C2 /* ReactiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReactiveViewModel.h; path = Util/ReactiveViewModel/ReactiveViewModel.h; sourceTree = "<group>"; };
+		AD4AF5151CB3AE5D006129C2 /* RVMViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVMViewModel.h; path = Util/ReactiveViewModel/RVMViewModel.h; sourceTree = "<group>"; };
+		AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVMViewModel.m; path = Util/ReactiveViewModel/RVMViewModel.m; sourceTree = "<group>"; };
 		AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "Util/Extension/UIColor+extension.swift"; sourceTree = "<group>"; };
 		AD6308671CB10028000DEC59 /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+extension.swift"; path = "Util/Extension/UIImage+extension.swift"; sourceTree = "<group>"; };
 		AD86A8C61C82DBCC009CEE87 /* SmartClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +74,6 @@
 		AD86A8D01C82DBCC009CEE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD86A8D31C82DBCC009CEE87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD86A8D51C82DBCC009CEE87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AD876A771C93B279000E9978 /* AnswerSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerSheet.swift; path = Teacher/Examination/Model/AnswerSheet.swift; sourceTree = "<group>"; };
 		AD876A7A1C93C053000E9978 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIPlaceHolderTextView.h; path = Util/UIPlaceHolderTextView/UIPlaceHolderTextView.h; sourceTree = "<group>"; };
 		AD876A7B1C93C053000E9978 /* UIPlaceHolderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIPlaceHolderTextView.m; path = Util/UIPlaceHolderTextView/UIPlaceHolderTextView.m; sourceTree = "<group>"; };
 		AD876A7F1C940F32000E9978 /* AddQuestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddQuestionsViewController.swift; path = Teacher/Examination/View/AddQuestionsViewController.swift; sourceTree = "<group>"; };
@@ -100,11 +92,11 @@
 		AD884BD11C83F340005A37AE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AD884BD31C83F357005A37AE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		AD9737891C92AF060066873E /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Util/SegueHandlerType.swift; sourceTree = "<group>"; };
-		AD98B4441C92CBB500421CC3 /* Examination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Examination.swift; path = Teacher/Examination/Model/Examination.swift; sourceTree = "<group>"; };
 		ADB1B0AB1CB2070900F702CE /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewController.swift; path = Teacher/Examination/View/QuestionListViewController.swift; sourceTree = "<group>"; };
 		ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentMainInterfaceTableViewController.swift; path = Student/View/StudentMainInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
 		ADF3BB7E1CAE67C400638D3B /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionView.swift; path = Teacher/Examination/View/QuestionView.swift; sourceTree = "<group>"; };
+		ADFE13381CB389B900A864D0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4309D8B1E5CCAC2B6F4644 /* Pods-SmartClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8CBA00FE764EC44F8869E6 /* Pods-SmartClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.release.xcconfig"; sourceTree = "<group>"; };
@@ -252,14 +244,7 @@
 		AD1D18271C89869E009B9390 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AD1D182C1C898896009B9390 /* ChoiceQuestion.swift */,
-				AD1D182E1C8990D3009B9390 /* SingleChoiceQuestion.swift */,
-				AD1D18301C899286009B9390 /* GeneralSingleChoiceQuestion.swift */,
-				AD1D18321C8992A9009B9390 /* TrueOrFalseQuestion.swift */,
-				AD1D18361C8992E7009B9390 /* MultipleChoiceQuestion.swift */,
-				AD0B21D51C8E600C0080BF50 /* Questionnair.swift */,
-				AD876A771C93B279000E9978 /* AnswerSheet.swift */,
-				AD98B4441C92CBB500421CC3 /* Examination.swift */,
+				ADFE13371CB389B900A864D0 /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -316,6 +301,7 @@
 		AD46B0051C8683C8008CB3F7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				AD4AF5131CB3AE3F006129C2 /* ReactiveViewModel */,
 				ADF3BB7D1CAE625B00638D3B /* Extension */,
 				AD876A791C93C014000E9978 /* PlaceholderTextView */,
 				AD97378B1C92AF100066873E /* RACextensions */,
@@ -323,6 +309,16 @@
 				AD46B0061C868423008CB3F7 /* Color.swift */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		AD4AF5131CB3AE3F006129C2 /* ReactiveViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD4AF5141CB3AE5D006129C2 /* ReactiveViewModel.h */,
+				AD4AF5151CB3AE5D006129C2 /* RVMViewModel.h */,
+				AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */,
+			);
+			name = ReactiveViewModel;
 			sourceTree = "<group>";
 		};
 		AD86A8BD1C82DBCC009CEE87 = {
@@ -347,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */,
+				AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */,
 				AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */,
 				AD2F46081C83DA4D00FA30AA /* SignInAndSignUp */,
 				AD1304701C8436300078FA1C /* Teacher */,
@@ -523,27 +520,22 @@
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
 				AD0B21D21C8D185F0080BF50 /* ExaminationInformationViewController.swift in Sources */,
 				AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */,
-				AD98B4451C92CBB500421CC3 /* Examination.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
-				AD1D182F1C8990D3009B9390 /* SingleChoiceQuestion.swift in Sources */,
-				AD876A781C93B279000E9978 /* AnswerSheet.swift in Sources */,
-				AD1D18311C899286009B9390 /* GeneralSingleChoiceQuestion.swift in Sources */,
 				ADB1B0AC1CB2070900F702CE /* QuestionListViewController.swift in Sources */,
 				ADF3BB7F1CAE67C400638D3B /* QuestionView.swift in Sources */,
-				AD1D18371C8992E7009B9390 /* MultipleChoiceQuestion.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
-				AD1D182D1C898896009B9390 /* ChoiceQuestion.swift in Sources */,
 				AD0B21E41C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift in Sources */,
+				AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
-				AD1D18331C8992A9009B9390 /* TrueOrFalseQuestion.swift in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
 				AD0B21D81C8E64D10080BF50 /* ExaminationViewModel.swift in Sources */,
 				AD876A801C940F32000E9978 /* AddQuestionsViewController.swift in Sources */,
+				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
 				AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */,
 				AD876A7C1C93C053000E9978 /* UIPlaceHolderTextView.m in Sources */,
 				AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */,
-				AD0B21D61C8E600C0080BF50 /* Questionnair.swift in Sources */,
+				ADFE13391CB389B900A864D0 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +787,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ADFE13371CB389B900A864D0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ADFE13381CB389B900A864D0 /* Model.xcdatamodel */,
+			);
+			currentVersion = ADFE13381CB389B900A864D0 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AD86A8BE1C82DBCC009CEE87 /* Project object */;
 }

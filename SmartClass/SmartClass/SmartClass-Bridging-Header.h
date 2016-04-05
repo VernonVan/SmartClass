@@ -5,3 +5,5 @@
 #import <BmobSDK/Bmob.h>
 
 #import "UIPlaceHolderTextView.h"
+
+#import "RVMViewModel.h"

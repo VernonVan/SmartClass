@@ -1,6 +1,0 @@
-framework module Pods_SmartClass {
-  umbrella header "Pods-SmartClass-umbrella.h"
-
-  export *
-  module * { export * }
-}

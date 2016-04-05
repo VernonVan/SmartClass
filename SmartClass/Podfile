@@ -6,10 +6,11 @@ target 'SmartClass' do
 
 pod 'IQKeyboardManager'
 pod 'BmobSDK'
-pod 'ReactiveCocoa', '~> 4.0.4-alpha-4', :inhibit_warnings => true
+pod 'ReactiveCocoa', '~> 4.1.0', :inhibit_warnings => true
 pod 'Toast', '~> 3.0'
 pod 'DZNEmptyDataSet', '~> 1.7.3'
 pod 'SnapKit', '~> 0.20.0'
+pod 'ReactiveViewModel'
 
 end
 

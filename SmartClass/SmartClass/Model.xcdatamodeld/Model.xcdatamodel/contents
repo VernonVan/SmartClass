@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="AnswerSheet" syncable="YES">
+        <attribute name="totalScore" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="ChoiceQuestion" isAbstract="YES" parentEntity="Question" syncable="YES">
+        <attribute name="optionA" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="optionB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="optionC" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="optionD" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Examination" syncable="YES">
+        <attribute name="name" optional="YES" syncable="YES"/>
+        <relationship name="questionnair" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Questionnair" syncable="YES"/>
+        <relationship name="studentAnswerSheets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AnswerSheet" syncable="YES"/>
+        <relationship name="teacherAnswerSheet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnswerSheet" syncable="YES"/>
+    </entity>
+    <entity name="MultipleChoiceQuestion" parentEntity="ChoiceQuestion" syncable="YES">
+        <attribute name="answers" optional="YES" attributeType="String" maxValueString="4" syncable="YES"/>
+    </entity>
+    <entity name="Question" isAbstract="YES" syncable="YES">
+        <attribute name="score" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" defaultValueString="0" syncable="YES"/>
+        <attribute name="topic" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questionnair" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Questionnair" inverseName="questions" inverseEntity="Questionnair" syncable="YES"/>
+    </entity>
+    <entity name="Questionnair" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="questionnair" inverseEntity="Question" syncable="YES"/>
+    </entity>
+    <entity name="SingleChoiceQuestion" parentEntity="ChoiceQuestion" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String" maxValueString="1" syncable="YES"/>
+    </entity>
+    <entity name="TrueOrFalseQuestion" parentEntity="Question" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String" maxValueString="1" syncable="YES"/>
+        <attribute name="falseOption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trueOption" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AnswerSheet" positionX="4867" positionY="9162" width="128" height="58"/>
+        <element name="ChoiceQuestion" positionX="4417" positionY="9527" width="128" height="103"/>
+        <element name="Examination" positionX="4705" positionY="9009" width="128" height="103"/>
+        <element name="MultipleChoiceQuestion" positionX="4527" positionY="9704" width="128" height="58"/>
+        <element name="Question" positionX="4590" positionY="9341" width="128" height="88"/>
+        <element name="Questionnair" positionX="4606" positionY="9164" width="128" height="88"/>
+        <element name="SingleChoiceQuestion" positionX="4318" positionY="9704" width="128" height="58"/>
+        <element name="TrueOrFalseQuestion" positionX="4759" positionY="9702" width="128" height="88"/>
+    </elements>
+</model>

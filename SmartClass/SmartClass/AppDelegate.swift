@@ -23,17 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         IQKeyboardManager.sharedManager().enable = true
         
-        Bmob.registerWithAppKey(appKey)
+//        Bmob.registerWithAppKey(appKey)
 
-        let bmobUser = BmobUser.getCurrentUser()
-        if bmobUser != nil {
-            let identity = bmobUser.objectForKey("identity") as! String
-            if identity == "teacher" {
-                setInitialViewController(navigationController, InitialVCIdentifier: .TeacherMainInterface)
-            } else if identity == "student" {
-                setInitialViewController(navigationController, InitialVCIdentifier: .StudentMainInterface)
-            }
-        }
+//        let bmobUser = BmobUser.getCurrentUser()
+//        if bmobUser != nil {
+//            let identity = bmobUser.objectForKey("identity") as! String
+//            if identity == "teacher" {
+//                setInitialViewController(navigationController, InitialVCIdentifier: .TeacherMainInterface)
+//            } else if identity == "student" {
+//                setInitialViewController(navigationController, InitialVCIdentifier: .StudentMainInterface)
+//            }
+//        }
+        
+        setInitialViewController(navigationController, InitialVCIdentifier: .TeacherMainInterface)
     
         return true
     }
@@ -54,16 +56,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func setInitialViewController(navigationController: UINavigationController, InitialVCIdentifier: InitialViewControllerIdentifier)
     {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        switch InitialVCIdentifier {
-        case .TeacherMainInterface:
-            let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.TeacherMainInterface.rawValue) as!TeacherMainInterfaceTableViewController
-            let viewModel = TeacherMainInterfaceViewModel()
-            initialViewController.viewModel = viewModel
-            navigationController.pushViewController(initialViewController, animated: false)
-        case .StudentMainInterface:
-            let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.StudentMainInterface.rawValue) as!StudentMainInterfaceTableViewController
-            navigationController.pushViewController(initialViewController, animated: false)
-        }
+        let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.TeacherMainInterface.rawValue) as!TeacherMainInterfaceTableViewController
+        
+        let viewModel = TeacherMainInterfaceViewModel()
+        initialViewController.viewModel = viewModel
+        navigationController.pushViewController(initialViewController, animated: false)
+        
+//        switch InitialVCIdentifier {
+//        case .TeacherMainInterface:
+//            let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.TeacherMainInterface.rawValue) as!TeacherMainInterfaceTableViewController
+//            let viewModel = TeacherMainInterfaceViewModel()
+//            initialViewController.viewModel = viewModel
+//            navigationController.pushViewController(initialViewController, animated: false)
+//        case .StudentMainInterface:
+//            let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.StudentMainInterface.rawValue) as!StudentMainInterfaceTableViewController
+//            navigationController.pushViewController(initialViewController, animated: false)
+//        }
     }
 
     func applicationWillResignActive(application: UIApplication)
@@ -91,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func applicationWillTerminate(application: UIApplication)
     {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        CoreDataStack.defaultStack.saveContext()
     }
 
 

@@ -31,23 +31,36 @@ class TeacherMainInterfaceTableViewController: UITableViewController, DZNEmptyDa
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return viewModel!.numberOfSections()
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         // #warning Incomplete implementation, return the number of rows
-        return viewModel!.numberOfItems()
+        return viewModel!.numberOfItemsInSection(section)
     }
     
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        configureCell(cell, atIndexPath: indexPath)
+        return cell
+    }
     
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath)
+    {
+        cell.textLabel?.text = viewModel.titleAtIndexPath(indexPath)
+        cell.detailTextLabel?.text = viewModel.subtitleAtIndexPath(indexPath)
+    }
+    
+    // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        if segue.identifier == "createExamination" {
-            if let examViewController = segue.destinationViewController as? ExaminationInformationViewController {
-                examViewController.viewModel = viewModel?.editViewModelForNewExam()
-            }
-        }
+//        if segue.identifier == "createExamination" {
+//            if let examViewController = segue.destinationViewController as? ExaminationInformationViewController {
+//                examViewController.viewModel = viewModel?.editViewModelForNewExam()
+//            }
+//        }
     }
     
     // MARK: - DZNEmptyDataSet data source
