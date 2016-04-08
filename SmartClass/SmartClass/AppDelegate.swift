@@ -13,7 +13,7 @@ import IQKeyboardManager
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
-    let appKey = "6d754488ef493f396056320f70b8bac8"
+//    private let appKey = "6d754488ef493f396056320f70b8bac8"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         IQKeyboardManager.sharedManager().enable = true
         
 //        Bmob.registerWithAppKey(appKey)
-
 //        let bmobUser = BmobUser.getCurrentUser()
 //        if bmobUser != nil {
 //            let identity = bmobUser.objectForKey("identity") as! String
@@ -56,10 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func setInitialViewController(navigationController: UINavigationController, InitialVCIdentifier: InitialViewControllerIdentifier)
     {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.TeacherMainInterface.rawValue) as!TeacherMainInterfaceTableViewController
+        let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.TeacherMainInterface.rawValue) as!MasterViewController
         
-        let viewModel = TeacherMainInterfaceViewModel()
+        let viewModel = MasterViewModel(model: CoreDataStack.defaultStack.managedObjectContext)
         initialViewController.viewModel = viewModel
+        
         navigationController.pushViewController(initialViewController, animated: false)
         
 //        switch InitialVCIdentifier {

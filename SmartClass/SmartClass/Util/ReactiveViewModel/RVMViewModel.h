@@ -14,19 +14,6 @@
 // user-presentable.
 @interface RVMViewModel : NSObject
 
-// The model which the view model is adapting for the UI.
-@property (nonatomic, readonly, strong) id model;
-
-// Calls -initWithModel: with a nil model.
-- (instancetype)init;
-
-// Creates a new view model with the given model.
-//
-// model - The model to adapt for the UI. This argument may be nil.
-//
-// Returns an initialized view model, or nil if an error occurs.
-- (instancetype)initWithModel:(id)model;
-
 // Whether the view model is currently "active."
 //
 // This generally implies that the associated view is visible. When set to NO,

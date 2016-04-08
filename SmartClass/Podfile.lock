@@ -21,7 +21,7 @@ DEPENDENCIES:
   - BmobSDK
   - DZNEmptyDataSet (~> 1.7.3)
   - IQKeyboardManager
-  - ReactiveCocoa (~> 4.0.4-alpha-4)
+  - ReactiveCocoa (~> 4.0.4-alpha-1)
   - SnapKit (~> 0.20.0)
   - Toast (~> 3.0)
 

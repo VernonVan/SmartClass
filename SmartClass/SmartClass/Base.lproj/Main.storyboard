@@ -239,19 +239,73 @@
         <!--教师端-->
         <scene sceneID="KQW-ED-EXy">
             <objects>
-                <tableViewController storyboardIdentifier="TeacherMainInterface" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mqn-Td-1ps" customClass="TeacherMainInterfaceTableViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TeacherMainInterface" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mqn-Td-1ps" customClass="MasterViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qlR-2y-eK2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reusePaper" id="E03-EA-ebW">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="beforeCell" textLabel="GGi-L5-g92" detailTextLabel="QvG-dp-bXC" imageView="ZIQ-K4-w3Q" style="IBUITableViewCellStyleSubtitle" id="E03-EA-ebW">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E03-EA-ebW" id="00q-wE-Ua9">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GGi-L5-g92">
+                                            <rect key="frame" x="62" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QvG-dp-bXC">
+                                            <rect key="frame" x="62" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="beforeExam" id="ZIQ-K4-w3Q">
+                                            <rect key="frame" x="15" y="5" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Vd4-C1-oyo" kind="show" identifier="editExam" id="AN6-oV-8tl"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="afterCell" textLabel="6Io-CR-fSS" detailTextLabel="oaV-DA-bQh" imageView="71g-im-BfQ" style="IBUITableViewCellStyleSubtitle" id="VfB-rT-nKj">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VfB-rT-nKj" id="PBM-mx-sXu">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Io-CR-fSS">
+                                            <rect key="frame" x="60" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oaV-DA-bQh">
+                                            <rect key="frame" x="60" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="afterExam" id="71g-im-BfQ">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bT9-UI-vXr" kind="show" identifier="examResult" id="tr8-st-FgU"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -263,12 +317,12 @@
                         <barButtonItem key="leftBarButtonItem" image="user" id="7DI-QW-Teh"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="t5E-5g-5MX">
                             <connections>
-                                <segue destination="Vd4-C1-oyo" kind="show" identifier="createExamination" id="Cmb-sl-Ax1"/>
+                                <segue destination="Vd4-C1-oyo" kind="show" identifier="createExam" id="Cmb-sl-Ax1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="fUA-Cg-ANK" kind="show" id="w9D-GA-EtA"/>
+                        <segue destination="fUA-Cg-ANK" kind="show" identifier="setting" id="w9D-GA-EtA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2H-PQ-hLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -278,7 +332,7 @@
         <!--试卷信息-->
         <scene sceneID="Qln-7K-A5s">
             <objects>
-                <viewController storyboardIdentifier="ExaminationInformation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vd4-C1-oyo" customClass="ExaminationInformationViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExaminationInformation" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vd4-C1-oyo" customClass="ExamViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="faS-L4-ds2"/>
                         <viewControllerLayoutGuide type="bottom" id="X1Z-qD-C5z"/>
@@ -287,17 +341,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="试卷名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bw1-t6-SOA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="试卷名" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Bw1-t6-SOA">
                                 <rect key="frame" x="20" y="72" width="560" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x1G-rw-td1" customClass="UIPlaceHolderTextView">
                                 <rect key="frame" x="20" y="110" width="560" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -309,6 +363,30 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="编辑试卷简介"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFW-tY-td9">
+                                <rect key="frame" x="20" y="472" width="560" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="aLU-VM-JFH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="编辑试卷">
+                                    <color key="titleColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                        <color key="value" red="0.29803921568627451" green="0.68627450980392157" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="7ee-Vx-iPc" kind="show" identifier="editPaper" id="bsg-9t-CEN"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xe-3S-tJ8">
                                 <rect key="frame" x="20" y="515" width="560" height="35"/>
                                 <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -337,30 +415,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFW-tY-td9">
-                                <rect key="frame" x="20" y="472" width="560" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="aLU-VM-JFH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="编辑试卷">
-                                    <color key="titleColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                        <color key="value" red="0.29803921568627451" green="0.68627450980392157" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="7ee-Vx-iPc" kind="show" identifier="editPaper" id="bsg-9t-CEN"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -380,21 +434,73 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="试卷信息" id="NO5-OY-nwG">
-                        <barButtonItem key="leftBarButtonItem" title="取消" id="a5q-aH-3DB"/>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="确定" id="vb3-uT-rqV"/>
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="a5q-aH-3DB">
+                            <connections>
+                                <action selector="cancelWasPressed:" destination="Vd4-C1-oyo" id="gEs-jM-YK3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="确定" id="vb3-uT-rqV">
+                            <connections>
+                                <action selector="doneWasPressed:" destination="Vd4-C1-oyo" id="KpA-Dg-nBF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blurbTextView" destination="x1G-rw-td1" id="04x-7R-5yK"/>
                         <outlet property="cancelButton" destination="a5q-aH-3DB" id="VFu-ek-AoC"/>
                         <outlet property="doneButton" destination="vb3-uT-rqV" id="IN2-Ze-gH9"/>
-                        <outlet property="editExamButton" destination="kFW-tY-td9" id="YE6-In-LJC"/>
-                        <outlet property="examinationNameTextField" destination="Bw1-t6-SOA" id="P3j-f4-h9n"/>
-                        <outlet property="startExaminationButton" destination="1xe-3S-tJ8" id="WvA-yJ-1rE"/>
-                        <outlet property="summaryTextView" destination="x1G-rw-td1" id="ES4-Oc-MKo"/>
+                        <outlet property="nameTextField" destination="Bw1-t6-SOA" id="Cqg-j5-Fe3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPp-fx-ID2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="2096"/>
+            <point key="canvasLocation" x="1304" y="2106"/>
+        </scene>
+        <!--考试结果-->
+        <scene sceneID="NGn-J3-WGe">
+            <objects>
+                <viewController id="bT9-UI-vXr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hOz-O5-rnV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rgl-4I-qGv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dqM-mg-6WR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ly6-Hd-e82">
+                                <rect key="frame" x="0.0" y="72" width="560" height="35"/>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="试卷预览">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowUIColor">
+                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="4" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="考试结果" id="mwA-va-PEu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ue1-hs-aLz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1989" y="2106"/>
         </scene>
         <!--第一题-->
         <scene sceneID="UXr-AU-2CU">
@@ -532,7 +638,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezr-vl-XSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="2827"/>
+            <point key="canvasLocation" x="1304" y="2882"/>
         </scene>
         <!--题目列表-->
         <scene sceneID="DVM-Gg-5xT">
@@ -563,7 +669,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erz-oS-rIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="3528"/>
+            <point key="canvasLocation" x="1304" y="3686"/>
         </scene>
         <!--设置-->
         <scene sceneID="SP3-R6-Khq">
@@ -586,7 +692,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ONK-cE-enR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="971" y="2096"/>
+            <point key="canvasLocation" x="636" y="2106"/>
         </scene>
         <!--学生端-->
         <scene sceneID="W9c-j8-hXG">
@@ -640,8 +746,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="afterExam" width="30" height="30"/>
+        <image name="beforeExam" width="32" height="32"/>
         <image name="close" width="20" height="20"/>
         <image name="list" width="24" height="24"/>
         <image name="user" width="19" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="AN6-oV-8tl"/>
+    </inferredMetricsTieBreakers>
 </document>

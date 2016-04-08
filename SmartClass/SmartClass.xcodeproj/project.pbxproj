@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
-		AD0B21D01C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21CF1C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift */; };
-		AD0B21D21C8D185F0080BF50 /* ExaminationInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D11C8D185F0080BF50 /* ExaminationInformationViewController.swift */; };
-		AD0B21D81C8E64D10080BF50 /* ExaminationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D71C8E64D10080BF50 /* ExaminationViewModel.swift */; };
+		AD0B21D01C8D16B20080BF50 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */; };
+		AD0B21D21C8D185F0080BF50 /* ExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D11C8D185F0080BF50 /* ExamViewController.swift */; };
+		AD0B21D81C8E64D10080BF50 /* ExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D71C8E64D10080BF50 /* ExamViewModel.swift */; };
 		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
-		AD0B21E41C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21E31C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift */; };
+		AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */; };
 		AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46061C83DA3200FA30AA /* SignInViewController.swift */; };
 		AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */; };
+		AD406FB41CB76011004B7DC1 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD406FB31CB76011004B7DC1 /* QuestionViewModel.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
 		AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */; };
@@ -47,19 +48,22 @@
 		ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */; };
 		ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */; };
 		ADF3BB7F1CAE67C400638D3B /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7E1CAE67C400638D3B /* QuestionView.swift */; };
+		ADF6E79A1CB78E2A00E68CA3 /* Examination+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6E7981CB78E2A00E68CA3 /* Examination+CoreDataProperties.swift */; };
+		ADF6E79B1CB78E2A00E68CA3 /* Examination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF6E7991CB78E2A00E68CA3 /* Examination.swift */; };
 		ADFE13391CB389B900A864D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADFE13371CB389B900A864D0 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AD0B21CF1C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeacherMainInterfaceTableViewController.swift; path = Teacher/MainInterface/View/TeacherMainInterfaceTableViewController.swift; sourceTree = "<group>"; };
-		AD0B21D11C8D185F0080BF50 /* ExaminationInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExaminationInformationViewController.swift; path = Teacher/Examination/View/ExaminationInformationViewController.swift; sourceTree = "<group>"; };
-		AD0B21D71C8E64D10080BF50 /* ExaminationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExaminationViewModel.swift; path = Teacher/Examination/ViewModel/ExaminationViewModel.swift; sourceTree = "<group>"; };
+		AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = Teacher/MainInterface/View/MasterViewController.swift; sourceTree = "<group>"; };
+		AD0B21D11C8D185F0080BF50 /* ExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamViewController.swift; path = Teacher/Examination/View/ExamViewController.swift; sourceTree = "<group>"; };
+		AD0B21D71C8E64D10080BF50 /* ExamViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamViewModel.swift; path = Teacher/Examination/ViewModel/ExamViewModel.swift; sourceTree = "<group>"; };
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
-		AD0B21E31C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeacherMainInterfaceViewModel.swift; path = Teacher/MainInterface/ViewModel/TeacherMainInterfaceViewModel.swift; sourceTree = "<group>"; };
+		AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = Teacher/MainInterface/ViewModel/MasterViewModel.swift; sourceTree = "<group>"; };
 		AD2F46061C83DA3200FA30AA /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = SignInAndSignUp/SignInViewController.swift; sourceTree = "<group>"; };
 		AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = SignInAndSignUp/SignUpViewController.swift; sourceTree = "<group>"; };
+		AD406FB31CB76011004B7DC1 /* QuestionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionViewModel.swift; path = Teacher/Examination/ViewModel/QuestionViewModel.swift; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
 		AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 		ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentMainInterfaceTableViewController.swift; path = Student/View/StudentMainInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
 		ADF3BB7E1CAE67C400638D3B /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionView.swift; path = Teacher/Examination/View/QuestionView.swift; sourceTree = "<group>"; };
+		ADF6E7981CB78E2A00E68CA3 /* Examination+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Examination+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Examination+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ADF6E7991CB78E2A00E68CA3 /* Examination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Examination.swift; path = Teacher/Examination/Model/Examination.swift; sourceTree = "<group>"; };
 		ADFE13381CB389B900A864D0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4309D8B1E5CCAC2B6F4644 /* Pods-SmartClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,7 +178,7 @@
 		AD0B21CA1C8D16140080BF50 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AD0B21E31C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift */,
+				AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -180,7 +186,7 @@
 		AD0B21CB1C8D161F0080BF50 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD0B21CF1C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift */,
+				AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -213,7 +219,7 @@
 		AD1304721C8438EE0078FA1C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD0B21D11C8D185F0080BF50 /* ExaminationInformationViewController.swift */,
+				AD0B21D11C8D185F0080BF50 /* ExamViewController.swift */,
 				ADF3BB7E1CAE67C400638D3B /* QuestionView.swift */,
 				AD876A7F1C940F32000E9978 /* AddQuestionsViewController.swift */,
 				ADB1B0AB1CB2070900F702CE /* QuestionListViewController.swift */,
@@ -245,6 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				ADFE13371CB389B900A864D0 /* Model.xcdatamodeld */,
+				ADF6E7981CB78E2A00E68CA3 /* Examination+CoreDataProperties.swift */,
+				ADF6E7991CB78E2A00E68CA3 /* Examination.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -252,7 +260,8 @@
 		AD1D18281C8986A5009B9390 /* ViewMode */ = {
 			isa = PBXGroup;
 			children = (
-				AD0B21D71C8E64D10080BF50 /* ExaminationViewModel.swift */,
+				AD0B21D71C8E64D10080BF50 /* ExamViewModel.swift */,
+				AD406FB31CB76011004B7DC1 /* QuestionViewModel.swift */,
 			);
 			name = ViewMode;
 			sourceTree = "<group>";
@@ -514,22 +523,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */,
-				AD0B21D01C8D16B20080BF50 /* TeacherMainInterfaceTableViewController.swift in Sources */,
+				AD0B21D01C8D16B20080BF50 /* MasterViewController.swift in Sources */,
 				ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */,
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
-				AD0B21D21C8D185F0080BF50 /* ExaminationInformationViewController.swift in Sources */,
+				AD0B21D21C8D185F0080BF50 /* ExamViewController.swift in Sources */,
+				ADF6E79A1CB78E2A00E68CA3 /* Examination+CoreDataProperties.swift in Sources */,
 				AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
 				ADB1B0AC1CB2070900F702CE /* QuestionListViewController.swift in Sources */,
+				AD406FB41CB76011004B7DC1 /* QuestionViewModel.swift in Sources */,
 				ADF3BB7F1CAE67C400638D3B /* QuestionView.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
+				ADF6E79B1CB78E2A00E68CA3 /* Examination.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
-				AD0B21E41C8ED1840080BF50 /* TeacherMainInterfaceViewModel.swift in Sources */,
+				AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */,
 				AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
-				AD0B21D81C8E64D10080BF50 /* ExaminationViewModel.swift in Sources */,
+				AD0B21D81C8E64D10080BF50 /* ExamViewModel.swift in Sources */,
 				AD876A801C940F32000E9978 /* AddQuestionsViewController.swift in Sources */,
 				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
 				AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */,

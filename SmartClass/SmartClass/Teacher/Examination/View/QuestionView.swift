@@ -19,9 +19,6 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     private let topicTextView = UIPlaceHolderTextView()
     private var choiceCells =  [UITableViewCell]()
     private var choiceTextFields = [UITextField]()
-//    private var choiceCount: Int {
-//        return questionType==QuestionType.TrueOrFalse ? 2 : 4
-//    }
     private var questionType = QuestionType.SingleChoice {
         didSet {
             viewHeight = (questionType == .TrueOrFalse) ? TrueOrFalseHeight : ChoiceViewHeight
