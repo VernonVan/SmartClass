@@ -1,5 +1,5 @@
 //
-//  Examination+CoreDataProperties.swift
+//  AnswerSheet+CoreDataProperties.swift
 //  SmartClass
 //
 //  Created by Vernon on 16/4/8.
@@ -12,13 +12,12 @@
 import Foundation
 import CoreData
 
-extension Examination {
+extension AnswerSheet {
 
-    @NSManaged var blurb: String?
-    @NSManaged var isFinished: Bool
-    @NSManaged var name: String?
-    @NSManaged var paper: Paper?
-    @NSManaged var studentAnswerSheets: NSSet?
-    @NSManaged var teacherAnswerSheet: AnswerSheet?
+    @NSManaged var isChecked: Bool
+    @NSManaged var totalScore: Int16
+    @NSManaged var answers: NSManagedObject?
+    @NSManaged var sExamination: Examination?
+    @NSManaged var tExamination: Examination?
 
 }

@@ -78,4 +78,16 @@ class ExamViewController: UIViewController
         navigationController?.popViewControllerAnimated(true)
     }
     
+    // MARK: - Segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        super.prepareForSegue(segue, sender: sender)
+        if segue.identifier == "editPaper" {
+            if let paperVC = segue.destinationViewController as? PaperViewController {
+                paperVC.viewModel = viewModel?.viewModelForPaper()
+            }
+        }
+    }
+    
 }

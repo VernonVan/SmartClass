@@ -11,9 +11,11 @@ import SnapKit
 
 class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
 {
-    // MARK: - Properties
+    // MARK: - APIs
+    var viewModel: QuestionViewModel?
     dynamic var viewHeight: CGFloat = 244.0
     
+    // MARK: - private var
     private let tableview = UITableView()
     private let topicCell = UITableViewCell()
     private let topicTextView = UIPlaceHolderTextView()
@@ -27,13 +29,14 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     private var previousType = QuestionType.SingleChoice
     
     // MARK: - Constants
-    
+     let numberOfSection = 2
+    private let TopicSection = 0
+    private let OptionSection = 1
     private let ChoiceViewHeight: CGFloat = 244.0
     private let TrueOrFalseHeight: CGFloat = 156.0
     private let TopicCellHeight: CGFloat = 68.0
     private let ChoiceCellHeight: CGFloat = 44.0
-    
-    
+
     // MARK: - Initialization
     
     required init?(coder aDecoder: NSCoder)
@@ -50,27 +53,44 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         
         configureTopicCell()
         configureChoiceCells()
-        
+    }
+    
+    override func didMoveToWindow()
+    {
+        super.didMoveToWindow()
+        bindViewModel()
+    }
+    
+    // MARK: - RAC binding
+    func bindViewModel()
+    {
+        topicTextView.rac_textSignal() ~> RAC(viewModel, "topic")
+        choiceTextFields[0].rac_textSignal() ~> RAC(viewModel, "choiceA")
+        choiceTextFields[1].rac_textSignal() ~> RAC(viewModel, "choiceB")
+        choiceTextFields[2].rac_textSignal() ~> RAC(viewModel, "choiceC")
+        choiceTextFields[3].rac_textSignal() ~> RAC(viewModel, "choiceD")
     }
     
     // MARK: - TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 2
+        return numberOfSection
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if section == 0 {
+        if section == TopicSection {
             return 1
+        } else if section == OptionSection {
+            return choiceCells.count
         }
-        return choiceCells.count
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        if indexPath.section == 0 {
+        if indexPath.section == TopicSection {
             return topicCell
         }
         return choiceCells[indexPath.row]
@@ -190,3 +210,4 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     }
     
 }
+

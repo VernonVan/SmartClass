@@ -4,57 +4,42 @@
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="answerSheet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnswerSheet" inverseName="answers" inverseEntity="AnswerSheet" syncable="YES"/>
     </entity>
-    <entity name="AnswerSheet" syncable="YES">
+    <entity name="AnswerSheet" representedClassName=".AnswerSheet" syncable="YES">
         <attribute name="isChecked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="totalScore" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="answers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="answerSheet" inverseEntity="Answer" syncable="YES"/>
         <relationship name="sExamination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="studentAnswerSheets" inverseEntity="Examination" syncable="YES"/>
         <relationship name="tExamination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="teacherAnswerSheet" inverseEntity="Examination" syncable="YES"/>
     </entity>
-    <entity name="ChoiceQuestion" isAbstract="YES" parentEntity="Question" syncable="YES">
-        <attribute name="optionA" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="optionB" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="optionC" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="optionD" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="Examination" representedClassName=".Examination" syncable="YES">
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isFinished" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
-        <relationship name="questionnair" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Questionnair" inverseName="examination" inverseEntity="Questionnair" syncable="YES"/>
+        <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="examination" inverseEntity="Paper" syncable="YES"/>
         <relationship name="studentAnswerSheets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AnswerSheet" inverseName="sExamination" inverseEntity="AnswerSheet" syncable="YES"/>
         <relationship name="teacherAnswerSheet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnswerSheet" inverseName="tExamination" inverseEntity="AnswerSheet" syncable="YES"/>
     </entity>
-    <entity name="MultipleChoiceQuestion" parentEntity="ChoiceQuestion" syncable="YES">
-        <attribute name="answers" optional="YES" attributeType="String" maxValueString="4" syncable="YES"/>
+    <entity name="Paper" representedClassName=".Paper" syncable="YES">
+        <relationship name="examination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="paper" inverseEntity="Examination" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="paper" inverseEntity="Question" syncable="YES"/>
     </entity>
-    <entity name="Question" isAbstract="YES" syncable="YES">
-        <attribute name="index" optional="YES" attributeType="Integer 16" minValueString="1" syncable="YES"/>
-        <attribute name="score" optional="YES" attributeType="Integer 16" minValueString="0" maxValueString="100" syncable="YES"/>
+    <entity name="Question" representedClassName=".Question" syncable="YES">
+        <attribute name="answers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="choiceA" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="choiceB" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="choiceC" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="choiceD" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="topic" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="questionnair" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Questionnair" inverseName="questions" inverseEntity="Questionnair" syncable="YES"/>
-    </entity>
-    <entity name="Questionnair" syncable="YES">
-        <relationship name="examination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="questionnair" inverseEntity="Examination" syncable="YES"/>
-        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="questionnair" inverseEntity="Question" syncable="YES"/>
-    </entity>
-    <entity name="SingleChoiceQuestion" parentEntity="ChoiceQuestion" syncable="YES">
-        <attribute name="answer" optional="YES" attributeType="String" maxValueString="1" syncable="YES"/>
-    </entity>
-    <entity name="TrueOrFalseQuestion" parentEntity="Question" syncable="YES">
-        <attribute name="answer" optional="YES" attributeType="String" maxValueString="1" syncable="YES"/>
-        <attribute name="falseOption" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="trueOption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="questions" inverseEntity="Paper" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answer" positionX="4995" positionY="9288" width="128" height="73"/>
+        <element name="Answer" positionX="5002" positionY="9288" width="128" height="73"/>
         <element name="AnswerSheet" positionX="4993" positionY="9090" width="128" height="118"/>
-        <element name="ChoiceQuestion" positionX="4417" positionY="9527" width="128" height="103"/>
         <element name="Examination" positionX="4786" positionY="8955" width="128" height="133"/>
-        <element name="MultipleChoiceQuestion" positionX="4527" positionY="9704" width="128" height="58"/>
-        <element name="Question" positionX="4570" positionY="9341" width="128" height="103"/>
-        <element name="Questionnair" positionX="4662" positionY="9119" width="128" height="73"/>
-        <element name="SingleChoiceQuestion" positionX="4318" positionY="9704" width="128" height="58"/>
-        <element name="TrueOrFalseQuestion" positionX="4759" positionY="9702" width="128" height="88"/>
+        <element name="Paper" positionX="4662" positionY="9119" width="128" height="73"/>
+        <element name="Question" positionX="4660" positionY="9284" width="128" height="193"/>
     </elements>
 </model>

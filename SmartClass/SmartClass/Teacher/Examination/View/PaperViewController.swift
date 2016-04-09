@@ -12,8 +12,10 @@ enum QuestionType: Int {
     case SingleChoice=0, MultipleChoice, TrueOrFalse
 }
 
-class AddQuestionsViewController: UIViewController
+class PaperViewController: UIViewController
 {
+    // MARK: - variable
+    var viewModel: PaperViewModel?
     
     // MARK: - outlets
     
@@ -21,6 +23,7 @@ class AddQuestionsViewController: UIViewController
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     @IBOutlet weak var questionView: QuestionView!
     @IBOutlet weak var questionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scoreTextField: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - life process
@@ -35,13 +38,27 @@ class AddQuestionsViewController: UIViewController
         navigationBar?.shadowImage = UIImage()
         
         scrollViewHeight.constant = nextButton.frame.maxY + 50.0
-        
         RACObserve(self.questionView, keyPath: "viewHeight") ~> RAC(questionViewHeight, "constant")
+        
+        scoreTextField.rac_textSignal() ~> RAC(viewModel, "score")
+        
+        questionView.viewModel = viewModel?.questionViewModel
     }
+    
+    // MARK: - Actions
     
     @IBAction func changeQuestionType(sender: UISegmentedControl)
     {
-        questionView.changeQuestionType(QuestionType(rawValue: sender.selectedSegmentIndex)!)
+        let type = QuestionType(rawValue: sender.selectedSegmentIndex)!
+        viewModel!.type = type
+        questionView.changeQuestionType(type)
     }
+
+    @IBAction func nextAction(sender: UIButton)
+    {
+        viewModel!.save()
+        viewModel!.questionIndex += 1
+    }
+    
     
 }

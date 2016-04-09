@@ -173,10 +173,6 @@
                                     <action selector="confirmRegisterAction:" destination="Ovm-qm-fK4" eventType="touchUpInside" id="zdE-Fj-wR3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yX-cw-uuW">
-                                <rect key="frame" x="20" y="64" width="20" height="22"/>
-                                <state key="normal" image="close"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎来到智慧课堂" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eM1-4H-6GN">
                                 <rect key="frame" x="20" y="64" width="560" height="137"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
@@ -197,6 +193,14 @@
                                     <action selector="selectIdentityAction:" destination="Ovm-qm-fK4" eventType="valueChanged" id="oKz-4G-0Il"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yX-cw-uuW">
+                                <rect key="frame" x="20" y="72" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Ia8-AA-6qp"/>
+                                    <constraint firstAttribute="width" constant="22" id="e6k-f1-gFS"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -214,6 +218,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="etj-a6-iZK" secondAttribute="leading" id="UjS-hT-Ceq"/>
                             <constraint firstItem="7QI-Hg-uQv" firstAttribute="top" secondItem="kgk-9v-HOr" secondAttribute="bottom" constant="8" id="Zpg-AS-kDI"/>
                             <constraint firstItem="2yX-cw-uuW" firstAttribute="top" secondItem="x8l-A3-dcV" secondAttribute="bottom" id="dfs-HK-ir5"/>
+                            <constraint firstItem="2yX-cw-uuW" firstAttribute="top" secondItem="x8l-A3-dcV" secondAttribute="bottom" constant="8" id="f4E-VI-1dA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="2yX-cw-uuW" secondAttribute="leading" id="fEt-oH-iuo"/>
                             <constraint firstItem="wxO-mj-nTj" firstAttribute="top" secondItem="etj-a6-iZK" secondAttribute="bottom" constant="25" id="fsA-Xd-u7U"/>
                             <constraint firstItem="xY2-jc-eIu" firstAttribute="top" secondItem="7QI-Hg-uQv" secondAttribute="bottom" constant="9" id="jVt-vY-ltX"/>
@@ -222,7 +227,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="xY2-jc-eIu" secondAttribute="trailing" id="o1U-zt-2c4"/>
                             <constraint firstAttribute="leadingMargin" secondItem="wxO-mj-nTj" secondAttribute="leading" id="oyS-f0-3u1"/>
                             <constraint firstItem="eM1-4H-6GN" firstAttribute="top" secondItem="x8l-A3-dcV" secondAttribute="bottom" id="qV3-BX-Ttm"/>
+                            <constraint firstItem="2yX-cw-uuW" firstAttribute="leading" secondItem="b5C-Is-MXT" secondAttribute="leading" constant="20" id="uFX-Fk-2W2"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dfs-HK-ir5"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="courseNameTextField" destination="etj-a6-iZK" id="ZtI-Hf-dY0"/>
@@ -351,7 +362,7 @@
                                 <rect key="frame" x="20" y="110" width="560" height="337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="5"/>
@@ -502,10 +513,10 @@
             </objects>
             <point key="canvasLocation" x="1989" y="2106"/>
         </scene>
-        <!--第一题-->
+        <!--题目-->
         <scene sceneID="UXr-AU-2CU">
             <objects>
-                <viewController id="7ee-Vx-iPc" customClass="AddQuestionsViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7ee-Vx-iPc" customClass="PaperViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GYk-4t-h3U"/>
                         <viewControllerLayoutGuide type="bottom" id="KC3-qh-K1A"/>
@@ -585,6 +596,9 @@
                                                         <size key="value" width="4" height="4"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="nextAction:" destination="7ee-Vx-iPc" eventType="touchUpInside" id="v5c-xB-fgs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -621,7 +635,7 @@
                             <constraint firstItem="vRW-5h-a88" firstAttribute="leading" secondItem="6Q0-V2-61n" secondAttribute="leading" id="jhI-fT-Mme"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="第一题" id="zUV-1q-RTV">
+                    <navigationItem key="navigationItem" title="题目" id="zUV-1q-RTV">
                         <barButtonItem key="rightBarButtonItem" image="list" id="pAY-Qz-58E">
                             <connections>
                                 <segue destination="ILl-yH-xWt" kind="show" id="wca-HM-8cn"/>
@@ -632,6 +646,7 @@
                         <outlet property="nextButton" destination="Sep-oq-tpe" id="ua8-an-TCy"/>
                         <outlet property="questionView" destination="55q-Tp-wyZ" id="Cjw-zL-Y9Q"/>
                         <outlet property="questionViewHeight" destination="z9W-dx-UYY" id="7gU-tN-w42"/>
+                        <outlet property="scoreTextField" destination="XQ0-NA-AaE" id="KNw-ZJ-f19"/>
                         <outlet property="scrollViewHeight" destination="jYd-hc-QwC" id="FdA-kI-at0"/>
                         <outlet property="toolBar" destination="kvk-Ef-HyI" id="cKe-36-mRw"/>
                     </connections>
@@ -649,7 +664,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3fh-1a-fBh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseQuestionCell" id="3fh-1a-fBh">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fh-1a-fBh" id="WuS-Cf-Fkp">
