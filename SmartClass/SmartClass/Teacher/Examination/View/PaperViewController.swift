@@ -31,18 +31,34 @@ class PaperViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // 去除NavigationBar的边界
+        
+        scrollViewHeight.constant = nextButton.frame.maxY + 50.0
+        
+        removeBorderOfNavBar()
+        
+        bindViewModel()
+        
+        questionView.viewModel = viewModel?.questionViewModel
+        
+        viewModel!.loadQuestionAt(0)
+    }
+    
+    
+    
+    // 去除NavigationBar的边界
+    func removeBorderOfNavBar()
+    {
         let navigationBar = navigationController?.navigationBar
         navigationBar?.setBackgroundImage(UIImage.imageWithColor(ThemeGreenColor), forBarPosition: .Any, barMetrics: .Default)
         navigationBar?.shadowImage = UIImage()
-        
-        scrollViewHeight.constant = nextButton.frame.maxY + 50.0
+    }
+    
+    // MARK: - RAC binding
+    func bindViewModel()
+    {
         RACObserve(self.questionView, keyPath: "viewHeight") ~> RAC(questionViewHeight, "constant")
         
         scoreTextField.rac_textSignal() ~> RAC(viewModel, "score")
-        
-        questionView.viewModel = viewModel?.questionViewModel
     }
     
     // MARK: - Actions
@@ -56,9 +72,14 @@ class PaperViewController: UIViewController
 
     @IBAction func nextAction(sender: UIButton)
     {
-        viewModel!.save()
-        viewModel!.questionIndex += 1
+        viewModel!.saveOneQuestion()
+        clearScreenContent()
     }
     
+    func clearScreenContent()
+    {
+        scoreTextField.text = nil
+        questionView.clearScreenContent()
+    }
     
 }

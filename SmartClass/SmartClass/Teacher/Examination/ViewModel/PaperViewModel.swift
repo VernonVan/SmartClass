@@ -18,8 +18,8 @@ class PaperViewModel: RVMViewModel
         return viewModel
     }()
     var type = QuestionType.SingleChoice
-    var score = ""
-    var questionIndex = 0
+    var score = 0
+    var questionIndex = -1
     
     // MARK: - initialize
     init(paper: Paper)
@@ -30,45 +30,36 @@ class PaperViewModel: RVMViewModel
     }
     
     // MARK: - Core Data
-    func save()
+    func saveOneQuestion()
     {
-        switch type {
-        case .SingleChoice:
-            addSingleChoiceQuestion()
-        case .MultipleChoice:
-            addMultipleChoiceQuestion()
-        case .TrueOrFalse:
-            addTrueOrFalseQuestion()
-        }
-    }
-    
-    func addSingleChoiceQuestion()
-    {
-        let question = NSEntityDescription.insertNewObjectForEntityForName("Question", inManagedObjectContext: paper!.managedObjectContext!) as! Question
+        questionIndex += 1
         
-        question.index = questionIndex
-        question.topic = questionViewModel.topic
-        question.choiceA = questionViewModel.choiceA
-        question.choiceB = questionViewModel.choiceB
-        question.choiceC = questionViewModel.choiceC
-        question.choiceD = questionViewModel.choiceD
-        question.score = Int16(score)!
-        
+        let question = NSEntityDescription.insertNewObjectForEntityForName("Question", inManagedObjectContext: paper!.managedObjectContext!)
+        configureQuestionValue(question)
         do {
-            try question.managedObjectContext?.save()
-        } catch {
-            print("save question error")
+            try paper?.managedObjectContext?.save()
+        } catch let error as NSError {
+            print(error.userInfo)
         }
     }
     
-    func addMultipleChoiceQuestion()
+    func configureQuestionValue(question: NSManagedObject)
     {
-        
+        question.setValue(questionIndex, forKey: "index")
+        question.setValue(String(type) , forKey: "type")
+        question.setValue(questionViewModel.topic, forKey: "topic")
+        question.setValue(questionViewModel.choiceA, forKey: "choiceA")
+        question.setValue(questionViewModel.choiceB, forKey: "choiceB")
+        question.setValue(questionViewModel.choiceC, forKey: "choiceC")
+        question.setValue(questionViewModel.choiceD, forKey: "choiceD")
+        question.setValue(score, forKey: "score")
     }
     
-    func addTrueOrFalseQuestion()
+    func loadQuestionAt(index: Int) -> NSManagedObject
     {
-        
+        let question = paper?.questions?.objectAtIndex() as! NSManagedObject
+        print(question.valueForKey("topic"))
+        return question
     }
-    
+
 }

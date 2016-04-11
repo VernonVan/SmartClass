@@ -16,5 +16,5 @@ class QuestionViewModel: NSObject
     var choiceB: String?
     var choiceC: String?
     var choiceD: String?
-
+    var answers: String?
 }

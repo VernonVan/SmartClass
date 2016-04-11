@@ -64,11 +64,21 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     // MARK: - RAC binding
     func bindViewModel()
     {
-        topicTextView.rac_textSignal() ~> RAC(viewModel, "topic")
-        choiceTextFields[0].rac_textSignal() ~> RAC(viewModel, "choiceA")
-        choiceTextFields[1].rac_textSignal() ~> RAC(viewModel, "choiceB")
-        choiceTextFields[2].rac_textSignal() ~> RAC(viewModel, "choiceC")
-        choiceTextFields[3].rac_textSignal() ~> RAC(viewModel, "choiceD")
+        topicTextView.rac_textSignal().subscribeNext { [unowned self] (text) in
+            self.viewModel?.topic = text as? String
+        }
+        choiceTextFields[0].rac_textSignal().subscribeNext { [unowned self] (text) in
+            self.viewModel?.choiceA = text as? String
+        }
+        choiceTextFields[1].rac_textSignal().subscribeNext { [unowned self] (text) in
+            self.viewModel?.choiceB = text as? String
+        }
+        choiceTextFields[2].rac_textSignal().subscribeNext { [unowned self] (text) in
+            self.viewModel?.choiceC = text as? String
+        }
+        choiceTextFields[3].rac_textSignal().subscribeNext { [unowned self] (text) in
+            self.viewModel?.choiceD = text as? String
+        }
     }
     
     // MARK: - TableView
@@ -105,6 +115,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     {
         let cell = tableview.cellForRowAtIndexPath(indexPath)
         cell?.imageView?.image = UIImage(named: "correctAnswer")
+        changeAnswer()
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
@@ -113,6 +124,16 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
     }
     
+    func changeAnswer()
+    {
+   //     print(tableview.indexPathsForSelectedRows?.count)
+        let indexPaths = tableview.indexPathsForSelectedRows
+        viewModel?.answers = ""
+        for indexPath in indexPaths! {
+            viewModel?.answers? += String(format: "%c", indexPath.row+65)
+        }
+        print(viewModel?.answers)
+    }
     
     // MARK: - Cell
     
@@ -155,7 +176,6 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
             let cell = tableview.cellForRowAtIndexPath(indexPath)
             cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
         }
-        
     }
     
     // 从序号转换成图片的name
@@ -205,8 +225,15 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func clearAllChoiceText()
     {
         for textField in choiceTextFields {
-            textField.text = ""
+            textField.text = nil
         }
+    }
+    
+    func clearScreenContent()
+    {
+        clearAllSelection()
+        topicTextView.text = nil
+        clearAllChoiceText()
     }
     
 }

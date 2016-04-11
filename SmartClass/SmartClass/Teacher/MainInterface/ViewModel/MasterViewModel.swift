@@ -85,7 +85,10 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
     func isFinishedAtIndexPath(indexPath: NSIndexPath) -> Bool
     {
         let exam = examAtIndexPath(indexPath)
-        return exam.valueForKey("isFinished") as! Bool
+        if let isFinished = exam.isFinished?.boolValue {
+            return isFinished
+        }
+        return false
     }
     
     // MARK: - Segue

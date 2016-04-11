@@ -2,7 +2,7 @@
 //  Examination+CoreDataProperties.swift
 //  SmartClass
 //
-//  Created by Vernon on 16/4/8.
+//  Created by Vernon on 16/4/11.
 //  Copyright © 2016年 Vernon. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,7 +15,7 @@ import CoreData
 extension Examination {
 
     @NSManaged var blurb: String?
-    @NSManaged var isFinished: Bool
+    @NSManaged var isFinished: NSNumber?
     @NSManaged var name: String?
     @NSManaged var paper: Paper?
     @NSManaged var studentAnswerSheets: NSSet?

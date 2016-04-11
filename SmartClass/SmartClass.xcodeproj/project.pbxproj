@@ -16,6 +16,12 @@
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
 		AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */; };
+		AD2801491CBB480E00CD8942 /* Examination+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2801451CBB480E00CD8942 /* Examination+CoreDataProperties.swift */; };
+		AD28014A1CBB480E00CD8942 /* Examination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2801461CBB480E00CD8942 /* Examination.swift */; };
+		AD28014B1CBB480E00CD8942 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2801471CBB480E00CD8942 /* Paper+CoreDataProperties.swift */; };
+		AD28014C1CBB480E00CD8942 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2801481CBB480E00CD8942 /* Paper.swift */; };
+		AD2801531CBB4A5E00CD8942 /* AnswerSheet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2801511CBB4A5E00CD8942 /* AnswerSheet+CoreDataProperties.swift */; };
+		AD2801541CBB4A5E00CD8942 /* AnswerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2801521CBB4A5E00CD8942 /* AnswerSheet.swift */; };
 		AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46061C83DA3200FA30AA /* SignInViewController.swift */; };
 		AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */; };
 		AD406FB41CB76011004B7DC1 /* PaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD406FB31CB76011004B7DC1 /* PaperViewModel.swift */; };
@@ -23,8 +29,6 @@
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
 		AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */; };
 		AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */; };
-		AD4C314A1CB908FE002068B5 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4C31481CB908FE002068B5 /* Question+CoreDataProperties.swift */; };
-		AD4C314B1CB908FE002068B5 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4C31491CB908FE002068B5 /* Question.swift */; };
 		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
 		AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308671CB10028000DEC59 /* UIImage+extension.swift */; };
 		AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */; };
@@ -46,12 +50,6 @@
 		AD884BD01C83F31A005A37AE /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BCF1C83F31A005A37AE /* libz.1.2.5.tbd */; };
 		AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD11C83F340005A37AE /* libsqlite3.tbd */; };
 		AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD31C83F357005A37AE /* libicucore.tbd */; };
-		AD8A9E461CB7B06300B3700E /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A9E401CB7B06300B3700E /* Paper+CoreDataProperties.swift */; };
-		AD8A9E471CB7B06300B3700E /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A9E411CB7B06300B3700E /* Paper.swift */; };
-		AD8A9E481CB7B06300B3700E /* AnswerSheet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A9E421CB7B06300B3700E /* AnswerSheet+CoreDataProperties.swift */; };
-		AD8A9E491CB7B06300B3700E /* AnswerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A9E431CB7B06300B3700E /* AnswerSheet.swift */; };
-		AD8A9E4A1CB7B06300B3700E /* Examination+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A9E441CB7B06300B3700E /* Examination+CoreDataProperties.swift */; };
-		AD8A9E4B1CB7B06300B3700E /* Examination.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8A9E451CB7B06300B3700E /* Examination.swift */; };
 		AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9737891C92AF060066873E /* SegueHandlerType.swift */; };
 		ADB1B0AC1CB2070900F702CE /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB1B0AB1CB2070900F702CE /* QuestionListViewController.swift */; };
 		ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */; };
@@ -69,6 +67,12 @@
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = Teacher/MainInterface/ViewModel/MasterViewModel.swift; sourceTree = "<group>"; };
+		AD2801451CBB480E00CD8942 /* Examination+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Examination+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Examination+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AD2801461CBB480E00CD8942 /* Examination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Examination.swift; path = Teacher/Examination/Model/Examination.swift; sourceTree = "<group>"; };
+		AD2801471CBB480E00CD8942 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Paper+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AD2801481CBB480E00CD8942 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = Teacher/Examination/Model/Paper.swift; sourceTree = "<group>"; };
+		AD2801511CBB4A5E00CD8942 /* AnswerSheet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnswerSheet+CoreDataProperties.swift"; path = "Teacher/Examination/Model/AnswerSheet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AD2801521CBB4A5E00CD8942 /* AnswerSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerSheet.swift; path = Teacher/Examination/Model/AnswerSheet.swift; sourceTree = "<group>"; };
 		AD2F46061C83DA3200FA30AA /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = SignInAndSignUp/SignInViewController.swift; sourceTree = "<group>"; };
 		AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = SignInAndSignUp/SignUpViewController.swift; sourceTree = "<group>"; };
 		AD406FB31CB76011004B7DC1 /* PaperViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewModel.swift; path = Teacher/Examination/ViewModel/PaperViewModel.swift; sourceTree = "<group>"; };
@@ -78,8 +82,6 @@
 		AD4AF5141CB3AE5D006129C2 /* ReactiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReactiveViewModel.h; path = Util/ReactiveViewModel/ReactiveViewModel.h; sourceTree = "<group>"; };
 		AD4AF5151CB3AE5D006129C2 /* RVMViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVMViewModel.h; path = Util/ReactiveViewModel/RVMViewModel.h; sourceTree = "<group>"; };
 		AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVMViewModel.m; path = Util/ReactiveViewModel/RVMViewModel.m; sourceTree = "<group>"; };
-		AD4C31481CB908FE002068B5 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Question+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AD4C31491CB908FE002068B5 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = Teacher/Examination/Model/Question.swift; sourceTree = "<group>"; };
 		AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "Util/Extension/UIColor+extension.swift"; sourceTree = "<group>"; };
 		AD6308671CB10028000DEC59 /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+extension.swift"; path = "Util/Extension/UIImage+extension.swift"; sourceTree = "<group>"; };
 		AD86A8C61C82DBCC009CEE87 /* SmartClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,12 +107,6 @@
 		AD884BCF1C83F31A005A37AE /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		AD884BD11C83F340005A37AE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AD884BD31C83F357005A37AE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		AD8A9E401CB7B06300B3700E /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Paper+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AD8A9E411CB7B06300B3700E /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = Teacher/Examination/Model/Paper.swift; sourceTree = "<group>"; };
-		AD8A9E421CB7B06300B3700E /* AnswerSheet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnswerSheet+CoreDataProperties.swift"; path = "Teacher/Examination/Model/AnswerSheet+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AD8A9E431CB7B06300B3700E /* AnswerSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerSheet.swift; path = Teacher/Examination/Model/AnswerSheet.swift; sourceTree = "<group>"; };
-		AD8A9E441CB7B06300B3700E /* Examination+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Examination+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Examination+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AD8A9E451CB7B06300B3700E /* Examination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Examination.swift; path = Teacher/Examination/Model/Examination.swift; sourceTree = "<group>"; };
 		AD9737891C92AF060066873E /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Util/SegueHandlerType.swift; sourceTree = "<group>"; };
 		ADB1B0AB1CB2070900F702CE /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewController.swift; path = Teacher/Examination/View/QuestionListViewController.swift; sourceTree = "<group>"; };
 		ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentMainInterfaceTableViewController.swift; path = Student/View/StudentMainInterfaceTableViewController.swift; sourceTree = "<group>"; };
@@ -265,14 +261,12 @@
 			isa = PBXGroup;
 			children = (
 				ADFE13371CB389B900A864D0 /* Model.xcdatamodeld */,
-				AD8A9E441CB7B06300B3700E /* Examination+CoreDataProperties.swift */,
-				AD8A9E451CB7B06300B3700E /* Examination.swift */,
-				AD8A9E401CB7B06300B3700E /* Paper+CoreDataProperties.swift */,
-				AD8A9E411CB7B06300B3700E /* Paper.swift */,
-				AD8A9E421CB7B06300B3700E /* AnswerSheet+CoreDataProperties.swift */,
-				AD8A9E431CB7B06300B3700E /* AnswerSheet.swift */,
-				AD4C31481CB908FE002068B5 /* Question+CoreDataProperties.swift */,
-				AD4C31491CB908FE002068B5 /* Question.swift */,
+				AD2801451CBB480E00CD8942 /* Examination+CoreDataProperties.swift */,
+				AD2801461CBB480E00CD8942 /* Examination.swift */,
+				AD2801471CBB480E00CD8942 /* Paper+CoreDataProperties.swift */,
+				AD2801481CBB480E00CD8942 /* Paper.swift */,
+				AD2801511CBB4A5E00CD8942 /* AnswerSheet+CoreDataProperties.swift */,
+				AD2801521CBB4A5E00CD8942 /* AnswerSheet.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -544,35 +538,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */,
-				AD8A9E491CB7B06300B3700E /* AnswerSheet.swift in Sources */,
 				AD0B21D01C8D16B20080BF50 /* MasterViewController.swift in Sources */,
 				ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */,
+				AD28014C1CBB480E00CD8942 /* Paper.swift in Sources */,
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
-				AD8A9E4B1CB7B06300B3700E /* Examination.swift in Sources */,
 				AD04AE661CB8A2A30086F53B /* QuestionViewModel.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
-				AD8A9E481CB7B06300B3700E /* AnswerSheet+CoreDataProperties.swift in Sources */,
-				AD4C314B1CB908FE002068B5 /* Question.swift in Sources */,
 				AD0B21D21C8D185F0080BF50 /* ExamViewController.swift in Sources */,
 				AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */,
+				AD28014B1CBB480E00CD8942 /* Paper+CoreDataProperties.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
+				AD2801531CBB4A5E00CD8942 /* AnswerSheet+CoreDataProperties.swift in Sources */,
 				ADB1B0AC1CB2070900F702CE /* QuestionListViewController.swift in Sources */,
-				AD4C314A1CB908FE002068B5 /* Question+CoreDataProperties.swift in Sources */,
 				AD406FB41CB76011004B7DC1 /* PaperViewModel.swift in Sources */,
 				ADF3BB7F1CAE67C400638D3B /* QuestionView.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
+				AD2801541CBB4A5E00CD8942 /* AnswerSheet.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
+				AD28014A1CBB480E00CD8942 /* Examination.swift in Sources */,
 				AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */,
 				AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
+				AD2801491CBB480E00CD8942 /* Examination+CoreDataProperties.swift in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
 				AD0B21D81C8E64D10080BF50 /* ExamViewModel.swift in Sources */,
 				AD876A801C940F32000E9978 /* PaperViewController.swift in Sources */,
-				AD8A9E4A1CB7B06300B3700E /* Examination+CoreDataProperties.swift in Sources */,
-				AD8A9E461CB7B06300B3700E /* Paper+CoreDataProperties.swift in Sources */,
 				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
 				AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */,
-				AD8A9E471CB7B06300B3700E /* Paper.swift in Sources */,
 				AD876A7C1C93C053000E9978 /* UIPlaceHolderTextView.m in Sources */,
 				AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */,
 				ADFE13391CB389B900A864D0 /* Model.xcdatamodeld in Sources */,

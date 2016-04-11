@@ -8,22 +8,20 @@
         <attribute name="isChecked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="totalScore" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="answers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" inverseName="answerSheet" inverseEntity="Answer" syncable="YES"/>
-        <relationship name="sExamination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="studentAnswerSheets" inverseEntity="Examination" syncable="YES"/>
-        <relationship name="tExamination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="teacherAnswerSheet" inverseEntity="Examination" syncable="YES"/>
+        <relationship name="examination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="studentAnswerSheets" inverseEntity="Examination" syncable="YES"/>
     </entity>
     <entity name="Examination" representedClassName=".Examination" syncable="YES">
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isFinished" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="name" attributeType="String" minValueString="1" syncable="YES"/>
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="examination" inverseEntity="Paper" syncable="YES"/>
-        <relationship name="studentAnswerSheets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AnswerSheet" inverseName="sExamination" inverseEntity="AnswerSheet" syncable="YES"/>
-        <relationship name="teacherAnswerSheet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnswerSheet" inverseName="tExamination" inverseEntity="AnswerSheet" syncable="YES"/>
+        <relationship name="studentAnswerSheets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AnswerSheet" inverseName="examination" inverseEntity="AnswerSheet" syncable="YES"/>
     </entity>
     <entity name="Paper" representedClassName=".Paper" syncable="YES">
         <relationship name="examination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="paper" inverseEntity="Examination" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="paper" inverseEntity="Question" syncable="YES"/>
     </entity>
-    <entity name="Question" representedClassName=".Question" syncable="YES">
+    <entity name="Question" representedClassName="" syncable="YES">
         <attribute name="answers" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="choiceA" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="choiceB" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,10 +34,10 @@
         <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="questions" inverseEntity="Paper" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answer" positionX="5002" positionY="9288" width="128" height="73"/>
-        <element name="AnswerSheet" positionX="4993" positionY="9090" width="128" height="118"/>
-        <element name="Examination" positionX="4786" positionY="8955" width="128" height="133"/>
-        <element name="Paper" positionX="4662" positionY="9119" width="128" height="73"/>
-        <element name="Question" positionX="4660" positionY="9284" width="128" height="193"/>
+        <element name="Answer" positionX="4975" positionY="9396" width="128" height="73"/>
+        <element name="AnswerSheet" positionX="4966" positionY="9206" width="128" height="103"/>
+        <element name="Examination" positionX="4840" positionY="8964" width="128" height="118"/>
+        <element name="Paper" positionX="4725" positionY="9188" width="128" height="73"/>
+        <element name="Question" positionX="4714" positionY="9342" width="128" height="193"/>
     </elements>
 </model>
