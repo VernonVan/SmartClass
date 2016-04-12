@@ -1,5 +1,5 @@
 //
-//  Paper+CoreDataProperties.swift
+//  Answer+CoreDataProperties.swift
 //  SmartClass
 //
 //  Created by Vernon on 16/4/12.
@@ -12,9 +12,9 @@
 import Foundation
 import CoreData
 
-extension Paper {
+extension Answer {
 
-    @NSManaged var examination: Examination?
-    @NSManaged var questions: NSOrderedSet?
+    @NSManaged var answer: String?
+    @NSManaged var answerSheet: AnswerSheet?
 
 }

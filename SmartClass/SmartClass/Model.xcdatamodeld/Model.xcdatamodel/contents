@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
-    <entity name="Answer" syncable="YES">
+    <entity name="Answer" representedClassName=".Answer" syncable="YES">
         <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="answerSheet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnswerSheet" inverseName="answers" inverseEntity="AnswerSheet" syncable="YES"/>
     </entity>
@@ -21,7 +21,7 @@
         <relationship name="examination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="paper" inverseEntity="Examination" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="paper" inverseEntity="Question" syncable="YES"/>
     </entity>
-    <entity name="Question" representedClassName="" syncable="YES">
+    <entity name="Question" representedClassName=".Question" syncable="YES">
         <attribute name="answers" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="choiceA" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="choiceB" optional="YES" attributeType="String" syncable="YES"/>

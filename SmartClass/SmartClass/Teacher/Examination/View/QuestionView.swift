@@ -236,5 +236,14 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         clearAllChoiceText()
     }
     
+    func loadQuestion(question: Question?)
+    {
+        topicTextView.text = question?.topic
+        choiceTextFields[0].text = question?.choiceA
+        choiceTextFields[1].text = question?.choiceB
+        choiceTextFields[2].text = question?.choiceC
+        choiceTextFields[3].text = question?.choiceD
+    }
+    
 }
 

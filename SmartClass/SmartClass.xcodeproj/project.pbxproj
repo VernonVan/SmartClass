@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
 		AD04AE661CB8A2A30086F53B /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD04AE651CB8A2A30086F53B /* QuestionViewModel.swift */; };
+		AD0A94D21CBC950900D690E1 /* Answer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A94CE1CBC950900D690E1 /* Answer+CoreDataProperties.swift */; };
+		AD0A94D31CBC950900D690E1 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A94CF1CBC950900D690E1 /* Answer.swift */; };
+		AD0A94D41CBC950900D690E1 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A94D01CBC950900D690E1 /* Question+CoreDataProperties.swift */; };
+		AD0A94D51CBC950900D690E1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A94D11CBC950900D690E1 /* Question.swift */; };
 		AD0B21D01C8D16B20080BF50 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */; };
 		AD0B21D21C8D185F0080BF50 /* ExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D11C8D185F0080BF50 /* ExamViewController.swift */; };
 		AD0B21D81C8E64D10080BF50 /* ExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21D71C8E64D10080BF50 /* ExamViewModel.swift */; };
@@ -60,6 +64,10 @@
 
 /* Begin PBXFileReference section */
 		AD04AE651CB8A2A30086F53B /* QuestionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionViewModel.swift; path = Teacher/Examination/ViewModel/QuestionViewModel.swift; sourceTree = "<group>"; };
+		AD0A94CE1CBC950900D690E1 /* Answer+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Answer+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Answer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AD0A94CF1CBC950900D690E1 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = Teacher/Examination/Model/Answer.swift; sourceTree = "<group>"; };
+		AD0A94D01CBC950900D690E1 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Question+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AD0A94D11CBC950900D690E1 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = Teacher/Examination/Model/Question.swift; sourceTree = "<group>"; };
 		AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = Teacher/MainInterface/View/MasterViewController.swift; sourceTree = "<group>"; };
 		AD0B21D11C8D185F0080BF50 /* ExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamViewController.swift; path = Teacher/Examination/View/ExamViewController.swift; sourceTree = "<group>"; };
 		AD0B21D71C8E64D10080BF50 /* ExamViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamViewModel.swift; path = Teacher/Examination/ViewModel/ExamViewModel.swift; sourceTree = "<group>"; };
@@ -267,6 +275,10 @@
 				AD2801481CBB480E00CD8942 /* Paper.swift */,
 				AD2801511CBB4A5E00CD8942 /* AnswerSheet+CoreDataProperties.swift */,
 				AD2801521CBB4A5E00CD8942 /* AnswerSheet.swift */,
+				AD0A94CE1CBC950900D690E1 /* Answer+CoreDataProperties.swift */,
+				AD0A94CF1CBC950900D690E1 /* Answer.swift */,
+				AD0A94D01CBC950900D690E1 /* Question+CoreDataProperties.swift */,
+				AD0A94D11CBC950900D690E1 /* Question.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -542,6 +554,8 @@
 				ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */,
 				AD28014C1CBB480E00CD8942 /* Paper.swift in Sources */,
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
+				AD0A94D51CBC950900D690E1 /* Question.swift in Sources */,
+				AD0A94D21CBC950900D690E1 /* Answer+CoreDataProperties.swift in Sources */,
 				AD04AE661CB8A2A30086F53B /* QuestionViewModel.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
 				AD0B21D21C8D185F0080BF50 /* ExamViewController.swift in Sources */,
@@ -551,6 +565,7 @@
 				AD2801531CBB4A5E00CD8942 /* AnswerSheet+CoreDataProperties.swift in Sources */,
 				ADB1B0AC1CB2070900F702CE /* QuestionListViewController.swift in Sources */,
 				AD406FB41CB76011004B7DC1 /* PaperViewModel.swift in Sources */,
+				AD0A94D41CBC950900D690E1 /* Question+CoreDataProperties.swift in Sources */,
 				ADF3BB7F1CAE67C400638D3B /* QuestionView.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
 				AD2801541CBB4A5E00CD8942 /* AnswerSheet.swift in Sources */,
@@ -563,6 +578,7 @@
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
 				AD0B21D81C8E64D10080BF50 /* ExamViewModel.swift in Sources */,
 				AD876A801C940F32000E9978 /* PaperViewController.swift in Sources */,
+				AD0A94D31CBC950900D690E1 /* Answer.swift in Sources */,
 				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
 				AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */,
 				AD876A7C1C93C053000E9978 /* UIPlaceHolderTextView.m in Sources */,

@@ -570,10 +570,10 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sep-oq-tpe">
-                                                <rect key="frame" x="8" y="290" width="584" height="35"/>
+                                                <rect key="frame" x="310" y="302" width="282" height="35"/>
                                                 <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="z8s-Xv-drO"/>
+                                                    <constraint firstAttribute="height" constant="35" id="Mb8-Ni-KWq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <state key="normal" title="下一题">
@@ -581,34 +581,95 @@
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
+                                                        <integer key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                                        <real key="value" value="1.5"/>
+                                                        <real key="value" value="0.5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                                        <real key="value" value="0.5"/>
+                                                        <real key="value" value="0.40000000000000002"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowUIColor">
                                                         <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                                        <size key="value" width="4" height="4"/>
+                                                        <size key="value" width="2" height="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="nextAction:" destination="7ee-Vx-iPc" eventType="touchUpInside" id="v5c-xB-fgs"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBE-2X-tpv">
+                                                <rect key="frame" x="8" y="302" width="282" height="35"/>
+                                                <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="Lt4-Ba-Rr3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <state key="normal" title="上一题">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                        <real key="value" value="0.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                        <real key="value" value="0.40000000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowUIColor">
+                                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                        <size key="value" width="2" height="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="lastAction:" destination="7ee-Vx-iPc" eventType="touchUpInside" id="qgi-Je-gSO"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fW-Di-JLk">
+                                                <rect key="frame" x="8" y="349" width="584" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="Ide-iV-2xq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <state key="normal" title="新建">
+                                                    <color key="titleColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
+                                                        <color key="value" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="newAction:" destination="7ee-Vx-iPc" eventType="touchUpInside" id="gr9-8f-r5N"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" constant="8" id="EQq-jF-kre"/>
+                                            <constraint firstItem="ZBE-2X-tpv" firstAttribute="top" secondItem="XQ0-NA-AaE" secondAttribute="bottom" constant="20" id="EIH-wk-gVE"/>
                                             <constraint firstItem="55q-Tp-wyZ" firstAttribute="top" secondItem="ODF-yw-WQE" secondAttribute="top" id="N1X-fk-Nr3"/>
+                                            <constraint firstItem="ZBE-2X-tpv" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" constant="8" id="OF5-n7-p5p"/>
                                             <constraint firstAttribute="trailing" secondItem="XQ0-NA-AaE" secondAttribute="trailing" constant="8" id="PtZ-0K-IHJ"/>
-                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="top" secondItem="XQ0-NA-AaE" secondAttribute="bottom" constant="8" id="QWS-q6-Xqz"/>
-                                            <constraint firstAttribute="trailing" secondItem="Sep-oq-tpe" secondAttribute="trailing" constant="8" id="V0x-SJ-8F0"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sep-oq-tpe" secondAttribute="trailing" constant="8" id="SA7-N8-rog"/>
                                             <constraint firstItem="55q-Tp-wyZ" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" id="b2R-eA-lkz"/>
+                                            <constraint firstItem="5fW-Di-JLk" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" constant="8" id="blF-4c-T9p"/>
+                                            <constraint firstAttribute="trailing" secondItem="5fW-Di-JLk" secondAttribute="trailing" constant="8" id="cEb-79-Ode"/>
+                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="leading" secondItem="ZBE-2X-tpv" secondAttribute="trailing" constant="20" id="fHP-Xs-Xmh"/>
+                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="top" secondItem="XQ0-NA-AaE" secondAttribute="bottom" constant="20" id="gjZ-C9-VsT"/>
+                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="width" secondItem="ZBE-2X-tpv" secondAttribute="width" id="gqL-IB-5f2"/>
+                                            <constraint firstItem="5fW-Di-JLk" firstAttribute="top" secondItem="Sep-oq-tpe" secondAttribute="bottom" constant="12" id="gqW-VU-vjT"/>
                                             <constraint firstAttribute="height" constant="492" id="jYd-hc-QwC"/>
                                             <constraint firstItem="XQ0-NA-AaE" firstAttribute="top" secondItem="55q-Tp-wyZ" secondAttribute="bottom" constant="8" id="pdm-6H-f6q"/>
                                             <constraint firstAttribute="trailing" secondItem="55q-Tp-wyZ" secondAttribute="trailing" id="vGd-pr-Wu9"/>
@@ -643,6 +704,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="newButton" destination="5fW-Di-JLk" id="VWo-qb-zaX"/>
                         <outlet property="nextButton" destination="Sep-oq-tpe" id="ua8-an-TCy"/>
                         <outlet property="questionView" destination="55q-Tp-wyZ" id="Cjw-zL-Y9Q"/>
                         <outlet property="questionViewHeight" destination="z9W-dx-UYY" id="7gU-tN-w42"/>

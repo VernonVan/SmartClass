@@ -19,7 +19,13 @@ class PaperViewModel: RVMViewModel
     }()
     var type = QuestionType.SingleChoice
     var score = 0
-    var questionIndex = -1
+    var questionIndex = 0
+    var isEndQuestion: Bool {
+        return questionIndex == numberOfQuestion()
+    }
+    var isFirstQuestion: Bool {
+        return questionIndex == 0
+    }
     
     // MARK: - initialize
     init(paper: Paper)
@@ -30,17 +36,18 @@ class PaperViewModel: RVMViewModel
     }
     
     // MARK: - Core Data
-    func saveOneQuestion()
+    func saveQuestion()
     {
-        questionIndex += 1
-        
         let question = NSEntityDescription.insertNewObjectForEntityForName("Question", inManagedObjectContext: paper!.managedObjectContext!)
         configureQuestionValue(question)
-        do {
-            try paper?.managedObjectContext?.save()
-        } catch let error as NSError {
-            print(error.userInfo)
-        }
+        
+        let questionsMutableOrderedSet = paper?.questions?.mutableCopy() as? NSMutableOrderedSet
+        questionsMutableOrderedSet?.addObject(question)
+        paper?.questions = questionsMutableOrderedSet?.copy() as? NSOrderedSet
+        
+        questionIndex += 1
+        
+        print("save one question")
     }
     
     func configureQuestionValue(question: NSManagedObject)
@@ -55,11 +62,39 @@ class PaperViewModel: RVMViewModel
         question.setValue(score, forKey: "score")
     }
     
-    func loadQuestionAt(index: Int) -> NSManagedObject
+    func questionAtIndex(index: Int) -> Question?
     {
-        let question = paper?.questions?.objectAtIndex() as! NSManagedObject
-        print(question.valueForKey("topic"))
-        return question
+        return paper?.questions![index] as? Question
+    }
+    
+    func numberOfQuestion() -> Int
+    {
+        if let count = paper?.questions?.count {
+            return count
+        }
+        return 0
+    }
+    
+    func loadLastQuestion() -> Question?
+    {
+        if isFirstQuestion {
+            return nil
+        }
+        
+        questionIndex -= 1
+        return paper?.questions?.objectAtIndex(questionIndex) as? Question
     }
 
+    func loadNextQuestion() -> Question?
+    {
+        if isEndQuestion {
+            return nil
+        }
+        
+        questionIndex += 1
+        return paper?.questions?.objectAtIndex(questionIndex) as? Question
+    }
+    
+    
+    
 }
