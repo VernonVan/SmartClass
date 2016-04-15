@@ -50,5 +50,12 @@ class QuestionListViewController: UITableViewController
 
         return cell
     }
+    
+    // MARK: - table view delegate 
+    
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//        <#code#>
+//    }
 
 }

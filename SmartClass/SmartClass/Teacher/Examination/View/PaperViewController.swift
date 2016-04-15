@@ -42,6 +42,8 @@ class PaperViewController: UIViewController
         
         if let question = viewModel!.loadFirstQuestion() {
             configureUIUsingQuestion(question)
+            scoreTextField.text = String(question.score)
+            viewModel?.configureUIUsingQuestion(question)
         }
     }
     
@@ -78,7 +80,11 @@ class PaperViewController: UIViewController
             }
         }
     
-        scoreTextField.rac_textSignal() ~> RAC(viewModel, "score")
+        scoreTextField.rac_textSignal().subscribeNext { [unowned self] (score) in
+            if let score = score as? String {
+                self.viewModel?.score = Int(score)
+            }
+        }
     }
     
     // MARK: - Actions
@@ -96,6 +102,7 @@ class PaperViewController: UIViewController
         if let question = viewModel!.loadLastQuestion() {
             clearScreenContent()                // 清空屏幕
             configureUIUsingQuestion(question)
+            scoreTextField.text = String(question.score)
             viewModel?.configureUIUsingQuestion(question)
         } else {
             view.makeToast(NSLocalizedString("已经是第一题！", comment: ""), duration: 0.1, position: nil)
@@ -109,6 +116,7 @@ class PaperViewController: UIViewController
         if let question = viewModel!.loadNextQuestion() {
             clearScreenContent()                // 清空屏幕
             configureUIUsingQuestion(question)
+            scoreTextField.text = String(question.score)
             viewModel?.configureUIUsingQuestion(question)
         } else {
             view.makeToast(NSLocalizedString("已经是最后一题！", comment: ""), duration: 0.1, position: nil)
@@ -151,17 +159,4 @@ class PaperViewController: UIViewController
         }
     }
     
-    func printQuestion(question: Question)
-    {
-        print("Load")
-        print("index: \(question.index+1)")
-        print("type: \(question.type)")
-        print("topic: \(question.topic)")
-        print("choiceA: \(question.choiceA)")
-        print("choiceB: \(question.choiceB)")
-        print("choiceC: \(question.choiceC)")
-        print("choiceD: \(question.choiceD)")
-        print("answers: \(question.answers)")
-        print("score: \(question.score)\n\n")
-    }
 }

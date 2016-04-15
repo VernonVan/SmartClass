@@ -22,7 +22,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     let topicTextView = UIPlaceHolderTextView()
     private var choiceCells =  [UITableViewCell]()
     var choiceTextFields = [UITextField]()
-    dynamic var answers = ""
+    dynamic var answers: String? = ""
     private var questionType = QuestionType.SingleChoice {
         didSet {
             viewHeight = (questionType == .TrueOrFalse) ? TrueOrFalseHeight : ChoiceViewHeight
@@ -33,7 +33,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     // MARK: - Constants
     private let numberOfSection = 2
     private let TopicSection = 0
-    private let OptionSection = 1
+    private let ChoiceSection = 1
     private let ChoiceViewHeight: CGFloat = 244.0
     private let TrueOrFalseHeight: CGFloat = 156.0
     private let TopicCellHeight: CGFloat = 68.0
@@ -68,22 +68,24 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func bindViewModel()
     {
         topicTextView.rac_textSignal().subscribeNext { [unowned self] (topic) in
-            self.paperViewModel?.topic = topic as! String
+            self.paperViewModel?.topic = topic as? String
         }
         choiceTextFields[0].rac_textSignal().subscribeNext { [unowned self] (choiceA) in
-            self.paperViewModel?.choiceA = choiceA as! String
+            self.paperViewModel?.choiceA = choiceA as? String
         }
         choiceTextFields[1].rac_textSignal().subscribeNext { [unowned self] (choiceB) in
-            self.paperViewModel?.choiceB = choiceB as! String
+            self.paperViewModel?.choiceB = choiceB as? String
         }
         choiceTextFields[2].rac_textSignal().subscribeNext { [unowned self] (choiceC) in
-            self.paperViewModel?.choiceC = choiceC as! String
+            self.paperViewModel?.choiceC = choiceC as? String
         }
         choiceTextFields[3].rac_textSignal().subscribeNext { [unowned self] (choiceD) in
-            self.paperViewModel?.choiceD = choiceD as! String
+            self.paperViewModel?.choiceD = choiceD as? String
         }
 
-//        RACObserve(self, keyPath: "answers") ~> RAC(paperViewModel, "answers")
+        RACObserve(self, keyPath: "answers").subscribeNext { [unowned self] (answers) in
+            self.paperViewModel?.answers = answers as? String
+        }
     }
     
     // MARK: - TableView
@@ -97,7 +99,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     {
         if section == TopicSection {
             return 1
-        } else if section == OptionSection {
+        } else if section == ChoiceSection {
             return choiceCells.count
         }
         return 0
@@ -131,10 +133,11 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     
     func changeAnswers()
     {
-        let indexPaths = tableview.indexPathsForSelectedRows
-        answers = ""
-        for indexPath in indexPaths! {
-            answers += String(format: "%c", indexPath.row+65)
+        if let indexPaths = tableview.indexPathsForSelectedRows {
+            answers = ""
+            for indexPath in indexPaths {
+                answers?.append(Character(UnicodeScalar(indexPath.row+65)))
+            }
         }
     }
     
@@ -217,11 +220,12 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     }
     
     // MARK: - clear screen
+    
     func clearScreenContent()
     {
         clearAllChoiceText()
         clearAllSelection()
-        topicTextView.text = ""
+        topicTextView.text = nil
     }
     
     func clearAllChoiceText()
@@ -234,12 +238,15 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func clearAllSelection()
     {
         for row in 0..<4 {
-            let indexPath = NSIndexPath(forRow: row, inSection: 1)
+            let indexPath = NSIndexPath(forRow: row, inSection: ChoiceSection)
             tableview.deselectRowAtIndexPath(indexPath, animated: false)
             let cell = tableview.cellForRowAtIndexPath(indexPath)
             cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
         }
+        answers = nil
     }
+    
+    // MARK: - configure UI
     
     func configureUIUsingQuestion(question: Question)
     {
@@ -249,7 +256,33 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         choiceTextFields[1].text = question.choiceB
         choiceTextFields[2].text = question.choiceC
         choiceTextFields[3].text = question.choiceD
+        
+        configureSelectionsUsingAnswers(question.answers)
+        print("load question.answers: \(question.answers)")
     }
     
+    func configureSelectionsUsingAnswers(answers: String?)
+    {
+        if let answers = answers {
+            dispatch_async(dispatch_get_main_queue()) {
+                for selection in answers.characters {
+                    self.selectChoice(selection)
+                }
+                self.changeAnswers()
+            }
+        }
+    }
+    
+    func selectChoice(choice: Character)
+    {
+        let row = Int(choice.unicodeScalarCodePoint()) - 65
+        let indexPath = NSIndexPath(forRow: row, inSection: self.ChoiceSection)
+        
+        tableview.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
+        
+        let cell = tableview.cellForRowAtIndexPath(indexPath)
+        cell?.imageView?.image = UIImage(named: "correctAnswer")
+    }
+
 }
 

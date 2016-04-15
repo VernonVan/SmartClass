@@ -2,7 +2,7 @@
 //  Question+CoreDataProperties.swift
 //  SmartClass
 //
-//  Created by Vernon on 16/4/14.
+//  Created by Vernon on 16/4/15.
 //  Copyright © 2016年 Vernon. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -25,4 +25,33 @@ extension Question {
     @NSManaged var type: Int16
     @NSManaged var paper: Paper?
 
+    var isCompleted: Bool {
+        switch type {
+        case 0:
+            return isCompletedSingleChoice()
+        case 1:
+            return isCompletedMultipleChoice()
+        case 2:
+            return isCompletedTrueOrFalse()
+        default:
+            return false
+        }
+    }
+    
+    func isCompletedSingleChoice() -> Bool
+    {
+        return score==2
+    }
+    
+    func isCompletedMultipleChoice() -> Bool
+    {
+        return true
+    }
+    
+    func isCompletedTrueOrFalse() -> Bool
+    {
+        return true
+    }
+    
+    
 }

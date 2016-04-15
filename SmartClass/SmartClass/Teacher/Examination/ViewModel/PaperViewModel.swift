@@ -24,13 +24,13 @@ class PaperViewModel: RVMViewModel
     var isFirstQuestion = true
     
     var type = QuestionType.SingleChoice.rawValue
-    var topic = ""
-    var choiceA = ""
-    var choiceB = ""
-    var choiceC = ""
-    var choiceD = ""
-    var answers = ""
-    var score = 0
+    var topic: String?
+    var choiceA: String?
+    var choiceB: String?
+    var choiceC: String?
+    var choiceD: String?
+    var answers: String?
+    var score: Int?
 
     // MARK: - initialize
     init(paper: Paper)
@@ -59,6 +59,7 @@ class PaperViewModel: RVMViewModel
     func saveQuestion()
     {
         let question = paper?.questions?.objectAtIndex(questionIndex) as! NSManagedObject
+        print("save answers: \(answers)")
         configureQuestionValue(question)
     }
     
@@ -132,12 +133,14 @@ class PaperViewModel: RVMViewModel
     
     func configureUIUsingQuestion(question: Question)
     {
-        self.type = Int(question.type)
-        self.topic = question.topic!
-        self.choiceA = question.choiceA!
-        self.choiceB = question.choiceB!
-        self.choiceC = question.choiceC!
-        self.choiceD = question.choiceD!
+        type = Int(question.type)
+        topic = question.topic
+        choiceA = question.choiceA
+        choiceB = question.choiceB
+        choiceC = question.choiceC
+        choiceD = question.choiceD
+        answers = question.answers
+        score = Int(question.score)
     }
     
 }

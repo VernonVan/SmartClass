@@ -33,12 +33,7 @@ class QuestionListViewModel: NSObject
         let question = questionAtIndexPath(indexPath)
         return question.valueForKey("topic") as! String
     }
-    
-    func accessoryImageNameAtIndexPath(indexPath: NSIndexPath) -> String
-    {
-        return "finishedQuestion"
-    }
-    
+
     func imageNameAtIndexPath(indexPath: NSIndexPath) -> String
     {
         let question = questionAtIndexPath(indexPath)
@@ -52,6 +47,13 @@ class QuestionListViewModel: NSObject
             imageName = "trueOrFalse"
         }
         return imageName
+    }
+    
+    func accessoryImageNameAtIndexPath(indexPath: NSIndexPath) -> String
+    {
+        let question = questionAtIndexPath(indexPath)
+        let isCompleted = question.isCompleted
+        return isCompleted ? "completedQuestion" : "uncompletedQuestion"
     }
     
     func questionAtIndexPath(indexPath: NSIndexPath) -> Question
