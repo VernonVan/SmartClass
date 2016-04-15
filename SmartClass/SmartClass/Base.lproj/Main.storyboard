@@ -637,7 +637,7 @@
                                                     <constraint firstAttribute="height" constant="35" id="Ide-iV-2xq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                <state key="normal" title="新建">
+                                                <state key="normal" title="添加">
                                                     <color key="titleColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -699,7 +699,7 @@
                     <navigationItem key="navigationItem" title="题目" id="zUV-1q-RTV">
                         <barButtonItem key="rightBarButtonItem" image="list" id="pAY-Qz-58E">
                             <connections>
-                                <segue destination="ILl-yH-xWt" kind="show" id="wca-HM-8cn"/>
+                                <segue destination="ILl-yH-xWt" kind="show" identifier="showQuestionList" id="wca-HM-8cn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -711,6 +711,7 @@
                         <outlet property="scoreTextField" destination="XQ0-NA-AaE" id="KNw-ZJ-f19"/>
                         <outlet property="scrollViewHeight" destination="jYd-hc-QwC" id="FdA-kI-at0"/>
                         <outlet property="toolBar" destination="kvk-Ef-HyI" id="cKe-36-mRw"/>
+                        <outlet property="typeSegControl" destination="bLH-FX-lRW" id="A8J-we-ZzU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezr-vl-XSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -830,6 +831,6 @@
         <image name="user" width="19" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AN6-oV-8tl"/>
+        <segue reference="Cmb-sl-Ax1"/>
     </inferredMetricsTieBreakers>
 </document>

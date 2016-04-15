@@ -12,15 +12,15 @@ import SnapKit
 class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
 {
     // MARK: - APIs
-    var viewModel: QuestionViewModel?
     dynamic var viewHeight: CGFloat = 244.0
     
     // MARK: - private var
     private let tableview = UITableView()
     private let topicCell = UITableViewCell()
-    private let topicTextView = UIPlaceHolderTextView()
+    let topicTextView = UIPlaceHolderTextView()
     private var choiceCells =  [UITableViewCell]()
-    private var choiceTextFields = [UITextField]()
+    var choiceTextFields = [UITextField]()
+    dynamic var answers = ""
     private var questionType = QuestionType.SingleChoice {
         didSet {
             viewHeight = (questionType == .TrueOrFalse) ? TrueOrFalseHeight : ChoiceViewHeight
@@ -55,36 +55,10 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         configureChoiceCells()
     }
     
-    override func didMoveToWindow()
-    {
-        super.didMoveToWindow()
-        bindViewModel()
-    }
-    
-    // MARK: - RAC binding
-    func bindViewModel()
-    {
-        topicTextView.rac_textSignal().subscribeNext { [unowned self] (text) in
-            self.viewModel?.topic = text as? String
-        }
-        choiceTextFields[0].rac_textSignal().subscribeNext { [unowned self] (text) in
-            self.viewModel?.choiceA = text as? String
-        }
-        choiceTextFields[1].rac_textSignal().subscribeNext { [unowned self] (text) in
-            self.viewModel?.choiceB = text as? String
-        }
-        choiceTextFields[2].rac_textSignal().subscribeNext { [unowned self] (text) in
-            self.viewModel?.choiceC = text as? String
-        }
-        choiceTextFields[3].rac_textSignal().subscribeNext { [unowned self] (text) in
-            self.viewModel?.choiceD = text as? String
-        }
-    }
-    
     // MARK: - TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
+    { 
         return numberOfSection
     }
     
@@ -115,7 +89,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     {
         let cell = tableview.cellForRowAtIndexPath(indexPath)
         cell?.imageView?.image = UIImage(named: "correctAnswer")
-        changeAnswer()
+        changeAnswers()
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
@@ -124,18 +98,16 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
     }
     
-    func changeAnswer()
+    func changeAnswers()
     {
-   //     print(tableview.indexPathsForSelectedRows?.count)
         let indexPaths = tableview.indexPathsForSelectedRows
-        viewModel?.answers = ""
+        answers = ""
         for indexPath in indexPaths! {
-            viewModel?.answers? += String(format: "%c", indexPath.row+65)
+            answers += String(format: "%c", indexPath.row+65)
         }
-        print(viewModel?.answers)
     }
     
-    // MARK: - Cell
+    // MARK: - tableView cell
     
     func configureTopicCell()
     {
@@ -167,22 +139,14 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
             choiceCells.append(choiceCell)
         }
     }
-    
-    func clearAllSelection()
-    {
-        for row in 0..<4 {
-            let indexPath = NSIndexPath(forRow: row, inSection: 1)
-            tableview.deselectRowAtIndexPath(indexPath, animated: false)
-            let cell = tableview.cellForRowAtIndexPath(indexPath)
-            cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
-        }
-    }
-    
+
     // 从序号转换成图片的name
     func getChoiceImageName(index: Int) -> String
     {
         return String(format: "option%c", index+65)
     }
+    
+    // MARK: - Question type
     
     func changeQuestionType(questionType: QuestionType)
     {
@@ -218,8 +182,17 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func changeToTrueOrFalse()
     {
         tableview.allowsMultipleSelection = false
-        choiceTextFields[0].text = NSLocalizedString("正确", comment: "")
-        choiceTextFields[1].text = NSLocalizedString("错误", comment: "")
+        clearAllChoiceText()
+//        choiceTextFields[0].text = NSLocalizedString("正确", comment: "")
+//        choiceTextFields[1].text = NSLocalizedString("错误", comment: "")
+    }
+    
+    // MARK: - clear screen
+    func clearScreenContent()
+    {
+        clearAllChoiceText()
+        clearAllSelection()
+        topicTextView.text = ""
     }
     
     func clearAllChoiceText()
@@ -229,20 +202,23 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         }
     }
     
-    func clearScreenContent()
+    func clearAllSelection()
     {
-        clearAllSelection()
-        topicTextView.text = nil
-        clearAllChoiceText()
+        for row in 0..<4 {
+            let indexPath = NSIndexPath(forRow: row, inSection: 1)
+            tableview.deselectRowAtIndexPath(indexPath, animated: false)
+            let cell = tableview.cellForRowAtIndexPath(indexPath)
+            cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
+        }
     }
     
-    func loadQuestion(question: Question?)
+    func configureUIUsingQuestion(question: Question)
     {
-        topicTextView.text = question?.topic
-        choiceTextFields[0].text = question?.choiceA
-        choiceTextFields[1].text = question?.choiceB
-        choiceTextFields[2].text = question?.choiceC
-        choiceTextFields[3].text = question?.choiceD
+        topicTextView.text = question.topic
+        choiceTextFields[0].text = question.choiceA
+        choiceTextFields[1].text = question.choiceB
+        choiceTextFields[2].text = question.choiceC
+        choiceTextFields[3].text = question.choiceD
     }
     
 }

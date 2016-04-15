@@ -30,7 +30,7 @@
         <attribute name="index" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="score" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="topic" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="questions" inverseEntity="Paper" syncable="YES"/>
     </entity>
     <elements>

@@ -60,7 +60,7 @@ class CoreDataStack
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()
-            } catch {
+            } catch  {
                 let nserror = error as NSError
                 NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
                 abort()
