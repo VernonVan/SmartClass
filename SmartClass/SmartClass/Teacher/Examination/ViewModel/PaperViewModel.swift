@@ -84,16 +84,16 @@ class PaperViewModel: RVMViewModel
         question.setValue(answers, forKey: "answers")
         question.setValue(score, forKey: "score")
         
-        print("Save")
-        print("index: \(questionIndex+1)")
-        print("type: \(type)")
-        print("topic: \(topic)")
-        print("choiceA: \(choiceA)")
-        print("choiceB: \(choiceB)")
-        print("choiceC: \(choiceC)")
-        print("choiceD: \(choiceD)")
-        print("answers: \(answers)")
-        print("score: \(score)\n\n")
+//        print("Save")
+//        print("index: \(questionIndex+1)")
+//        print("type: \(type)")
+//        print("topic: \(topic)")
+//        print("choiceA: \(choiceA)")
+//        print("choiceB: \(choiceB)")
+//        print("choiceC: \(choiceC)")
+//        print("choiceD: \(choiceD)")
+//        print("answers: \(answers)")
+//        print("score: \(score)\n\n")
     }
     
     func numberOfQuestion() -> Int

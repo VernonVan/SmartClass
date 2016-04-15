@@ -247,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="2483" y="509"/>
         </scene>
-        <!--教师端-->
+        <!--试卷列表-->
         <scene sceneID="KQW-ED-EXy">
             <objects>
                 <tableViewController storyboardIdentifier="TeacherMainInterface" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mqn-Td-1ps" customClass="MasterViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
@@ -267,14 +267,14 @@
                                             <rect key="frame" x="62" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QvG-dp-bXC">
                                             <rect key="frame" x="62" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="beforeExam" id="ZIQ-K4-w3Q">
@@ -298,14 +298,14 @@
                                             <rect key="frame" x="60" y="5" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oaV-DA-bQh">
                                             <rect key="frame" x="60" y="25" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="afterExam" id="71g-im-BfQ">
@@ -324,8 +324,7 @@
                             <outlet property="delegate" destination="mqn-Td-1ps" id="Zo3-qW-YDM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="教师端" id="Y6F-xN-EGT">
-                        <barButtonItem key="leftBarButtonItem" image="user" id="7DI-QW-Teh"/>
+                    <navigationItem key="navigationItem" title="试卷列表" id="Y6F-xN-EGT">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="t5E-5g-5MX">
                             <connections>
                                 <segue destination="Vd4-C1-oyo" kind="show" identifier="createExam" id="Cmb-sl-Ax1"/>
@@ -721,18 +720,31 @@
         <!--题目列表-->
         <scene sceneID="DVM-Gg-5xT">
             <objects>
-                <tableViewController title="题目列表" id="ILl-yH-xWt" sceneMemberID="viewController">
+                <tableViewController title="题目列表" id="ILl-yH-xWt" customClass="QuestionListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ODa-6R-cGD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseQuestionCell" id="3fh-1a-fBh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseQuestionCell" textLabel="99g-nH-Vrf" imageView="n2a-Sa-ygG" style="IBUITableViewCellStyleDefault" id="3fh-1a-fBh">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fh-1a-fBh" id="WuS-Cf-Fkp">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="99g-nH-Vrf">
+                                            <rect key="frame" x="60" y="0.0" width="525" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="singleChoice" id="n2a-Sa-ygG">
+                                            <rect key="frame" x="15" y="6" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -741,9 +753,7 @@
                             <outlet property="delegate" destination="ILl-yH-xWt" id="Rdo-ih-HgH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="题目列表" id="T1o-BL-pXp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Bo7-km-qBW"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="题目列表" id="T1o-BL-pXp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erz-oS-rIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -828,6 +838,7 @@
         <image name="beforeExam" width="32" height="32"/>
         <image name="close" width="20" height="20"/>
         <image name="list" width="24" height="24"/>
+        <image name="singleChoice" width="30" height="30"/>
         <image name="user" width="19" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>

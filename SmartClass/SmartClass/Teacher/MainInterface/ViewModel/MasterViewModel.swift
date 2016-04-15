@@ -91,6 +91,20 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         return false
     }
     
+    func deleteItemAtIndexPath(indexPath: NSIndexPath)
+    {
+        let exam = examAtIndexPath(indexPath)
+        let context = fetchedResultsController.managedObjectContext
+        context.deleteObject(exam)
+        
+        do {
+            try context.save()
+        } catch {
+            let error = error as NSError
+            print("Delete exam error: \(error.userInfo)")
+        }
+    }
+    
     // MARK: - Segue
     func viewModelForNewExam() -> ExamViewModel
     {

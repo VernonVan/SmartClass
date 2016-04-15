@@ -23,6 +23,7 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         super.viewDidLoad()
         
         tableView.emptyDataSetSource = self
+        navigationItem.leftBarButtonItem = self.editButtonItem()
         
         viewModel?.updatedContentSignal.subscribeNext({ [unowned self] (x) in
             self.tableView.reloadData()
@@ -53,6 +54,20 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
     {
         cell.textLabel?.text = viewModel!.titleAtIndexPath(indexPath)
         cell.detailTextLabel?.text = viewModel!.subtitleAtIndexPath(indexPath)
+    }
+    
+    // MARK: - table view delegate 
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == .Delete {
+            viewModel!.deleteItemAtIndexPath(indexPath)
+        }
     }
     
     // MARK: - Segue

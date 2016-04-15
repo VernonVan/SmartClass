@@ -55,6 +55,7 @@
 		ADB1B0AC1CB2070900F702CE /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB1B0AB1CB2070900F702CE /* QuestionListViewController.swift */; };
 		ADDBE9171CBF8A2C005F8DFD /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDBE9151CBF8A2C005F8DFD /* Question+CoreDataProperties.swift */; };
 		ADDBE9181CBF8A2C005F8DFD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDBE9161CBF8A2C005F8DFD /* Question.swift */; };
+		ADDE41A61CC08FF4002C8D6E /* QuestionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE41A51CC08FF4002C8D6E /* QuestionListViewModel.swift */; };
 		ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */; };
 		ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */; };
 		ADF3BB7F1CAE67C400638D3B /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7E1CAE67C400638D3B /* QuestionView.swift */; };
@@ -115,6 +116,7 @@
 		ADB1B0AB1CB2070900F702CE /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewController.swift; path = Teacher/Examination/View/QuestionListViewController.swift; sourceTree = "<group>"; };
 		ADDBE9151CBF8A2C005F8DFD /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "Teacher/Examination/Model/Question+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ADDBE9161CBF8A2C005F8DFD /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = Teacher/Examination/Model/Question.swift; sourceTree = "<group>"; };
+		ADDE41A51CC08FF4002C8D6E /* QuestionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewModel.swift; path = Teacher/Examination/ViewModel/QuestionListViewModel.swift; sourceTree = "<group>"; };
 		ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentMainInterfaceTableViewController.swift; path = Student/View/StudentMainInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
 		ADF3BB7E1CAE67C400638D3B /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionView.swift; path = Teacher/Examination/View/QuestionView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			children = (
 				AD0B21D71C8E64D10080BF50 /* ExamViewModel.swift */,
 				AD406FB31CB76011004B7DC1 /* PaperViewModel.swift */,
+				ADDE41A51CC08FF4002C8D6E /* QuestionListViewModel.swift */,
 			);
 			name = ViewMode;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */,
 				AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
+				ADDE41A61CC08FF4002C8D6E /* QuestionListViewModel.swift in Sources */,
 				AD2801491CBB480E00CD8942 /* Examination+CoreDataProperties.swift in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
 				AD0B21D81C8E64D10080BF50 /* ExamViewModel.swift in Sources */,

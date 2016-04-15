@@ -10,11 +10,16 @@ import UIKit
 
 class QuestionListViewController: UITableViewController
 {
+    private let reuseIdentifier = "reuseQuestionCell"
+    
+    // MARK: - variable
+    var viewModel: QuestionListViewModel?
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = editButtonItem()
     }
 
     override func didReceiveMemoryWarning()
@@ -27,24 +32,23 @@ class QuestionListViewController: UITableViewController
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return viewModel!.numberOfItemsInSection(section)
     }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        cell.imageView?.image = UIImage(named: viewModel!.imageNameAtIndexPath(indexPath))
+        cell.textLabel?.text = viewModel?.titleAtIndexPath(indexPath)
+        cell.accessoryView = UIImageView(image: UIImage(named: viewModel!.accessoryImageNameAtIndexPath(indexPath)))
 
         return cell
     }
-    */
 
 }

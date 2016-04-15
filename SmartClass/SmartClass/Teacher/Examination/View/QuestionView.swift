@@ -14,6 +14,8 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     // MARK: - APIs
     dynamic var viewHeight: CGFloat = 244.0
     
+    weak var paperViewModel: PaperViewModel?
+    
     // MARK: - private var
     private let tableview = UITableView()
     private let topicCell = UITableViewCell()
@@ -29,7 +31,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     private var previousType = QuestionType.SingleChoice
     
     // MARK: - Constants
-     let numberOfSection = 2
+    private let numberOfSection = 2
     private let TopicSection = 0
     private let OptionSection = 1
     private let ChoiceViewHeight: CGFloat = 244.0
@@ -53,6 +55,35 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         
         configureTopicCell()
         configureChoiceCells()
+    }
+    
+    override func didMoveToWindow()
+    {
+        super.didMoveToWindow()
+        bindViewModel()
+    }
+    
+    // MARK: - RAC binding
+    
+    func bindViewModel()
+    {
+        topicTextView.rac_textSignal().subscribeNext { [unowned self] (topic) in
+            self.paperViewModel?.topic = topic as! String
+        }
+        choiceTextFields[0].rac_textSignal().subscribeNext { [unowned self] (choiceA) in
+            self.paperViewModel?.choiceA = choiceA as! String
+        }
+        choiceTextFields[1].rac_textSignal().subscribeNext { [unowned self] (choiceB) in
+            self.paperViewModel?.choiceB = choiceB as! String
+        }
+        choiceTextFields[2].rac_textSignal().subscribeNext { [unowned self] (choiceC) in
+            self.paperViewModel?.choiceC = choiceC as! String
+        }
+        choiceTextFields[3].rac_textSignal().subscribeNext { [unowned self] (choiceD) in
+            self.paperViewModel?.choiceD = choiceD as! String
+        }
+
+//        RACObserve(self, keyPath: "answers") ~> RAC(paperViewModel, "answers")
     }
     
     // MARK: - TableView
@@ -183,8 +214,6 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     {
         tableview.allowsMultipleSelection = false
         clearAllChoiceText()
-//        choiceTextFields[0].text = NSLocalizedString("正确", comment: "")
-//        choiceTextFields[1].text = NSLocalizedString("错误", comment: "")
     }
     
     // MARK: - clear screen
@@ -214,6 +243,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     
     func configureUIUsingQuestion(question: Question)
     {
+        changeQuestionType(QuestionType(rawValue: Int(question.type))!)
         topicTextView.text = question.topic
         choiceTextFields[0].text = question.choiceA
         choiceTextFields[1].text = question.choiceB
