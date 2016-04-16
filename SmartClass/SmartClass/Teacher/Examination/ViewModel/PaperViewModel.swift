@@ -40,9 +40,6 @@ class PaperViewModel: RVMViewModel
         self.paper = paper
         
         isEndQuestion = questionIndex==numberOfQuestion()-1
-        if numberOfQuestion() == 0 {
-            addQuestion()
-        }
     }
 
     // MARK: - Core Data
@@ -59,7 +56,6 @@ class PaperViewModel: RVMViewModel
     func saveQuestion()
     {
         let question = paper?.questions?.objectAtIndex(questionIndex) as! NSManagedObject
-        print("save answers: \(answers)")
         configureQuestionValue(question)
     }
     
@@ -84,17 +80,6 @@ class PaperViewModel: RVMViewModel
         question.setValue(choiceD, forKey: "choiceD")
         question.setValue(answers, forKey: "answers")
         question.setValue(score, forKey: "score")
-        
-//        print("Save")
-//        print("index: \(questionIndex+1)")
-//        print("type: \(type)")
-//        print("topic: \(topic)")
-//        print("choiceA: \(choiceA)")
-//        print("choiceB: \(choiceB)")
-//        print("choiceC: \(choiceC)")
-//        print("choiceD: \(choiceD)")
-//        print("answers: \(answers)")
-//        print("score: \(score)\n\n")
     }
     
     func numberOfQuestion() -> Int
@@ -104,9 +89,24 @@ class PaperViewModel: RVMViewModel
         }
         return 0
     }
+
+    // MARK: - question
+    
+    func loadQuestionAtIndexPath(indexPath: NSIndexPath) -> Question?
+    {
+        if let question = paper?.questions?.objectAtIndex(indexPath.row) as? Question {
+            questionIndex = indexPath.row
+            return question
+        }
+        return loadFirstQuestion()
+    }
     
     func loadFirstQuestion() -> Question?
     {
+        if numberOfQuestion() == 0 {
+            addQuestion()
+        }
+        
         questionIndex = 0
         return paper?.questions?.objectAtIndex(questionIndex) as? Question
     }

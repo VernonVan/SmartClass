@@ -28,6 +28,13 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         viewModel?.updatedContentSignal.subscribeNext({ [unowned self] (x) in
             self.tableView.reloadData()
         })
+        
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.setEditing(false, animated: false)
     }
     
     // MARK: - Table view data source

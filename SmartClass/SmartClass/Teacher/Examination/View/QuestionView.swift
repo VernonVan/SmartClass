@@ -258,7 +258,6 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         choiceTextFields[3].text = question.choiceD
         
         configureSelectionsUsingAnswers(question.answers)
-        print("load question.answers: \(question.answers)")
     }
     
     func configureSelectionsUsingAnswers(answers: String?)

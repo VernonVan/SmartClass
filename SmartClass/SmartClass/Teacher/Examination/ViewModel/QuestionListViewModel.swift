@@ -28,10 +28,10 @@ class QuestionListViewModel: NSObject
         return paper!.questions!.count
     }
     
-    func titleAtIndexPath(indexPath: NSIndexPath) -> String
+    func titleAtIndexPath(indexPath: NSIndexPath) -> String?
     {
         let question = questionAtIndexPath(indexPath)
-        return question.valueForKey("topic") as! String
+        return question.valueForKey("topic") as? String
     }
 
     func imageNameAtIndexPath(indexPath: NSIndexPath) -> String
@@ -63,7 +63,18 @@ class QuestionListViewModel: NSObject
 
     func deleteItemAtIndexPath(indexPath: NSIndexPath)
     {
-
+        let mutableQuestions = paper?.questions?.mutableCopy() as? NSMutableOrderedSet
+        mutableQuestions?.removeObjectAtIndex(indexPath.row)
+        paper?.questions = mutableQuestions?.copy() as? NSOrderedSet
+    }
+    
+    func moveItemFromIndex(fromIndex: Int, toIndex: Int)
+    {
+        let question = paper?.questions?.objectAtIndex(fromIndex)
+        let mutableQuestions = paper?.questions?.mutableCopy() as? NSMutableOrderedSet
+        mutableQuestions?.removeObjectAtIndex(fromIndex)
+        mutableQuestions?.insertObject(question!, atIndex: toIndex)
+        paper?.questions = mutableQuestions?.copy() as? NSOrderedSet
     }
     
 }

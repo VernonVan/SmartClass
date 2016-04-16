@@ -49,6 +49,7 @@ class PaperViewController: UIViewController
     
     override func willMoveToParentViewController(parent: UIViewController?)
     {
+        super.willMoveToParentViewController(parent)
         if parent == nil {
             viewModel?.saveQuestion()
             viewModel?.save()
@@ -155,7 +156,27 @@ class PaperViewController: UIViewController
                 viewModel?.saveQuestion()
                 viewModel?.save()
                 listVC.viewModel = QuestionListViewModel(paper: viewModel!.paper!)
+                listVC.intentResultDelegate = self
             }
+        }
+    }
+    
+}
+
+protocol IntentResultDelegate
+{
+    func selectQuestionAtIndexPath(indexPath: NSIndexPath)
+}
+
+extension PaperViewController: IntentResultDelegate
+{
+    func selectQuestionAtIndexPath(indexPath: NSIndexPath)
+    {
+        if let question = viewModel?.loadQuestionAtIndexPath(indexPath) {
+            clearScreenContent()                // 清空屏幕
+            configureUIUsingQuestion(question)
+            scoreTextField.text = String(question.score)
+            viewModel?.configureUIUsingQuestion(question)
         }
     }
     
