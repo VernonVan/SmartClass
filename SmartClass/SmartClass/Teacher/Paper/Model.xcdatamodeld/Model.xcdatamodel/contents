@@ -19,6 +19,7 @@
     </entity>
     <entity name="Paper" representedClassName=".Paper" syncable="YES">
         <attribute name="isCompleted" optional="YES" transient="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="totalScore" optional="YES" transient="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="examination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Examination" inverseName="paper" inverseEntity="Examination" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="paper" inverseEntity="Question" syncable="YES"/>
     </entity>
@@ -39,7 +40,7 @@
         <element name="Answer" positionX="4975" positionY="9396" width="128" height="73"/>
         <element name="AnswerSheet" positionX="4966" positionY="9206" width="128" height="103"/>
         <element name="Examination" positionX="4840" positionY="8964" width="128" height="118"/>
-        <element name="Paper" positionX="4725" positionY="9188" width="128" height="88"/>
+        <element name="Paper" positionX="4725" positionY="9188" width="128" height="103"/>
         <element name="Question" positionX="4714" positionY="9342" width="128" height="208"/>
     </elements>
 </model>

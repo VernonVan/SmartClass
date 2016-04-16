@@ -61,6 +61,16 @@ class ExamViewModel: RVMViewModel
         exam.paper = paper
     }
     
+    func isCompleted() -> Bool
+    {
+        return (exam.paper?.isCompleted)!
+    }
+    
+    func totalScore() -> Int16
+    {
+        return (exam.paper?.totalScore)!
+    }
+    
     // MARK: - RAC extension
     func RACTwoWayBinding(target1: NSObject, keyPath1: String, target2: NSObject, keyPath2: String)
     {

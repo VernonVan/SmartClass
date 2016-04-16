@@ -424,6 +424,9 @@
                                         <size key="value" width="4" height="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startExamAction:" destination="Vd4-C1-oyo" eventType="touchUpInside" id="UeK-qS-RKX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -460,6 +463,7 @@
                         <outlet property="cancelButton" destination="a5q-aH-3DB" id="VFu-ek-AoC"/>
                         <outlet property="doneButton" destination="vb3-uT-rqV" id="IN2-Ze-gH9"/>
                         <outlet property="nameTextField" destination="Bw1-t6-SOA" id="Cqg-j5-Fe3"/>
+                        <segue destination="8nl-7w-h5M" kind="show" identifier="examMessage" id="NYT-LE-D9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPp-fx-ID2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -715,7 +719,105 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezr-vl-XSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304" y="2882"/>
+            <point key="canvasLocation" x="942" y="2939"/>
+        </scene>
+        <!--考试信息-->
+        <scene sceneID="8f8-RZ-RRu">
+            <objects>
+                <viewController id="8nl-7w-h5M" customClass="ExamMessageViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RbQ-bP-pF9"/>
+                        <viewControllerLayoutGuide type="bottom" id="bcf-Bc-qdQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Chs-Je-4kU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="w9x-hE-WZo">
+                                <rect key="frame" x="20" y="96" width="560" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="482485742.62351298">
+                                    <!--2016-04-16 07:49:02 +0000-->
+                                </date>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="考试时长" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iz-MK-eDq">
+                                <rect key="frame" x="20" y="72" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfj-h2-9K9">
+                                <rect key="frame" x="20" y="332" width="560" height="35"/>
+                                <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="tEq-aV-tpF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="开始考试">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowUIColor">
+                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="4" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startExamAction:" destination="8nl-7w-h5M" eventType="touchUpInside" id="NB8-Br-9DB"/>
+                                    <action selector="startExamAction:" destination="Vd4-C1-oyo" eventType="touchUpInside" id="xEa-Ia-ewM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="w9x-hE-WZo" secondAttribute="leading" id="Fw1-jM-wTT"/>
+                            <constraint firstItem="lfj-h2-9K9" firstAttribute="top" secondItem="w9x-hE-WZo" secondAttribute="bottom" constant="20" id="OiP-5x-DW7"/>
+                            <constraint firstItem="w9x-hE-WZo" firstAttribute="top" secondItem="0iz-MK-eDq" secondAttribute="bottom" constant="3" id="Rhd-Ef-NFO"/>
+                            <constraint firstItem="0iz-MK-eDq" firstAttribute="top" secondItem="RbQ-bP-pF9" secondAttribute="bottom" constant="8" id="RiP-nv-Rv0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w9x-hE-WZo" secondAttribute="trailing" id="Uiw-Is-RjO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lfj-h2-9K9" secondAttribute="trailing" id="etg-er-Qkj"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="lfj-h2-9K9" secondAttribute="leading" id="f9y-xx-dKK"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="0iz-MK-eDq" secondAttribute="leading" id="qBl-9S-nUh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="考试信息" id="SDV-OW-qlo"/>
+                    <connections>
+                        <outlet property="datePicker" destination="w9x-hE-WZo" id="fSB-SO-hVE"/>
+                        <segue destination="epg-AU-bVV" kind="show" identifier="startExam" id="E3b-j6-iNI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xmg-DL-Raz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1663" y="2939"/>
+        </scene>
+        <!--考试中-->
+        <scene sceneID="0QY-tE-e9r">
+            <objects>
+                <viewController id="epg-AU-bVV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JRR-Pa-wwQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="jQA-jY-7Um"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fkb-rJ-vWN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="考试中" id="6CV-xx-g8T"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVG-1A-W91" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1663" y="3702"/>
         </scene>
         <!--题目列表-->
         <scene sceneID="DVM-Gg-5xT">
@@ -757,7 +859,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erz-oS-rIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1304" y="3686"/>
+            <point key="canvasLocation" x="942" y="3702"/>
         </scene>
         <!--设置-->
         <scene sceneID="SP3-R6-Khq">

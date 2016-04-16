@@ -129,6 +129,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     {
         let cell = tableview.cellForRowAtIndexPath(indexPath)
         cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
+        changeAnswers()
     }
     
     func changeAnswers()
