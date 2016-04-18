@@ -86,10 +86,10 @@ class ExamViewController: UIViewController
             if totalScore == 100 {
                 performSegueWithIdentifier("examMessage", sender: sender)
             } else {
-                view.makeToast(NSLocalizedString("试卷总分不是100分！", comment: ""), duration: 0.15, position: nil)
+             //   view.makeToast(NSLocalizedString("试卷总分不是100分！", comment: ""), duration: 0.15, position: nil)
             }
         } else {
-            view.makeToast(NSLocalizedString("试卷还未编辑完全！", comment: ""), duration: 0.15, position: nil)
+           // view.makeToast(NSLocalizedString("试卷还未编辑完全！", comment: ""), duration: 0.15, position: nil)
         }
     }
     
@@ -103,11 +103,7 @@ class ExamViewController: UIViewController
             if let paperVC = segue.destinationViewController as? PaperViewController {
                 paperVC.viewModel = viewModel?.viewModelForPaper()
             }
-        } else if segue.identifier == "examMessage" {
-            if let desVC = segue.destinationViewController as? ExamMessageViewController {
-                desVC.exam = viewModel?.exam
-            }
-        }
+        } 
     }
     
 }

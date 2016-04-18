@@ -13,30 +13,27 @@ import IQKeyboardManager
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
-//    private let appKey = "6d754488ef493f396056320f70b8bac8"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         // Override point for customization after application launch.
-        let navigationController = window?.rootViewController as!  UINavigationController
-        setNavigationBar(navigationController)
         
         IQKeyboardManager.sharedManager().enable = true
         
-//        Bmob.registerWithAppKey(appKey)
-//        let bmobUser = BmobUser.getCurrentUser()
-//        if bmobUser != nil {
-//            let identity = bmobUser.objectForKey("identity") as! String
-//            if identity == "teacher" {
-//                setInitialViewController(navigationController, InitialVCIdentifier: .TeacherMainInterface)
-//            } else if identity == "student" {
-//                setInitialViewController(navigationController, InitialVCIdentifier: .StudentMainInterface)
-//            }
-//        }
-        
-        setInitialViewController(navigationController, InitialVCIdentifier: .TeacherMainInterface)
+        setInitialViewController()
     
         return true
+    }
+
+    // 设置初始界面
+    func setInitialViewController()
+    {
+        let navigationController = window?.rootViewController as!  UINavigationController
+        setNavigationBar(navigationController)
+        
+        let masterViewController = navigationController.viewControllers[0] as! MasterViewController
+        let viewModel = MasterViewModel(model: CoreDataStack.defaultStack.managedObjectContext)
+        masterViewController.viewModel = viewModel
     }
     
     // 设置导航栏
@@ -49,29 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         bar.tintColor = UIColor.whiteColor()
         bar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]       //修改Title颜色
         bar.translucent = false
-    }
-    
-    // 设置初始界面
-    func setInitialViewController(navigationController: UINavigationController, InitialVCIdentifier: InitialViewControllerIdentifier)
-    {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.TeacherMainInterface.rawValue) as!MasterViewController
-        
-        let viewModel = MasterViewModel(model: CoreDataStack.defaultStack.managedObjectContext)
-        initialViewController.viewModel = viewModel
-        
-        navigationController.pushViewController(initialViewController, animated: false)
-        
-//        switch InitialVCIdentifier {
-//        case .TeacherMainInterface:
-//            let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.TeacherMainInterface.rawValue) as!TeacherMainInterfaceTableViewController
-//            let viewModel = TeacherMainInterfaceViewModel()
-//            initialViewController.viewModel = viewModel
-//            navigationController.pushViewController(initialViewController, animated: false)
-//        case .StudentMainInterface:
-//            let initialViewController = storyBoard.instantiateViewControllerWithIdentifier(InitialViewControllerIdentifier.StudentMainInterface.rawValue) as!StudentMainInterfaceTableViewController
-//            navigationController.pushViewController(initialViewController, animated: false)
-//        }
     }
 
     func applicationWillResignActive(application: UIApplication)
@@ -105,13 +79,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
 }
 
-enum InitialViewControllerIdentifier: String {
-    case TeacherMainInterface, StudentMainInterface
-}
 
-extension String {
-    var length : Int {
-        return characters.count
-    }
-}
 

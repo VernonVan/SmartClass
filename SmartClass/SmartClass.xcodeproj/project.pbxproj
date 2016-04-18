@@ -13,8 +13,7 @@
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
 		AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */; };
-		AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46061C83DA3200FA30AA /* SignInViewController.swift */; };
-		AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */; };
+		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
 		AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */; };
@@ -58,8 +57,6 @@
 		ADBC0AAF1CC22C0F0087BEA5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AAD1CC22C0F0087BEA5 /* Model.xcdatamodeld */; };
 		ADBC0AB21CC238840087BEA5 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AB01CC238840087BEA5 /* Paper+CoreDataProperties.swift */; };
 		ADBC0AB31CC238840087BEA5 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AB11CC238840087BEA5 /* Paper.swift */; };
-		ADBC0AB51CC23B4A0087BEA5 /* ExamMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AB41CC23B4A0087BEA5 /* ExamMessageViewController.swift */; };
-		ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */; };
 		ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */; };
 		ADF4D8881CC0DC0D00B806A8 /* Character+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */; };
 /* End PBXBuildFile section */
@@ -70,8 +67,7 @@
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = Teacher/MainInterface/ViewModel/MasterViewModel.swift; sourceTree = "<group>"; };
-		AD2F46061C83DA3200FA30AA /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = SignInAndSignUp/SignInViewController.swift; sourceTree = "<group>"; };
-		AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = SignInAndSignUp/SignUpViewController.swift; sourceTree = "<group>"; };
+		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
 		AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -121,8 +117,6 @@
 		ADBC0AAE1CC22C0F0087BEA5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		ADBC0AB01CC238840087BEA5 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "Model/Paper+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ADBC0AB11CC238840087BEA5 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = Model/Paper.swift; sourceTree = "<group>"; };
-		ADBC0AB41CC23B4A0087BEA5 /* ExamMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamMessageViewController.swift; path = View/ExamMessageViewController.swift; sourceTree = "<group>"; };
-		ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentMainInterfaceTableViewController.swift; path = Student/View/StudentMainInterfaceTableViewController.swift; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
 		ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+extension.swift"; path = "Util/Extension/Character+extension.swift"; sourceTree = "<group>"; };
 		B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,28 +219,8 @@
 			children = (
 				AD0B21C91C8D15CE0080BF50 /* MainInterface */,
 				AD1D18261C89867F009B9390 /* Paper */,
-				ADBC0A841CC2226B0087BEA5 /* Examing */,
-				AD1D18251C898666009B9390 /* Setting */,
 			);
 			name = Teacher;
-			sourceTree = "<group>";
-		};
-		AD1304711C8436420078FA1C /* Student */ = {
-			isa = PBXGroup;
-			children = (
-				ADEA4C301C8524FB00BE0686 /* View */,
-			);
-			name = Student;
-			sourceTree = "<group>";
-		};
-		AD1D18251C898666009B9390 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				AD1D18291C8986BA009B9390 /* Model */,
-				AD1D182A1C8986C1009B9390 /* View */,
-				AD1D182B1C8986C9009B9390 /* ViewModel */,
-			);
-			name = Setting;
 			sourceTree = "<group>";
 		};
 		AD1D18261C89867F009B9390 /* Paper */ = {
@@ -260,27 +234,6 @@
 			path = Teacher/Paper;
 			sourceTree = "<group>";
 		};
-		AD1D18291C8986BA009B9390 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		AD1D182A1C8986C1009B9390 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		AD1D182B1C8986C9009B9390 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
 		AD2F46051C83D9E600FA30AA /* others */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,15 +243,6 @@
 				AD86A8D51C82DBCC009CEE87 /* Info.plist */,
 			);
 			name = others;
-			sourceTree = "<group>";
-		};
-		AD2F46081C83DA4D00FA30AA /* SignInAndSignUp */ = {
-			isa = PBXGroup;
-			children = (
-				AD2F46061C83DA3200FA30AA /* SignInViewController.swift */,
-				AD2F46091C83DFE600FA30AA /* SignUpViewController.swift */,
-			);
-			name = SignInAndSignUp;
 			sourceTree = "<group>";
 		};
 		AD46B0051C8683C8008CB3F7 /* Util */ = {
@@ -348,9 +292,7 @@
 				AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */,
 				AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */,
 				AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */,
-				AD2F46081C83DA4D00FA30AA /* SignInAndSignUp */,
 				AD1304701C8436300078FA1C /* Teacher */,
-				AD1304711C8436420078FA1C /* Student */,
 				AD46B0051C8683C8008CB3F7 /* Util */,
 				AD2F46051C83D9E600FA30AA /* others */,
 			);
@@ -374,17 +316,6 @@
 				AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */,
 			);
 			name = RACextensions;
-			sourceTree = "<group>";
-		};
-		ADBC0A841CC2226B0087BEA5 /* Examing */ = {
-			isa = PBXGroup;
-			children = (
-				ADBC0AAC1CC225360087BEA5 /* Model */,
-				ADBC0AAB1CC2252D0087BEA5 /* ViewModel */,
-				ADBC0AAA1CC225250087BEA5 /* View */,
-			);
-			name = Examing;
-			path = Teacher/Examing;
 			sourceTree = "<group>";
 		};
 		ADBC0A851CC224690087BEA5 /* View */ = {
@@ -426,36 +357,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		ADBC0AAA1CC225250087BEA5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ADBC0AB41CC23B4A0087BEA5 /* ExamMessageViewController.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		ADBC0AAB1CC2252D0087BEA5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		ADBC0AAC1CC225360087BEA5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		ADEA4C301C8524FB00BE0686 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				ADEA4C311C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		ADF3BB7D1CAE625B00638D3B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,6 +364,7 @@
 				AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */,
 				AD6308671CB10028000DEC59 /* UIImage+extension.swift */,
 				ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */,
+				AD1DF6521CC471A8001B67E1 /* String+extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -589,15 +491,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD2F460A1C83DFE600FA30AA /* SignUpViewController.swift in Sources */,
 				AD0B21D01C8D16B20080BF50 /* MasterViewController.swift in Sources */,
-				ADEA4C321C85251C00BE0686 /* StudentMainInterfaceTableViewController.swift in Sources */,
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
-				AD2F46071C83DA3200FA30AA /* SignInViewController.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
 				ADBC0A971CC2249C0087BEA5 /* Examination+CoreDataProperties.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
+				AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */,
 				ADBC0AA91CC224BB0087BEA5 /* QuestionView.swift in Sources */,
 				ADBC0A941CC2249C0087BEA5 /* AnswerSheet.swift in Sources */,
 				ADBC0A951CC2249C0087BEA5 /* AnswerSheet+CoreDataProperties.swift in Sources */,
@@ -609,7 +509,6 @@
 				ADBC0AA81CC224BB0087BEA5 /* QuestionListViewController.swift in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
-				ADBC0AB51CC23B4A0087BEA5 /* ExamMessageViewController.swift in Sources */,
 				ADBC0A9B1CC2249C0087BEA5 /* Question+CoreDataProperties.swift in Sources */,
 				ADBC0A961CC2249C0087BEA5 /* Examination.swift in Sources */,
 				ADBC0A931CC2249C0087BEA5 /* Answer+CoreDataProperties.swift in Sources */,

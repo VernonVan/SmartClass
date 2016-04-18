@@ -106,7 +106,7 @@ class PaperViewController: UIViewController
             scoreTextField.text = String(question.score)
             viewModel?.configureUIUsingQuestion(question)
         } else {
-            view.makeToast(NSLocalizedString("已经是第一题！", comment: ""), duration: 0.1, position: nil)
+       //     view.makeToast(NSLocalizedString("已经是第一题！", comment: ""), duration: 0.1, position: nil)
         }
         
     }
@@ -120,7 +120,7 @@ class PaperViewController: UIViewController
             scoreTextField.text = String(question.score)
             viewModel?.configureUIUsingQuestion(question)
         } else {
-            view.makeToast(NSLocalizedString("已经是最后一题！", comment: ""), duration: 0.1, position: nil)
+      //      view.makeToast(NSLocalizedString("已经是最后一题！", comment: ""), duration: 0.1, position: nil)
         }
     }
     

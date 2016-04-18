@@ -9,11 +9,18 @@
 import UIKit
 import DZNEmptyDataSet
 
+private enum MasterViewControllerSection {
+    case PaperSection, ResourceSection, SignSection, NumberOfSections
+}
+
 class MasterViewController: UITableViewController, DZNEmptyDataSetSource
 {
     // MARK: - constant
     private let reuseBeforeExamCell = "beforeCell"
     private let reuseAfterExamCell = "afterCell"
+    private let pptCell = "pptCell"
+    private let undefineCell = "undefineCell"
+    private let signCell = "signCell"
     
     // MARK: - variable
     var viewModel: MasterViewModel?
@@ -23,7 +30,6 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         super.viewDidLoad()
         
         tableView.emptyDataSetSource = self
-        navigationItem.leftBarButtonItem = self.editButtonItem()
         
         viewModel?.updatedContentSignal.subscribeNext({ [unowned self] (x) in
             self.tableView.reloadData()
