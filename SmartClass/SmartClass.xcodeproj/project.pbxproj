@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0739FE141CC504780035DE88 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE131CC504780035DE88 /* MasterViewController.swift */; };
+		0739FE161CC504820035DE88 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE151CC504820035DE88 /* MasterViewModel.swift */; };
+		0739FE311CC504F50035DE88 /* PaperInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */; };
+		0739FE321CC504F50035DE88 /* PaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */; };
+		0739FE331CC504F50035DE88 /* QuestionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */; };
+		0739FE381CC505010035DE88 /* PaperInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE341CC505010035DE88 /* PaperInformationViewController.swift */; };
+		0739FE391CC505010035DE88 /* PaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE351CC505010035DE88 /* PaperViewController.swift */; };
+		0739FE3A1CC505010035DE88 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE361CC505010035DE88 /* QuestionListViewController.swift */; };
+		0739FE3B1CC505010035DE88 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE371CC505010035DE88 /* QuestionView.swift */; };
+		077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */; };
 		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
-		AD0B21D01C8D16B20080BF50 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */; };
 		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
-		AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */; };
 		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
+		AD3B19981CC70E3D00B4E700 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19961CC70E3D00B4E700 /* Model.xcdatamodeld */; };
+		AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */; };
+		AD3B19A21CC7197000B4E700 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199E1CC7197000B4E700 /* Question.swift */; };
+		AD3B19AB1CC71E6F00B4E700 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19A91CC71E6F00B4E700 /* Paper+CoreDataProperties.swift */; };
+		AD3B19AC1CC71E6F00B4E700 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19AA1CC71E6F00B4E700 /* Paper.swift */; };
+		AD3B19B21CC7276B00B4E700 /* UndefineResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19B11CC7276B00B4E700 /* UndefineResourceViewController.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
 		AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */; };
@@ -39,35 +53,32 @@
 		AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD11C83F340005A37AE /* libsqlite3.tbd */; };
 		AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD31C83F357005A37AE /* libicucore.tbd */; };
 		AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9737891C92AF060066873E /* SegueHandlerType.swift */; };
-		ADBC0A921CC2249C0087BEA5 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A881CC2249C0087BEA5 /* Answer.swift */; };
-		ADBC0A931CC2249C0087BEA5 /* Answer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A891CC2249C0087BEA5 /* Answer+CoreDataProperties.swift */; };
-		ADBC0A941CC2249C0087BEA5 /* AnswerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A8A1CC2249C0087BEA5 /* AnswerSheet.swift */; };
-		ADBC0A951CC2249C0087BEA5 /* AnswerSheet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A8B1CC2249C0087BEA5 /* AnswerSheet+CoreDataProperties.swift */; };
-		ADBC0A961CC2249C0087BEA5 /* Examination.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A8C1CC2249C0087BEA5 /* Examination.swift */; };
-		ADBC0A971CC2249C0087BEA5 /* Examination+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A8D1CC2249C0087BEA5 /* Examination+CoreDataProperties.swift */; };
-		ADBC0A9A1CC2249C0087BEA5 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A901CC2249C0087BEA5 /* Question.swift */; };
-		ADBC0A9B1CC2249C0087BEA5 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A911CC2249C0087BEA5 /* Question+CoreDataProperties.swift */; };
-		ADBC0A9F1CC224AF0087BEA5 /* ExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A9C1CC224AF0087BEA5 /* ExamViewModel.swift */; };
-		ADBC0AA01CC224AF0087BEA5 /* PaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A9D1CC224AF0087BEA5 /* PaperViewModel.swift */; };
-		ADBC0AA11CC224AF0087BEA5 /* QuestionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0A9E1CC224AF0087BEA5 /* QuestionListViewModel.swift */; };
-		ADBC0AA61CC224BB0087BEA5 /* ExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AA21CC224BB0087BEA5 /* ExamViewController.swift */; };
-		ADBC0AA71CC224BB0087BEA5 /* PaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AA31CC224BB0087BEA5 /* PaperViewController.swift */; };
-		ADBC0AA81CC224BB0087BEA5 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AA41CC224BB0087BEA5 /* QuestionListViewController.swift */; };
-		ADBC0AA91CC224BB0087BEA5 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AA51CC224BB0087BEA5 /* QuestionView.swift */; };
-		ADBC0AAF1CC22C0F0087BEA5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AAD1CC22C0F0087BEA5 /* Model.xcdatamodeld */; };
-		ADBC0AB21CC238840087BEA5 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AB01CC238840087BEA5 /* Paper+CoreDataProperties.swift */; };
-		ADBC0AB31CC238840087BEA5 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBC0AB11CC238840087BEA5 /* Paper.swift */; };
+		ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA520951CC7796400C8822A /* StudentListViewController.swift */; };
 		ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */; };
 		ADF4D8881CC0DC0D00B806A8 /* Character+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = Teacher/MainInterface/View/MasterViewController.swift; sourceTree = "<group>"; };
+		0739FE131CC504780035DE88 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = MainInterface/View/MasterViewController.swift; sourceTree = "<group>"; };
+		0739FE151CC504820035DE88 /* MasterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = MainInterface/ViewModel/MasterViewModel.swift; sourceTree = "<group>"; };
+		0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperInformationViewModel.swift; path = SmartClass/Paper/ViewModel/PaperInformationViewModel.swift; sourceTree = SOURCE_ROOT; };
+		0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewModel.swift; path = SmartClass/Paper/ViewModel/PaperViewModel.swift; sourceTree = SOURCE_ROOT; };
+		0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewModel.swift; path = SmartClass/Paper/ViewModel/QuestionListViewModel.swift; sourceTree = SOURCE_ROOT; };
+		0739FE341CC505010035DE88 /* PaperInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperInformationViewController.swift; path = SmartClass/Paper/View/PaperInformationViewController.swift; sourceTree = SOURCE_ROOT; };
+		0739FE351CC505010035DE88 /* PaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewController.swift; path = SmartClass/Paper/View/PaperViewController.swift; sourceTree = SOURCE_ROOT; };
+		0739FE361CC505010035DE88 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewController.swift; path = SmartClass/Paper/View/QuestionListViewController.swift; sourceTree = SOURCE_ROOT; };
+		0739FE371CC505010035DE88 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionView.swift; path = SmartClass/Paper/View/QuestionView.swift; sourceTree = SOURCE_ROOT; };
+		077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvenientFileManager.swift; path = Util/ConvenientFileManager.swift; sourceTree = "<group>"; };
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
-		AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = Teacher/MainInterface/ViewModel/MasterViewModel.swift; sourceTree = "<group>"; };
 		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
+		AD3B19971CC70E3D00B4E700 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Question+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AD3B199E1CC7197000B4E700 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = SmartClass/Paper/Model/Question.swift; sourceTree = SOURCE_ROOT; };
+		AD3B19A91CC71E6F00B4E700 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Paper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AD3B19AA1CC71E6F00B4E700 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = SmartClass/Paper/Model/Paper.swift; sourceTree = SOURCE_ROOT; };
+		AD3B19B11CC7276B00B4E700 /* UndefineResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UndefineResourceViewController.swift; path = Resource/View/UndefineResourceViewController.swift; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
 		AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -99,24 +110,7 @@
 		AD884BD11C83F340005A37AE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AD884BD31C83F357005A37AE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		AD9737891C92AF060066873E /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Util/SegueHandlerType.swift; sourceTree = "<group>"; };
-		ADBC0A881CC2249C0087BEA5 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = Model/Answer.swift; sourceTree = "<group>"; };
-		ADBC0A891CC2249C0087BEA5 /* Answer+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Answer+CoreDataProperties.swift"; path = "Model/Answer+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ADBC0A8A1CC2249C0087BEA5 /* AnswerSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerSheet.swift; path = Model/AnswerSheet.swift; sourceTree = "<group>"; };
-		ADBC0A8B1CC2249C0087BEA5 /* AnswerSheet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnswerSheet+CoreDataProperties.swift"; path = "Model/AnswerSheet+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ADBC0A8C1CC2249C0087BEA5 /* Examination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Examination.swift; path = Model/Examination.swift; sourceTree = "<group>"; };
-		ADBC0A8D1CC2249C0087BEA5 /* Examination+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Examination+CoreDataProperties.swift"; path = "Model/Examination+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ADBC0A901CC2249C0087BEA5 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = Model/Question.swift; sourceTree = "<group>"; };
-		ADBC0A911CC2249C0087BEA5 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "Model/Question+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ADBC0A9C1CC224AF0087BEA5 /* ExamViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamViewModel.swift; path = ViewModel/ExamViewModel.swift; sourceTree = "<group>"; };
-		ADBC0A9D1CC224AF0087BEA5 /* PaperViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewModel.swift; path = ViewModel/PaperViewModel.swift; sourceTree = "<group>"; };
-		ADBC0A9E1CC224AF0087BEA5 /* QuestionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewModel.swift; path = ViewModel/QuestionListViewModel.swift; sourceTree = "<group>"; };
-		ADBC0AA21CC224BB0087BEA5 /* ExamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamViewController.swift; path = View/ExamViewController.swift; sourceTree = "<group>"; };
-		ADBC0AA31CC224BB0087BEA5 /* PaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewController.swift; path = View/PaperViewController.swift; sourceTree = "<group>"; };
-		ADBC0AA41CC224BB0087BEA5 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewController.swift; path = View/QuestionListViewController.swift; sourceTree = "<group>"; };
-		ADBC0AA51CC224BB0087BEA5 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionView.swift; path = View/QuestionView.swift; sourceTree = "<group>"; };
-		ADBC0AAE1CC22C0F0087BEA5 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		ADBC0AB01CC238840087BEA5 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "Model/Paper+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		ADBC0AB11CC238840087BEA5 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = Model/Paper.swift; sourceTree = "<group>"; };
+		ADA520951CC7796400C8822A /* StudentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewController.swift; path = SignUpSheet/View/StudentListViewController.swift; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
 		ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+extension.swift"; path = "Util/Extension/Character+extension.swift"; sourceTree = "<group>"; };
 		B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,7 +188,7 @@
 		AD0B21CA1C8D16140080BF50 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AD0B21E31C8ED1840080BF50 /* MasterViewModel.swift */,
+				0739FE151CC504820035DE88 /* MasterViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -202,7 +196,7 @@
 		AD0B21CB1C8D161F0080BF50 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD0B21CF1C8D16B20080BF50 /* MasterViewController.swift */,
+				0739FE131CC504780035DE88 /* MasterViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -210,17 +204,9 @@
 		AD0B21CC1C8D16260080BF50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AD3B19961CC70E3D00B4E700 /* Model.xcdatamodeld */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		AD1304701C8436300078FA1C /* Teacher */ = {
-			isa = PBXGroup;
-			children = (
-				AD0B21C91C8D15CE0080BF50 /* MainInterface */,
-				AD1D18261C89867F009B9390 /* Paper */,
-			);
-			name = Teacher;
 			sourceTree = "<group>";
 		};
 		AD1D18261C89867F009B9390 /* Paper */ = {
@@ -245,9 +231,34 @@
 			name = others;
 			sourceTree = "<group>";
 		};
+		AD3B19AD1CC7265200B4E700 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AD3B19B01CC726FA00B4E700 /* View */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		AD3B19AF1CC7269800B4E700 /* SignUpSheet */ = {
+			isa = PBXGroup;
+			children = (
+				ADA520941CC7794000C8822A /* View */,
+			);
+			name = SignUpSheet;
+			sourceTree = "<group>";
+		};
+		AD3B19B01CC726FA00B4E700 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD3B19B11CC7276B00B4E700 /* UndefineResourceViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		AD46B0051C8683C8008CB3F7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */,
 				AD4AF5131CB3AE3F006129C2 /* ReactiveViewModel */,
 				ADF3BB7D1CAE625B00638D3B /* Extension */,
 				AD876A791C93C014000E9978 /* PlaceholderTextView */,
@@ -292,7 +303,10 @@
 				AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */,
 				AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */,
 				AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */,
-				AD1304701C8436300078FA1C /* Teacher */,
+				AD0B21C91C8D15CE0080BF50 /* MainInterface */,
+				AD1D18261C89867F009B9390 /* Paper */,
+				AD3B19AD1CC7265200B4E700 /* Resource */,
+				AD3B19AF1CC7269800B4E700 /* SignUpSheet */,
 				AD46B0051C8683C8008CB3F7 /* Util */,
 				AD2F46051C83D9E600FA30AA /* others */,
 			);
@@ -318,13 +332,21 @@
 			name = RACextensions;
 			sourceTree = "<group>";
 		};
+		ADA520941CC7794000C8822A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ADA520951CC7796400C8822A /* StudentListViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		ADBC0A851CC224690087BEA5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ADBC0AA21CC224BB0087BEA5 /* ExamViewController.swift */,
-				ADBC0AA51CC224BB0087BEA5 /* QuestionView.swift */,
-				ADBC0AA31CC224BB0087BEA5 /* PaperViewController.swift */,
-				ADBC0AA41CC224BB0087BEA5 /* QuestionListViewController.swift */,
+				0739FE341CC505010035DE88 /* PaperInformationViewController.swift */,
+				0739FE371CC505010035DE88 /* QuestionView.swift */,
+				0739FE351CC505010035DE88 /* PaperViewController.swift */,
+				0739FE361CC505010035DE88 /* QuestionListViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -332,9 +354,9 @@
 		ADBC0A861CC224720087BEA5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				ADBC0A9C1CC224AF0087BEA5 /* ExamViewModel.swift */,
-				ADBC0A9D1CC224AF0087BEA5 /* PaperViewModel.swift */,
-				ADBC0A9E1CC224AF0087BEA5 /* QuestionListViewModel.swift */,
+				0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */,
+				0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */,
+				0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -342,17 +364,10 @@
 		ADBC0A871CC224790087BEA5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ADBC0AAD1CC22C0F0087BEA5 /* Model.xcdatamodeld */,
-				ADBC0A8C1CC2249C0087BEA5 /* Examination.swift */,
-				ADBC0A8D1CC2249C0087BEA5 /* Examination+CoreDataProperties.swift */,
-				ADBC0A881CC2249C0087BEA5 /* Answer.swift */,
-				ADBC0A891CC2249C0087BEA5 /* Answer+CoreDataProperties.swift */,
-				ADBC0A8A1CC2249C0087BEA5 /* AnswerSheet.swift */,
-				ADBC0A8B1CC2249C0087BEA5 /* AnswerSheet+CoreDataProperties.swift */,
-				ADBC0AB01CC238840087BEA5 /* Paper+CoreDataProperties.swift */,
-				ADBC0AB11CC238840087BEA5 /* Paper.swift */,
-				ADBC0A901CC2249C0087BEA5 /* Question.swift */,
-				ADBC0A911CC2249C0087BEA5 /* Question+CoreDataProperties.swift */,
+				AD3B19A91CC71E6F00B4E700 /* Paper+CoreDataProperties.swift */,
+				AD3B19AA1CC71E6F00B4E700 /* Paper.swift */,
+				AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */,
+				AD3B199E1CC7197000B4E700 /* Question.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -491,40 +506,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD0B21D01C8D16B20080BF50 /* MasterViewController.swift in Sources */,
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
+				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
+				0739FE3A1CC505010035DE88 /* QuestionListViewController.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
+				0739FE381CC505010035DE88 /* PaperInformationViewController.swift in Sources */,
+				0739FE141CC504780035DE88 /* MasterViewController.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
-				ADBC0A971CC2249C0087BEA5 /* Examination+CoreDataProperties.swift in Sources */,
+				AD3B19AC1CC71E6F00B4E700 /* Paper.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
+				AD3B19AB1CC71E6F00B4E700 /* Paper+CoreDataProperties.swift in Sources */,
 				AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */,
-				ADBC0AA91CC224BB0087BEA5 /* QuestionView.swift in Sources */,
-				ADBC0A941CC2249C0087BEA5 /* AnswerSheet.swift in Sources */,
-				ADBC0A951CC2249C0087BEA5 /* AnswerSheet+CoreDataProperties.swift in Sources */,
+				ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
-				ADBC0AA71CC224BB0087BEA5 /* PaperViewController.swift in Sources */,
-				ADBC0AB31CC238840087BEA5 /* Paper.swift in Sources */,
-				AD0B21E41C8ED1840080BF50 /* MasterViewModel.swift in Sources */,
+				0739FE391CC505010035DE88 /* PaperViewController.swift in Sources */,
 				AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */,
-				ADBC0AA81CC224BB0087BEA5 /* QuestionListViewController.swift in Sources */,
+				0739FE321CC504F50035DE88 /* PaperViewModel.swift in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
+				0739FE331CC504F50035DE88 /* QuestionListViewModel.swift in Sources */,
+				AD3B19981CC70E3D00B4E700 /* Model.xcdatamodeld in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
-				ADBC0A9B1CC2249C0087BEA5 /* Question+CoreDataProperties.swift in Sources */,
-				ADBC0A961CC2249C0087BEA5 /* Examination.swift in Sources */,
-				ADBC0A931CC2249C0087BEA5 /* Answer+CoreDataProperties.swift in Sources */,
-				ADBC0AAF1CC22C0F0087BEA5 /* Model.xcdatamodeld in Sources */,
+				0739FE161CC504820035DE88 /* MasterViewModel.swift in Sources */,
 				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
-				ADBC0A9F1CC224AF0087BEA5 /* ExamViewModel.swift in Sources */,
-				ADBC0A9A1CC2249C0087BEA5 /* Question.swift in Sources */,
-				ADBC0AA11CC224AF0087BEA5 /* QuestionListViewModel.swift in Sources */,
-				ADBC0A921CC2249C0087BEA5 /* Answer.swift in Sources */,
+				AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */,
 				AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */,
-				ADBC0AB21CC238840087BEA5 /* Paper+CoreDataProperties.swift in Sources */,
+				0739FE3B1CC505010035DE88 /* QuestionView.swift in Sources */,
+				AD3B19A21CC7197000B4E700 /* Question.swift in Sources */,
 				AD876A7C1C93C053000E9978 /* UIPlaceHolderTextView.m in Sources */,
-				ADBC0AA01CC224AF0087BEA5 /* PaperViewModel.swift in Sources */,
-				ADBC0AA61CC224BB0087BEA5 /* ExamViewController.swift in Sources */,
+				AD3B19B21CC7276B00B4E700 /* UndefineResourceViewController.swift in Sources */,
 				ADF4D8881CC0DC0D00B806A8 /* Character+extension.swift in Sources */,
 				AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */,
+				0739FE311CC504F50035DE88 /* PaperInformationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,12 +790,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		ADBC0AAD1CC22C0F0087BEA5 /* Model.xcdatamodeld */ = {
+		AD3B19961CC70E3D00B4E700 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				ADBC0AAE1CC22C0F0087BEA5 /* Model.xcdatamodel */,
+				AD3B19971CC70E3D00B4E700 /* Model.xcdatamodel */,
 			);
-			currentVersion = ADBC0AAE1CC22C0F0087BEA5 /* Model.xcdatamodel */;
+			currentVersion = AD3B19971CC70E3D00B4E700 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

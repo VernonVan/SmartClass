@@ -68,24 +68,4 @@ class CoreDataStack
         }
     }
     
-//    func ensureInitialLoad()
-//    {
-//        let initialLoadKey = "Initial Load"
-//        let userDefaults = NSUserDefaults.standardUserDefaults()
-//        
-//        let hasInitialLoad = userDefaults.boolForKey(initialLoadKey)
-//        if hasInitialLoad == false {
-//            print("ensureInitialLoad")
-//            userDefaults.setBool(true, forKey: initialLoadKey)
-//            
-//            let exam = NSEntityDescription.insertNewObjectForEntityForName("Examination", inManagedObjectContext: CoreDataStack.defaultStack.managedObjectContext) as! Examination
-//            exam.name = "第一次月考"
-//            exam.blurb = "呵呵😄"
-//            
-//        }
-//        
-//        CoreDataStack.defaultStack.saveContext()
-//
-//    }
-    
 }
