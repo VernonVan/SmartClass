@@ -38,6 +38,16 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
     
     let fileManager = NSFileManager.defaultManager()
     
+    lazy var pptsName: [String] = {
+        var ppts = [String]()
+        do {
+            ppts = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!)
+        } catch let error as NSError {
+            print("lazy init ppts error! \(error.userInfo)")
+        }
+        return ppts
+    }()
+    
     lazy var resourcesName: [String] = {
         var resources = [String]()
         do {
@@ -80,6 +90,9 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         if let _ = fetchedResultsController.sections?.count {
             count += 1
         }
+        if ConvenientFileManager.hasFilesAtURL(ConvenientFileManager.pptURL) {
+            count += 1
+        }
         if ConvenientFileManager.hasFilesAtURL(ConvenientFileManager.resourceURL) {
             count += 1
         }
@@ -94,13 +107,24 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         return fetchedResultsController.sections![0].numberOfObjects
     }
     
+    func numberOfPPTs() -> Int
+    {
+        var fileList = [String]()
+        do {
+            fileList = try fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!)
+        } catch let error as NSError {
+            print("numberOfPPTs error! \(error.userInfo)")
+        }
+        return fileList.count
+    }
+    
     func numberOfResources() -> Int
     {
         var fileList = [String]()
         do {
             fileList = try fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.resourceURL.path!)
         } catch let error as NSError {
-            print("hasFilesAtPath error! \(error.userInfo)")
+            print("numberOfResources error! \(error.userInfo)")
         }
         return fileList.count
     }
@@ -155,6 +179,45 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         } catch let error as NSError {
             print("Delete paper error: \(error.userInfo)")
         }
+        
+        let paperURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paper.name!)
+        deleteFileAtURL(paperURL)
+    }
+    
+    // MARK: - PPT cell
+    
+    func titleForPPTAtIndexPath(indexPath: NSIndexPath) -> String
+    {
+        let title = pptsName[indexPath.row]
+        return title
+    }
+    
+    func subtitleForPPTAtIndexPath(indexPath: NSIndexPath) -> String
+    {
+        var subtitle: String = ""
+        do {
+            let attrs = try fileManager.attributesOfItemAtPath(ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptsName[indexPath.row]).path!)
+            let creationDate = attrs["NSFileCreationDate"] as! NSDate
+            subtitle = formatDate(creationDate)
+        } catch let error as NSError {
+            print("subtitleForPPTAtIndexPath error: \(error.userInfo)")
+        }
+        
+        return subtitle
+    }
+    
+    func pptURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
+    {
+        let pptName = pptsName[indexPath.row]
+        return ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
+    }
+    
+    func deletePPTAtIndexPath(indexPath: NSIndexPath)
+    {
+        let pptName = pptsName[indexPath.row]
+        pptsName.removeAtIndex(indexPath.row)
+        let pptURL = ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
+        deleteFileAtURL(pptURL)
     }
     
     // MARK: Resource cell
@@ -178,20 +241,19 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         
         return subtitle
     }
-    
-    func isPPTOrUndefineAtIndexPath(indexPath: NSIndexPath) -> Bool
-    {
-        let row = indexPath.row
-        if resourcesName[row].containsString(".ppt") || resourcesName[row].containsString(".pptx") {
-            return true
-        }
-        return false
-    }
-    
+
     func resourceURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
     {
         let resourceName = resourcesName[indexPath.row]
         return ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
+    }
+    
+    func deleteResourceAtIndexPath(indexPath: NSIndexPath)
+    {
+        let resourceName = resourcesName[indexPath.row]
+        resourcesName.removeAtIndex(indexPath.row)
+        let resourceURL = ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
+        deleteFileAtURL(resourceURL)
     }
     
     // MARK: SignUpSheet cell
@@ -200,6 +262,14 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
     {
         let title = signUpSheetsName[indexPath.row]
         return title
+    }
+    
+    func deleteSignUpSheetAtIndexPath(indexPath: NSIndexPath)
+    {
+        let signUpSheetName = signUpSheetsName[indexPath.row]
+        signUpSheetsName.removeAtIndex(indexPath.row)
+        let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName)
+        deleteFileAtURL(signUpSheetURL)
     }
     
     // MARK: - Segue
@@ -219,6 +289,11 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         return viewModel
     }
     
+    func viewModelForStudentList() -> StudentListViewModel
+    {
+        return StudentListViewModel()
+    }
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController)
     {
         updatedContentSignal.sendNext(nil)
@@ -231,6 +306,16 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy/M/d"
         return formatter.stringFromDate(date)
+    }
+    
+    func deleteFileAtURL(url: NSURL)
+    {
+        do {
+            try fileManager.removeItemAtURL(url)
+        } catch let error as NSError {
+            print("deleteFileAtURL error: \(error.userInfo)")
+        }
+        
     }
     
 }

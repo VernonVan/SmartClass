@@ -11,15 +11,15 @@ class ConvenientFileManager: NSObject
     static let fileManager = NSFileManager.defaultManager()
     
     static let uploadURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Upload")
+    static let pptURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("PPT")
     static let resourceURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("Resource")
     
-    static let paperURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("Paper")
-    
+    static let paperURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Paper")
     static let signUpSheetURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("SignUpSheet")
     
     static func documentURL() -> NSURL
     {
-        print("\(NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]).path)")
+//        print("\(NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]).path)")
         return NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0])
     }
     
@@ -54,8 +54,9 @@ class ConvenientFileManager: NSObject
     static func createUploadDirectory()
     {
         do {
-            try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
             try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.paperURL, withIntermediateDirectories: true, attributes: nil)
+            try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
+            try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
         } catch let error as NSError {
             print("createResourceDirectory error: \(error.localizedDescription)")
         }

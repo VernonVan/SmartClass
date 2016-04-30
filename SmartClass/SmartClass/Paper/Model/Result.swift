@@ -1,5 +1,5 @@
 //
-//  Paper.swift
+//  Result.swift
 //  SmartClass
 //
 //  Created by Vernon on 16/4/26.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Paper: NSManagedObject {
+class Result: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

@@ -16,20 +16,29 @@
 		0739FE391CC505010035DE88 /* PaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE351CC505010035DE88 /* PaperViewController.swift */; };
 		0739FE3A1CC505010035DE88 /* QuestionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE361CC505010035DE88 /* QuestionListViewController.swift */; };
 		0739FE3B1CC505010035DE88 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE371CC505010035DE88 /* QuestionView.swift */; };
+		0774FD411CCF9017002A29A8 /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0774FD401CCF9017002A29A8 /* StudentViewController.swift */; };
 		077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */; };
+		07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */; };
+		07E306F41CCF6977002424A0 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F31CCF6977002424A0 /* Student.swift */; };
 		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
 		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
+		AD117D991CCF171C00DBBC2C /* Result+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D951CCF171C00DBBC2C /* Result+CoreDataProperties.swift */; };
+		AD117D9A1CCF171C00DBBC2C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D961CCF171C00DBBC2C /* Result.swift */; };
+		AD117D9B1CCF171C00DBBC2C /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D971CCF171C00DBBC2C /* Paper+CoreDataProperties.swift */; };
+		AD117D9C1CCF171C00DBBC2C /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D981CCF171C00DBBC2C /* Paper.swift */; };
+		AD17F9B51CCD9E19007AA73B /* CanvasPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17F9B41CCD9E19007AA73B /* CanvasPopoverViewController.swift */; };
 		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
 		AD3B19981CC70E3D00B4E700 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19961CC70E3D00B4E700 /* Model.xcdatamodeld */; };
 		AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */; };
 		AD3B19A21CC7197000B4E700 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199E1CC7197000B4E700 /* Question.swift */; };
-		AD3B19AB1CC71E6F00B4E700 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19A91CC71E6F00B4E700 /* Paper+CoreDataProperties.swift */; };
-		AD3B19AC1CC71E6F00B4E700 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19AA1CC71E6F00B4E700 /* Paper.swift */; };
 		AD3B19B21CC7276B00B4E700 /* UndefineResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19B11CC7276B00B4E700 /* UndefineResourceViewController.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
+		AD470D671CCB187200E2C6A6 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD470D651CCB187200E2C6A6 /* CanvasView.swift */; };
+		AD470D681CCB187200E2C6A6 /* PPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD470D661CCB187200E2C6A6 /* PPTView.swift */; };
+		AD470D6A1CCB1A0F00E2C6A6 /* PPTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD470D691CCB1A0F00E2C6A6 /* PPTViewController.swift */; };
 		AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */; };
 		AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */; };
 		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
@@ -68,19 +77,28 @@
 		0739FE351CC505010035DE88 /* PaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewController.swift; path = SmartClass/Paper/View/PaperViewController.swift; sourceTree = SOURCE_ROOT; };
 		0739FE361CC505010035DE88 /* QuestionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewController.swift; path = SmartClass/Paper/View/QuestionListViewController.swift; sourceTree = SOURCE_ROOT; };
 		0739FE371CC505010035DE88 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionView.swift; path = SmartClass/Paper/View/QuestionView.swift; sourceTree = SOURCE_ROOT; };
+		0774FD401CCF9017002A29A8 /* StudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentViewController.swift; path = SignUpSheet/View/StudentViewController.swift; sourceTree = "<group>"; };
 		077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvenientFileManager.swift; path = Util/ConvenientFileManager.swift; sourceTree = "<group>"; };
+		07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewModel.swift; path = SignUpSheet/ViewModel/StudentListViewModel.swift; sourceTree = "<group>"; };
+		07E306F31CCF6977002424A0 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Student.swift; path = SignUpSheet/Model/Student.swift; sourceTree = "<group>"; };
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
+		AD117D951CCF171C00DBBC2C /* Result+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Result+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Result+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AD117D961CCF171C00DBBC2C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = SmartClass/Paper/Model/Result.swift; sourceTree = SOURCE_ROOT; };
+		AD117D971CCF171C00DBBC2C /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Paper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AD117D981CCF171C00DBBC2C /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = SmartClass/Paper/Model/Paper.swift; sourceTree = SOURCE_ROOT; };
+		AD17F9B41CCD9E19007AA73B /* CanvasPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasPopoverViewController.swift; path = PPT/View/CanvasPopoverViewController.swift; sourceTree = "<group>"; };
 		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
 		AD3B19971CC70E3D00B4E700 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Question+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		AD3B199E1CC7197000B4E700 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = SmartClass/Paper/Model/Question.swift; sourceTree = SOURCE_ROOT; };
-		AD3B19A91CC71E6F00B4E700 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Paper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		AD3B19AA1CC71E6F00B4E700 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = SmartClass/Paper/Model/Paper.swift; sourceTree = SOURCE_ROOT; };
 		AD3B19B11CC7276B00B4E700 /* UndefineResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UndefineResourceViewController.swift; path = Resource/View/UndefineResourceViewController.swift; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
+		AD470D651CCB187200E2C6A6 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasView.swift; path = PPT/View/CanvasView.swift; sourceTree = "<group>"; };
+		AD470D661CCB187200E2C6A6 /* PPTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPTView.swift; path = PPT/View/PPTView.swift; sourceTree = "<group>"; };
+		AD470D691CCB1A0F00E2C6A6 /* PPTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPTViewController.swift; path = PPT/View/PPTViewController.swift; sourceTree = "<group>"; };
 		AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		AD4AF5141CB3AE5D006129C2 /* ReactiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReactiveViewModel.h; path = Util/ReactiveViewModel/ReactiveViewModel.h; sourceTree = "<group>"; };
 		AD4AF5151CB3AE5D006129C2 /* RVMViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVMViewModel.h; path = Util/ReactiveViewModel/RVMViewModel.h; sourceTree = "<group>"; };
@@ -144,6 +162,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07E306F01CCF5D88002424A0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		07E306F51CCF697C002424A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07E306F31CCF6977002424A0 /* Student.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		5B800375E992113887F3BF95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +276,8 @@
 		AD3B19AF1CC7269800B4E700 /* SignUpSheet */ = {
 			isa = PBXGroup;
 			children = (
+				07E306F51CCF697C002424A0 /* Model */,
+				07E306F01CCF5D88002424A0 /* ViewModel */,
 				ADA520941CC7794000C8822A /* View */,
 			);
 			name = SignUpSheet;
@@ -258,15 +294,34 @@
 		AD46B0051C8683C8008CB3F7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */,
 				AD4AF5131CB3AE3F006129C2 /* ReactiveViewModel */,
 				ADF3BB7D1CAE625B00638D3B /* Extension */,
 				AD876A791C93C014000E9978 /* PlaceholderTextView */,
 				AD97378B1C92AF100066873E /* RACextensions */,
+				077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */,
 				AD9737891C92AF060066873E /* SegueHandlerType.swift */,
 				AD46B0061C868423008CB3F7 /* Color.swift */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		AD470D611CCB0A2500E2C6A6 /* PPT */ = {
+			isa = PBXGroup;
+			children = (
+				AD470D621CCB0B2300E2C6A6 /* View */,
+			);
+			name = PPT;
+			sourceTree = "<group>";
+		};
+		AD470D621CCB0B2300E2C6A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD470D651CCB187200E2C6A6 /* CanvasView.swift */,
+				AD470D661CCB187200E2C6A6 /* PPTView.swift */,
+				AD470D691CCB1A0F00E2C6A6 /* PPTViewController.swift */,
+				AD17F9B41CCD9E19007AA73B /* CanvasPopoverViewController.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		AD4AF5131CB3AE3F006129C2 /* ReactiveViewModel */ = {
@@ -305,6 +360,7 @@
 				AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */,
 				AD0B21C91C8D15CE0080BF50 /* MainInterface */,
 				AD1D18261C89867F009B9390 /* Paper */,
+				AD470D611CCB0A2500E2C6A6 /* PPT */,
 				AD3B19AD1CC7265200B4E700 /* Resource */,
 				AD3B19AF1CC7269800B4E700 /* SignUpSheet */,
 				AD46B0051C8683C8008CB3F7 /* Util */,
@@ -336,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				ADA520951CC7796400C8822A /* StudentListViewController.swift */,
+				0774FD401CCF9017002A29A8 /* StudentViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -364,10 +421,12 @@
 		ADBC0A871CC224790087BEA5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AD3B19A91CC71E6F00B4E700 /* Paper+CoreDataProperties.swift */,
-				AD3B19AA1CC71E6F00B4E700 /* Paper.swift */,
+				AD117D971CCF171C00DBBC2C /* Paper+CoreDataProperties.swift */,
+				AD117D981CCF171C00DBBC2C /* Paper.swift */,
 				AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */,
 				AD3B199E1CC7197000B4E700 /* Question.swift */,
+				AD117D951CCF171C00DBBC2C /* Result+CoreDataProperties.swift */,
+				AD117D961CCF171C00DBBC2C /* Result.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -419,6 +478,7 @@
 				TargetAttributes = {
 					AD86A8C51C82DBCC009CEE87 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = R6964LXMCM;
 					};
 				};
 			};
@@ -507,17 +567,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
+				AD17F9B51CCD9E19007AA73B /* CanvasPopoverViewController.swift in Sources */,
+				AD470D6A1CCB1A0F00E2C6A6 /* PPTViewController.swift in Sources */,
 				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
+				AD470D671CCB187200E2C6A6 /* CanvasView.swift in Sources */,
 				0739FE3A1CC505010035DE88 /* QuestionListViewController.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
+				07E306F41CCF6977002424A0 /* Student.swift in Sources */,
+				AD470D681CCB187200E2C6A6 /* PPTView.swift in Sources */,
 				0739FE381CC505010035DE88 /* PaperInformationViewController.swift in Sources */,
 				0739FE141CC504780035DE88 /* MasterViewController.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
-				AD3B19AC1CC71E6F00B4E700 /* Paper.swift in Sources */,
+				AD117D9A1CCF171C00DBBC2C /* Result.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
-				AD3B19AB1CC71E6F00B4E700 /* Paper+CoreDataProperties.swift in Sources */,
+				AD117D991CCF171C00DBBC2C /* Result+CoreDataProperties.swift in Sources */,
 				AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */,
 				ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */,
+				AD117D9C1CCF171C00DBBC2C /* Paper.swift in Sources */,
+				AD117D9B1CCF171C00DBBC2C /* Paper+CoreDataProperties.swift in Sources */,
+				07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */,
+				0774FD411CCF9017002A29A8 /* StudentViewController.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
 				0739FE391CC505010035DE88 /* PaperViewController.swift in Sources */,
 				AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */,
@@ -651,6 +720,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -700,6 +771,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/SmartClass-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -712,6 +784,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -761,6 +835,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/SmartClass-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

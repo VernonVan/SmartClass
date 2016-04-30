@@ -1,0 +1,28 @@
+/* Empty. Add your own CSS if you like */
+::-webkit-scrollbar {
+
+
+height:1.5%;
+display:block;
+z-index:1000;
+background-color:#35asd1;
+}
+::-webkit-scrollbar-track-piece{background-color: #eee;margin: -2px;}
+::-webkit-scrollbar-thumb{background: #aaa;min-height: 150px;min-width: 150px;border-radius: 10px;}
+::-webkit-scrollbar-thumb:vertical{background: #ffffff}
+::-webkit-scrollbar-thumb:horizontal:hover{background: #555555}
+#mainContent{
+padding:0;
+}
+body{
+font-size:1em;
+}
+h1{
+font-size:1em;
+}
+h2{
+font-size:0.8em;
+}
+.item{
+border-style:none;
+}

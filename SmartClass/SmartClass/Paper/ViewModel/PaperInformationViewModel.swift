@@ -52,9 +52,7 @@ class PaperInformationViewModel: RVMViewModel
     func generatePaperJSONFile()
     {
         let paperDict = NSMutableDictionary(capacity: 10)
-        let singleChoiceQuestions = NSMutableArray()
-        let multipleChoiceQuestions = NSMutableArray()
-        let trueOrFalseQuestions = NSMutableArray()
+        let questions = NSMutableArray()
         
         paperDict["name"] = name
         paperDict["blurb"] = blurb
@@ -63,27 +61,26 @@ class PaperInformationViewModel: RVMViewModel
             let question = question as! Question
             let questionDict = NSMutableDictionary()
             questionDict["index"] = Int(question.index)
+            questionDict["type"] = Int(question.type)
             questionDict["topic"] = question.topic
-            questionDict["choiceA"] = question.choiceA
-            questionDict["choiceB"] = question.choiceB
-            questionDict["choiceC"] = question.choiceC
-            questionDict["choiceD"] = question.choiceD
-            questionDict["answers"] = question.answers
+            questionDict["A"] = question.choiceA
+            questionDict["B"] = question.choiceB
+            questionDict["C"] = question.choiceC
+            questionDict["D"] = question.choiceD
+            questionDict["answer"] = question.answers
             questionDict["score"] = Int(question.score)
-            if question.type == 0 {
-                singleChoiceQuestions.addObject(questionDict)
-            } else if question.type == 1 {
-                multipleChoiceQuestions.addObject(questionDict)
-            } else if question.type == 2 {
-                trueOrFalseQuestions.addObject(questionDict)
-            }
+            
+            questions.addObject(questionDict)
         }
         
-        paperDict["singleChoiceQuestions"] = singleChoiceQuestions
-        paperDict["multipleChoiceQuestions"] = multipleChoiceQuestions
-        paperDict["trueOrFalseQuestions"] = trueOrFalseQuestions
+//        let sortDescriptor = NSSortDescriptor(key: "index", ascending: true)
+//        let sortDescriptors = NSArray(object: sortDescriptor)
+//        let sortedQuestions = questions.sortUsingDescriptors(sortDescriptors as! [NSSortDescriptor])
+        
+        paperDict["questions"] = questions
         
         let outputStream = NSOutputStream(toFileAtPath: ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!).path!, append: false)
+        print(ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!).path!)
         outputStream?.open()
         NSJSONSerialization.writeJSONObject(paperDict, toStream: outputStream!, options: .PrettyPrinted, error: nil)
         outputStream?.close()

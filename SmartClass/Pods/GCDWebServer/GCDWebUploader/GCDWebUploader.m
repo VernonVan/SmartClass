@@ -59,6 +59,44 @@
 }
 @end
 
+@implementation GCDWebUploader (Quiz)
+
+- (void) addHandlerForQuiz
+{
+//    [self addHandlerForMethod:@"GET" path:@"/templates/test.html" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
+//        NSBundle* siteBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"GCDWebUploader" ofType:@"bundle"]];
+//        if (siteBundle == nil) {
+//            return nil;
+//        }
+//        return [GCDWebServerDataResponse responseWithHTMLTemplate:[siteBundle pathForResource:@"/templates/test" ofType:@"html"] variables:nil];
+//    }];
+    
+    [self addHandlerForMethod:@"GET" path:@"/templates/test.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
+        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/123"];
+        NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
+        NSLog(@"----------------------fileURL.path: %@---------------", fileURL.path);
+        return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
+    }];
+    
+    
+    [self addHandlerForMethod:@"POST" path:@"/templates/post_answer" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
+        GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
+        NSString * string = [[NSString alloc] initWithData: dataRequest.data encoding: NSUTF8StringEncoding];
+        NSLog(@"---------------------%@------------------------", string);
+        return [GCDWebServerResponse responseWithStatusCode:200];
+    }];
+    
+}
+
+- (NSURL *) documentsDirectory
+{
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    NSURL *documentURL = [[NSURL alloc]initWithString:path];
+    return documentURL;
+}
+
+@end
+
 @implementation GCDWebUploader (Methods)
 
 // Must match implementation in GCDWebDAVServer
@@ -362,6 +400,9 @@
       
     }];
     
+      [self addHandlerForQuiz] ;
+      
+      
     // File listing
     [self addHandlerForMethod:@"GET" path:@"/list" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
       return [server listDirectory:request];

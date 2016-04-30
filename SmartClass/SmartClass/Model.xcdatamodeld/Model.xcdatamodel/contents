@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
     <entity name="Paper" representedClassName=".Paper" syncable="YES">
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isCompleted" optional="YES" transient="YES" attributeType="Boolean" syncable="YES"/>
@@ -7,6 +7,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalScore" optional="YES" transient="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="paper" inverseEntity="Question" syncable="YES"/>
+        <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Result" inverseName="paper" inverseEntity="Result" syncable="YES"/>
     </entity>
     <entity name="Question" representedClassName=".Question" syncable="YES">
         <attribute name="answers" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,8 +22,15 @@
         <attribute name="type" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="questions" inverseEntity="Paper" syncable="YES"/>
     </entity>
+    <entity name="Result" representedClassName=".Result" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <relationship name="paper" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Paper" inverseName="results" inverseEntity="Paper" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Paper" positionX="3825" positionY="9513" width="128" height="133"/>
+        <element name="Paper" positionX="3976" positionY="9488" width="128" height="148"/>
         <element name="Question" positionX="4293" positionY="9467" width="128" height="208"/>
+        <element name="Result" positionX="3967" positionY="9740" width="128" height="103"/>
     </elements>
 </model>
