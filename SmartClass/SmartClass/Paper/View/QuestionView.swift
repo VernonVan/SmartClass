@@ -135,8 +135,11 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func changeAnswers()
     {
         if let indexPaths = tableview.indexPathsForSelectedRows {
+            let sortedIndexPaths = indexPaths.sort({ (indexPath1, indexPath2) -> Bool in
+                return indexPath1.row > indexPath2.row
+            })
             answers = ""
-            for indexPath in indexPaths {
+            for indexPath in sortedIndexPaths {
                 answers?.append(Character(UnicodeScalar(indexPath.row+65)))
             }
         }

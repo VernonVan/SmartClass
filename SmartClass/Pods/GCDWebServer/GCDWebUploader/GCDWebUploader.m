@@ -63,18 +63,9 @@
 
 - (void) addHandlerForQuiz
 {
-//    [self addHandlerForMethod:@"GET" path:@"/templates/test.html" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
-//        NSBundle* siteBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"GCDWebUploader" ofType:@"bundle"]];
-//        if (siteBundle == nil) {
-//            return nil;
-//        }
-//        return [GCDWebServerDataResponse responseWithHTMLTemplate:[siteBundle pathForResource:@"/templates/test" ofType:@"html"] variables:nil];
-//    }];
-    
     [self addHandlerForMethod:@"GET" path:@"/templates/test.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
         NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/123"];
         NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
-        NSLog(@"----------------------fileURL.path: %@---------------", fileURL.path);
         return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
     }];
     
@@ -83,7 +74,7 @@
         GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
         NSString * string = [[NSString alloc] initWithData: dataRequest.data encoding: NSUTF8StringEncoding];
         NSLog(@"---------------------%@------------------------", string);
-        return [GCDWebServerResponse responseWithStatusCode:200];
+        return [GCDWebServerResponse responseWithStatusCode: 200];
     }];
     
 }
