@@ -2,7 +2,7 @@
 //  Result+CoreDataProperties.swift
 //  SmartClass
 //
-//  Created by Vernon on 16/4/26.
+//  Created by FSQ on 16/5/2.
 //  Copyright © 2016年 Vernon. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,12 +12,11 @@
 import Foundation
 import CoreData
 
-extension Result
-{
+extension Result {
 
-    @NSManaged var score: Int16
-    @NSManaged var number: String?
     @NSManaged var name: String?
+    @NSManaged var number: String?
+    @NSManaged var score: Int16
     @NSManaged var paper: Paper?
 
 }

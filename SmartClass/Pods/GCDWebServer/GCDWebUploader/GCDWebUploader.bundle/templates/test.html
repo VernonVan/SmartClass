@@ -18,10 +18,10 @@
 
 
     <body ng-app="starter">
+
     <div>
         <div ng-controller = "main-controller">
-            <br>
-            <br>
+
             <h1 style = 'position:relative;text-align:center'>{{data.title}}</h1>
             <br>
 
@@ -30,8 +30,7 @@
 				<div ng-repeat = 'question in questions[0]' >
 					<h1>{{$index+1}}.{{question['topic']}}</h1>
 					<div>
-						<div ng-repeat = 's in select[0]'><input type = "checkbox" ng-click = "show(question['index'], $index, question['type'])"
-																 ng-model = "answer[question['index']][$index]">{{question[select[0][$index]]}}</input></div>
+						<div ng-repeat = 's in select[0]'><input type = "radio" name={{question['topic']}} value="" ng-click = "singleChoice(question['index'], $index)">{{question[select[0][$index]]}}</input></div>
 					</div>
 				</div>
 			</div>
@@ -41,7 +40,7 @@
 				<div ng-repeat = 'question in questions[1]'>
 				<h1>{{$index+1}}.{{question['topic']}}<span style = 'color:#72ACE3'>【多选题】</span></h1>
 					<div>
-						<div ng-repeat = 's in select[0]'><input type = "checkbox" ng-click = "show(question['index'], $index, question['type'])"
+						<div ng-repeat = 's in select[0]'><input type = "checkbox"
 																 ng-model = "answer[question['index']][$index]">{{question[select[0][$index]]}}</input></div>
 					</div>
 				</div>
@@ -52,15 +51,14 @@
 				<div ng-repeat = 'question in questions[2]'>
 				<h1>{{$index+1}}.{{question['topic']}}</h1>
 					<div>
-						<div ng-repeat = 'j in select[2]'><input type = "checkbox" ng-click = "show(question['index'], $index, question['type'])"
-																 ng-model = "answer[question['index']][$index]">{{select[2][$index]}}</input></div>
+						<div ng-repeat = 'j in select[2]'><input type = "radio" name={{question['topic']}} value="" ng-click = "singleChoice(question['index'], $index)">{{select[2][$index]}}</input></div>
 					</div>
 				</div>
 			</div>
 
-            <input id = "in" type="text" placeholder="学号"/>
-            <br>
-            <button class = 'button' ng-click = 'send()'><h1>提交答案</h1></button>
+            <input id = "studentNumber" type="text" placeholder="学号"/>
+			<input id = "studentName" type="text" placeholder="姓名"/>
+            <button class = 'button' ng-click = 'send()'>提交答案</button>
         </div>
     </div>
     </body>

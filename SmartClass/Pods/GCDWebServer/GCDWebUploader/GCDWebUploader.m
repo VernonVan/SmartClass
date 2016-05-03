@@ -72,11 +72,14 @@
     
     [self addHandlerForMethod:@"POST" path:@"/templates/post_answer" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
         GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
-        NSString * string = [[NSString alloc] initWithData: dataRequest.data encoding: NSUTF8StringEncoding];
-        NSLog(@"---------------------%@------------------------", string);
+        NSDictionary* resultDict = [NSJSONSerialization JSONObjectWithData: dataRequest.data
+                                                             options: kNilOptions
+                                                               error: nil];
+//        NSLog(@"--------------------%@-----------------------", resultDict);
+        [[NSNotificationCenter defaultCenter] postNotificationName: @"ReceiveExamResultNotification" object: nil userInfo: resultDict];
         return [GCDWebServerResponse responseWithStatusCode: 200];
     }];
-    
+
 }
 
 - (NSURL *) documentsDirectory

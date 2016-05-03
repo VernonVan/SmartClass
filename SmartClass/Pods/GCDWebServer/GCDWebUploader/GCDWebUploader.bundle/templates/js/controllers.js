@@ -5,7 +5,6 @@ angular.module('starter.controllers',[])
 	$scope.qusetions = [];
 	$scope.select = [ ['A','B','C','D'], [], ['T','F'] ];
 	$scope.answer = [];
-	$scope.concreteAnswer = [];
 	
     // 从test.txt中读取试卷
 	$http.get('test.txt?callback=JSON_CALLBACK')
@@ -34,44 +33,32 @@ angular.module('starter.controllers',[])
 			}
 		});
 
-	$scope.show = function(pindex, index, type){
-		// 单选或者判断
-		if(type == 0 || type == 2){
-		    if($scope.concreteAnswer[pindex] == $scope.select[type][index]){
-                $scope.concreteAnswer[pindex] = "";
-                return;
-            }
-            $scope.concreteAnswer[pindex] = $scope.select[type][index];
-            for(var i = 0; i < 4; i++){
-                if(i != index){
-                    if($scope.answer[pindex][i]) {
-						$scope.answer[pindex][i] = false;
-					}
-                }
-            }
-			// 多选
-		} else if(type == 1) {
-            if (!$scope.concreteAnswer[pindex]) {
-                $scope.concreteAnswer[pindex] = [];
-            }
-			$scope.concreteAnswer[pindex][index] = !$scope.concreteAnswer[pindex][index];
-        }
+	// 单选的逻辑
+	$scope.singleChoice = function(questionIndex, choiceIndex){
+		$scope.answer[questionIndex] = [];
+		$scope.answer[questionIndex][choiceIndex] = true;
 	}
-
+	
 
     // post学生的考试结果
 	$scope.send = function(){
 
-		if($scope.concreteAnswer.length < $scope.data.exam.length){
-			alert('试卷没有完成');
-			return;
-		}
+		$scope.student_number = document.getElementById("studentNumber").value;
+		$scope.student_name = document.getElementById("studentName").value;
+		var date = new Date().toJSON().slice(0,10);
 
-		$scope.student_number = document.getElementById("in").value;
 		if(!$scope.student_number){
 			alert("请先输入学号");
 			return;
 		}
+
+		if(!$scope.student_name){
+			alert("请先输入姓名");
+			return;
+		}
+
+		console.log("answer");
+		console.log($scope.answer);
 
 		// 计算得分
 		var score  = 0;
@@ -109,10 +96,15 @@ angular.module('starter.controllers',[])
 			}
 		}
 
+		console.log("date:%s", date);
+		console.log("score:%d", score);
+
 		$scope.submit = {
 			"paper_title" : $scope.data.title,
+			"student_number" : $scope.student_number,
+			"student_name" : $scope.student_name,
 			"score" : score,
-			"student_number" : $scope.student_number
+			"date" : date
 		};
 
 		$http.post('post_answer',$scope.submit)

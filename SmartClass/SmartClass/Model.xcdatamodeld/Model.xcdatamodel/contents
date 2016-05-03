@@ -7,7 +7,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalScore" optional="YES" transient="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="paper" inverseEntity="Question" syncable="YES"/>
-        <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Result" inverseName="paper" inverseEntity="Result" syncable="YES"/>
+        <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Result" inverseName="paper" inverseEntity="Result" syncable="YES"/>
     </entity>
     <entity name="Question" representedClassName=".Question" syncable="YES">
         <attribute name="answers" optional="YES" attributeType="String" syncable="YES"/>

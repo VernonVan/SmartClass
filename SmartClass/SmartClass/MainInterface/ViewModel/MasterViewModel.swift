@@ -82,7 +82,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         
     }
     
-    // MARK: - TableView datasource
+    // MARK: - TableView
     
     func numberOfSections() -> Int
     {
@@ -140,12 +140,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         return fileList.count
     }
     
-    func paperAtIndexPath(indexPath: NSIndexPath) -> Paper
-    {
-        return fetchedResultsController.objectAtIndexPath(indexPath) as! Paper
-    }
-    
-    // MARK: Paper cell
+    // MARK: Paper
     
     func titleForPaperAtIndexPath(indexPath: NSIndexPath) -> String?
     {
@@ -184,7 +179,47 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         deleteFileAtURL(paperURL)
     }
     
-    // MARK: - PPT cell
+    func paperAtIndexPath(indexPath: NSIndexPath) -> Paper
+    {
+        return fetchedResultsController.objectAtIndexPath(indexPath) as! Paper
+    }
+    
+    func indexPathForPaperWithName(paperName: String) -> NSIndexPath?
+    {
+        var indexPath: NSIndexPath? = nil
+        let paperNumber = numberOfPapers()
+        
+        for row in 0..<paperNumber {
+            indexPath = NSIndexPath(forRow: row, inSection: 0)
+            if titleForPaperAtIndexPath(indexPath!) == paperName {
+                return indexPath
+            }
+        }
+        
+        return nil
+    }
+    
+    func addExamResultAtIndexPath(indexPath: NSIndexPath, resultDict: NSDictionary)
+    {
+        let paper = paperAtIndexPath(indexPath)
+        
+        let result = NSEntityDescription.insertNewObjectForEntityForName("Result", inManagedObjectContext: paper.managedObjectContext!) as! Result
+        result.name = resultDict["student_name"] as? String
+        result.number = resultDict["student_number"] as? String
+        result.setValue(resultDict["score"], forKey: "score")
+        
+        let mutableResults = paper.results?.mutableCopy() as? NSMutableOrderedSet
+        mutableResults?.addObject(result)
+        paper.results = mutableResults?.copy() as? NSOrderedSet
+        
+        do {
+            try paper.managedObjectContext?.save()
+        }  catch let error as NSError {
+            print("addExamResultWithData error! \(error.userInfo)")
+        }
+    }
+    
+    // MARK: - PPT
     
     func titleForPPTAtIndexPath(indexPath: NSIndexPath) -> String
     {
@@ -220,7 +255,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         deleteFileAtURL(pptURL)
     }
     
-    // MARK: Resource cell
+    // MARK: Resource
     
     func titleForResourceAtIndexPath(indexPath: NSIndexPath) -> String
     {
@@ -256,7 +291,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         deleteFileAtURL(resourceURL)
     }
     
-    // MARK: SignUpSheet cell
+    // MARK: SignUpSheet
     
     func titleForSignUpSheetAtIndexPath(indexPath: NSIndexPath) -> String
     {
@@ -270,6 +305,35 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         signUpSheetsName.removeAtIndex(indexPath.row)
         let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName)
         deleteFileAtURL(signUpSheetURL)
+    }
+    
+    func addSignUpRecordWithData(recordDict: NSDictionary)
+    {
+        if let signUpSheetName = recordDict["date"] as? String {
+            let studentName = recordDict["student_name"] as? String
+            let studentNumber = recordDict["student_number"] as? String
+            let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
+            let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName+".plist")
+            do {
+                if ConvenientFileManager.fileManager.fileExistsAtPath(signUpSheetURL.path!) == false {
+                    try ConvenientFileManager.fileManager.copyItemAtURL(studentListURL, toURL: signUpSheetURL)
+                }
+            } catch let error as NSError {
+                print("addSignUpRecordWithData error: \(error.userInfo)")
+            }
+            
+            
+            let studentArray = NSArray(contentsOfURL: signUpSheetURL)
+            studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
+                let dict = studentArray![idx] as! NSMutableDictionary
+                let name = dict["name"] as! String
+                let number = dict["number"] as! String
+                if name == studentName && number == studentNumber {
+                    dict["signed"] = true
+                }
+            })
+            studentArray?.writeToURL(signUpSheetURL, atomically: true)
+        }
     }
     
     // MARK: - Segue

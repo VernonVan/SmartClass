@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         
         setInitialViewController()
         
+        print(ConvenientFileManager.uploadURL.path)
+        
         ConvenientFileManager.createUploadDirectory()
 
         let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)

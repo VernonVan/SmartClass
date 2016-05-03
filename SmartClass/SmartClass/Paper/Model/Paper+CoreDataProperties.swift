@@ -19,7 +19,7 @@ extension Paper
     @NSManaged var isIssued: Bool
     @NSManaged var name: String?
     @NSManaged var questions: NSOrderedSet?
-    @NSManaged var results: NSSet?
+    @NSManaged var results: NSOrderedSet?
 
     
     var isCompleted: Bool {

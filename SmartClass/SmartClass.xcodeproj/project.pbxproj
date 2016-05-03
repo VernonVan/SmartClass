@@ -18,14 +18,16 @@
 		0739FE3B1CC505010035DE88 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE371CC505010035DE88 /* QuestionView.swift */; };
 		0774FD411CCF9017002A29A8 /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0774FD401CCF9017002A29A8 /* StudentViewController.swift */; };
 		077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */; };
+		0792C5F11CD954E7006DF60D /* SignUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C5F01CD954E7006DF60D /* SignUpSheetViewController.swift */; };
+		07A152D51CD7079C004B7511 /* ExamResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A152D41CD7079C004B7511 /* ExamResultViewController.swift */; };
+		07A152DC1CD70B3C004B7511 /* Result+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A152DA1CD70B3C004B7511 /* Result+CoreDataProperties.swift */; };
+		07A152DD1CD70B3C004B7511 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A152DB1CD70B3C004B7511 /* Result.swift */; };
 		07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */; };
 		07E306F41CCF6977002424A0 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F31CCF6977002424A0 /* Student.swift */; };
 		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
 		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
-		AD117D991CCF171C00DBBC2C /* Result+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D951CCF171C00DBBC2C /* Result+CoreDataProperties.swift */; };
-		AD117D9A1CCF171C00DBBC2C /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D961CCF171C00DBBC2C /* Result.swift */; };
 		AD117D9B1CCF171C00DBBC2C /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D971CCF171C00DBBC2C /* Paper+CoreDataProperties.swift */; };
 		AD117D9C1CCF171C00DBBC2C /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD117D981CCF171C00DBBC2C /* Paper.swift */; };
 		AD17F9B51CCD9E19007AA73B /* CanvasPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD17F9B41CCD9E19007AA73B /* CanvasPopoverViewController.swift */; };
@@ -79,13 +81,15 @@
 		0739FE371CC505010035DE88 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionView.swift; path = SmartClass/Paper/View/QuestionView.swift; sourceTree = SOURCE_ROOT; };
 		0774FD401CCF9017002A29A8 /* StudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentViewController.swift; path = SignUpSheet/View/StudentViewController.swift; sourceTree = "<group>"; };
 		077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvenientFileManager.swift; path = Util/ConvenientFileManager.swift; sourceTree = "<group>"; };
+		0792C5F01CD954E7006DF60D /* SignUpSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetViewController.swift; path = SignUpSheet/View/SignUpSheetViewController.swift; sourceTree = "<group>"; };
+		07A152D41CD7079C004B7511 /* ExamResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamResultViewController.swift; path = SmartClass/Paper/View/ExamResultViewController.swift; sourceTree = SOURCE_ROOT; };
+		07A152DA1CD70B3C004B7511 /* Result+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Result+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Result+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		07A152DB1CD70B3C004B7511 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = SmartClass/Paper/Model/Result.swift; sourceTree = SOURCE_ROOT; };
 		07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewModel.swift; path = SignUpSheet/ViewModel/StudentListViewModel.swift; sourceTree = "<group>"; };
 		07E306F31CCF6977002424A0 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Student.swift; path = SignUpSheet/Model/Student.swift; sourceTree = "<group>"; };
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
-		AD117D951CCF171C00DBBC2C /* Result+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Result+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Result+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		AD117D961CCF171C00DBBC2C /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = SmartClass/Paper/Model/Result.swift; sourceTree = SOURCE_ROOT; };
 		AD117D971CCF171C00DBBC2C /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Paper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		AD117D981CCF171C00DBBC2C /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = SmartClass/Paper/Model/Paper.swift; sourceTree = SOURCE_ROOT; };
 		AD17F9B41CCD9E19007AA73B /* CanvasPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasPopoverViewController.swift; path = PPT/View/CanvasPopoverViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +397,7 @@
 			children = (
 				ADA520951CC7796400C8822A /* StudentListViewController.swift */,
 				0774FD401CCF9017002A29A8 /* StudentViewController.swift */,
+				0792C5F01CD954E7006DF60D /* SignUpSheetViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -404,6 +409,7 @@
 				0739FE371CC505010035DE88 /* QuestionView.swift */,
 				0739FE351CC505010035DE88 /* PaperViewController.swift */,
 				0739FE361CC505010035DE88 /* QuestionListViewController.swift */,
+				07A152D41CD7079C004B7511 /* ExamResultViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -425,8 +431,8 @@
 				AD117D981CCF171C00DBBC2C /* Paper.swift */,
 				AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */,
 				AD3B199E1CC7197000B4E700 /* Question.swift */,
-				AD117D951CCF171C00DBBC2C /* Result+CoreDataProperties.swift */,
-				AD117D961CCF171C00DBBC2C /* Result.swift */,
+				07A152DA1CD70B3C004B7511 /* Result+CoreDataProperties.swift */,
+				07A152DB1CD70B3C004B7511 /* Result.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -578,12 +584,11 @@
 				0739FE381CC505010035DE88 /* PaperInformationViewController.swift in Sources */,
 				0739FE141CC504780035DE88 /* MasterViewController.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
-				AD117D9A1CCF171C00DBBC2C /* Result.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
-				AD117D991CCF171C00DBBC2C /* Result+CoreDataProperties.swift in Sources */,
 				AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */,
 				ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */,
 				AD117D9C1CCF171C00DBBC2C /* Paper.swift in Sources */,
+				07A152DD1CD70B3C004B7511 /* Result.swift in Sources */,
 				AD117D9B1CCF171C00DBBC2C /* Paper+CoreDataProperties.swift in Sources */,
 				07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */,
 				0774FD411CCF9017002A29A8 /* StudentViewController.swift in Sources */,
@@ -593,8 +598,11 @@
 				0739FE321CC504F50035DE88 /* PaperViewModel.swift in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
 				0739FE331CC504F50035DE88 /* QuestionListViewModel.swift in Sources */,
+				0792C5F11CD954E7006DF60D /* SignUpSheetViewController.swift in Sources */,
+				07A152D51CD7079C004B7511 /* ExamResultViewController.swift in Sources */,
 				AD3B19981CC70E3D00B4E700 /* Model.xcdatamodeld in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
+				07A152DC1CD70B3C004B7511 /* Result+CoreDataProperties.swift in Sources */,
 				0739FE161CC504820035DE88 /* MasterViewModel.swift in Sources */,
 				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
 				AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */,

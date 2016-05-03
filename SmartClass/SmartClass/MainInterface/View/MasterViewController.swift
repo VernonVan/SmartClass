@@ -15,16 +15,16 @@ private enum MasterViewControllerSection: Int {
 
 class MasterViewController: UITableViewController, DZNEmptyDataSetSource
 {
-    // MARK: - constant
     private let reuseBeforeExamCellIdentifier = "beforeCell"
     private let reuseAfterExamCellIdentifier = "afterCell"
     private let pptCellIdentifier = "pptCell"
     private let undefineCellIdentifier = "resourceCell"
     private let signUpCellIdentifier = "signUpCell"
-    
-    // MARK: - variable
+
     var viewModel: MasterViewModel?
 
+    // MARK:  Lifecycle
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -35,6 +35,13 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
             self.tableView.reloadData()
         })
         
+        initSpinner()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(receiveExamResultHandler), name: "ReceiveExamResultNotification", object: nil)
+    }
+    
+    func initSpinner()
+    {
         refreshControl = UIRefreshControl()
         refreshControl!.backgroundColor = UIColor.whiteColor()
         refreshControl!.tintColor = ThemeGreenColor
@@ -44,7 +51,6 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
     func reloadData()
     {
         tableView.reloadData()
-
         refreshControl?.endRefreshing()
     }
     
@@ -54,7 +60,12 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         self.setEditing(false, animated: false)
     }
     
-    // MARK: - Table view data source
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ReceiveExamResultNotification", object: nil)
+    }
+    
+    // MARK: - TableView
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
@@ -145,7 +156,6 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
             }
             
             tableView.reloadData()
-           // tableView.reloadSections(NSIndexSet(index: indexPath.section) ,withRowAnimation: .Fade)
         }
     }
     
@@ -162,40 +172,64 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         }
         return nil
     }
-    
-    // MARK: - table view delegate 
 
+    // MARK: - Handler
+    
+    func receiveExamResultHandler(notification: NSNotification)
+    {
+        print("-----------------------Receive exam result: \(notification.userInfo)----------------------")
+        if let resultDict = notification.userInfo {
+            let paperName = resultDict["paper_title"] as! String
+            let indexPath = viewModel!.indexPathForPaperWithName(paperName)
+            viewModel?.addExamResultAtIndexPath(indexPath!, resultDict: resultDict)
+            viewModel?.addSignUpRecordWithData(resultDict)
+        }
+    }
+    
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         super.prepareForSegue(segue, sender: sender)
+        
+        let indexPath = tableView.indexPathForSelectedRow!
         if segue.identifier == "createExam" {
             if let desVC = segue.destinationViewController as? PaperInformationViewController {
                 desVC.viewModel = viewModel?.viewModelForNewPaper()
             }
         } else if segue.identifier == "editExam" {
             if let examViewController = segue.destinationViewController as? PaperInformationViewController {
-                let indexPath = tableView.indexPathForSelectedRow!
                 examViewController.viewModel = viewModel?.viewModelForExistPaper(indexPath)
             }
-        } else if segue.identifier == "undefineResource" {
+        } else if segue.identifier == "showExamResult" {
+            if let desVC = segue.destinationViewController as? ExamResultViewController {
+                desVC.paper = viewModel?.paperAtIndexPath(indexPath)
+            }
+        }  else if segue.identifier == "undefineResource" {
             if let desVC = segue.destinationViewController as? UndefineResourceViewController {
-                let indexPath = tableView.indexPathForSelectedRow!
                 desVC.resourceURL = viewModel?.resourceURLAtIndexPath(indexPath)
             }
         } else if segue.identifier == "displayPPT" {
             if let desVC = segue.destinationViewController as? PPTViewController {
-                let indexPath = tableView.indexPathForSelectedRow!
                 desVC.pptURL = viewModel?.pptURLAtIndexPath(indexPath)
             }
         } else if segue.identifier == "showStudentList" {
             if let desVC = segue.destinationViewController as? StudentListViewController {
                 desVC.viewModel = viewModel?.viewModelForStudentList()
             }
+        } else if segue.identifier == "signUpSheet" {
+            if let desVC = segue.destinationViewController as? SignUpSheetViewController {
+                let signUpSheetName = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+                let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName!)
+                desVC.fileURL = signUpSheetURL
+            }
         }
     }
-  
-    // MARK: - DZNEmptyDataSet data source
+ 
+}
+
+// MARK: - DZNEmptyDataSet
+private extension MasterViewController
+{
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage!
     {
         return UIImage(named: "place_logo")
@@ -213,9 +247,8 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
     {
         let text = NSLocalizedString( "🏃🏻点击右上角 + 开始创建试卷", comment: "" )
         let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(17.0) ,
-            NSForegroundColorAttributeName : UIColor.lightGrayColor()]
+                          NSForegroundColorAttributeName : UIColor.lightGrayColor()]
         return NSAttributedString(string: text , attributes: attributes)
     }
-    
 }
 

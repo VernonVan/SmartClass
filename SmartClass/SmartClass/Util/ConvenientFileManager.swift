@@ -15,7 +15,7 @@ class ConvenientFileManager: NSObject
     static let resourceURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("Resource")
     
     static let paperURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Paper")
-    static let signUpSheetURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("SignUpSheet")
+    static let signUpSheetURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("SignUpSheet")
     
     static func documentURL() -> NSURL
     {
@@ -55,6 +55,7 @@ class ConvenientFileManager: NSObject
     {
         do {
             try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.paperURL, withIntermediateDirectories: true, attributes: nil)
+            try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.signUpSheetURL, withIntermediateDirectories: true, attributes: nil)
             try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
             try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
         } catch let error as NSError {
