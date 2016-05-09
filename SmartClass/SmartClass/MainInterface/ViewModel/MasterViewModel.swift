@@ -14,6 +14,11 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
 {
     let model: NSManagedObjectContext
     let updatedContentSignal = RACSubject()
+    let fileManager = NSFileManager.defaultManager()
+    
+    var pptNames = [String]()
+    var resourceNames = [String]()
+    var signUpSheetNames = [String]()
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest()
@@ -35,43 +40,13 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         
         return fetchedResultsController
     }()
-    
-    let fileManager = NSFileManager.defaultManager()
-    
-    lazy var pptsName: [String] = {
-        var ppts = [String]()
-        do {
-            ppts = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!)
-        } catch let error as NSError {
-            print("lazy init ppts error! \(error.userInfo)")
-        }
-        return ppts
-    }()
-    
-    lazy var resourcesName: [String] = {
-        var resources = [String]()
-        do {
-            resources = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.resourceURL.path!)
-        } catch let error as NSError {
-            print("lazy init resources error! \(error.userInfo)")
-        }
-        return resources
-    }()
-    
-    lazy var signUpSheetsName: [String] = {
-        var signUpSheets = [String]()
-        do {
-            signUpSheets = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.signUpSheetURL.path!)
-        } catch let error as NSError {
-            print("lazy init signUpSheets error! \(error.userInfo)")
-        }
-        return signUpSheets
-    }()
-    
+
     init(model: NSManagedObjectContext)
     {
         self.model = model
         super.init()
+        
+        reloadData()
         
         didBecomeActiveSignal.subscribeNext { [unowned self] x in
             do {
@@ -79,69 +54,92 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
             } catch {
             }
         }
-        
     }
     
     // MARK: - TableView
     
     func numberOfSections() -> Int
     {
-        var count = 0
-        if let _ = fetchedResultsController.sections?.count {
-            count += 1
-        }
-        if ConvenientFileManager.hasFilesAtURL(ConvenientFileManager.pptURL) {
-            count += 1
-        }
-        if ConvenientFileManager.hasFilesAtURL(ConvenientFileManager.resourceURL) {
-            count += 1
-        }
-        if ConvenientFileManager.hasFilesAtURL(ConvenientFileManager.signUpSheetURL) {
-            count += 1
-        }
-        return count
+        return 4
     }
     
-    func numberOfPapers() -> Int
+    func numberOfRowsInSection(section: Int) -> Int
     {
-        return fetchedResultsController.sections![0].numberOfObjects
+        let section = MasterViewControllerSection(rawValue: section)!
+        switch section
+        {
+        case .PaperSection:
+            return numberOfPaper()
+        case .PPTSection:
+            return numberOfPPT()
+        case .ResourceSection:
+            return numberOfResource()
+        case .SignSection:
+            return numberOfSignUpSheet()
+        }
     }
     
-    func numberOfPPTs() -> Int
+    func titleForHeaderInSection(section: Int) -> String?
     {
-        var fileList = [String]()
+        let section = MasterViewControllerSection(rawValue: section)!
+        switch section
+        {
+        case .PaperSection:
+            return paperHeaderTitle()
+        case .PPTSection:
+            return pptHeaderTitle()
+        case .ResourceSection:
+            return resourceHeaderTitle()
+        case .SignSection:
+            return signUpSheetHeaderTitle()
+        }
+    }
+    
+    func reloadData()
+    {
         do {
-            fileList = try fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!)
+            pptNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!)
+            resourceNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.resourceURL.path!)
+            signUpSheetNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.signUpSheetURL.path!)
         } catch let error as NSError {
-            print("numberOfPPTs error! \(error.userInfo)")
+            print("MasterViewModel reloadData error! \(error.userInfo)")
         }
-        return fileList.count
+        
     }
-    
-    func numberOfResources() -> Int
+
+    // MARK: - Segue
+    func viewModelForNewPaper() -> PaperInformationViewModel
     {
-        var fileList = [String]()
-        do {
-            fileList = try fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.resourceURL.path!)
-        } catch let error as NSError {
-            print("numberOfResources error! \(error.userInfo)")
-        }
-        return fileList.count
+        let paper = NSEntityDescription.insertNewObjectForEntityForName("Paper", inManagedObjectContext: model) as! Paper
+        let viewModel = PaperInformationViewModel(paper: paper)
+        viewModel.isCreate = true
+        return viewModel
     }
     
-    func numberOfSignUpSheet() -> Int
+    func viewModelForExistPaper(indexPath: NSIndexPath) -> PaperInformationViewModel
     {
-        var fileList = [String]()
-        do {
-            fileList = try fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.signUpSheetURL.path!)
-        } catch let error as NSError {
-            print("hasFilesAtPath error! \(error.userInfo)")
-        }
-        return fileList.count
+        let paper = paperAtIndexPath(indexPath)
+        let viewModel = PaperInformationViewModel(paper: paper)
+        viewModel.isCreate = false
+        return viewModel
     }
     
-    // MARK: Paper
+    func viewModelForStudentList() -> StudentListViewModel
+    {
+        return StudentListViewModel()
+    }
     
+    func controllerDidChangeContent(controller: NSFetchedResultsController)
+    {
+        updatedContentSignal.sendNext(nil)
+    }
+
+}
+
+// MARK: Paper
+extension MasterViewModel
+{
+ 
     func titleForPaperAtIndexPath(indexPath: NSIndexPath) -> String?
     {
         let paper = paperAtIndexPath(indexPath)
@@ -153,7 +151,13 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         let paper = paperAtIndexPath(indexPath)
         return paper.blurb
     }
-
+    
+    func paperHeaderTitle() -> String?
+    {
+        let number = numberOfPaper()
+        return number != 0 ? NSLocalizedString("试卷", comment: "") : nil
+    }
+    
     func isIssuedAtIndexPath(indexPath: NSIndexPath) -> Bool
     {
         let paper = paperAtIndexPath(indexPath)
@@ -187,7 +191,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
     func indexPathForPaperWithName(paperName: String) -> NSIndexPath?
     {
         var indexPath: NSIndexPath? = nil
-        let paperNumber = numberOfPapers()
+        let paperNumber = numberOfPaper()
         
         for row in 0..<paperNumber {
             indexPath = NSIndexPath(forRow: row, inSection: 0)
@@ -195,35 +199,43 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
                 return indexPath
             }
         }
-        
         return nil
+    }
+    
+    func numberOfPaper() -> Int
+    {
+        return fetchedResultsController.sections![0].numberOfObjects
     }
     
     func addExamResultAtIndexPath(indexPath: NSIndexPath, resultDict: NSDictionary)
     {
-        let paper = paperAtIndexPath(indexPath)
-        
-        let result = NSEntityDescription.insertNewObjectForEntityForName("Result", inManagedObjectContext: paper.managedObjectContext!) as! Result
-        result.name = resultDict["student_name"] as? String
-        result.number = resultDict["student_number"] as? String
-        result.setValue(resultDict["score"], forKey: "score")
-        
-        let mutableResults = paper.results?.mutableCopy() as? NSMutableOrderedSet
-        mutableResults?.addObject(result)
-        paper.results = mutableResults?.copy() as? NSOrderedSet
-        
-        do {
-            try paper.managedObjectContext?.save()
-        }  catch let error as NSError {
-            print("addExamResultWithData error! \(error.userInfo)")
+        if let paperName = resultDict["paper_title"] as? String {
+            let studentName = resultDict["student_name"] as? String
+            let studentNumber = resultDict["student_number"] as? String
+            let paperURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paperName+"_result.plist")
+            
+            let studentArray = NSArray(contentsOfURL: paperURL)
+            studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
+                let dict = studentArray![idx] as! NSMutableDictionary
+                let name = dict["name"] as! String
+                let number = dict["number"] as! String
+                if name == studentName && number == studentNumber {
+                    dict["score"] = resultDict["score"]
+                }
+            })
+            
+            studentArray?.writeToURL(paperURL, atomically: true)
         }
     }
     
-    // MARK: - PPT
-    
+}
+
+// MARK: - PPT
+extension MasterViewModel
+{
     func titleForPPTAtIndexPath(indexPath: NSIndexPath) -> String
     {
-        let title = pptsName[indexPath.row]
+        let title = pptNames[indexPath.row]
         return title
     }
     
@@ -231,7 +243,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
     {
         var subtitle: String = ""
         do {
-            let attrs = try fileManager.attributesOfItemAtPath(ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptsName[indexPath.row]).path!)
+            let attrs = try fileManager.attributesOfItemAtPath(ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptNames[indexPath.row]).path!)
             let creationDate = attrs["NSFileCreationDate"] as! NSDate
             subtitle = formatDate(creationDate)
         } catch let error as NSError {
@@ -241,25 +253,39 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         return subtitle
     }
     
+    func pptHeaderTitle() -> String?
+    {
+        let number = numberOfPPT()
+        return number != 0 ? NSLocalizedString("幻灯片", comment: "") : nil
+    }
+    
+    func numberOfPPT() -> Int
+    {
+        return pptNames.count
+    }
+    
     func pptURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
     {
-        let pptName = pptsName[indexPath.row]
+        let pptName = pptNames[indexPath.row]
         return ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
     }
     
     func deletePPTAtIndexPath(indexPath: NSIndexPath)
     {
-        let pptName = pptsName[indexPath.row]
-        pptsName.removeAtIndex(indexPath.row)
+        let pptName = pptNames[indexPath.row]
+        pptNames.removeAtIndex(indexPath.row)
         let pptURL = ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
         deleteFileAtURL(pptURL)
     }
     
-    // MARK: Resource
-    
+}
+
+// MARK: Resource
+extension MasterViewModel
+{
     func titleForResourceAtIndexPath(indexPath: NSIndexPath) -> String
     {
-        let title = resourcesName[indexPath.row]
+        let title = resourceNames[indexPath.row]
         return title
     }
     
@@ -267,7 +293,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
     {
         var subtitle: String = ""
         do {
-            let attrs = try fileManager.attributesOfItemAtPath(ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourcesName[indexPath.row]).path!)
+            let attrs = try fileManager.attributesOfItemAtPath(ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceNames[indexPath.row]).path!)
             let creationDate = attrs["NSFileCreationDate"] as! NSDate
             subtitle = formatDate(creationDate)
         } catch let error as NSError {
@@ -276,35 +302,60 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         
         return subtitle
     }
-
+    
+    func resourceHeaderTitle() -> String?
+    {
+        let number = numberOfResource()
+        return number != 0 ? NSLocalizedString("资源", comment: "") : nil
+    }
+    
+    func numberOfResource() -> Int
+    {
+        return resourceNames.count
+    }
+    
     func resourceURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
     {
-        let resourceName = resourcesName[indexPath.row]
+        let resourceName = resourceNames[indexPath.row]
         return ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
     }
     
     func deleteResourceAtIndexPath(indexPath: NSIndexPath)
     {
-        let resourceName = resourcesName[indexPath.row]
-        resourcesName.removeAtIndex(indexPath.row)
+        let resourceName = resourceNames[indexPath.row]
+        resourceNames.removeAtIndex(indexPath.row)
         let resourceURL = ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
         deleteFileAtURL(resourceURL)
     }
     
-    // MARK: SignUpSheet
-    
+}
+
+// MARK: SignUpSheet
+extension MasterViewModel
+{
     func titleForSignUpSheetAtIndexPath(indexPath: NSIndexPath) -> String
     {
-        let title = signUpSheetsName[indexPath.row]
+        let title = signUpSheetNames[indexPath.row]
         return title
+    }
+    
+    func signUpSheetHeaderTitle() -> String?
+    {
+        let number = numberOfSignUpSheet()
+        return number != 0 ? NSLocalizedString("签到表", comment: "") : nil
+    }
+    
+    func numberOfSignUpSheet() -> Int
+    {
+        return signUpSheetNames.count
     }
     
     func deleteSignUpSheetAtIndexPath(indexPath: NSIndexPath)
     {
-        let signUpSheetName = signUpSheetsName[indexPath.row]
-        signUpSheetsName.removeAtIndex(indexPath.row)
-        let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName)
-        deleteFileAtURL(signUpSheetURL)
+        let name = signUpSheetNames[indexPath.row]
+        signUpSheetNames.removeAtIndex(indexPath.row)
+        let url = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(name)
+        deleteFileAtURL(url)
     }
     
     func addSignUpRecordWithData(recordDict: NSDictionary)
@@ -315,13 +366,13 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
             let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
             let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName+".plist")
             do {
-                if ConvenientFileManager.fileManager.fileExistsAtPath(signUpSheetURL.path!) == false {
-                    try ConvenientFileManager.fileManager.copyItemAtURL(studentListURL, toURL: signUpSheetURL)
+                if fileManager.fileExistsAtPath(signUpSheetURL.path!) == false {
+                    try fileManager.copyItemAtURL(studentListURL, toURL: signUpSheetURL)
+                    signUpSheetNames.append(signUpSheetURL.lastPathComponent!)
                 }
             } catch let error as NSError {
                 print("addSignUpRecordWithData error: \(error.userInfo)")
             }
-            
             
             let studentArray = NSArray(contentsOfURL: signUpSheetURL)
             studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
@@ -336,35 +387,11 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         }
     }
     
-    // MARK: - Segue
-    func viewModelForNewPaper() -> PaperInformationViewModel
-    {
-        let paper = NSEntityDescription.insertNewObjectForEntityForName("Paper", inManagedObjectContext: model) as! Paper
-        let viewModel = PaperInformationViewModel(paper: paper)
-        viewModel.isCreate = true
-        return viewModel
-    }
-    
-    func viewModelForExistPaper(indexPath: NSIndexPath) -> PaperInformationViewModel
-    {
-        let paper = paperAtIndexPath(indexPath)
-        let viewModel = PaperInformationViewModel(paper: paper)
-        viewModel.isCreate = false
-        return viewModel
-    }
-    
-    func viewModelForStudentList() -> StudentListViewModel
-    {
-        return StudentListViewModel()
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController)
-    {
-        updatedContentSignal.sendNext(nil)
-    }
-    
-    // MARK: - Util
-    
+}
+
+// MARK: private
+private extension MasterViewModel
+{
     func formatDate(date: NSDate) -> String
     {
         let formatter = NSDateFormatter()
@@ -381,5 +408,4 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         }
         
     }
-    
 }

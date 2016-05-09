@@ -9,8 +9,8 @@
 import UIKit
 import DZNEmptyDataSet
 
-private enum MasterViewControllerSection: Int {
-    case PaperSection, pptSection, ResourceSection, SignSection
+enum MasterViewControllerSection: Int {
+    case PaperSection = 0, PPTSection = 1, ResourceSection = 2, SignSection = 3
 }
 
 class MasterViewController: UITableViewController, DZNEmptyDataSetSource
@@ -32,7 +32,7 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         tableView.emptyDataSetSource = self
         
         viewModel?.updatedContentSignal.subscribeNext({ [unowned self] (x) in
-            self.tableView.reloadData()
+            self.reloadData()
         })
         
         initSpinner()
@@ -50,6 +50,7 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
     
     func reloadData()
     {
+        viewModel?.reloadData()
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
@@ -58,6 +59,7 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
     {
         super.viewWillAppear(animated)
         self.setEditing(false, animated: false)
+        reloadData()
     }
     
     deinit
@@ -74,40 +76,32 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if section == 0 {
-            return viewModel!.numberOfPapers()
-        } else if section == 1 {
-            return viewModel!.numberOfPPTs()
-        } else if section == 2 {
-            return viewModel!.numberOfResources()
-        } else if section == 3 {
-            return viewModel!.numberOfSignUpSheet()
-        }
-        return 0
+        return viewModel!.numberOfRowsInSection(section)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        var reuseIdentifier: String = ""
-        if indexPath.section == 0 {
+        var cell: UITableViewCell
+        var reuseIdentifier: String
+        let section = MasterViewControllerSection(rawValue: indexPath.section)!
+        
+        switch section
+        {
+        case .PaperSection:
             reuseIdentifier = (viewModel?.isIssuedAtIndexPath(indexPath) == true) ? reuseAfterExamCellIdentifier : reuseBeforeExamCellIdentifier
-        } else if indexPath.section == 1 {
-                reuseIdentifier = pptCellIdentifier
-        } else if indexPath.section == 2{
-            reuseIdentifier = undefineCellIdentifier
-        } else if indexPath.section == 3 {
-            reuseIdentifier = signUpCellIdentifier
-        }
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
-        
-        if indexPath.section == 0 {
+            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
             configurePaperCell(cell, atIndexPath: indexPath)
-        }  else if indexPath.section == 1 {
+        case .PPTSection:
+            reuseIdentifier = pptCellIdentifier
+            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
             configurePPTCell(cell, atIndexPath: indexPath)
-        } else if indexPath.section == 2 {
+        case .ResourceSection:
+            reuseIdentifier = undefineCellIdentifier
+            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
             configureResourceCell(cell, atIndexPath: indexPath)
-        } else if indexPath.section == 3 {
+        case .SignSection:
+            reuseIdentifier = signUpCellIdentifier
+            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
             configureSignUpSheetCell(cell, atIndexPath: indexPath)
         }
         
@@ -155,22 +149,13 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
                 viewModel!.deleteSignUpSheetAtIndexPath(indexPath)
             }
             
-            tableView.reloadData()
+            reloadData()
         }
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        if section == 0 {
-            return NSLocalizedString("试卷", comment: "")
-        }  else if section == 1 {
-            return NSLocalizedString("PPT", comment: "")
-        } else if section == 2 {
-            return NSLocalizedString("资源", comment: "")
-        } else if section == 3 {
-            return NSLocalizedString("签到表", comment: "")
-        }
-        return nil
+        return viewModel?.titleForHeaderInSection(section)
     }
 
     // MARK: - Handler
@@ -180,9 +165,10 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         print("-----------------------Receive exam result: \(notification.userInfo)----------------------")
         if let resultDict = notification.userInfo {
             let paperName = resultDict["paper_title"] as! String
-            let indexPath = viewModel!.indexPathForPaperWithName(paperName)
-            viewModel?.addExamResultAtIndexPath(indexPath!, resultDict: resultDict)
-            viewModel?.addSignUpRecordWithData(resultDict)
+            if let indexPath = viewModel!.indexPathForPaperWithName(paperName) {
+                viewModel?.addExamResultAtIndexPath(indexPath, resultDict: resultDict)
+                viewModel?.addSignUpRecordWithData(resultDict)
+            }
         }
     }
     
@@ -191,26 +177,29 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
     {
         super.prepareForSegue(segue, sender: sender)
         
-        let indexPath = tableView.indexPathForSelectedRow!
+        let indexPath = tableView.indexPathForSelectedRow
         if segue.identifier == "createExam" {
             if let desVC = segue.destinationViewController as? PaperInformationViewController {
                 desVC.viewModel = viewModel?.viewModelForNewPaper()
             }
         } else if segue.identifier == "editExam" {
             if let examViewController = segue.destinationViewController as? PaperInformationViewController {
-                examViewController.viewModel = viewModel?.viewModelForExistPaper(indexPath)
+                examViewController.viewModel = viewModel?.viewModelForExistPaper(indexPath!)
             }
         } else if segue.identifier == "showExamResult" {
             if let desVC = segue.destinationViewController as? ExamResultViewController {
-                desVC.paper = viewModel?.paperAtIndexPath(indexPath)
+                if let fileName = tableView.cellForRowAtIndexPath(indexPath!)?.textLabel?.text {
+                    let url = ConvenientFileManager.paperURL.URLByAppendingPathComponent(fileName+"_result.plist")
+                    desVC.fileURL = url
+                }
             }
         }  else if segue.identifier == "undefineResource" {
             if let desVC = segue.destinationViewController as? UndefineResourceViewController {
-                desVC.resourceURL = viewModel?.resourceURLAtIndexPath(indexPath)
+                desVC.resourceURL = viewModel?.resourceURLAtIndexPath(indexPath!)
             }
         } else if segue.identifier == "displayPPT" {
             if let desVC = segue.destinationViewController as? PPTViewController {
-                desVC.pptURL = viewModel?.pptURLAtIndexPath(indexPath)
+                desVC.pptURL = viewModel?.pptURLAtIndexPath(indexPath!)
             }
         } else if segue.identifier == "showStudentList" {
             if let desVC = segue.destinationViewController as? StudentListViewController {
@@ -218,7 +207,7 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
             }
         } else if segue.identifier == "signUpSheet" {
             if let desVC = segue.destinationViewController as? SignUpSheetViewController {
-                let signUpSheetName = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+                let signUpSheetName = tableView.cellForRowAtIndexPath(indexPath!)?.textLabel?.text
                 let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName!)
                 desVC.fileURL = signUpSheetURL
             }

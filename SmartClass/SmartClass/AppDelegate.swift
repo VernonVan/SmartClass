@@ -17,16 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        // Override point for customization after application launch.
-        
         IQKeyboardManager.sharedManager().enable = true
         
         setInitialViewController()
-        
-        print(ConvenientFileManager.uploadURL.path)
-        
+
         ConvenientFileManager.createUploadDirectory()
 
+        print(ConvenientFileManager.uploadURL.path)
+        
         let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)
         if webUploader.start() == true {
             print("Visit \(webUploader.serverURL)")

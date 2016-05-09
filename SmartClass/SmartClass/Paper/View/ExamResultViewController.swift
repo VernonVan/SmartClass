@@ -10,28 +10,43 @@ import UIKit
 
 class ExamResultViewController: UITableViewController
 {
-    var paper: Paper?
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    private var results: NSArray?
+    var fileURL: NSURL?
+    
+    override func viewDidLoad()
     {
-        return 1
+        super.viewDidLoad()
+        
+        results = NSArray(contentsOfURL: fileURL!)
     }
-
+    
+    // MARK: - TableView
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return paper!.results!.count
+        return results!.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseExamResultCell", forIndexPath: indexPath)
-
-        cell.textLabel?.text = (paper?.results!.objectAtIndex(indexPath.row) as! Result).name
-        cell.detailTextLabel?.text = "\((paper?.results!.objectAtIndex(indexPath.row) as! Result).score)"
+        
+        configureCellAtIndexPath(cell, atIndexPath: indexPath)
         
         return cell
+    }
+    
+    func configureCellAtIndexPath(cell: UITableViewCell, atIndexPath indexPath : NSIndexPath)
+    {
+        let dict = results![indexPath.row] as! NSDictionary
+        let name = dict["name"] as! String
+        cell.textLabel?.text = name
+        if let score = dict["score"] as? Int {
+            cell.detailTextLabel?.text = "\(score)"
+            cell.detailTextLabel?.textColor = score > 60 ? UIColor.blueColor() : UIColor.redColor()
+        } else {
+            cell.detailTextLabel?.text = NSLocalizedString("待考", comment: "")
+        }
     }
     
 }

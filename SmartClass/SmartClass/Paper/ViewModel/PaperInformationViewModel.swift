@@ -47,6 +47,7 @@ class PaperInformationViewModel: RVMViewModel
     {
         paper.isIssued = true
         generatePaperJSONFile()
+        createPaperResultFile()
     }
     
     func generatePaperJSONFile()
@@ -73,10 +74,6 @@ class PaperInformationViewModel: RVMViewModel
             questions.addObject(questionDict)
         }
         
-//        let sortDescriptor = NSSortDescriptor(key: "index", ascending: true)
-//        let sortDescriptors = NSArray(object: sortDescriptor)
-//        let sortedQuestions = questions.sortUsingDescriptors(sortDescriptors as! [NSSortDescriptor])
-        
         paperDict["questions"] = questions
         
         let outputStream = NSOutputStream(toFileAtPath: ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!).path!, append: false)
@@ -84,6 +81,20 @@ class PaperInformationViewModel: RVMViewModel
         outputStream?.open()
         NSJSONSerialization.writeJSONObject(paperDict, toStream: outputStream!, options: .PrettyPrinted, error: nil)
         outputStream?.close()
+    }
+    
+    func createPaperResultFile()
+    {
+        let fileManager = NSFileManager.defaultManager()
+        let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
+        let resultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!+"_result.plist")
+        do {
+            if fileManager.fileExistsAtPath(resultURL.path!) == false {
+                try fileManager.copyItemAtURL(studentListURL, toURL: resultURL)
+            }
+        } catch let error as NSError {
+            print("PaperInformationViewModel createPaperResultFile error: \(error.userInfo)")
+        }
     }
     
     // MARK: - Segue
