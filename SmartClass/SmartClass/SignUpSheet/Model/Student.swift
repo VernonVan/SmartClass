@@ -10,4 +10,6 @@ struct Student
 {
     var name: String?
     var number: String?
+    var college: String?
+    var school: String?
 }

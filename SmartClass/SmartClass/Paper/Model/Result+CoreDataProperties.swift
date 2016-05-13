@@ -12,7 +12,8 @@
 import Foundation
 import CoreData
 
-extension Result {
+extension Result
+{
 
     @NSManaged var name: String?
     @NSManaged var number: String?

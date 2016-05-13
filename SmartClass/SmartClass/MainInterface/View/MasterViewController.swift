@@ -37,7 +37,7 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
         
         initSpinner()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(receiveExamResultHandler), name: "ReceiveExamResultNotification", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(receiveExamResultHandler), name: "ReceiveExamResultNotification", object: nil)
     }
     
     func initSpinner()
@@ -192,10 +192,6 @@ class MasterViewController: UITableViewController, DZNEmptyDataSetSource
                     let url = ConvenientFileManager.paperURL.URLByAppendingPathComponent(fileName+"_result.plist")
                     desVC.fileURL = url
                 }
-            }
-        }  else if segue.identifier == "undefineResource" {
-            if let desVC = segue.destinationViewController as? UndefineResourceViewController {
-                desVC.resourceURL = viewModel?.resourceURLAtIndexPath(indexPath!)
             }
         } else if segue.identifier == "displayPPT" {
             if let desVC = segue.destinationViewController as? PPTViewController {

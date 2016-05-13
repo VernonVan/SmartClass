@@ -36,7 +36,7 @@ class PaperInformationViewController: UIViewController
     
     func initView()
     {
-        title = viewModel?.name?.length==0 ? NSLocalizedString("试卷信息", comment: "") : viewModel?.name
+        title = viewModel?.name?.length == 0 ? NSLocalizedString("试卷信息", comment: "") : viewModel?.name
         nameTextField.text = viewModel?.name
         blurbTextView.text = viewModel?.blurb
     
@@ -76,6 +76,7 @@ class PaperInformationViewController: UIViewController
     func dismissSelf()
     {
         viewModel?.save()
+    
         navigationController?.popViewControllerAnimated(true)
     }
     
@@ -85,7 +86,7 @@ class PaperInformationViewController: UIViewController
         let totalScore = viewModel?.totalScore()
         if isCompleted == true {
             if totalScore == 100 {
-                viewModel!.issuePaper()
+                viewModel?.issuePaper()
                 dismissSelf()
             } else {
                    view.makeToast(NSLocalizedString("试卷总分不是100分！", comment: ""), duration: 0.15, position: nil)

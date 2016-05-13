@@ -129,6 +129,7 @@ class MasterViewModel: RVMViewModel, NSFetchedResultsControllerDelegate
         return StudentListViewModel()
     }
     
+    // MARK: - NSFetchedResultsControllerDelegate
     func controllerDidChangeContent(controller: NSFetchedResultsController)
     {
         updatedContentSignal.sendNext(nil)
@@ -406,6 +407,6 @@ private extension MasterViewModel
         } catch let error as NSError {
             print("deleteFileAtURL error: \(error.userInfo)")
         }
-        
     }
+    
 }

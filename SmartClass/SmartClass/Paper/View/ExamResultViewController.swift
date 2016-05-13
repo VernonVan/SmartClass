@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class ExamResultViewController: UITableViewController
 {
     private var results: NSArray?
     var fileURL: NSURL?
     
+    // MARK: - Lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        tableView.emptyDataSetSource = self
         
         results = NSArray(contentsOfURL: fileURL!)
     }
@@ -24,7 +28,13 @@ class ExamResultViewController: UITableViewController
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return results!.count
+        let count = results?.count ?? 0
+        if count == 0 {
+            tableView.separatorStyle = .None
+        } else {
+            tableView.separatorStyle = .SingleLine
+        }
+        return count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -49,4 +59,23 @@ class ExamResultViewController: UITableViewController
         }
     }
     
+}
+
+extension ExamResultViewController: DZNEmptyDataSetSource
+{
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = NSLocalizedString( "还未添加学生", comment: "" )
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(22.0) ,
+                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
+        return NSAttributedString(string: text , attributes: attributes)
+    }
+    
+    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = NSLocalizedString( "这里应该是跳转到添加学生界面的按钮", comment: "" )
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(16.0) ,
+                          NSForegroundColorAttributeName : UIColor.lightGrayColor()]
+        return NSAttributedString(string: text , attributes: attributes)
+    }
 }

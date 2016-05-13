@@ -2,7 +2,7 @@
 //  Paper+CoreDataProperties.swift
 //  SmartClass
 //
-//  Created by Vernon on 16/4/26.
+//  Created by FSQ on 16/5/10.
 //  Copyright © 2016年 Vernon. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -21,7 +21,6 @@ extension Paper
     @NSManaged var questions: NSOrderedSet?
     @NSManaged var results: NSOrderedSet?
 
-    
     var isCompleted: Bool {
         var isCompleted = true
         questions?.enumerateObjectsUsingBlock({ (elem, idx, stop) in
@@ -43,4 +42,5 @@ extension Paper
         
         return totalScore
     }
+    
 }

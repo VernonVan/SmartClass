@@ -10,11 +10,11 @@ import UIKit
 
 protocol StudentInformationDelegate
 {
-    func addStudentName(name: String?, number: String?)
-    func modifyStudentName(name: String?, number: String?, atIndexPath indexPath: NSIndexPath)
+    func addStudentName(name: String?, number: String?, college: String?, school: String?)
+    func modifyStudentName(name: String?, number: String?, college: String?, school: String?, atIndexPath indexPath: NSIndexPath)
 }
 
-class StudentListViewController: UITableViewController, StudentInformationDelegate
+class StudentListViewController: UITableViewController
 {
     var viewModel: StudentListViewModel?
     
@@ -64,8 +64,11 @@ class StudentListViewController: UITableViewController, StudentInformationDelega
     
     func configureCellAtIndexPath(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath)
     {
-        cell.textLabel?.text = viewModel!.nameAtIndexPath(indexPath)
-        cell.detailTextLabel?.text = viewModel!.numberAtIndexPath(indexPath)
+        cell.textLabel?.text = "\(viewModel!.numberAtIndexPath(indexPath)!) - \(viewModel!.nameAtIndexPath(indexPath)!)"
+        let college = viewModel?.collegeAtIndexPath(indexPath) ?? ""
+        let school = viewModel?.schoolAtIndexPath(indexPath) ?? ""
+        let detailText = "\(college)(\(school))"
+        cell.detailTextLabel?.text = college.length == 0 ? nil : detailText
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
@@ -102,6 +105,8 @@ class StudentListViewController: UITableViewController, StudentInformationDelega
                 desVC.indexPath = indexPath
                 desVC.name = viewModel?.nameAtIndexPath(indexPath!)
                 desVC.number = viewModel?.numberAtIndexPath(indexPath!)
+                desVC.college = viewModel?.collegeAtIndexPath(indexPath!)
+                desVC.school = viewModel?.schoolAtIndexPath(indexPath!)
                 desVC.delegate = self
             }
         } else if segue.identifier == "addStudent" {
@@ -111,18 +116,20 @@ class StudentListViewController: UITableViewController, StudentInformationDelega
         }
     }
     
-    // MARK: - StudentInformationDelegate
-    
-    func addStudentName(name: String?, number: String?)
+}
+
+// MARK: - StudentInformationDelegate
+extension StudentListViewController: StudentInformationDelegate
+{
+    func addStudentName(name: String?, number: String?, college: String?, school: String?)
     {
-        viewModel?.addStudent(name, number:  number)
+        viewModel?.addStudent(name, number:  number, college: college, school: school)
         tableView.reloadData()
     }
     
-    func modifyStudentName(name: String?, number: String?, atIndexPath indexPath: NSIndexPath)
+    func modifyStudentName(name: String?, number: String?, college: String?, school: String?, atIndexPath indexPath: NSIndexPath)
     {
-        viewModel?.modifyStudentName(name, number: number, atIndexPath: indexPath)
+        viewModel?.modifyStudentName(name, number: number, college: college, school: school, atIndexPath: indexPath)
         tableView.reloadData()
     }
-    
 }

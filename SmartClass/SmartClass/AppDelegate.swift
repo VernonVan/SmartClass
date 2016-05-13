@@ -14,56 +14,51 @@ import IQKeyboardManager
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
-
+    
+    let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)
+    lazy var webUploaderURL: String = {
+        return "\(self.webUploader.serverURL)"
+    }()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         IQKeyboardManager.sharedManager().enable = true
         
-        setInitialViewController()
+        setViewModels()
 
-        ConvenientFileManager.createUploadDirectory()
+        UITabBar.appearance().tintColor = ThemeGreenColor
 
-        print(ConvenientFileManager.uploadURL.path)
-        
-        let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)
-        if webUploader.start() == true {
-            print("Visit \(webUploader.serverURL)")
-        }
+        ConvenientFileManager.createInitDirectory()
+        print(ConvenientFileManager.uploadURL.path!)
+
+        webUploader.start()
         
         return true
     }
 
-    func setInitialViewController()
+    func setViewModels()
     {
-        let navigationController = window?.rootViewController as!  UINavigationController
-        setNavigationBar(navigationController)
+        let tabBarController = window?.rootViewController as!  UITabBarController
         
-        let masterViewController = navigationController.viewControllers[0] as! MasterViewController
-        let viewModel = MasterViewModel(model: CoreDataStack.defaultStack.managedObjectContext)
-        masterViewController.viewModel = viewModel
-    }
-
-    func setNavigationBar(navigationController: UINavigationController)
-    {
-        UIApplication.sharedApplication().statusBarStyle = .LightContent    // 白色状态栏
+        let navigationController = tabBarController.viewControllers![0] as! UINavigationController
+        let paperListVC = navigationController.viewControllers[0] as! PaperListViewController
+        let paperListViewModel = PaperListViewModel(model: CoreDataStack.defaultStack.managedObjectContext)
+        paperListVC.viewModel = paperListViewModel
         
-        let bar = navigationController.navigationBar
-        bar.barTintColor = ThemeGreenColor         // 修改导航栏的颜色
-        bar.tintColor = UIColor.whiteColor()
-        bar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]       //修改Title颜色
-        bar.translucent = false
+        let navigationController2 = tabBarController.viewControllers![2] as! UINavigationController
+        let signUpSheetListVC = navigationController2.viewControllers[0] as! SignUpSheetListViewController
+        let signUpSheetListViewModel = SignUpSheetListViewModel()
+        signUpSheetListVC.viewModel = signUpSheetListViewModel
     }
-    
-    
 
     func applicationWillTerminate(application: UIApplication)
     {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         CoreDataStack.defaultStack.saveContext()
     }
 
-
+    
 }
+
 
 
 

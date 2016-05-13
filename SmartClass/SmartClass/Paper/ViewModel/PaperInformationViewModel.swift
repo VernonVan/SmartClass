@@ -31,11 +31,7 @@ class PaperInformationViewModel: RVMViewModel
     // MARK: - Core Data
     func save()
     {
-        do {
-            try paper.managedObjectContext?.save()
-        } catch {
-            print("Save paper error!")
-        }
+        CoreDataStack.defaultStack.saveContext()
     }
     
     func cancel()

@@ -13,12 +13,16 @@ class StudentViewController: UIViewController
 {
     var name: String?
     var number: String?
+    var college: String?
+    var school: String?
     var indexPath: NSIndexPath?
     
     var delegate: StudentInformationDelegate?
 
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var collegeTextField: UITextField!
+    @IBOutlet weak var schoolTextField: UITextField!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
     override func viewDidLoad()
@@ -27,6 +31,8 @@ class StudentViewController: UIViewController
 
         numberTextField.text = number
         nameTextField.text = name
+        collegeTextField.text = college
+        schoolTextField.text = school
         
         racBinding()
     }
@@ -37,6 +43,8 @@ class StudentViewController: UIViewController
     {
         nameTextField.rac_textSignal() ~> RAC(self, "name")
         numberTextField.rac_textSignal() ~> RAC(self, "number")
+        collegeTextField.rac_textSignal() ~> RAC(self, "college")
+        schoolTextField.rac_textSignal() ~> RAC(self, "school")
         
         let validNumberSignal = numberTextField.rac_textSignal().map({ (number) -> AnyObject! in
             return (number as! String).length > 0
@@ -58,9 +66,9 @@ class StudentViewController: UIViewController
     @IBAction func doneAction(sender: UIBarButtonItem)
     {
         if let indexPath = indexPath {
-            delegate?.modifyStudentName(name, number: number, atIndexPath: indexPath)
+            delegate?.modifyStudentName(name, number: number, college: college, school: school, atIndexPath: indexPath)
         } else {
-            delegate?.addStudentName(name, number: number)
+            delegate?.addStudentName(name, number: number, college: college, school: school)
         }
         
         navigationController?.popViewControllerAnimated(true)

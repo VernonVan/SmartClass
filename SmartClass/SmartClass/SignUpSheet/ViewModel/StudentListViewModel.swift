@@ -10,21 +10,24 @@ import UIKit
 
 class StudentListViewModel: NSObject
 {
-    private let filePath = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
+    private let fileURL = ConvenientFileManager.studentListURL
     private var students = [Student]()
     
     override init()
     {
         super.init()
         
-        let studentArray = NSArray(contentsOfURL: filePath)
+        let studentArray = NSArray(contentsOfURL: fileURL)
         studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
             let dict = studentArray![idx] as! NSDictionary
             let name = dict["name"] as! String
             let number = dict["number"] as! String
-            let student = Student(name: name, number: number)
+            let college = dict["college"] as? String
+            let school = dict["school"] as? String
+            let student = Student(name: name, number: number, college: college, school: school)
             self.students.append(student)
         })
+        students.sortInPlace({ $0.number < $1.number })
     }
 
     // MARK: - table view
@@ -44,19 +47,31 @@ class StudentListViewModel: NSObject
         return students[indexPath.row].number
     }
     
-    func modifyStudentName(name: String?, number: String?, atIndexPath indexPath: NSIndexPath)
+    func collegeAtIndexPath(indexPath: NSIndexPath) -> String?
+    {
+        return students[indexPath.row].college
+    }
+    
+    func schoolAtIndexPath(indexPath: NSIndexPath) -> String?
+    {
+        return students[indexPath.row].school
+    }
+    
+    func modifyStudentName(name: String?, number: String?, college: String?, school: String?, atIndexPath indexPath: NSIndexPath)
     {
         var student = students.removeAtIndex(indexPath.row)
         student.name = name
         student.number = number
+        student.college = college
+        student.school = school
         students.insert(student, atIndex: indexPath.row)
         
-        students.sortInPlace({ $0.number > $1.number })
+        students.sortInPlace({ $0.number < $1.number })
     }
     
-    func addStudent(name: String?, number: String?)
+    func addStudent(name: String?, number: String?, college: String?, school: String?)
     {
-        let student = Student(name: name, number: number)
+        let student = Student(name: name, number: number, college: college, school: school)
         students.append(student)
         
         students.sortInPlace({ $0.number < $1.number })
@@ -74,9 +89,11 @@ class StudentListViewModel: NSObject
             let dict = NSMutableDictionary()
             dict["name"] = student.name
             dict["number"] = student.number
+            dict["college"] = student.college
+            dict["school"] = student.school
             studentArray.addObject(dict)
         }
-        studentArray.writeToURL(filePath, atomically: false)
+        studentArray.writeToURL(fileURL, atomically: false)
     }
     
 }

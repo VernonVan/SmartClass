@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Paper" representedClassName=".Paper" syncable="YES">
         <attribute name="blurb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isCompleted" optional="YES" transient="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="isIssued" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isIssued" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalScore" optional="YES" transient="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Question" inverseName="paper" inverseEntity="Question" syncable="YES"/>

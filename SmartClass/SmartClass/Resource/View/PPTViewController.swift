@@ -48,6 +48,8 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
 
     @IBOutlet weak var toolbar: UIToolbar!
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -55,9 +57,12 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
         view.addSubview(pptView)
         adjustViewsForOrientation(UIApplication.sharedApplication().statusBarOrientation)
         
+        view.addSubview(toolbar)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showToolbarOrNot))
         isShowToolbar = true
         view.addGestureRecognizer(tapGesture)
+
     }
     
     override func viewWillAppear(animated: Bool)
@@ -92,6 +97,7 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
         pptView.canvasView?.frame = gestureFrame
     }
     
+    // MARK: - Actions
     
     @IBAction func closeAction(sender: UIBarButtonItem)
     {
@@ -116,6 +122,8 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     {
         isShowToolbar = !isShowToolbar
     }
+    
+    // MARK: - Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {

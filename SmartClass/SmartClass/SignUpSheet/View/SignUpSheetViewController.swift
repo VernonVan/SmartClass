@@ -40,7 +40,10 @@ class SignUpSheetViewController: UITableViewController
     {
         let dict = records![indexPath.row] as! NSDictionary
         let name = dict["name"] as! String
+        let number = dict["number"] as! String
         cell.textLabel?.text = name
+        cell.detailTextLabel?.text = number
+        
         if let signed = dict["signed"] as? Bool {
             cell.accessoryType = signed ? .Checkmark : .None
         } else {
