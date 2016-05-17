@@ -10,30 +10,57 @@ import UIKit
 
 class StudentListViewModel: NSObject
 {
-    private let fileURL = ConvenientFileManager.studentListURL
+    private let defaultStudentListURL = ConvenientFileManager.studentListURL
     private var students = [Student]()
     
     override init()
     {
         super.init()
         
-        readStudentArrayFromFile()
+        uploadStudentFromFile(nil)
     }
 
-    func readStudentArrayFromFile()
+    func uploadStudentFromFile(name: String?) -> Bool
     {
-        students = []
-        let studentArray = NSArray(contentsOfURL: fileURL)
-        studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
-            let dict = studentArray![idx] as! NSDictionary
-            let name = dict["name"] as! String
-            let number = dict["number"] as! String
+        var studentArray: NSArray?
+        if name == nil {
+            studentArray = NSArray(contentsOfURL: defaultStudentListURL)
+        } else {
+            let fileURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent(name! + ".plist")
+            studentArray = NSArray(contentsOfURL: fileURL)
+        }
+        
+        guard let array = studentArray else {
+            return false
+        }
+        let (students, isSuccessful) = resolveStudentsFromArray(array)
+        if isSuccessful {
+            self.students = students
+            save()
+            return true
+        }
+        return false
+    }
+    
+    func resolveStudentsFromArray(array: NSArray) -> (students: [Student], isSuccessful: Bool)
+    {
+        var students = [Student]()
+        var isSuccessful = true
+        array.enumerateObjectsUsingBlock({ (obj, idx, stop) in
+            guard let dict = array[idx] as? NSDictionary, let name = dict["name"] as? String, let number = dict["number"] as? String else {
+                isSuccessful = false
+                let shouldStop: ObjCBool = false
+                stop.initialize(shouldStop)
+                return
+            }
             let college = dict["college"] as? String
             let school = dict["school"] as? String
             let student = Student(name: name, number: number, college: college, school: school)
-            self.students.append(student)
+            students.append(student)
         })
         students.sortInPlace({ $0.number < $1.number })
+        
+        return (students, isSuccessful)
     }
     
     // MARK: - table view
@@ -99,7 +126,7 @@ class StudentListViewModel: NSObject
             dict["school"] = student.school
             studentArray.addObject(dict)
         }
-        studentArray.writeToURL(fileURL, atomically: false)
+        studentArray.writeToURL(defaultStudentListURL, atomically: false)
     }
     
 }

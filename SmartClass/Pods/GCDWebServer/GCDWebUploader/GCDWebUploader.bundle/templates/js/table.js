@@ -7,7 +7,6 @@ angular.module('starter',[]).controller('main-controller', function($scope, $htt
         };
         $http.post('post_paperName',$scope.submit)
             .success(function(){
-                console.log("post ok");
                 window.location.href = "test.html";
             })
             .error(function(status){

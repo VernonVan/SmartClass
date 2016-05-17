@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast
 
 protocol StudentInformationDelegate
 {
@@ -99,8 +100,42 @@ class StudentListViewController: UITableViewController
     
     @IBAction func uploadStudentListAction(sender: UIBarButtonItem)
     {
-        viewModel?.readStudentArrayFromFile()
-        tableView.reloadData()
+        showFileNameAlertView()
+    }
+    
+    func showFileNameAlertView()
+    {
+        let alertController = UIAlertController(title: NSLocalizedString("输入文件名", comment: "") , message: NSLocalizedString("输入学生名单的文件名（请把文件放在根目录下）", comment: ""), preferredStyle: .Alert)
+        
+        let commitAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .Default) { (_) in
+            let textField = alertController.textFields![0] as UITextField
+            self.uploadStudentFromFile(textField.text!)
+        }
+        commitAction.enabled = false
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: ""), style: .Cancel, handler: nil)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = NSLocalizedString("文件名", comment: "")
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { (notification) in
+                commitAction.enabled = textField.text != ""
+            }
+        }
+        
+        alertController.addAction(commitAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func uploadStudentFromFile(name: String)
+    {
+        if viewModel?.uploadStudentFromFile(name) == false {
+            view.makeToast(NSLocalizedString("导入学生列表失败！", comment: ""), duration: 1.5, position: CSToastPositionCenter)
+        } else {
+            tableView.reloadData()
+            view.makeToast(NSLocalizedString("导入成功！", comment: ""), duration: 1.5, position: CSToastPositionCenter)
+        }
     }
     
     // MARK: - Segue

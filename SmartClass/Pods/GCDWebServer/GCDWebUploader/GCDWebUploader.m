@@ -76,7 +76,6 @@
                                                                    options: kNilOptions
                                                                      error: nil];
         _currentPaperName = [resultDict objectForKey: @"name"];
-        NSLog(@"---------------%@----------------", _currentPaperName);
         return [GCDWebServerResponse responseWithStatusCode: 200];
     }];
     
