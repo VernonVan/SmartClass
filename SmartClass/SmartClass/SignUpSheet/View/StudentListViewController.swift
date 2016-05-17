@@ -95,6 +95,14 @@ class StudentListViewController: UITableViewController
         tableView.reloadData()
     }
 
+    // MARK: - Action
+    
+    @IBAction func uploadStudentListAction(sender: UIBarButtonItem)
+    {
+        viewModel?.readStudentArrayFromFile()
+        tableView.reloadData()
+    }
+    
     // MARK: - Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)

@@ -37,7 +37,26 @@ class PaperListViewModel: NSObject
     {
         self.model = model
         super.init()
-
+    }
+    
+    func modifyPaperListFile()
+    {
+        let paperListURL = ConvenientFileManager.paperListURL
+        let count = numberOfIssuedPapers()
+        let paperArray = NSMutableArray()
+        
+        for index in 0 ..< count {
+            let paper = paperAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
+            let name = paper.name
+            let blurb = paper.blurb ?? ""
+            let dict = ["name": name!, "blurb": blurb]
+            paperArray.addObject(dict)
+        }
+        
+        let outputStream = NSOutputStream(toFileAtPath: paperListURL.path!, append: false)
+        outputStream?.open()
+        NSJSONSerialization.writeJSONObject(paperArray, toStream: outputStream!, options: .PrettyPrinted, error: nil)
+        outputStream?.close()
     }
     
     func addExamResultAtIndexPath(indexPath: NSIndexPath, resultDict: NSDictionary)
@@ -90,7 +109,7 @@ class PaperListViewModel: NSObject
             studentArray?.writeToURL(signUpSheetURL, atomically: true)
         }
     }
-
+    
 }
 
 
@@ -110,7 +129,7 @@ extension PaperListViewModel
         let count = sectionInfo?.numberOfObjects ?? 0
         return count
     }
-
+    
     func titleForPaperAtIndexPath(indexPath: NSIndexPath) -> String?
     {
         let paper = paperAtIndexPath(indexPath)
@@ -125,11 +144,11 @@ extension PaperListViewModel
     
     func titleForHeaderInSection(section: Int) -> String
     {
-        let sectionInfo = fetchedResultsController.sections![section]
-        if sectionInfo.name == "0" {
-            return "编辑中的试卷"
+        let sectionInfo = fetchedResultsController.sections?[section]
+        if sectionInfo?.name == "0" {
+            return NSLocalizedString("编辑中的试卷", comment: "")
         } else {
-            return "已发布的试卷"
+            return NSLocalizedString("已发布的试卷", comment: "")
         }
     }
     
@@ -138,7 +157,7 @@ extension PaperListViewModel
         let paper = fetchedResultsController.objectAtIndexPath(indexPath) as? Paper
         return paper!
     }
-
+    
     func isIssuedAtIndexPath(indexPath: NSIndexPath) -> Bool
     {
         let paper = paperAtIndexPath(indexPath)
@@ -148,25 +167,30 @@ extension PaperListViewModel
         return false
     }
     
+    func numberOfIssuedPapers() -> Int
+    {
+        if numberOfSections() > 0 && titleForHeaderInSection(0) == "已发布的试卷" {
+            let sectionInfo = fetchedResultsController.sections?[0]
+            let issuedPaperNumber = sectionInfo?.numberOfObjects ?? 0
+            return issuedPaperNumber
+        }
+        return 0
+    }
+    
     func deletePaperAtIndexPath(indexPath: NSIndexPath)
     {
         let paper = paperAtIndexPath(indexPath)
         let context = fetchedResultsController.managedObjectContext
-     
+        
         if paperAtIndexPath(indexPath).isIssued {
             let paperURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paper.name!)
             deleteFileAtURL(paperURL)
-            let paperResultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paper.name!+"_result.plist")
+            let paperResultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paper.name! + "_result.plist")
             deleteFileAtURL(paperResultURL)
         }
-    
+        
         context.deleteObject(paper)
         CoreDataStack.defaultStack.saveContext()
-    }
-    
-    func numberOfPaper() -> Int
-    {
-        return numberOfRowsInSection(0) + numberOfRowsInSection(1)
     }
     
     func indexPathForIssuedPaperWithName(paperName: String) -> NSIndexPath?
@@ -174,7 +198,7 @@ extension PaperListViewModel
         var indexPath: NSIndexPath? = nil
         let paperNumber = numberOfRowsInSection(0)
         
-        for row in 0..<paperNumber {
+        for row in 0 ..< paperNumber {
             indexPath = NSIndexPath(forRow: row, inSection: 0)
             if titleForPaperAtIndexPath(indexPath!) == paperName {
                 return indexPath

@@ -56,6 +56,7 @@
   NSString* _prologue;
   NSString* _epilogue;
   NSString* _footer;
+    NSString* _currentPaperName;
 }
 @end
 
@@ -63,8 +64,24 @@
 
 - (void) addHandlerForQuiz
 {
+    [self addHandlerForMethod:@"GET" path:@"/templates/table.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
+        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/PaperList"];
+        NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
+        return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
+    }];
+    
+    [self addHandlerForMethod:@"POST" path:@"/templates/post_paperName" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
+        GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
+        NSDictionary* resultDict = [NSJSONSerialization JSONObjectWithData: dataRequest.data
+                                                                   options: kNilOptions
+                                                                     error: nil];
+        _currentPaperName = [resultDict objectForKey: @"name"];
+        NSLog(@"---------------%@----------------", _currentPaperName);
+        return [GCDWebServerResponse responseWithStatusCode: 200];
+    }];
+    
     [self addHandlerForMethod:@"GET" path:@"/templates/test.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
-        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/123"];
+        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: [[NSString alloc]initWithFormat: @"/Paper/%@", _currentPaperName]];
         NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
         return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
     }];

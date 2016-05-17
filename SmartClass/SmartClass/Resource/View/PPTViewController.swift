@@ -23,16 +23,13 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     var isShowToolbar = false {
         didSet {
             if isShowToolbar == false {
-                UIView.animateWithDuration(0.1, animations: {
-                    var toolbarFrame = self.toolbar.frame
-                    toolbarFrame.origin.y += 44
-                    self.toolbar.frame = toolbarFrame
+                UIView.animateWithDuration(0.2, animations: {
+                    self.toolbarBottomConstraint.constant -= 44
+                    
                 })
             } else {
                 UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .CurveEaseInOut, animations: {
-                    var toolbarFrame = self.toolbar.frame
-                    toolbarFrame.origin.y -= 44
-                    self.toolbar.frame = toolbarFrame
+                    self.toolbarBottomConstraint.constant += 44
                     }, completion: nil)
             }
         }
@@ -47,6 +44,8 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     }()
 
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
+    
     
     // MARK: - Lifecycle
     

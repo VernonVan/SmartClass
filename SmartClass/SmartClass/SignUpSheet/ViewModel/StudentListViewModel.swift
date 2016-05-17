@@ -17,6 +17,12 @@ class StudentListViewModel: NSObject
     {
         super.init()
         
+        readStudentArrayFromFile()
+    }
+
+    func readStudentArrayFromFile()
+    {
+        students = []
         let studentArray = NSArray(contentsOfURL: fileURL)
         studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
             let dict = studentArray![idx] as! NSDictionary
@@ -29,7 +35,7 @@ class StudentListViewModel: NSObject
         })
         students.sortInPlace({ $0.number < $1.number })
     }
-
+    
     // MARK: - table view
     
     func numberOfStudents() -> Int

@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+.testList {
+    width: 100%;
+    height: auto;
+}
+
+.list {
+    width: 100%;
+    list-style: none;
+    position: relative;
+    border-top: 1px solid black;
+}
+
+.testList  .list  .listItem {
+    border-bottom: 1px solid black;
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.testList  .list  .listItem  .testTitle {
+    position: relative;
+    padding-bottom: 4px;
+    width: auto;
+    height: auto;
+    font-family: sans-serif;
+    font-size: 2.5rem;
+    color: green;
+}
+
+.testList  .list  .listItem  .testSubTitle {
+    position: relative;
+    width: auto;
+    height: auto;
+}

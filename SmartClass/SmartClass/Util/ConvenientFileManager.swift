@@ -14,6 +14,7 @@ class ConvenientFileManager: NSObject
     static let pptURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("PPT")
     static let resourceURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("Resource")
     static let paperURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Paper")
+    static let paperListURL = paperURL.URLByAppendingPathComponent("PaperList")
     static let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
     static let signUpSheetURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("SignUpSheet")
     

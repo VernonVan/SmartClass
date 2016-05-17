@@ -8,6 +8,7 @@
 
 import UIKit
 import QuickLook
+import SafariServices
 import DZNEmptyDataSet
 
 enum ResourceListVCSection: Int {
@@ -176,13 +177,11 @@ extension ResourceListViewController: DZNEmptyDataSetSource
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let webUploadURL = appDelegate.webUploaderURL + "admin/"
-        let text = NSLocalizedString( "1、访问“\(webUploadURL)”上传资源\n2、通过iTunes添加PPT以及其他资源", comment: "" )
-
-
-        
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(14.0) ,
+        let webUploadURL = NSURL(string: appDelegate.webUploaderURL + "admin/")
+        let text = NSLocalizedString( "访问\(webUploadURL!)上传资源", comment: "" )
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(12.0) ,
                           NSForegroundColorAttributeName : UIColor.lightGrayColor()]
         return NSAttributedString(string: text , attributes: attributes)
     }
+
 }

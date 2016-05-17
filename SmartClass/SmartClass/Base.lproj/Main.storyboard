@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nsr-xe-KUd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nsr-xe-KUd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -302,7 +302,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="学生列表" id="ZVa-Bi-W9B">
-                        <barButtonItem key="rightBarButtonItem" image="upload" id="L94-gP-omx"/>
+                        <barButtonItem key="rightBarButtonItem" image="upload" id="L94-gP-omx">
+                            <connections>
+                                <action selector="uploadStudentListAction:" destination="DSD-GO-Mqy" id="XRv-ya-ObZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -518,9 +522,9 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="kzQ-o2-X8l" firstAttribute="top" secondItem="9TT-Kf-63c" secondAttribute="bottom" id="Njg-hZ-Cau"/>
-                            <constraint firstAttribute="trailing" secondItem="9TT-Kf-63c" secondAttribute="trailing" id="SlC-ut-N30"/>
-                            <constraint firstItem="9TT-Kf-63c" firstAttribute="leading" secondItem="bnZ-jP-PVa" secondAttribute="leading" id="zd0-T3-pAf"/>
+                            <constraint firstItem="9TT-Kf-63c" firstAttribute="leading" secondItem="bnZ-jP-PVa" secondAttribute="leading" id="JKA-md-dXc"/>
+                            <constraint firstItem="9TT-Kf-63c" firstAttribute="bottom" secondItem="kzQ-o2-X8l" secondAttribute="top" id="kNl-Ss-cKY"/>
+                            <constraint firstAttribute="trailing" secondItem="9TT-Kf-63c" secondAttribute="trailing" id="zsv-WL-XXq"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PPT" id="ymQ-mf-dZw"/>
@@ -529,6 +533,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="toolbar" destination="9TT-Kf-63c" id="opY-Hy-TOp"/>
+                        <outlet property="toolbarBottomConstraint" destination="kNl-Ss-cKY" id="2YU-Jk-c5n"/>
                         <segue destination="1SV-bB-Q9R" kind="popoverPresentation" identifier="canvasPopover" popoverAnchorBarButtonItem="XUk-jo-B1Y" id="7OP-UP-r1c">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
@@ -845,7 +850,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sep-oq-tpe">
-                                                <rect key="frame" x="310" y="302" width="282" height="35"/>
+                                                <rect key="frame" x="304" y="302" width="288" height="35"/>
                                                 <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="Mb8-Ni-KWq"/>
@@ -876,7 +881,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBE-2X-tpv">
-                                                <rect key="frame" x="8" y="302" width="282" height="35"/>
+                                                <rect key="frame" x="8" y="302" width="288" height="35"/>
                                                 <color key="backgroundColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="Lt4-Ba-Rr3"/>
@@ -941,12 +946,12 @@
                                             <constraint firstItem="55q-Tp-wyZ" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" id="b2R-eA-lkz"/>
                                             <constraint firstItem="5fW-Di-JLk" firstAttribute="leading" secondItem="ODF-yw-WQE" secondAttribute="leading" constant="8" id="blF-4c-T9p"/>
                                             <constraint firstAttribute="trailing" secondItem="5fW-Di-JLk" secondAttribute="trailing" constant="8" id="cEb-79-Ode"/>
-                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="leading" secondItem="ZBE-2X-tpv" secondAttribute="trailing" constant="20" id="fHP-Xs-Xmh"/>
+                                            <constraint firstItem="Sep-oq-tpe" firstAttribute="leading" secondItem="ZBE-2X-tpv" secondAttribute="trailing" constant="8" symbolic="YES" id="fHP-Xs-Xmh"/>
                                             <constraint firstItem="Sep-oq-tpe" firstAttribute="top" secondItem="XQ0-NA-AaE" secondAttribute="bottom" constant="20" id="gjZ-C9-VsT"/>
                                             <constraint firstItem="Sep-oq-tpe" firstAttribute="width" secondItem="ZBE-2X-tpv" secondAttribute="width" id="gqL-IB-5f2"/>
                                             <constraint firstItem="5fW-Di-JLk" firstAttribute="top" secondItem="Sep-oq-tpe" secondAttribute="bottom" constant="12" id="gqW-VU-vjT"/>
                                             <constraint firstAttribute="height" constant="492" id="jYd-hc-QwC"/>
-                                            <constraint firstItem="XQ0-NA-AaE" firstAttribute="top" secondItem="55q-Tp-wyZ" secondAttribute="bottom" constant="8" id="pdm-6H-f6q"/>
+                                            <constraint firstItem="XQ0-NA-AaE" firstAttribute="top" secondItem="55q-Tp-wyZ" secondAttribute="bottom" constant="8" symbolic="YES" id="pdm-6H-f6q"/>
                                             <constraint firstAttribute="trailing" secondItem="55q-Tp-wyZ" secondAttribute="trailing" id="vGd-pr-Wu9"/>
                                         </constraints>
                                     </view>
@@ -1047,18 +1052,17 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m5u-dI-q9m">
-                                    <rect key="frame" x="20" y="12" width="560" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vw3-uJ-Wub">
+                                    <rect key="frame" x="8" y="12" width="584" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" red="0.29803921570000003" green="0.68627450980000004" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="m5u-dI-q9m" secondAttribute="trailing" constant="20" symbolic="YES" id="HbN-ln-Wak"/>
-                                <constraint firstItem="m5u-dI-q9m" firstAttribute="centerY" secondItem="CgO-D9-MuB" secondAttribute="centerY" id="Ttf-zI-5Xa"/>
-                                <constraint firstItem="m5u-dI-q9m" firstAttribute="leading" secondItem="CgO-D9-MuB" secondAttribute="leading" constant="20" symbolic="YES" id="i3Y-PP-10U"/>
-                                <constraint firstItem="m5u-dI-q9m" firstAttribute="centerX" secondItem="CgO-D9-MuB" secondAttribute="centerX" id="woB-tT-g1m"/>
+                                <constraint firstItem="vw3-uJ-Wub" firstAttribute="leading" secondItem="CgO-D9-MuB" secondAttribute="leadingMargin" id="2Wf-a9-Urn"/>
+                                <constraint firstItem="vw3-uJ-Wub" firstAttribute="trailing" secondItem="CgO-D9-MuB" secondAttribute="trailingMargin" id="795-BH-NTi"/>
+                                <constraint firstItem="vw3-uJ-Wub" firstAttribute="centerY" secondItem="CgO-D9-MuB" secondAttribute="centerY" id="8dO-4l-sgH"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -1100,7 +1104,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="webUploadLabel" destination="m5u-dI-q9m" id="84e-C8-2Xe"/>
+                        <outlet property="webUploadLabel" destination="vw3-uJ-Wub" id="PFN-HP-0G3"/>
                         <segue destination="GCA-Fx-die" kind="show" identifier="showExamResult" id="YuL-ya-UdN"/>
                         <segue destination="Vd4-C1-oyo" kind="show" identifier="editPaper" id="n2z-Az-1T4"/>
                     </connections>
@@ -1341,6 +1345,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="n2z-Az-1T4"/>
-        <segue reference="61b-bO-Khb"/>
+        <segue reference="5Nb-Ae-Npx"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -29,7 +29,7 @@ class PaperListViewController: UITableViewController
         tableView.emptyDataSetSource = self
    
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        webUploadLabel.text = "访问\(appDelegate.webUploaderURL)"
+        webUploadLabel.text = "访问\(appDelegate.webUploaderURL)进行考试"
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(receiveExamResultHandler), name: "ReceiveExamResultNotification", object: nil)
     }
@@ -50,6 +50,8 @@ class PaperListViewController: UITableViewController
             abort()
         }
         tableView.reloadData()
+        
+        viewModel?.modifyPaperListFile()
         
         if tableView.numberOfSections == 0 {
             tableView.separatorStyle = .None
@@ -102,10 +104,6 @@ class PaperListViewController: UITableViewController
     {
         cell.textLabel?.text = viewModel?.titleForPaperAtIndexPath(indexPath)
         cell.detailTextLabel?.text = viewModel?.subtitleForPaperAtIndexPath(indexPath)
-        if viewModel?.paperAtIndexPath(indexPath).isIssued == true {
-            cell.textLabel?.textColor = ThemeGreenColor
-            cell.detailTextLabel?.textColor = ThemeGreenColor
-        }
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
