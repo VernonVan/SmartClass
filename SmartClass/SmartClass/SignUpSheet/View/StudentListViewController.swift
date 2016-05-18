@@ -65,11 +65,8 @@ class StudentListViewController: UITableViewController
     
     func configureCellAtIndexPath(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath)
     {
-        cell.textLabel?.text = "\(viewModel!.numberAtIndexPath(indexPath)!) - \(viewModel!.nameAtIndexPath(indexPath)!)"
-        let college = viewModel?.collegeAtIndexPath(indexPath) ?? ""
-        let school = viewModel?.schoolAtIndexPath(indexPath) ?? ""
-        let detailText = "\(college)(\(school))"
-        cell.detailTextLabel?.text = college.length == 0 ? nil : detailText
+        cell.textLabel?.text = viewModel?.numberAtIndexPath(indexPath)
+        cell.detailTextLabel?.text = viewModel?.nameAtIndexPath(indexPath)
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
@@ -96,6 +93,20 @@ class StudentListViewController: UITableViewController
         tableView.reloadData()
     }
 
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        if indexPath.row == viewModel?.numberOfStudents() {
+            return false
+        }
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
+    {
+        viewModel?.moveStudentFromIndexPath(sourceIndexPath, toIndexPath: destinationIndexPath)
+        tableView.reloadData()
+    }
+    
     // MARK: - Action
     
     @IBAction func uploadStudentListAction(sender: UIBarButtonItem)
@@ -105,7 +116,7 @@ class StudentListViewController: UITableViewController
     
     func showFileNameAlertView()
     {
-        let alertController = UIAlertController(title: NSLocalizedString("输入文件名", comment: "") , message: NSLocalizedString("输入学生名单的文件名（请把文件放在根目录下）", comment: ""), preferredStyle: .Alert)
+        let alertController = UIAlertController(title: NSLocalizedString("输入学生名单的文件名（请把文件放在根目录下）", comment: ""), message: NSLocalizedString("注意：这会清空所有的考试纪录以及签到纪录", comment: ""), preferredStyle: .Alert)
         
         let commitAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .Default) { (_) in
             let textField = alertController.textFields![0] as UITextField
@@ -116,7 +127,7 @@ class StudentListViewController: UITableViewController
         let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: ""), style: .Cancel, handler: nil)
         
         alertController.addTextFieldWithConfigurationHandler { (textField) in
-            textField.placeholder = NSLocalizedString("文件名", comment: "")
+            textField.placeholder = NSLocalizedString("文件名（不用后缀名）", comment: "")
             NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { (notification) in
                 commitAction.enabled = textField.text != ""
             }

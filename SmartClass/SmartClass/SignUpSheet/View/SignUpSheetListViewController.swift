@@ -11,7 +11,6 @@ import DZNEmptyDataSet
 
 class SignUpSheetListViewController: UITableViewController
 {
-    
     var viewModel: SignUpSheetListViewModel?
 
     override func viewDidLoad()
@@ -98,12 +97,11 @@ class SignUpSheetListViewController: UITableViewController
         } else if segue.identifier == "showSignUpSheet" {
             if let desVC = segue.destinationViewController as? SignUpSheetViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
-                let signUpSheetName = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
-                let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName!)
-                desVC.fileURL = signUpSheetURL
+                let name =  viewModel?.nameAtIndexPath(indexPath)
+                desVC.signUpName = name
             }
         } else if segue.identifier == "createSignUpSheet" {
-            viewModel?.createTempSignUpSheet()
+            
         }
     }
 

@@ -59,57 +59,50 @@ class PaperListViewModel: NSObject
         outputStream?.close()
     }
     
-    func addExamResultAtIndexPath(indexPath: NSIndexPath, resultDict: NSDictionary)
+    func modifyStudentListFileWithData(resultDict: NSDictionary)
     {
-        if let paperName = resultDict["paper_title"] as? String {
-            let studentName = resultDict["student_name"] as? String
-            let studentNumber = resultDict["student_number"] as? String
-            let paperURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paperName+"_result.plist")
-            
-            print("addExamResultAtIndexPath")
-            
-            let studentArray = NSArray(contentsOfURL: paperURL)
-            studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
-                let dict = studentArray![idx] as! NSMutableDictionary
-                let name = dict["name"] as! String
-                let number = dict["number"] as! String
-                if name == studentName && number == studentNumber {
-                    dict["score"] = resultDict["score"]
+        guard let paperName = resultDict["paper_title"] as? String, let studentName = resultDict["student_name"] as? String,
+            let studentNumber = resultDict["student_number"] as? String, let signDate = resultDict["date"] as? String else {
+            return
+        }
+        
+        let studentListURL = ConvenientFileManager.studentListURL
+        if let studentArray = NSArray(contentsOfURL: studentListURL) {
+            studentArray.enumerateObjectsUsingBlock({ (obj, idx, stop) in
+                if let dict = studentArray[idx] as? NSMutableDictionary {
+                    let name = dict["name"] as! String
+                    let number = dict["number"] as! String
+                    if name == studentName && number == studentNumber {
+                        if dict[paperName] == nil {
+                            dict[paperName] = resultDict["score"]
+                            dict[signDate] = true
+                            self.addSignUpSheet(signDate)
+                        }
+                        stop.memory = true
+                    }
                 }
             })
-            
-            studentArray?.writeToURL(paperURL, atomically: true)
+            studentArray.writeToURL(studentListURL, atomically: true)
         }
     }
     
-    func addSignUpRecordWithData(recordDict: NSDictionary)
+    func addSignUpSheet(name: String)
     {
-        if let signUpSheetName = recordDict["date"] as? String {
-            let studentName = recordDict["student_name"] as? String
-            let studentNumber = recordDict["student_number"] as? String
-            let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
-            let signUpSheetURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetName+"签到表.plist")
-            do {
-                if fileManager.fileExistsAtPath(signUpSheetURL.path!) == false {
-                    try fileManager.copyItemAtURL(studentListURL, toURL: signUpSheetURL)
-                }
-            } catch let error as NSError {
-                print("addSignUpRecordWithData error: \(error.userInfo)")
-            }
-            
-            let studentArray = NSArray(contentsOfURL: signUpSheetURL)
-            studentArray?.enumerateObjectsUsingBlock({ (obj, idx, stop) in
-                let dict = studentArray![idx] as! NSMutableDictionary
-                let name = dict["name"] as! String
-                let number = dict["number"] as! String
-                if name == studentName && number == studentNumber {
-                    dict["signed"] = true
-                }
-            })
-            studentArray?.writeToURL(signUpSheetURL, atomically: true)
+        var signUpSheetArray: NSMutableArray
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if userDefaults.objectForKey("signUpSheet") == nil {
+            signUpSheetArray = NSMutableArray()
+        } else {
+            signUpSheetArray = NSMutableArray(array: userDefaults.objectForKey("signUpSheet") as! Array)
         }
+
+        if !signUpSheetArray.containsObject(name) {
+            signUpSheetArray.addObject(name)
+        }
+        userDefaults.setValue(signUpSheetArray, forKey: "signUpSheet")
+        userDefaults.synchronize()
     }
-    
+
 }
 
 

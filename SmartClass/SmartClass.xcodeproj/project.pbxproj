@@ -13,8 +13,6 @@
 		0700D1B51CE4AD0100EB9A81 /* PPTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D1B11CE4AD0100EB9A81 /* PPTViewController.swift */; };
 		0700D1B71CE4AD3100EB9A81 /* ResourceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D1B61CE4AD3000EB9A81 /* ResourceListViewController.swift */; };
 		0700D1BA1CE4B5B000EB9A81 /* ResourceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700D1B91CE4B5B000EB9A81 /* ResourceListViewModel.swift */; };
-		0739FE141CC504780035DE88 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE131CC504780035DE88 /* MasterViewController.swift */; };
-		0739FE161CC504820035DE88 /* MasterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE151CC504820035DE88 /* MasterViewModel.swift */; };
 		0739FE311CC504F50035DE88 /* PaperInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */; };
 		0739FE321CC504F50035DE88 /* PaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */; };
 		0739FE331CC504F50035DE88 /* QuestionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */; };
@@ -32,8 +30,8 @@
 		07B338431CE1D79C00B45DF8 /* PaperListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B338421CE1D79C00B45DF8 /* PaperListViewModel.swift */; };
 		07C2BD4A1CE1FF4A003E6454 /* SignUpSheetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */; };
 		07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */; };
+		07DEA8071CEC799B00C7504E /* NewSignUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */; };
 		07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */; };
-		07E306F41CCF6977002424A0 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F31CCF6977002424A0 /* Student.swift */; };
 		07E4DF571CE258D90082BCE3 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */; };
 		07E4DF581CE258D90082BCE3 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4DF561CE258D90082BCE3 /* Paper.swift */; };
 		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
@@ -41,7 +39,6 @@
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
 		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
-		AD3B19981CC70E3D00B4E700 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD3B19961CC70E3D00B4E700 /* Model.xcdatamodeld */; };
 		AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */; };
 		AD3B19A21CC7197000B4E700 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199E1CC7197000B4E700 /* Question.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
@@ -68,7 +65,6 @@
 		AD884BD01C83F31A005A37AE /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BCF1C83F31A005A37AE /* libz.1.2.5.tbd */; };
 		AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD11C83F340005A37AE /* libsqlite3.tbd */; };
 		AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD31C83F357005A37AE /* libicucore.tbd */; };
-		AD90FCBB1CE5CF3F0065F397 /* CreateSignUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD90FCBA1CE5CF3F0065F397 /* CreateSignUpSheetViewController.swift */; };
 		AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9737891C92AF060066873E /* SegueHandlerType.swift */; };
 		ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA520951CC7796400C8822A /* StudentListViewController.swift */; };
 		ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */; };
@@ -82,8 +78,6 @@
 		0700D1B11CE4AD0100EB9A81 /* PPTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PPTViewController.swift; path = Resource/View/PPTViewController.swift; sourceTree = "<group>"; };
 		0700D1B61CE4AD3000EB9A81 /* ResourceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceListViewController.swift; path = Resource/View/ResourceListViewController.swift; sourceTree = "<group>"; };
 		0700D1B91CE4B5B000EB9A81 /* ResourceListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceListViewModel.swift; path = Resource/ViewModel/ResourceListViewModel.swift; sourceTree = "<group>"; };
-		0739FE131CC504780035DE88 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewController.swift; path = MainInterface/View/MasterViewController.swift; sourceTree = "<group>"; };
-		0739FE151CC504820035DE88 /* MasterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MasterViewModel.swift; path = MainInterface/ViewModel/MasterViewModel.swift; sourceTree = "<group>"; };
 		0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperInformationViewModel.swift; path = SmartClass/Paper/ViewModel/PaperInformationViewModel.swift; sourceTree = SOURCE_ROOT; };
 		0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewModel.swift; path = SmartClass/Paper/ViewModel/PaperViewModel.swift; sourceTree = SOURCE_ROOT; };
 		0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionListViewModel.swift; path = SmartClass/Paper/ViewModel/QuestionListViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -101,15 +95,14 @@
 		07B338421CE1D79C00B45DF8 /* PaperListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperListViewModel.swift; path = SmartClass/Paper/ViewModel/PaperListViewModel.swift; sourceTree = SOURCE_ROOT; };
 		07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewController.swift; path = SignUpSheet/View/SignUpSheetListViewController.swift; sourceTree = "<group>"; };
 		07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewModel.swift; path = SignUpSheet/ViewModel/SignUpSheetListViewModel.swift; sourceTree = "<group>"; };
+		07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSignUpSheetViewController.swift; path = SignUpSheet/View/NewSignUpSheetViewController.swift; sourceTree = "<group>"; };
 		07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewModel.swift; path = SignUpSheet/ViewModel/StudentListViewModel.swift; sourceTree = "<group>"; };
-		07E306F31CCF6977002424A0 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Student.swift; path = SignUpSheet/Model/Student.swift; sourceTree = "<group>"; };
 		07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Paper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		07E4DF561CE258D90082BCE3 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = SmartClass/Paper/Model/Paper.swift; sourceTree = SOURCE_ROOT; };
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
-		AD3B19971CC70E3D00B4E700 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Question+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		AD3B199E1CC7197000B4E700 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = SmartClass/Paper/Model/Question.swift; sourceTree = SOURCE_ROOT; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
@@ -142,7 +135,6 @@
 		AD884BCF1C83F31A005A37AE /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		AD884BD11C83F340005A37AE /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AD884BD31C83F357005A37AE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
-		AD90FCBA1CE5CF3F0065F397 /* CreateSignUpSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateSignUpSheetViewController.swift; path = SignUpSheet/View/CreateSignUpSheetViewController.swift; sourceTree = "<group>"; };
 		AD9737891C92AF060066873E /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Util/SegueHandlerType.swift; sourceTree = "<group>"; };
 		ADA520951CC7796400C8822A /* StudentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewController.swift; path = SignUpSheet/View/StudentListViewController.swift; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
@@ -195,14 +187,6 @@
 			name = ViewModel;
 			sourceTree = "<group>";
 		};
-		07E306F51CCF697C002424A0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				07E306F31CCF6977002424A0 /* Student.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		5B800375E992113887F3BF95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,40 +216,6 @@
 				DD8CBA00FE764EC44F8869E6 /* Pods-SmartClass.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		AD0B21C91C8D15CE0080BF50 /* MainInterface */ = {
-			isa = PBXGroup;
-			children = (
-				AD0B21CC1C8D16260080BF50 /* Model */,
-				AD0B21CA1C8D16140080BF50 /* ViewModel */,
-				AD0B21CB1C8D161F0080BF50 /* View */,
-			);
-			name = MainInterface;
-			sourceTree = "<group>";
-		};
-		AD0B21CA1C8D16140080BF50 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				0739FE151CC504820035DE88 /* MasterViewModel.swift */,
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		AD0B21CB1C8D161F0080BF50 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0739FE131CC504780035DE88 /* MasterViewController.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		AD0B21CC1C8D16260080BF50 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AD3B19961CC70E3D00B4E700 /* Model.xcdatamodeld */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		AD1D18261C89867F009B9390 /* Paper */ = {
@@ -302,7 +252,6 @@
 		AD3B19AF1CC7269800B4E700 /* SignUpSheet */ = {
 			isa = PBXGroup;
 			children = (
-				07E306F51CCF697C002424A0 /* Model */,
 				07E306F01CCF5D88002424A0 /* ViewModel */,
 				ADA520941CC7794000C8822A /* View */,
 			);
@@ -366,7 +315,6 @@
 				AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */,
 				AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */,
 				AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */,
-				AD0B21C91C8D15CE0080BF50 /* MainInterface */,
 				AD1D18261C89867F009B9390 /* Paper */,
 				AD3B19AD1CC7265200B4E700 /* Resource */,
 				AD3B19AF1CC7269800B4E700 /* SignUpSheet */,
@@ -399,8 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */,
-				AD90FCBA1CE5CF3F0065F397 /* CreateSignUpSheetViewController.swift */,
 				0792C5F01CD954E7006DF60D /* SignUpSheetViewController.swift */,
+				07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */,
 				ADA520951CC7796400C8822A /* StudentListViewController.swift */,
 				0774FD401CCF9017002A29A8 /* StudentViewController.swift */,
 			);
@@ -592,15 +540,14 @@
 			files = (
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
 				07B338411CE1D6BC00B45DF8 /* PaperListViewController.swift in Sources */,
+				07DEA8071CEC799B00C7504E /* NewSignUpSheetViewController.swift in Sources */,
 				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
 				0739FE3A1CC505010035DE88 /* QuestionListViewController.swift in Sources */,
 				07B338431CE1D79C00B45DF8 /* PaperListViewModel.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
-				07E306F41CCF6977002424A0 /* Student.swift in Sources */,
 				0700D1B51CE4AD0100EB9A81 /* PPTViewController.swift in Sources */,
 				0739FE381CC505010035DE88 /* PaperInformationViewController.swift in Sources */,
 				0700D1B31CE4AD0100EB9A81 /* CanvasView.swift in Sources */,
-				0739FE141CC504780035DE88 /* MasterViewController.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
 				AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */,
@@ -608,7 +555,6 @@
 				07A152DD1CD70B3C004B7511 /* Result.swift in Sources */,
 				07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */,
 				0774FD411CCF9017002A29A8 /* StudentViewController.swift in Sources */,
-				AD90FCBB1CE5CF3F0065F397 /* CreateSignUpSheetViewController.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
 				0739FE391CC505010035DE88 /* PaperViewController.swift in Sources */,
 				0700D1BA1CE4B5B000EB9A81 /* ResourceListViewModel.swift in Sources */,
@@ -621,11 +567,9 @@
 				0700D1B71CE4AD3100EB9A81 /* ResourceListViewController.swift in Sources */,
 				07A152D51CD7079C004B7511 /* ExamResultViewController.swift in Sources */,
 				07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */,
-				AD3B19981CC70E3D00B4E700 /* Model.xcdatamodeld in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
 				07A152DC1CD70B3C004B7511 /* Result+CoreDataProperties.swift in Sources */,
 				07C2BD4A1CE1FF4A003E6454 /* SignUpSheetListViewController.swift in Sources */,
-				0739FE161CC504820035DE88 /* MasterViewModel.swift in Sources */,
 				07E4DF571CE258D90082BCE3 /* Paper+CoreDataProperties.swift in Sources */,
 				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
 				AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */,
@@ -895,19 +839,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		AD3B19961CC70E3D00B4E700 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AD3B19971CC70E3D00B4E700 /* Model.xcdatamodel */,
-			);
-			currentVersion = AD3B19971CC70E3D00B4E700 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AD86A8BE1C82DBCC009CEE87 /* Project object */;
 }

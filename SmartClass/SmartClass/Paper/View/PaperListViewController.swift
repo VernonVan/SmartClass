@@ -71,11 +71,7 @@ class PaperListViewController: UITableViewController
     {
         print("-----------------------Receive exam result: \(notification.userInfo)----------------------")
         if let resultDict = notification.userInfo {
-            let paperName = resultDict["paper_title"] as! String
-            if let indexPath = viewModel!.indexPathForIssuedPaperWithName(paperName) {
-                viewModel?.addExamResultAtIndexPath(indexPath, resultDict: resultDict)
-                viewModel?.addSignUpRecordWithData(resultDict)
-            }
+            viewModel?.modifyStudentListFileWithData(resultDict)
         }
     }
     
@@ -151,9 +147,8 @@ class PaperListViewController: UITableViewController
         } else if segue.identifier == "showExamResult" {
             if let desVC = segue.destinationViewController as? ExamResultViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
-                if let fileName = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text {
-                    let url = ConvenientFileManager.paperURL.URLByAppendingPathComponent(fileName+"_result.plist")
-                    desVC.fileURL = url
+                if let paperName = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text {
+                    desVC.paperName = paperName
                 }
             }
         }

@@ -109,7 +109,7 @@ angular.module('starter.controllers',[])
 
 		$http.post('post_answer',$scope.submit)
             .success(function(data){
-                alert("提交成功\n你的分数:" + score);
+                alert("考试完成\n你的分数:" + score);
             })
             .error(function(data,status,headers){
                 switch(status){

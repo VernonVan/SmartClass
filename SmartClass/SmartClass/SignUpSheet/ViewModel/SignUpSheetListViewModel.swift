@@ -16,16 +16,17 @@ class SignUpSheetListViewModel: NSObject
     override init()
     {
         super.init()
-        
+
         reloadData()
     }
     
     func reloadData()
     {
-        do {
-            signUpSheetNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.signUpSheetURL.path!)
-        } catch let error as NSError {
-            print("SignUpSheetListViewModel reloadData error! \(error.userInfo)")
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let signUpSheets = userDefaults.objectForKey("signUpSheet") {
+            if let signUpSheetArray = signUpSheets as? [String] {
+                self.signUpSheetNames = signUpSheetArray
+            }
         }
     }
     
@@ -47,12 +48,17 @@ class SignUpSheetListViewModel: NSObject
         return signUpSheetNames.count
     }
     
+    func nameAtIndexPath(indexPath: NSIndexPath) -> String
+    {
+        return signUpSheetNames[indexPath.row]
+    }
+    
     func deleteSignUpSheetAtIndexPath(indexPath: NSIndexPath)
     {
-        let name = signUpSheetNames[indexPath.row]
+        let userDefaults = NSUserDefaults.standardUserDefaults()
         signUpSheetNames.removeAtIndex(indexPath.row)
-        let url = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(name)
-        deleteFileAtURL(url)
+        userDefaults.setValue(signUpSheetNames, forKey: "signUpSheet")
+        userDefaults.synchronize()
     }
     
     // MARK: - Segue
@@ -60,18 +66,6 @@ class SignUpSheetListViewModel: NSObject
     func viewModelForStudentList() -> StudentListViewModel
     {
         return StudentListViewModel()
-    }
-    
-    func createTempSignUpSheet()
-    {
-        let studentListURL = ConvenientFileManager.studentListURL
-        let tempURL = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent("temp.plist")
-        
-        do {
-            try fileManager.copyItemAtURL(studentListURL, toURL: tempURL)
-        } catch let error as NSError {
-            print("createTempSignUpSheet error: \(error.userInfo)")
-        }
     }
     
 }

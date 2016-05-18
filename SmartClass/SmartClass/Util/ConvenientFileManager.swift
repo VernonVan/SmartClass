@@ -16,7 +16,6 @@ class ConvenientFileManager: NSObject
     static let paperURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Paper")
     static let paperListURL = paperURL.URLByAppendingPathComponent("PaperList")
     static let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
-    static let signUpSheetURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("SignUpSheet")
     
     static func documentURL() -> NSURL
     {
@@ -57,7 +56,6 @@ class ConvenientFileManager: NSObject
         if firstRun {
             do {
                 try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.paperURL, withIntermediateDirectories: true, attributes: nil)
-                try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.signUpSheetURL, withIntermediateDirectories: true, attributes: nil)
                 try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
                 try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
                 let emptyArray = NSArray()

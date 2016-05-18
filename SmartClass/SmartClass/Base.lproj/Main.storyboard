@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nsr-xe-KUd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nsr-xe-KUd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -730,10 +730,10 @@
             </objects>
             <point key="canvasLocation" x="-1312" y="-1892"/>
         </scene>
-        <!--Create Sign Up Sheet View Controller-->
+        <!--New Sign Up Sheet View Controller-->
         <scene sceneID="Ni8-kA-md0">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="xLM-CB-0xy" customClass="CreateSignUpSheetViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="xLM-CB-0xy" customClass="NewSignUpSheetViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="tQg-Cz-EpP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -779,14 +779,14 @@
                         </textField>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="Q27-je-0dF">
                             <connections>
-                                <action selector="doneAction:" destination="xLM-CB-0xy" id="3lK-6p-dkv"/>
+                                <action selector="doneAction:" destination="xLM-CB-0xy" id="p2h-gi-1QO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="doneButton" destination="Q27-je-0dF" id="wm7-Er-K0l"/>
-                        <outlet property="nameTextField" destination="VkM-uz-AcM" id="u0y-0a-eYS"/>
+                        <outlet property="doneButton" destination="Q27-je-0dF" id="k2p-gk-gpm"/>
+                        <outlet property="nameTextField" destination="VkM-uz-AcM" id="GcE-1p-Xxh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9J-YO-dtk" userLabel="First Responder" sceneMemberID="firstResponder"/>

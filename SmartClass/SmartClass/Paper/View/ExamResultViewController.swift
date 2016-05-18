@@ -12,7 +12,7 @@ import DZNEmptyDataSet
 class ExamResultViewController: UITableViewController
 {
     private var results: NSArray?
-    var fileURL: NSURL?
+    var paperName: String?
     
     // MARK: - Lifecycle
     override func viewDidLoad()
@@ -21,7 +21,8 @@ class ExamResultViewController: UITableViewController
         
         tableView.emptyDataSetSource = self
         
-        results = NSArray(contentsOfURL: fileURL!)
+        let studentListURL = ConvenientFileManager.studentListURL
+        results = NSArray(contentsOfURL: studentListURL)
     }
     
     // MARK: - TableView
@@ -48,19 +49,22 @@ class ExamResultViewController: UITableViewController
     
     func configureCellAtIndexPath(cell: UITableViewCell, atIndexPath indexPath : NSIndexPath)
     {
-        let dict = results![indexPath.row] as! NSDictionary
-        let name = dict["name"] as! String
-        cell.textLabel?.text = name
-        if let score = dict["score"] as? Int {
-            cell.detailTextLabel?.text = "\(score)"
-            cell.detailTextLabel?.textColor = score > 60 ? UIColor.blueColor() : UIColor.redColor()
-        } else {
-            cell.detailTextLabel?.text = NSLocalizedString("待考", comment: "")
+        if let dict = results?[indexPath.row] as? NSDictionary {
+            let name = dict["name"] as! String
+            cell.textLabel?.text = name
+            if let score = dict[paperName!] as? Int {
+                cell.detailTextLabel?.text = "\(score)"
+                cell.detailTextLabel?.textColor = score > 60 ? UIColor.blueColor() : UIColor.redColor()
+            } else {
+                cell.detailTextLabel?.text = NSLocalizedString("待考", comment: "")
+            }
         }
+        
     }
     
 }
 
+// MARK: - DZNEmptyDataSetSource
 extension ExamResultViewController: DZNEmptyDataSetSource
 {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
