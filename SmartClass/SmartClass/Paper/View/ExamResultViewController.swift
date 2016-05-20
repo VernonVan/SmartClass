@@ -11,8 +11,14 @@ import DZNEmptyDataSet
 
 class ExamResultViewController: UITableViewController
 {
-    private var results: NSArray?
+    lazy var results: NSArray? = {
+        let studentListURL = ConvenientFileManager.studentListURL
+        let results = NSArray(contentsOfURL: studentListURL)
+        return results
+    }()
+    
     var paperName: String?
+    let questionNumber = 3
     
     // MARK: - Lifecycle
     override func viewDidLoad()
@@ -20,9 +26,6 @@ class ExamResultViewController: UITableViewController
         super.viewDidLoad()
         
         tableView.emptyDataSetSource = self
-        
-        let studentListURL = ConvenientFileManager.studentListURL
-        results = NSArray(contentsOfURL: studentListURL)
     }
     
     // MARK: - TableView
@@ -54,12 +57,80 @@ class ExamResultViewController: UITableViewController
             cell.textLabel?.text = name
             if let score = dict[paperName!] as? Int {
                 cell.detailTextLabel?.text = "\(score)"
-                cell.detailTextLabel?.textColor = score > 60 ? UIColor.blueColor() : UIColor.redColor()
+                cell.detailTextLabel?.textColor = score > 60 ? ThemeGreenColor : ThemeRedColor
             } else {
                 cell.detailTextLabel?.text = NSLocalizedString("待考", comment: "")
             }
         }
         
+    }
+    
+    // MARK: - Segue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == "showChart" {
+            if let desVC = segue.destinationViewController as? ChartViewController {
+                desVC.dataSourceDict = configureChartViewDataSource()
+            }
+        }
+    }
+    
+    func configureChartViewDataSource() -> [String: Int]
+    {
+        var passStudents = 0, failStudents = 0, absentStudents = 0
+        for (_, obj) in results!.enumerate() {
+            if let dict = obj as? NSDictionary, let score = dict[paperName!] as? Int {
+                if score > 60 {
+                    passStudents += 1
+                } else {
+                    failStudents += 1
+                }
+            } else {
+                absentStudents += 1
+            }
+        }
+        
+        var questions = [Int]()
+        for index in 0 ..< self.questionNumber {
+            questions.insert(0, atIndex: index)
+        }
+        
+        let paperResultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paperName! + "_result.plist")
+        if let paperResults = NSArray(contentsOfURL: paperResultURL) {
+            for (_, obj) in paperResults.enumerate() {
+                if let dict = obj as? NSDictionary {
+                    if let name = dict["name"] as? String, let correctQuestions = dict["correctQuestions"] as? [Int] {
+                        if studentListHasStudentName(name) {
+                            for index in correctQuestions {
+                                questions[index] += 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        var tempDict = ["passStudents": passStudents, "failStudents": failStudents, "absentStudents": absentStudents, "questionNumber": questionNumber]
+        for index in 0 ..< self.questionNumber {
+            tempDict["\(index)"] = questions[index]
+        }
+        
+        print("tempDict: \(tempDict)")
+        return tempDict
+    }
+    
+    func studentListHasStudentName(name: String) -> Bool
+    {
+        for (_, obj) in results!.enumerate() {
+            if let dict = obj as? NSDictionary, let tempName = dict["name"] as? String {
+                if tempName == name {
+                    return true
+                }
+            }
+        }
+        
+        return false
     }
     
 }

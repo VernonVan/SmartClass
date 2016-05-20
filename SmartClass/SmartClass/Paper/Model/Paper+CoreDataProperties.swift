@@ -19,7 +19,6 @@ extension Paper
     @NSManaged var isIssued: Bool
     @NSManaged var name: String?
     @NSManaged var questions: NSOrderedSet?
-    @NSManaged var results: NSOrderedSet?
 
     var isCompleted: Bool {
         var isCompleted = true

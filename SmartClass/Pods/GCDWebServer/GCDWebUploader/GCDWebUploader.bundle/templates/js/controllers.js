@@ -62,12 +62,14 @@ angular.module('starter.controllers',[])
 
 		// 计算得分
 		var score  = 0;
+		var correctQuestions = [];
 		for(var i = 0; i < $scope.data.exam.length; ++i){
 			// 计算单选题和判断题的得分
 			if($scope.data.exam[i]['type'] == 0 || $scope.data.exam[i]['type'] == 2){
 				var answerIndex = $scope.data.exam[i]['answer'].charCodeAt()-65;
 				if($scope.answer[i][answerIndex] == true) {
 					score += $scope.data.exam[i]['score'];
+					correctQuestions.push(i);
 				}
 				// 计算多选题的得分
 			} else if($scope.data.exam[i]['type'] == 1) {
@@ -92,19 +94,22 @@ angular.module('starter.controllers',[])
 				}
 				if(isRightAnswer == true) {
 					score += $scope.data.exam[i]['score'];
+					correctQuestions.push(i);
 				}
 			}
 		}
 
 		console.log("date:%s", date);
 		console.log("score:%d", score);
+		console.log("correctQuestions: ", correctQuestions);
 
 		$scope.submit = {
 			"paper_title" : $scope.data.title,
 			"student_number" : $scope.student_number,
 			"student_name" : $scope.student_name,
 			"score" : score,
-			"date" : date
+			"date" : date,
+			"correctQuestions" : correctQuestions
 		};
 
 		$http.post('post_answer',$scope.submit)

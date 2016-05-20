@@ -51,6 +51,12 @@ class ResourceListViewController: UITableViewController
         refreshControl?.endRefreshing()
     }
     
+    override func viewWillAppear(animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        reloadData()
+    }
+    
     // MARK: - TableView
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int

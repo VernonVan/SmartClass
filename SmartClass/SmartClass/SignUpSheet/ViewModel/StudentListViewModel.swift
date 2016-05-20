@@ -58,27 +58,6 @@ class StudentListViewModel: NSObject
         return nil
     }
     
-//    func resolveStudentsFromArray(array: NSArray) -> (students: [Student], isSuccessful: Bool)
-//    {
-//        var students = [Student]()
-//        var isSuccessful = true
-//        array.enumerateObjectsUsingBlock({ (obj, idx, stop) in
-//            guard let dict = array[idx] as? NSDictionary, let name = dict["name"] as? String, let number = dict["number"] as? String else {
-//                isSuccessful = false
-//                let shouldStop: ObjCBool = false
-//                stop.initialize(shouldStop)
-//                return
-//            }
-//            let college = dict["college"] as? String
-//            let school = dict["school"] as? String
-//            let student = Student(name: name, number: number, college: college, school: school)
-//            students.append(student)
-//        })
-//        
-//        
-//        return (students, isSuccessful)
-//    }
-    
     // MARK: - table view
     
     func numberOfStudents() -> Int

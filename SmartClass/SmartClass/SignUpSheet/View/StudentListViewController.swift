@@ -116,7 +116,7 @@ class StudentListViewController: UITableViewController
     
     func showFileNameAlertView()
     {
-        let alertController = UIAlertController(title: NSLocalizedString("输入学生名单的文件名（请把文件放在根目录下）", comment: ""), message: NSLocalizedString("注意：这会清空所有的考试纪录以及签到纪录", comment: ""), preferredStyle: .Alert)
+        let alertController = UIAlertController(title: NSLocalizedString("输入文件名", comment: ""), message: NSLocalizedString("注意：请把文件放在根目录下", comment: ""), preferredStyle: .Alert)
         
         let commitAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .Default) { (_) in
             let textField = alertController.textFields![0] as UITextField

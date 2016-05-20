@@ -77,6 +77,7 @@ class PaperListViewModel: NSObject
                             dict[paperName] = resultDict["score"]
                             dict[signDate] = true
                             self.addSignUpSheet(signDate)
+                            self.modifyPaperResultFile(paperName, studentName: name, correctQuestions: resultDict["correctQuestions"] as! [Int])
                         }
                         stop.memory = true
                     }
@@ -101,6 +102,15 @@ class PaperListViewModel: NSObject
         }
         userDefaults.setValue(signUpSheetArray, forKey: "signUpSheet")
         userDefaults.synchronize()
+    }
+    
+    func modifyPaperResultFile(paperName: String, studentName: String, correctQuestions: [Int])
+    {
+        let paperURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paperName + "_result.plist")
+        if let studentArray = NSMutableArray(contentsOfURL: paperURL) {
+            studentArray.addObject(["name": studentName, "correctQuestions": correctQuestions])
+            studentArray.writeToURL(paperURL, atomically: true)
+        }
     }
 
 }

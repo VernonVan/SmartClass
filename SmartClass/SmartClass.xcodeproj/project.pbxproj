@@ -24,12 +24,14 @@
 		077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */; };
 		0792C5F11CD954E7006DF60D /* SignUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C5F01CD954E7006DF60D /* SignUpSheetViewController.swift */; };
 		07A152D51CD7079C004B7511 /* ExamResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A152D41CD7079C004B7511 /* ExamResultViewController.swift */; };
-		07A152DC1CD70B3C004B7511 /* Result+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A152DA1CD70B3C004B7511 /* Result+CoreDataProperties.swift */; };
-		07A152DD1CD70B3C004B7511 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A152DB1CD70B3C004B7511 /* Result.swift */; };
 		07B338411CE1D6BC00B45DF8 /* PaperListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B338401CE1D6BC00B45DF8 /* PaperListViewController.swift */; };
 		07B338431CE1D79C00B45DF8 /* PaperListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B338421CE1D79C00B45DF8 /* PaperListViewModel.swift */; };
+		07BAD4E31CEEF76E00F53E4E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07BAD4E11CEEF76E00F53E4E /* Model.xcdatamodeld */; };
 		07C2BD4A1CE1FF4A003E6454 /* SignUpSheetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */; };
 		07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */; };
+		07DDC7B61CEE7CAA00E5155C /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DDC7B51CEE7CAA00E5155C /* ChartViewController.swift */; };
+		07DDC7E81CEE833E00E5155C /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DDC7E11CEE832B00E5155C /* Charts.framework */; };
+		07DDC7E91CEE833E00E5155C /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07DDC7E11CEE832B00E5155C /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07DEA8071CEC799B00C7504E /* NewSignUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */; };
 		07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */; };
 		07E4DF571CE258D90082BCE3 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */; };
@@ -71,6 +73,58 @@
 		ADF4D8881CC0DC0D00B806A8 /* Character+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		07DDC7E01CEE832B00E5155C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		07DDC7E21CEE832B00E5155C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		07DDC7E41CEE832B00E5155C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		07DDC7E61CEE832B00E5155C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		07DDC7EA1CEE833E00E5155C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		07DDC7EC1CEE833F00E5155C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				07DDC7E91CEE833E00E5155C /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0700D1AE1CE4AD0100EB9A81 /* CanvasPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasPopoverViewController.swift; path = Resource/View/CanvasPopoverViewController.swift; sourceTree = "<group>"; };
 		0700D1AF1CE4AD0100EB9A81 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanvasView.swift; path = Resource/View/CanvasView.swift; sourceTree = "<group>"; };
@@ -89,12 +143,13 @@
 		077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConvenientFileManager.swift; path = Util/ConvenientFileManager.swift; sourceTree = "<group>"; };
 		0792C5F01CD954E7006DF60D /* SignUpSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetViewController.swift; path = SignUpSheet/View/SignUpSheetViewController.swift; sourceTree = "<group>"; };
 		07A152D41CD7079C004B7511 /* ExamResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamResultViewController.swift; path = SmartClass/Paper/View/ExamResultViewController.swift; sourceTree = SOURCE_ROOT; };
-		07A152DA1CD70B3C004B7511 /* Result+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Result+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Result+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		07A152DB1CD70B3C004B7511 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = SmartClass/Paper/Model/Result.swift; sourceTree = SOURCE_ROOT; };
 		07B338401CE1D6BC00B45DF8 /* PaperListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperListViewController.swift; path = SmartClass/Paper/View/PaperListViewController.swift; sourceTree = SOURCE_ROOT; };
 		07B338421CE1D79C00B45DF8 /* PaperListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperListViewModel.swift; path = SmartClass/Paper/ViewModel/PaperListViewModel.swift; sourceTree = SOURCE_ROOT; };
+		07BAD4E21CEEF76E00F53E4E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewController.swift; path = SignUpSheet/View/SignUpSheetListViewController.swift; sourceTree = "<group>"; };
 		07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewModel.swift; path = SignUpSheet/ViewModel/SignUpSheetListViewModel.swift; sourceTree = "<group>"; };
+		07DDC7B51CEE7CAA00E5155C /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartViewController.swift; path = SmartClass/Paper/View/ChartViewController.swift; sourceTree = SOURCE_ROOT; };
+		07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSignUpSheetViewController.swift; path = SignUpSheet/View/NewSignUpSheetViewController.swift; sourceTree = "<group>"; };
 		07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewModel.swift; path = SignUpSheet/ViewModel/StudentListViewModel.swift; sourceTree = "<group>"; };
 		07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Paper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -150,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */,
+				07DDC7E81CEE833E00E5155C /* Charts.framework in Frameworks */,
 				AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */,
 				AD884BD01C83F31A005A37AE /* libz.1.2.5.tbd in Frameworks */,
 				AD884BCE1C83F310005A37AE /* MediaPlayer.framework in Frameworks */,
@@ -176,6 +232,17 @@
 				0700D1B91CE4B5B000EB9A81 /* ResourceListViewModel.swift */,
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		07DDC7DA1CEE832B00E5155C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07DDC7E11CEE832B00E5155C /* Charts.framework */,
+				07DDC7E31CEE832B00E5155C /* Charts.framework */,
+				07DDC7E51CEE832B00E5155C /* Charts.framework */,
+				07DDC7E71CEE832B00E5155C /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		07E306F01CCF5D88002424A0 /* ViewModel */ = {
@@ -298,6 +365,7 @@
 				AD86A8C71C82DBCC009CEE87 /* Products */,
 				7024160A6759EEC45762B274 /* Pods */,
 				5B800375E992113887F3BF95 /* Frameworks */,
+				07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -314,6 +382,7 @@
 			children = (
 				AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */,
 				AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */,
+				07BAD4E11CEEF76E00F53E4E /* Model.xcdatamodeld */,
 				AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */,
 				AD1D18261C89867F009B9390 /* Paper */,
 				AD3B19AD1CC7265200B4E700 /* Resource */,
@@ -375,6 +444,7 @@
 				0739FE351CC505010035DE88 /* PaperViewController.swift */,
 				0739FE361CC505010035DE88 /* QuestionListViewController.swift */,
 				07A152D41CD7079C004B7511 /* ExamResultViewController.swift */,
+				07DDC7B51CEE7CAA00E5155C /* ChartViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -397,8 +467,6 @@
 				07E4DF561CE258D90082BCE3 /* Paper.swift */,
 				AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */,
 				AD3B199E1CC7197000B4E700 /* Question.swift */,
-				07A152DA1CD70B3C004B7511 /* Result+CoreDataProperties.swift */,
-				07A152DB1CD70B3C004B7511 /* Result.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -428,10 +496,12 @@
 				AD86A8C41C82DBCC009CEE87 /* Resources */,
 				D1067C473CD350D6515D728A /* Embed Pods Frameworks */,
 				A00F326F676A0AFE07412D48 /* Copy Pods Resources */,
+				07DDC7EC1CEE833F00E5155C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				07DDC7EB1CEE833E00E5155C /* PBXTargetDependency */,
 			);
 			name = SmartClass;
 			productName = SmartClass;
@@ -465,12 +535,49 @@
 			mainGroup = AD86A8BD1C82DBCC009CEE87;
 			productRefGroup = AD86A8C71C82DBCC009CEE87 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 07DDC7DA1CEE832B00E5155C /* Products */;
+					ProjectRef = 07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AD86A8C51C82DBCC009CEE87 /* SmartClass */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		07DDC7E11CEE832B00E5155C /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 07DDC7E01CEE832B00E5155C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07DDC7E31CEE832B00E5155C /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 07DDC7E21CEE832B00E5155C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07DDC7E51CEE832B00E5155C /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 07DDC7E41CEE832B00E5155C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		07DDC7E71CEE832B00E5155C /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 07DDC7E61CEE832B00E5155C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AD86A8C41C82DBCC009CEE87 /* Resources */ = {
@@ -539,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */,
+				07BAD4E31CEEF76E00F53E4E /* Model.xcdatamodeld in Sources */,
 				07B338411CE1D6BC00B45DF8 /* PaperListViewController.swift in Sources */,
 				07DEA8071CEC799B00C7504E /* NewSignUpSheetViewController.swift in Sources */,
 				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
@@ -552,7 +660,7 @@
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
 				AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */,
 				ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */,
-				07A152DD1CD70B3C004B7511 /* Result.swift in Sources */,
+				07DDC7B61CEE7CAA00E5155C /* ChartViewController.swift in Sources */,
 				07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */,
 				0774FD411CCF9017002A29A8 /* StudentViewController.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
@@ -568,7 +676,6 @@
 				07A152D51CD7079C004B7511 /* ExamResultViewController.swift in Sources */,
 				07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */,
 				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
-				07A152DC1CD70B3C004B7511 /* Result+CoreDataProperties.swift in Sources */,
 				07C2BD4A1CE1FF4A003E6454 /* SignUpSheetListViewController.swift in Sources */,
 				07E4DF571CE258D90082BCE3 /* Paper+CoreDataProperties.swift in Sources */,
 				AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */,
@@ -586,6 +693,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		07DDC7EB1CEE833E00E5155C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 07DDC7EA1CEE833E00E5155C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */ = {
@@ -698,6 +813,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -762,6 +878,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -839,6 +956,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		07BAD4E11CEEF76E00F53E4E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				07BAD4E21CEEF76E00F53E4E /* Model.xcdatamodel */,
+			);
+			currentVersion = 07BAD4E21CEEF76E00F53E4E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AD86A8BE1C82DBCC009CEE87 /* Project object */;
 }

@@ -82,14 +82,11 @@ class PaperInformationViewModel: RVMViewModel
     func createPaperResultFile()
     {
         let fileManager = NSFileManager.defaultManager()
-        let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
         let resultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!+"_result.plist")
-        do {
-            if fileManager.fileExistsAtPath(resultURL.path!) == false {
-                try fileManager.copyItemAtURL(studentListURL, toURL: resultURL)
-            }
-        } catch let error as NSError {
-            print("PaperInformationViewModel createPaperResultFile error: \(error.userInfo)")
+        
+        if fileManager.fileExistsAtPath(resultURL.path!) == false {
+            let emptyArray = NSArray()
+            emptyArray.writeToURL(resultURL, atomically: true)
         }
     }
     
