@@ -16,9 +16,14 @@ class ExamResultViewController: UITableViewController
         let results = NSArray(contentsOfURL: studentListURL)
         return results
     }()
-    
-    var paperName: String?
-    let questionNumber = 3
+  
+    var paper: Paper?
+    lazy var paperName: String = {
+        return self.paper!.name!
+    }()
+    lazy var questionNumber: Int = {
+        return self.paper!.questions!.count
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad()
@@ -35,6 +40,7 @@ class ExamResultViewController: UITableViewController
         let count = results?.count ?? 0
         if count == 0 {
             tableView.separatorStyle = .None
+            navigationItem.rightBarButtonItem = nil
         } else {
             tableView.separatorStyle = .SingleLine
         }
@@ -55,7 +61,7 @@ class ExamResultViewController: UITableViewController
         if let dict = results?[indexPath.row] as? NSDictionary {
             let name = dict["name"] as! String
             cell.textLabel?.text = name
-            if let score = dict[paperName!] as? Int {
+            if let score = dict[paperName] as? Int {
                 cell.detailTextLabel?.text = "\(score)"
                 cell.detailTextLabel?.textColor = score > 60 ? ThemeGreenColor : ThemeRedColor
             } else {
@@ -73,6 +79,10 @@ class ExamResultViewController: UITableViewController
             if let desVC = segue.destinationViewController as? ChartViewController {
                 desVC.dataSourceDict = configureChartViewDataSource()
             }
+        } else if segue.identifier == "previewPaper" {
+            if let desVC = segue.destinationViewController as? PreviewPaperViewController {
+                desVC.viewModel = PreviewPaperViewModel(paper: paper!)
+            }
         }
     }
     
@@ -80,7 +90,7 @@ class ExamResultViewController: UITableViewController
     {
         var passStudents = 0, failStudents = 0, absentStudents = 0
         for (_, obj) in results!.enumerate() {
-            if let dict = obj as? NSDictionary, let score = dict[paperName!] as? Int {
+            if let dict = obj as? NSDictionary, let score = dict[paperName] as? Int {
                 if score > 60 {
                     passStudents += 1
                 } else {
@@ -96,7 +106,7 @@ class ExamResultViewController: UITableViewController
             questions.insert(0, atIndex: index)
         }
         
-        let paperResultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paperName! + "_result.plist")
+        let paperResultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(paperName + "_result.plist")
         if let paperResults = NSArray(contentsOfURL: paperResultURL) {
             for (_, obj) in paperResults.enumerate() {
                 if let dict = obj as? NSDictionary {
@@ -115,8 +125,7 @@ class ExamResultViewController: UITableViewController
         for index in 0 ..< self.questionNumber {
             tempDict["\(index)"] = questions[index]
         }
-        
-        print("tempDict: \(tempDict)")
+
         return tempDict
     }
     

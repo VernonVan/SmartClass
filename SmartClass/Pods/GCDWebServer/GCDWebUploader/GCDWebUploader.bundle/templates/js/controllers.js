@@ -57,71 +57,79 @@ angular.module('starter.controllers',[])
 			return;
 		}
 
-		console.log("answer");
-		console.log($scope.answer);
 
-		// 计算得分
-		var score  = 0;
-		var correctQuestions = [];
-		for(var i = 0; i < $scope.data.exam.length; ++i){
-			// 计算单选题和判断题的得分
-			if($scope.data.exam[i]['type'] == 0 || $scope.data.exam[i]['type'] == 2){
-				var answerIndex = $scope.data.exam[i]['answer'].charCodeAt()-65;
-				if($scope.answer[i][answerIndex] == true) {
-					score += $scope.data.exam[i]['score'];
-					correctQuestions.push(i);
-				}
-				// 计算多选题的得分
-			} else if($scope.data.exam[i]['type'] == 1) {
-				var answers = $scope.data.exam[i]['answer'];
-				var answerIndexs = [];
-				for(var j = 0; j < answers.length; j++){
-					answerIndexs[j] = answers.charAt(j).charCodeAt()-65;
-				}
-				var isRightAnswer = true;
-				for(var k = 0; k < 4; k++) {
-					if(contains(answerIndexs, k) == true) {
-						if($scope.answer[i][k] != true){
-							isRightAnswer = false;
-							break;
-						}
-					} else {
-						if($scope.answer[i][k] == true){
-							isRightAnswer = false;
-							break;
+		if (confirm("确定提交吗?")) {
+			// 计算得分
+			var score  = 0;
+			var correctQuestions = [];
+			for(var i = 0; i < $scope.data.exam.length; ++i){
+				// 计算单选题和判断题的得分
+				if($scope.data.exam[i]['type'] == 0 || $scope.data.exam[i]['type'] == 2){
+					var answerIndex = $scope.data.exam[i]['answer'].charCodeAt()-65;
+					if($scope.answer[i][answerIndex] == true) {
+						score += $scope.data.exam[i]['score'];
+						correctQuestions.push(i);
+					}
+					// 计算多选题的得分
+				} else if($scope.data.exam[i]['type'] == 1) {
+					var answers = $scope.data.exam[i]['answer'];
+					var answerIndexs = [];
+					for(var j = 0; j < answers.length; j++){
+						answerIndexs[j] = answers.charAt(j).charCodeAt()-65;
+					}
+					var isRightAnswer = true;
+					for(var k = 0; k < 4; k++) {
+						if(contains(answerIndexs, k) == true) {
+							if($scope.answer[i][k] != true){
+								isRightAnswer = false;
+								break;
+							}
+						} else {
+							if($scope.answer[i][k] == true){
+								isRightAnswer = false;
+								break;
+							}
 						}
 					}
-				}
-				if(isRightAnswer == true) {
-					score += $scope.data.exam[i]['score'];
-					correctQuestions.push(i);
+					if(isRightAnswer == true) {
+						score += $scope.data.exam[i]['score'];
+						correctQuestions.push(i);
+					}
 				}
 			}
+
+			console.log("date:%s", date);
+			console.log("score:%d", score);
+			console.log("correctQuestions: ", correctQuestions);
+
+			$scope.submit = {
+				"paper_title" : $scope.data.title,
+				"student_number" : $scope.student_number,
+				"student_name" : $scope.student_name,
+				"score" : score,
+				"date" : date,
+				"correctQuestions" : correctQuestions
+			};
+
+			$http.post('post_answer',$scope.submit)
+				.success(function(data){
+					alert("考试完成\n你的分数:" + score);
+					history.back();
+				})
+				.error(function(data,status,headers){
+					switch(status){
+						case 404:alert("没有连接到服务器");break;
+						case 403:alert("重复提交");break;
+					}
+				});
+
+
+		}
+		else {
+
 		}
 
-		console.log("date:%s", date);
-		console.log("score:%d", score);
-		console.log("correctQuestions: ", correctQuestions);
 
-		$scope.submit = {
-			"paper_title" : $scope.data.title,
-			"student_number" : $scope.student_number,
-			"student_name" : $scope.student_name,
-			"score" : score,
-			"date" : date,
-			"correctQuestions" : correctQuestions
-		};
-
-		$http.post('post_answer',$scope.submit)
-            .success(function(data){
-                alert("考试完成\n你的分数:" + score);
-            })
-            .error(function(data,status,headers){
-                switch(status){
-                    case 404:alert("没有连接到服务器");break;
-				    case 403:alert("重复提交");break;
-                }
-            });
 
 	}  // $scope.send
 

@@ -68,9 +68,9 @@ class NewSignUpSheetViewController: UITableViewController
     
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
     {
-        return UITableViewCellEditingStyle(rawValue: 3)!
+        return unsafeBitCast(3, UITableViewCellEditingStyle.self)
     }
-
+    
     // MARK: - Action
     
     @IBAction func doneAction(sender: UIBarButtonItem)

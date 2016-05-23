@@ -36,64 +36,50 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     }
     
     lazy var pptView: PPTView = {
-        let width = self.view.frame.size.width
-        let height = width*0.75
-        let pptView = PPTView(frame: CGRectZero, pptURL: self.pptURL!)
+        let height = self.view.frame.size.height
+        let width = height * (4/3)
+        let pptView = PPTView(frame: CGRect(x: (self.view.frame.size.width - width) / 2, y: 0.0, width: width, height: height), pptURL: self.pptURL!)
         pptView.scalesPageToFit = true
         return pptView
     }()
 
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
-    
-    
+        
     // MARK: - Lifecycle
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        view.addSubview(pptView)
-        adjustViewsForOrientation(UIApplication.sharedApplication().statusBarOrientation)
-        
-        view.addSubview(toolbar)
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showToolbarOrNot))
         isShowToolbar = true
         view.addGestureRecognizer(tapGesture)
 
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewDidAppear(animated: Bool)
     {
-        super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(orientationChanged), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        super.viewDidAppear(animated)
+        
+        view.addSubview(pptView)
+        view.addSubview(toolbar)
+    }
+
+    
+    override func shouldAutorotate() -> Bool
+    {
+        return false
     }
     
-    func orientationChanged(notification: NSNotification)
+    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation
     {
-        adjustViewsForOrientation(UIApplication.sharedApplication().statusBarOrientation)
+        return UIInterfaceOrientation.LandscapeLeft
     }
     
-    func adjustViewsForOrientation(orientation: UIInterfaceOrientation)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask
     {
-        var height = view.frame.size.height
-        var width = view.frame.size.width
-        
-        switch orientation {
-        case .LandscapeLeft , .LandscapeRight :
-            width = (height*4) / 3
-            pptView.frame = CGRect(x: (view.frame.size.width-width)/2, y: 0, width: width,  height: height)
-        case .Portrait , .PortraitUpsideDown:
-            height = width * 0.75
-            pptView.frame = CGRect(x: 0, y: (view.frame.size.height-height)/2, width: width,  height: height)
-        case .Unknown:
-            break
-        }
-        
-        let gestureFrame = CGRect(x: 0, y: 0, width: width, height: height)
-        pptView.gestureView!.frame = gestureFrame
-        pptView.canvasView?.frame = gestureFrame
+        return .LandscapeLeft
     }
     
     // MARK: - Actions

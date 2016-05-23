@@ -47,7 +47,7 @@ class PPTView: UIWebView , UIWebViewDelegate
         let pptViewHeight = frame.size.height
         let pptViewWidth = frame.size.width
 
-        for i in 0..<totalPage {
+        for i in 0 ..< totalPage {
             webView.stringByEvaluatingJavaScriptFromString(String(format: "var ppt_width=document.getElementsByClassName('slide')[%d].style.width.replace('px','') ; var percent = %f / ppt_width ; var ppt_height=document.getElementsByClassName('slide')[%d].style.height.replace('px','') * percent  ;   var pptspaceheight=(%f -ppt_height)/2 ; document.getElementsByClassName('slide')[%d].style.top = pptspaceheight + 'px' ; document.body.style.background='black';", i, pptViewWidth, i, pptViewHeight, i))
             if i != 0 {
                 webView.stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", i))

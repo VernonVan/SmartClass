@@ -16,7 +16,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     
     weak var paperViewModel: PaperViewModel?
     
-    // MARK: - private var
+    // MARK: - var
     private let tableview = UITableView()
     private let topicCell = UITableViewCell()
     let topicTextView = UIPlaceHolderTextView()
@@ -47,7 +47,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
         
         tableview.dataSource = self
         tableview.delegate = self
-        self.addSubview(tableview)
+        addSubview(tableview)
         tableview.scrollEnabled = false
         tableview.snp_makeConstraints { (make) in
             make.edges.equalTo(self).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
@@ -115,9 +115,9 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return (indexPath.section==0) ? TopicCellHeight : ChoiceCellHeight
+        return (indexPath.section == 0) ? TopicCellHeight : ChoiceCellHeight
     }
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let cell = tableview.cellForRowAtIndexPath(indexPath)
@@ -128,7 +128,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
     {
         let cell = tableview.cellForRowAtIndexPath(indexPath)
-        cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
+        cell?.imageView?.image = UIImage(named: "emptyChoice")
         changeAnswers()
     }
     
@@ -150,6 +150,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     func configureTopicCell()
     {
         topicTextView.placeholder = NSLocalizedString("问题描述", comment: "")
+        topicTextView.autocorrectionType = .No
         topicTextView.font = UIFont.systemFontOfSize(14)
         topicCell.addSubview(topicTextView)
         topicTextView.snp_makeConstraints { (make) in
@@ -159,29 +160,24 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
     
     func configureChoiceCells()
     {
-        for index in 0..<4 {
+        for index in 0 ..< 4 {
             let choiceCell = UITableViewCell()
             let choiceTextField = UITextField()
-            choiceCell.imageView?.image = UIImage(named: getChoiceImageName(index))
+            choiceTextField.autocorrectionType = .No
+            choiceCell.imageView?.image = UIImage(named: "emptyChoice")
             
             choiceTextField.borderStyle = .None
-            choiceTextField.placeholder = NSLocalizedString("选项", comment: "")
+            choiceTextField.placeholder = String(format: "选项%c", index+65)
             choiceCell.addSubview(choiceTextField)
             choiceTextField.snp_makeConstraints(closure: { (make) in
                 make.centerY.equalTo(choiceCell)
-                make.left.equalTo(45)
-                make.right.equalTo(2)
+                make.left.equalTo(choiceCell.imageView!).offset(44)
+                make.right.equalTo(choiceCell).inset(10)
             })
             
             choiceTextFields.append(choiceTextField)
             choiceCells.append(choiceCell)
         }
-    }
-
-    // 从序号转换成图片的name
-    func getChoiceImageName(index: Int) -> String
-    {
-        return String(format: "option%c", index+65)
     }
     
     // MARK: - Question type
@@ -245,7 +241,7 @@ class QuestionView: UIView, UITableViewDataSource, UITableViewDelegate
             let indexPath = NSIndexPath(forRow: row, inSection: ChoiceSection)
             tableview.deselectRowAtIndexPath(indexPath, animated: false)
             let cell = tableview.cellForRowAtIndexPath(indexPath)
-            cell?.imageView?.image = UIImage(named: getChoiceImageName(indexPath.row))
+            cell?.imageView?.image = UIImage(named: "emptyChoice")
         }
         answers = nil
     }

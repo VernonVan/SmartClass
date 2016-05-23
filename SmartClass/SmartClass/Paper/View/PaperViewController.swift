@@ -35,7 +35,6 @@ class PaperViewController: UIViewController
         super.viewDidLoad()
         
         scrollViewHeight.constant = newButton.frame.maxY + 20.0
-        print("view.height: \(view.bounds.height)\tscrollViewHeight: \(scrollViewHeight.constant)")
         removeBorderOfNavBar()
         
         questionView.paperViewModel = viewModel

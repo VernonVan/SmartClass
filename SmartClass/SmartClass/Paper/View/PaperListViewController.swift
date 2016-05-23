@@ -147,9 +147,7 @@ class PaperListViewController: UITableViewController
         } else if segue.identifier == "showExamResult" {
             if let desVC = segue.destinationViewController as? ExamResultViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
-                if let paperName = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text {
-                    desVC.paperName = paperName
-                }
+                desVC.paper = viewModel?.paperAtIndexPath(indexPath)
             }
         }
     }

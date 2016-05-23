@@ -14,7 +14,9 @@ class ChartViewController: UIViewController
     @IBOutlet weak var pieChartView: PieChartView!
     @IBOutlet weak var barChartView: BarChartView!
 
-    var dataSourceDict: [String: Int]? // ["passStudents":4, "failStudents": 4, "absentStudents": 2, "questionNumber": 4, "0": 4, "1": 2, "3": 0, "4": 5]
+    @IBOutlet weak var viewHeight: NSLayoutConstraint!
+    
+    var dataSourceDict: [String: Int]?
     
     override func viewDidLoad()
     {
@@ -29,6 +31,19 @@ class ChartViewController: UIViewController
         barChartView.animate(yAxisDuration: 1.0)
     }
     
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        viewHeight.constant = view.bounds.width * 2.5
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator)
+    {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        viewHeight.constant = size.width * 2.5
+    }
+    
+    // MARK: - Pie chart
     func setUpPieChartView()
     {
         pieChartView.usePercentValuesEnabled = true
@@ -38,21 +53,17 @@ class ChartViewController: UIViewController
         pieChartView.setExtraOffsets(left: 5.0, top: 10.0, right: 5.0, bottom: 5.0)
         
         pieChartView.drawCenterTextEnabled = true
-        pieChartView.centerText = "总体得分"
-        
+        pieChartView.centerText = NSLocalizedString("总体得分", comment: "")
         pieChartView.descriptionText = ""
-        pieChartView.noDataTextDescription = "没有学生信息"
+        pieChartView.noDataTextDescription = NSLocalizedString("没有学生信息", comment: "")
         
         pieChartView.drawHoleEnabled = true
         pieChartView.rotationAngle = 0.0
-        pieChartView.rotationEnabled = true
+        pieChartView.rotationEnabled = false
         pieChartView.highlightPerTapEnabled = true
 
         let l = pieChartView.legend
-        l.position = ChartLegend.Position.BelowChartRight
-        l.xEntrySpace = 0.0
-        l.yEntrySpace = 0.0
-        l.yOffset = 0.0
+        l.position = .RightOfChart
     }
     
     func setPieChartData()
@@ -81,7 +92,7 @@ class ChartViewController: UIViewController
         let pFormatter = NSNumberFormatter()
         pFormatter.maximumFractionDigits = 1
         pFormatter.multiplier = 1.0
-        pFormatter.percentSymbol = "%"
+        pFormatter.percentSymbol = " %"
         data.setValueFormatter(pFormatter)
         data.setValueTextColor(UIColor.whiteColor())
         
@@ -92,8 +103,6 @@ class ChartViewController: UIViewController
     func setUpBarChartView()
     {
         barChartView.descriptionText = ""
-        barChartView.noDataTextDescription = "没有学生考试"
-        
         barChartView.maxVisibleValueCount = 40
         barChartView.pinchZoomEnabled = false
         barChartView.drawBarShadowEnabled = false
@@ -125,7 +134,7 @@ class ChartViewController: UIViewController
             
             let dataSet = BarChartDataSet(yVals: yVals, label: "DataSet")
             dataSet.colors = ChartColorTemplates.material()
-            dataSet.drawValuesEnabled = false
+            dataSet.drawValuesEnabled = true
                 
             let data = BarChartData(xVals: xVals, dataSets: [dataSet])
             barChartView.data = data

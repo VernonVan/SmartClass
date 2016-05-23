@@ -41,6 +41,8 @@
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
 		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
+		AD20C2191CF310B100501FEE /* PreviewPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20C2181CF310B100501FEE /* PreviewPaperViewController.swift */; };
+		AD20C21E1CF3115700501FEE /* PreviewPaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20C21D1CF3115700501FEE /* PreviewPaperViewModel.swift */; };
 		AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */; };
 		AD3B19A21CC7197000B4E700 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199E1CC7197000B4E700 /* Question.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
@@ -158,6 +160,8 @@
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
+		AD20C2181CF310B100501FEE /* PreviewPaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviewPaperViewController.swift; path = SmartClass/Paper/View/PreviewPaperViewController.swift; sourceTree = SOURCE_ROOT; };
+		AD20C21D1CF3115700501FEE /* PreviewPaperViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviewPaperViewModel.swift; path = SmartClass/Paper/ViewModel/PreviewPaperViewModel.swift; sourceTree = SOURCE_ROOT; };
 		AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Question+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		AD3B199E1CC7197000B4E700 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = SmartClass/Paper/Model/Question.swift; sourceTree = SOURCE_ROOT; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
@@ -445,6 +449,7 @@
 				0739FE361CC505010035DE88 /* QuestionListViewController.swift */,
 				07A152D41CD7079C004B7511 /* ExamResultViewController.swift */,
 				07DDC7B51CEE7CAA00E5155C /* ChartViewController.swift */,
+				AD20C2181CF310B100501FEE /* PreviewPaperViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -456,6 +461,7 @@
 				0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */,
 				0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */,
 				0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */,
+				AD20C21D1CF3115700501FEE /* PreviewPaperViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -520,7 +526,7 @@
 				TargetAttributes = {
 					AD86A8C51C82DBCC009CEE87 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = KGH8U4YC6S;
+						DevelopmentTeam = R6964LXMCM;
 					};
 				};
 			};
@@ -662,6 +668,7 @@
 				ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */,
 				07DDC7B61CEE7CAA00E5155C /* ChartViewController.swift in Sources */,
 				07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */,
+				AD20C2191CF310B100501FEE /* PreviewPaperViewController.swift in Sources */,
 				0774FD411CCF9017002A29A8 /* StudentViewController.swift in Sources */,
 				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
 				0739FE391CC505010035DE88 /* PaperViewController.swift in Sources */,
@@ -672,6 +679,7 @@
 				0739FE331CC504F50035DE88 /* QuestionListViewModel.swift in Sources */,
 				0700D1B21CE4AD0100EB9A81 /* CanvasPopoverViewController.swift in Sources */,
 				0792C5F11CD954E7006DF60D /* SignUpSheetViewController.swift in Sources */,
+				AD20C21E1CF3115700501FEE /* PreviewPaperViewModel.swift in Sources */,
 				0700D1B71CE4AD3100EB9A81 /* ResourceListViewController.swift in Sources */,
 				07A152D51CD7079C004B7511 /* ExamResultViewController.swift in Sources */,
 				07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */,
@@ -819,6 +827,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -884,6 +893,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
