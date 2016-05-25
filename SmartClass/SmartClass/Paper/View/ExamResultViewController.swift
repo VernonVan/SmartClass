@@ -71,6 +71,14 @@ class ExamResultViewController: UITableViewController
         
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if IDIOM == IPAD {
+            return 66.0
+        }
+        return 44.0
+    }
+    
     // MARK: - Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -80,8 +88,8 @@ class ExamResultViewController: UITableViewController
                 desVC.dataSourceDict = configureChartViewDataSource()
             }
         } else if segue.identifier == "previewPaper" {
-            if let desVC = segue.destinationViewController as? PreviewPaperViewController {
-                desVC.viewModel = PreviewPaperViewModel(paper: paper!)
+            if let desVC = segue.destinationViewController as? PreviewRootViewController {
+                desVC.paper = paper
             }
         }
     }
@@ -149,17 +157,10 @@ extension ExamResultViewController: DZNEmptyDataSetSource
 {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let text = NSLocalizedString( "还未添加学生", comment: "" )
+        let text = NSLocalizedString( "请先添加学生", comment: "" )
         let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(22.0) ,
                           NSForegroundColorAttributeName : UIColor.darkGrayColor()]
         return NSAttributedString(string: text , attributes: attributes)
     }
-    
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
-    {
-        let text = NSLocalizedString( "这里应该是跳转到添加学生界面的按钮", comment: "" )
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(16.0) ,
-                          NSForegroundColorAttributeName : UIColor.lightGrayColor()]
-        return NSAttributedString(string: text , attributes: attributes)
-    }
+
 }

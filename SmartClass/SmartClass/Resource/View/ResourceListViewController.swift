@@ -137,6 +137,14 @@ class ResourceListViewController: UITableViewController
         }
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if IDIOM == IPAD {
+            return 66.0
+        }
+        return 44.0
+    }
+    
     // MARK: - Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)

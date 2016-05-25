@@ -12,5 +12,4 @@ import CoreData
 
 class Question: NSManagedObject
 {
-
 }

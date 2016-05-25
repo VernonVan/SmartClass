@@ -91,6 +91,14 @@ class QuestionListViewController: UITableViewController
         viewModel?.moveItemFromIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if IDIOM == IPAD {
+            return 54.0
+        }
+        return 44.0
+    }
+    
     // MARK: - table view delegate 
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)

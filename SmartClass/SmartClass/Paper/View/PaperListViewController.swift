@@ -14,8 +14,12 @@ enum PaperListVCSection: Int {
     case issuedPaperSection = 0, editingPaperSection
 }
 
+let IDIOM = UI_USER_INTERFACE_IDIOM()
+let IPAD = UIUserInterfaceIdiom.Pad
+
 class PaperListViewController: UITableViewController
 {
+    
     var viewModel: PaperListViewModel?
     
     @IBOutlet weak var webUploadLabel: UILabel!
@@ -69,7 +73,6 @@ class PaperListViewController: UITableViewController
     
     func receiveExamResultHandler(notification: NSNotification)
     {
-        print("-----------------------Receive exam result: \(notification.userInfo)----------------------")
         if let resultDict = notification.userInfo {
             viewModel?.modifyStudentListFileWithData(resultDict)
         }
@@ -128,6 +131,15 @@ class PaperListViewController: UITableViewController
         }
         reloadData()
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if IDIOM == IPAD {
+            return 66.0
+        }
+        return 44.0
+    }
+    
    
     // MARK: - Segue
     

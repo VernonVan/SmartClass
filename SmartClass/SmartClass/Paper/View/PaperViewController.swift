@@ -9,7 +9,7 @@
 import UIKit
 
 enum QuestionType: Int {
-    case SingleChoice=0, MultipleChoice, TrueOrFalse
+    case SingleChoice = 0, MultipleChoice, TrueOrFalse
 }
 
 class PaperViewController: UIViewController

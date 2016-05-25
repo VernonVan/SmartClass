@@ -71,6 +71,14 @@ class NewSignUpSheetViewController: UITableViewController
         return unsafeBitCast(3, UITableViewCellEditingStyle.self)
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if IDIOM == IPAD {
+            return 54.0
+        }
+        return 44.0
+    }
+    
     // MARK: - Action
     
     @IBAction func doneAction(sender: UIBarButtonItem)

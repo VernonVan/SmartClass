@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class SignUpSheetViewController: UITableViewController
 {
@@ -16,6 +17,8 @@ class SignUpSheetViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        tableView.emptyDataSetSource = self
         
         let fileURL = ConvenientFileManager.studentListURL
         records = NSArray(contentsOfURL: fileURL)
@@ -58,5 +61,28 @@ class SignUpSheetViewController: UITableViewController
         }
         
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if IDIOM == IPAD {
+            return 54.0
+        }
+        return 44.0
+    }
 
 }
+
+// MARK: - DZNEmptyDataSet
+extension SignUpSheetViewController: DZNEmptyDataSetSource
+{
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = NSLocalizedString( "请先添加学生", comment: "" )
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(22.0) ,
+                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
+        return NSAttributedString(string: text , attributes: attributes)
+    }
+
+}
+
+

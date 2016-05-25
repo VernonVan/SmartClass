@@ -42,7 +42,6 @@
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
 		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
 		AD20C2191CF310B100501FEE /* PreviewPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20C2181CF310B100501FEE /* PreviewPaperViewController.swift */; };
-		AD20C21E1CF3115700501FEE /* PreviewPaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD20C21D1CF3115700501FEE /* PreviewPaperViewModel.swift */; };
 		AD3B19A11CC7197000B4E700 /* Question+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */; };
 		AD3B19A21CC7197000B4E700 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3B199E1CC7197000B4E700 /* Question.swift */; };
 		AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */; };
@@ -51,6 +50,7 @@
 		AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */; };
 		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
 		AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308671CB10028000DEC59 /* UIImage+extension.swift */; };
+		AD72CC8A1CF43C5000CED7B8 /* PreviewRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD72CC891CF43C5000CED7B8 /* PreviewRootViewController.swift */; };
 		AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */; };
 		AD86A8CF1C82DBCC009CEE87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */; };
 		AD86A8D11C82DBCC009CEE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8D01C82DBCC009CEE87 /* Assets.xcassets */; };
@@ -161,7 +161,6 @@
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
 		AD20C2181CF310B100501FEE /* PreviewPaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviewPaperViewController.swift; path = SmartClass/Paper/View/PreviewPaperViewController.swift; sourceTree = SOURCE_ROOT; };
-		AD20C21D1CF3115700501FEE /* PreviewPaperViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviewPaperViewModel.swift; path = SmartClass/Paper/ViewModel/PreviewPaperViewModel.swift; sourceTree = SOURCE_ROOT; };
 		AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Question+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Question+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		AD3B199E1CC7197000B4E700 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = SmartClass/Paper/Model/Question.swift; sourceTree = SOURCE_ROOT; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
@@ -172,6 +171,7 @@
 		AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVMViewModel.m; path = Util/ReactiveViewModel/RVMViewModel.m; sourceTree = "<group>"; };
 		AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "Util/Extension/UIColor+extension.swift"; sourceTree = "<group>"; };
 		AD6308671CB10028000DEC59 /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+extension.swift"; path = "Util/Extension/UIImage+extension.swift"; sourceTree = "<group>"; };
+		AD72CC891CF43C5000CED7B8 /* PreviewRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviewRootViewController.swift; path = SmartClass/Paper/View/PreviewRootViewController.swift; sourceTree = SOURCE_ROOT; };
 		AD86A8C61C82DBCC009CEE87 /* SmartClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD86A8CE1C82DBCC009CEE87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -292,9 +292,9 @@
 		AD1D18261C89867F009B9390 /* Paper */ = {
 			isa = PBXGroup;
 			children = (
-				ADBC0A871CC224790087BEA5 /* Model */,
-				ADBC0A861CC224720087BEA5 /* ViewModel */,
-				ADBC0A851CC224690087BEA5 /* View */,
+				AD4CCDDF1CF57EB400831EC5 /* Main Interface */,
+				AD4CCDD51CF57DF000831EC5 /* Create Paper */,
+				AD4CCDD91CF57DFB00831EC5 /* Paper Result */,
 			);
 			name = Paper;
 			path = Teacher/Paper;
@@ -360,6 +360,100 @@
 				AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */,
 			);
 			name = ReactiveViewModel;
+			sourceTree = "<group>";
+		};
+		AD4CCDD51CF57DF000831EC5 /* Create Paper */ = {
+			isa = PBXGroup;
+			children = (
+				AD4CCDDC1CF57E3800831EC5 /* Model */,
+				AD4CCDDD1CF57E3D00831EC5 /* ViewModel */,
+				AD4CCDDE1CF57E4400831EC5 /* View */,
+			);
+			name = "Create Paper";
+			sourceTree = "<group>";
+		};
+		AD4CCDD91CF57DFB00831EC5 /* Paper Result */ = {
+			isa = PBXGroup;
+			children = (
+				AD4CCDDB1CF57E2B00831EC5 /* ViewModel */,
+				AD4CCDDA1CF57E2300831EC5 /* View */,
+			);
+			name = "Paper Result";
+			sourceTree = "<group>";
+		};
+		AD4CCDDA1CF57E2300831EC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07A152D41CD7079C004B7511 /* ExamResultViewController.swift */,
+				AD72CC891CF43C5000CED7B8 /* PreviewRootViewController.swift */,
+				AD20C2181CF310B100501FEE /* PreviewPaperViewController.swift */,
+				07DDC7B51CEE7CAA00E5155C /* ChartViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AD4CCDDB1CF57E2B00831EC5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		AD4CCDDC1CF57E3800831EC5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */,
+				07E4DF561CE258D90082BCE3 /* Paper.swift */,
+				AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */,
+				AD3B199E1CC7197000B4E700 /* Question.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AD4CCDDD1CF57E3D00831EC5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */,
+				0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */,
+				0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		AD4CCDDE1CF57E4400831EC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0739FE341CC505010035DE88 /* PaperInformationViewController.swift */,
+				0739FE371CC505010035DE88 /* QuestionView.swift */,
+				0739FE351CC505010035DE88 /* PaperViewController.swift */,
+				0739FE361CC505010035DE88 /* QuestionListViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AD4CCDDF1CF57EB400831EC5 /* Main Interface */ = {
+			isa = PBXGroup;
+			children = (
+				AD4CCDE11CF57EC600831EC5 /* ViewModel */,
+				AD4CCDE01CF57EBE00831EC5 /* View */,
+			);
+			name = "Main Interface";
+			sourceTree = "<group>";
+		};
+		AD4CCDE01CF57EBE00831EC5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07B338401CE1D6BC00B45DF8 /* PaperListViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AD4CCDE11CF57EC600831EC5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				07B338421CE1D79C00B45DF8 /* PaperListViewModel.swift */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		AD86A8BD1C82DBCC009CEE87 = {
@@ -437,44 +531,6 @@
 				0700D1AE1CE4AD0100EB9A81 /* CanvasPopoverViewController.swift */,
 			);
 			name = PPT;
-			sourceTree = "<group>";
-		};
-		ADBC0A851CC224690087BEA5 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				07B338401CE1D6BC00B45DF8 /* PaperListViewController.swift */,
-				0739FE341CC505010035DE88 /* PaperInformationViewController.swift */,
-				0739FE371CC505010035DE88 /* QuestionView.swift */,
-				0739FE351CC505010035DE88 /* PaperViewController.swift */,
-				0739FE361CC505010035DE88 /* QuestionListViewController.swift */,
-				07A152D41CD7079C004B7511 /* ExamResultViewController.swift */,
-				07DDC7B51CEE7CAA00E5155C /* ChartViewController.swift */,
-				AD20C2181CF310B100501FEE /* PreviewPaperViewController.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		ADBC0A861CC224720087BEA5 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				07B338421CE1D79C00B45DF8 /* PaperListViewModel.swift */,
-				0739FE2E1CC504F50035DE88 /* PaperInformationViewModel.swift */,
-				0739FE2F1CC504F50035DE88 /* PaperViewModel.swift */,
-				0739FE301CC504F50035DE88 /* QuestionListViewModel.swift */,
-				AD20C21D1CF3115700501FEE /* PreviewPaperViewModel.swift */,
-			);
-			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		ADBC0A871CC224790087BEA5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */,
-				07E4DF561CE258D90082BCE3 /* Paper.swift */,
-				AD3B199D1CC7197000B4E700 /* Question+CoreDataProperties.swift */,
-				AD3B199E1CC7197000B4E700 /* Question.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		ADF3BB7D1CAE625B00638D3B /* Extension */ = {
@@ -658,6 +714,7 @@
 				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
 				0739FE3A1CC505010035DE88 /* QuestionListViewController.swift in Sources */,
 				07B338431CE1D79C00B45DF8 /* PaperListViewModel.swift in Sources */,
+				AD72CC8A1CF43C5000CED7B8 /* PreviewRootViewController.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
 				0700D1B51CE4AD0100EB9A81 /* PPTViewController.swift in Sources */,
 				0739FE381CC505010035DE88 /* PaperInformationViewController.swift in Sources */,
@@ -679,7 +736,6 @@
 				0739FE331CC504F50035DE88 /* QuestionListViewModel.swift in Sources */,
 				0700D1B21CE4AD0100EB9A81 /* CanvasPopoverViewController.swift in Sources */,
 				0792C5F11CD954E7006DF60D /* SignUpSheetViewController.swift in Sources */,
-				AD20C21E1CF3115700501FEE /* PreviewPaperViewModel.swift in Sources */,
 				0700D1B71CE4AD3100EB9A81 /* ResourceListViewController.swift in Sources */,
 				07A152D51CD7079C004B7511 /* ExamResultViewController.swift in Sources */,
 				07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */,
@@ -766,7 +822,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -805,7 +861,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

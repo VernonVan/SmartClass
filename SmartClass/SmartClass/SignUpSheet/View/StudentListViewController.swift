@@ -107,6 +107,14 @@ class StudentListViewController: UITableViewController
         tableView.reloadData()
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if IDIOM == IPAD {
+            return 54.0
+        }
+        return 44.0
+    }
+    
     // MARK: - Action
     
     @IBAction func uploadStudentListAction(sender: UIBarButtonItem)
