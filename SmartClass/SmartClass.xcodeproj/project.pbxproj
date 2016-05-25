@@ -36,7 +36,7 @@
 		07E306F21CCF5DCB002424A0 /* StudentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */; };
 		07E4DF571CE258D90082BCE3 /* Paper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */; };
 		07E4DF581CE258D90082BCE3 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4DF561CE258D90082BCE3 /* Paper.swift */; };
-		ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */; };
+		261BAB7FCB1D014C99987C7F /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 337D1242388DBB22ECD9F1E7 /* Pods_SmartClass.framework */; };
 		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
@@ -156,6 +156,9 @@
 		07E306F11CCF5DCB002424A0 /* StudentListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewModel.swift; path = SignUpSheet/ViewModel/StudentListViewModel.swift; sourceTree = "<group>"; };
 		07E4DF551CE258D90082BCE3 /* Paper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Paper+CoreDataProperties.swift"; path = "SmartClass/Paper/Model/Paper+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		07E4DF561CE258D90082BCE3 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = SmartClass/Paper/Model/Paper.swift; sourceTree = SOURCE_ROOT; };
+		337D1242388DBB22ECD9F1E7 /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49F7789D6E630B7A0BD5F91D /* Pods-SmartClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.release.xcconfig"; sourceTree = "<group>"; };
+		9701591E8D25DBA22E5A0EF4 /* Pods-SmartClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.debug.xcconfig"; sourceTree = "<group>"; };
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
@@ -198,9 +201,6 @@
 		ADA520951CC7796400C8822A /* StudentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewController.swift; path = SignUpSheet/View/StudentListViewController.swift; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
 		ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+extension.swift"; path = "Util/Extension/Character+extension.swift"; sourceTree = "<group>"; };
-		B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB4309D8B1E5CCAC2B6F4644 /* Pods-SmartClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.debug.xcconfig"; sourceTree = "<group>"; };
-		DD8CBA00FE764EC44F8869E6 /* Pods-SmartClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +223,7 @@
 				AD884BBE1C83F2C3005A37AE /* CoreLocation.framework in Frameworks */,
 				AD4263BD1CB0B94F00BEDEF4 /* Reveal.framework in Frameworks */,
 				AD884BBC1C83F2AF005A37AE /* Foundation.framework in Frameworks */,
-				ABD12C9986A54E5B5C6EFCC4 /* Pods_SmartClass.framework in Frameworks */,
+				261BAB7FCB1D014C99987C7F /* Pods_SmartClass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,16 +275,16 @@
 				AD884BBF1C83F2CA005A37AE /* Security.framework */,
 				AD884BBD1C83F2C3005A37AE /* CoreLocation.framework */,
 				AD884BBB1C83F2AF005A37AE /* Foundation.framework */,
-				B57537D97C2DE7A4AA8494FF /* Pods_SmartClass.framework */,
+				337D1242388DBB22ECD9F1E7 /* Pods_SmartClass.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7024160A6759EEC45762B274 /* Pods */ = {
+		80CD75BE3476A3A4DBF62289 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BB4309D8B1E5CCAC2B6F4644 /* Pods-SmartClass.debug.xcconfig */,
-				DD8CBA00FE764EC44F8869E6 /* Pods-SmartClass.release.xcconfig */,
+				9701591E8D25DBA22E5A0EF4 /* Pods-SmartClass.debug.xcconfig */,
+				49F7789D6E630B7A0BD5F91D /* Pods-SmartClass.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -461,8 +461,8 @@
 			children = (
 				AD86A8C81C82DBCC009CEE87 /* SmartClass */,
 				AD86A8C71C82DBCC009CEE87 /* Products */,
-				7024160A6759EEC45762B274 /* Pods */,
 				5B800375E992113887F3BF95 /* Frameworks */,
+				80CD75BE3476A3A4DBF62289 /* Pods */,
 				07DDC7D91CEE832B00E5155C /* Charts.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -552,13 +552,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD86A8D81C82DBCC009CEE87 /* Build configuration list for PBXNativeTarget "SmartClass" */;
 			buildPhases = (
-				31DAEAEEDC01E3A4ED4F0E97 /* Check Pods Manifest.lock */,
+				D176F40F4CD92EC46A94813C /* 📦 Check Pods Manifest.lock */,
 				AD86A8C21C82DBCC009CEE87 /* Sources */,
 				AD86A8C31C82DBCC009CEE87 /* Frameworks */,
 				AD86A8C41C82DBCC009CEE87 /* Resources */,
-				D1067C473CD350D6515D728A /* Embed Pods Frameworks */,
-				A00F326F676A0AFE07412D48 /* Copy Pods Resources */,
 				07DDC7EC1CEE833F00E5155C /* Embed Frameworks */,
+				876649D62B95758CCD59B2D4 /* 📦 Embed Pods Frameworks */,
+				A71E7DFB8AC2437F7B180204 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -655,29 +655,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		31DAEAEEDC01E3A4ED4F0E97 /* Check Pods Manifest.lock */ = {
+		876649D62B95758CCD59B2D4 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A00F326F676A0AFE07412D48 /* Copy Pods Resources */ = {
+		A71E7DFB8AC2437F7B180204 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,19 +685,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D1067C473CD350D6515D728A /* Embed Pods Frameworks */ = {
+		D176F40F4CD92EC46A94813C /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -871,7 +871,7 @@
 		};
 		AD86A8D91C82DBCC009CEE87 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB4309D8B1E5CCAC2B6F4644 /* Pods-SmartClass.debug.xcconfig */;
+			baseConfigurationReference = 9701591E8D25DBA22E5A0EF4 /* Pods-SmartClass.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -893,8 +893,6 @@
 					"-l\"z.1.2.5\"",
 					"-framework",
 					"\"AVFoundation\"",
-					"-framework",
-					"\"BmobSDK\"",
 					"-framework",
 					"\"CFNetwork\"",
 					"-framework",
@@ -937,7 +935,7 @@
 		};
 		AD86A8DA1C82DBCC009CEE87 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD8CBA00FE764EC44F8869E6 /* Pods-SmartClass.release.xcconfig */;
+			baseConfigurationReference = 49F7789D6E630B7A0BD5F91D /* Pods-SmartClass.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -959,8 +957,6 @@
 					"-l\"z.1.2.5\"",
 					"-framework",
 					"\"AVFoundation\"",
-					"-framework",
-					"\"BmobSDK\"",
 					"-framework",
 					"\"CFNetwork\"",
 					"-framework",

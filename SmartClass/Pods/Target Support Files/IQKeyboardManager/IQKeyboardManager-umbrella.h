@@ -12,6 +12,7 @@
 #import "IQKeyboardReturnKeyHandler.h"
 #import "IQTextView.h"
 #import "IQBarButtonItem.h"
+#import "IQPreviousNextView.h"
 #import "IQTitleBarButtonItem.h"
 #import "IQToolbar.h"
 #import "IQUIView+IQKeyboardToolbar.h"
