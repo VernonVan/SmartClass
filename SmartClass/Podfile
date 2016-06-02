@@ -1,15 +1,15 @@
 platform :ios, '8.0'
-use_frameworks!
 
 target 'SmartClass' do
-    use_frameworks!
+   use_frameworks!
 
-    pod 'IQKeyboardManager'
+    pod 'IQKeyboardManager', '~> 4.0.2'
     pod 'ReactiveCocoa', '~> 4.1.0'
     pod 'Toast', '~> 3.0'
     pod 'DZNEmptyDataSet', '~> 1.7.3'
     pod 'SnapKit', '~> 0.20.0'
     pod 'GCDWebServer/WebUploader', '~> 3.3.2'
+    pod 'Charts', '~> 2.2.4'
 
 end
 
