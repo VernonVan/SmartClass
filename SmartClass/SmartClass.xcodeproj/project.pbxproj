@@ -68,6 +68,7 @@
 		AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD31C83F357005A37AE /* libicucore.tbd */; };
 		AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9737891C92AF060066873E /* SegueHandlerType.swift */; };
 		ADA520961CC7796400C8822A /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA520951CC7796400C8822A /* StudentListViewController.swift */; };
+		ADD7AB091D10FD2800AEE12B /* Student.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADD7AB081D10FD2800AEE12B /* Student.plist */; };
 		ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */; };
 		ADF4D8881CC0DC0D00B806A8 /* Character+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */; };
 /* End PBXBuildFile section */
@@ -156,6 +157,7 @@
 		AD884BD31C83F357005A37AE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		AD9737891C92AF060066873E /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Util/SegueHandlerType.swift; sourceTree = "<group>"; };
 		ADA520951CC7796400C8822A /* StudentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentListViewController.swift; path = SignUpSheet/View/StudentListViewController.swift; sourceTree = "<group>"; };
+		ADD7AB081D10FD2800AEE12B /* Student.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Student.plist; sourceTree = "<group>"; };
 		ADF3BB7B1CAE624E00638D3B /* CALayer+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+extension.swift"; path = "Util/Extension/CALayer+extension.swift"; sourceTree = "<group>"; };
 		ADF4D8871CC0DC0D00B806A8 /* Character+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Character+extension.swift"; path = "Util/Extension/Character+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				AD884BB71C83F1A7005A37AE /* SmartClass-Bridging-Header.h */,
+				ADD7AB081D10FD2800AEE12B /* Student.plist */,
 				AD86A8D21C82DBCC009CEE87 /* LaunchScreen.storyboard */,
 				AD86A8D01C82DBCC009CEE87 /* Assets.xcassets */,
 				AD86A8D51C82DBCC009CEE87 /* Info.plist */,
@@ -524,7 +527,7 @@
 				TargetAttributes = {
 					AD86A8C51C82DBCC009CEE87 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = KGH8U4YC6S;
+						DevelopmentTeam = R6964LXMCM;
 					};
 				};
 			};
@@ -553,6 +556,7 @@
 			files = (
 				AD86A8D41C82DBCC009CEE87 /* LaunchScreen.storyboard in Resources */,
 				AD86A8D11C82DBCC009CEE87 /* Assets.xcassets in Resources */,
+				ADD7AB091D10FD2800AEE12B /* Student.plist in Resources */,
 				AD86A8CF1C82DBCC009CEE87 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

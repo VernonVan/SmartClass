@@ -1,92 +1,148 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="yes" />
-		<title></title>
-		<link href="css/style.css" rel="stylesheet">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="yes"/>
+	<title></title>
+	<link rel="stylesheet" href="css/test.css"/>
 
-		<script src="js/angular.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.9/angular-route.min.js"></script>
-		<script src="js/mobile-angular-ui.min.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/controllers.js"></script>
-	</head>
+	<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.min.js"></script>
+	<script src="js/mobile-angular-ui.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/test.js"></script>
 
+</head>
 
-    <body ng-app="starter">
+<body ng-app="starter">
 
-    <div>
-        <div ng-controller = "main-controller">
+<div class="header">
+	<p>{{data.title}}</p>
+</div>
 
-            <h1 style = 'position:relative;text-align:center'>{{data.title}}</h1>
-            <br>
+<div class="container" ng-controller="main-controller">
 
-            <!--单选题-->
-			<div>
-				<div ng-repeat = 'question in questions[0]' >
-					<h1>{{$index+1}}.{{question['topic']}}</h1>
-					<div>
-						<div ng-repeat = 's in select[0]'><input type = "radio" name={{question['topic']}} value="" ng-click = "singleChoice(question['index'], $index)">{{question[select[0][$index]]}}</input></div>
-					</div>
-				</div>
-			</div>
+	<div class="outsideDiv">
+		<ul class="singleList">
+			<li ng-repeat = 'singleItem in questions[0]' class="singleLi">
+				<p class="text">{{singleItem.topic}}</p>
+				<ul class="options">
+					<li class="optionsLi">
+						<span class="icon" ng-click="singleChoice($event)"></span>
+						<p class="option">{{singleItem.A}}</p>
+					</li>
+					<li class="optionsLi">
+						<span class="icon" ng-click="singleChoice($event)"></span>
+						<p class="option">{{singleItem.B}}</p>
+					</li>
+					<li class="optionsLi">
+						<span class="icon" ng-click="singleChoice($event)"></span>
+						<p class="option">{{singleItem.C}}</p>
+					</li>
+					<li class="optionsLi">
+						<span class="icon" ng-click="singleChoice($event)"></span>
+						<p class="option">{{singleItem.D}}</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 
-            <!--多选题-->
-			<div>
-				<div ng-repeat = 'question in questions[1]'>
-				<h1>{{$index+1}}.{{question['topic']}}<span style = 'color:#72ACE3'>【多选题】</span></h1>
-					<div>
-						<div ng-repeat = 's in select[0]'><input type = "checkbox"
-																 ng-model = "answer[question['index']][$index]">{{question[select[0][$index]]}}</input></div>
-					</div>
-				</div>
-			</div>
+	<div class="outsideDiv">
+		<ul class="multipleList">
+			<li ng-repeat="multipleItem in questions[1]" class="multipleLi">
+				<p class="text">{{multipleItem.topic}}</p>
+				<ul class="options">
+					<li class="optionsLi">
+						<span class="icon" ng-click="multipleChoice($event)"></span>
+						<p class="option">{{multipleItem.A}}</p>
+					</li>
+					<li class="optionsLi">
+						<span class="icon" ng-click="multipleChoice($event)"></span>
+						<p class="option">{{multipleItem.B}}</p>
+					</li>
+					<li class="optionsLi">
+						<span class="icon" ng-click="multipleChoice($event)"></span>
+						<p class="option">{{multipleItem.C}}</p>
+					</li>
+					<li class="optionsLi">
+						<span class="icon" ng-click="multipleChoice($event)"></span>
+						<p class="option">{{multipleItem.D}}</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 
-            <!--判断题-->
-			<div>
-				<div ng-repeat = 'question in questions[2]'>
-				<h1>{{$index+1}}.{{question['topic']}}</h1>
-					<div>
-						<div ng-repeat = 'j in select[2]'><input type = "radio" name={{question['topic']}} value="" ng-click = "singleChoice(question['index'], $index)">{{select[2][$index]}}</input></div>
-					</div>
-				</div>
-			</div>
+	<div class="outsideDiv">
+		<ul class="judgeList">
+			<li ng-repeat="judgeItem in questions[2]" class="judgeLi">
+				<p class="text">{{judgeItem.topic}}</p>
+				<ul class="options">
+					<li class="optionsLi">
+						<span class="icon" ng-click="singleChoice($event)"></span>
+						<span class="option">&radic;</span>
+					</li>
+					<li class="optionsLi">
+						<span class="icon" ng-click="singleChoice($event)"></span>
+						<span class="option">&times;</span>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 
-            <input id = "studentNumber" type="text" placeholder="学号"/>
-			<input id = "studentName" type="text" placeholder="姓名"/>
-            <button class = 'button' ng-click = 'send()'>提交答案</button>
-        </div>
-    </div>
-    </body>
+</div>
 
+<div class="footer">
+	<div class="head">
+		<p>填写好学号姓名提交:</p>
+	</div>
 
-  <script>
-	function objBlur(id, time){
-		if(typeof id != 'string') throw new Error('objBlur()参数错误');
+	<div class="information">
+		<div class="nameDiv">
+			<label for="name">学号</label>
+			<input id="name" />
+		</div>
+		<div class="idDiv">
+			<label for="account">姓名</label>
+			<input id="account" />
+		</div>
+	</div>
+
+	<div class="foot">
+		<button type="submit">提交答案</button>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript">
+	function objBlur(id, time) {
+		if (typeof id != 'string') throw new Error('objBlur()参数错误');
 		var obj = document.getElementById(id),
-		time = time || 300,
-		docTouchend = function(event){
-			if(event.target!= obj){
-				setTimeout(function(){
-					obj.blur();
-					document.removeEventListener('touchend', docTouchend,false);
-				},time);
-			}
-		};
-		if(obj){
-			obj.addEventListener('focus', function(){
-				document.addEventListener('touchend', docTouchend,false);
-			},false);
-		}else{
+				time = time || 300,
+				docTouchend = function (event) {
+					if (event.target != obj) {
+						setTimeout(function () {
+							obj.blur();
+							document.removeEventListener('touchend', docTouchend, false);
+						}, time);
+					}
+				};
+		if (obj) {
+			obj.addEventListener('focus', function () {
+				document.addEventListener('touchend', docTouchend, false);
+			}, false);
+		} else {
 			throw new Error('objBlur()没有找到元素');
 		}
 	}
 	var input = new objBlur('in');
-	input=null;
-  </script>
+	input = null;
+</script>
 
 </html>

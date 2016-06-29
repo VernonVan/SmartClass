@@ -10,6 +10,8 @@ target 'SmartClass' do
     pod 'SnapKit', '~> 0.20.0'
     pod 'GCDWebServer/WebUploader', '~> 3.3.2'
     pod 'Charts', '~> 2.2.4'
+    pod 'Alamofire', '~> 3.4.0'
+    pod 'ChameleonFramework/Swift'
 
 end
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol CanvasPopoverDelegate
 {
@@ -25,7 +24,6 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
             if isShowToolbar == false {
                 UIView.animateWithDuration(0.2, animations: {
                     self.toolbarBottomConstraint.constant -= 44
-                    
                 })
             } else {
                 UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .CurveEaseInOut, animations: {
@@ -55,7 +53,6 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showToolbarOrNot))
         isShowToolbar = true
         view.addGestureRecognizer(tapGesture)
-
     }
     
     override func viewDidAppear(animated: Bool)
@@ -74,7 +71,7 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation
     {
-        return UIInterfaceOrientation.LandscapeLeft
+        return .LandscapeLeft
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask

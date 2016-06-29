@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>number</key>
+		<string>2013001</string>
+		<key>school</key>
+		<string>华南师范大学</string>
+		<key>college</key>
+		<string>计算机专业</string>
+		<key>name</key>
+		<string>小明</string>
+	</dict>
+	<dict>
+		<key>number</key>
+		<string>2013002</string>
+		<key>school</key>
+		<string>中山大学</string>
+		<key>college</key>
+		<string>历史专业</string>
+		<key>name</key>
+		<string>小红</string>
+	</dict>
+	<dict>
+		<key>number</key>
+		<string>2013003（必填）</string>
+		<key>school</key>
+		<string>可不填</string>
+		<key>college</key>
+		<string>可不填</string>
+		<key>name</key>
+		<string>小军（必填）</string>
+	</dict>
+</array>
+</plist>

@@ -8,11 +8,17 @@
 
 import UIKit
 import Toast
+import Alamofire
 
 class PPTView: UIWebView , UIWebViewDelegate
 {
     private var totalPage = 0
     private var currentPage = 0
+    
+    lazy var webUploaderURL: String = {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return appDelegate.webUploaderURL
+    }()
     
     var gestureView: UIView?
     var canvasView: CanvasView?
@@ -55,13 +61,23 @@ class PPTView: UIWebView , UIWebViewDelegate
         }
         scrollView.scrollEnabled = false
         
-        let timer = NSTimer(timeInterval: 10, target: self, selector: #selector(snap), userInfo: nil, repeats: true)
-        timer.fire()
+        let image = getScreenShotImage(self)
+        Alamofire.upload(.POST, webUploaderURL, data: UIImagePNGRepresentation(image)!)
     }
     
-    func snap()
+    func getScreenShotImage(view: UIView) -> UIImage
     {
-        snapshotViewAfterScreenUpdates(true)
+        if UIScreen.mainScreen().respondsToSelector(#selector(NSDecimalNumberBehaviors.scale)) {
+            UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.mainScreen().scale)
+        } else {
+            UIGraphicsBeginImageContext(view.bounds.size)
+        }
+        
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
     }
     
     // MARK: - gesture
@@ -87,6 +103,8 @@ class PPTView: UIWebView , UIWebViewDelegate
             currentPage -= 1
             stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
 
+            let image = getScreenShotImage(self)
+            Alamofire.upload(.POST, webUploaderURL, data: UIImagePNGRepresentation(image)!)
         }
     }
 
@@ -99,6 +117,9 @@ class PPTView: UIWebView , UIWebViewDelegate
             stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", currentPage))
             currentPage += 1
             stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
+            
+            let image = getScreenShotImage(self)
+            Alamofire.upload(.POST, webUploaderURL, data: UIImagePNGRepresentation(image)!)
         }
     }
     

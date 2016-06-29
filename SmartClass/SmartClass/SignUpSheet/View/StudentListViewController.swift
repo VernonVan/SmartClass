@@ -124,7 +124,9 @@ class StudentListViewController: UITableViewController
     
     func showFileNameAlertView()
     {
-        let alertController = UIAlertController(title: NSLocalizedString("输入文件名", comment: ""), message: NSLocalizedString("注意：请把文件放在根目录下", comment: ""), preferredStyle: .Alert)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let webUploadURL = NSURL(string: appDelegate.webUploaderURL + "admin/")
+        let alertController = UIAlertController(title: NSLocalizedString("导入学生列表文件", comment: ""), message: NSLocalizedString("访问\(webUploadURL!) 下载Student.plist文件，仿照其对应格式修改学生列表，再将其上传到相同位置（导入成功之后可以删除）", comment: ""), preferredStyle: .Alert)
         
         let commitAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .Default) { (_) in
             let textField = alertController.textFields![0] as UITextField

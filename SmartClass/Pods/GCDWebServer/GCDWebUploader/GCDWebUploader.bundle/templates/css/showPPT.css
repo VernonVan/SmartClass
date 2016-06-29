@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.outSideDiv {
+    position: absolute;
+    height: 100%;
+    width: 70%;
+    padding: 0 15% 0 15%;
+    background-color: rgb(220,220,220);
+    overflow-y: hidden;
+}
+
+.insideDiv {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+}
+
+img {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}

@@ -63,7 +63,7 @@ class ChartViewController: UIViewController
         pieChartView.highlightPerTapEnabled = true
 
         let l = pieChartView.legend
-        l.position = .RightOfChart
+        l.horizontalAlignment = .Right
     }
     
     func setPieChartData()

@@ -60,6 +60,8 @@ class ConvenientFileManager: NSObject
                 try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
                 let emptyArray = NSArray()
                 emptyArray.writeToURL(studentListURL, atomically: true)
+                let listPath = NSBundle.mainBundle().pathForResource("Student", ofType: "plist")
+                try NSFileManager.defaultManager().copyItemAtURL(NSURL(string: listPath!)!, toURL: ConvenientFileManager.uploadURL)
             } catch let error as NSError {
                 print("createInitDirectory error: \(error.localizedDescription)")
             }
