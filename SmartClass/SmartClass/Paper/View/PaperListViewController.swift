@@ -171,7 +171,7 @@ extension PaperListViewController: DZNEmptyDataSetSource
 {
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage!
     {
-        return UIImage(named: "place_logo")
+        return UIImage(named: "logo")
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
