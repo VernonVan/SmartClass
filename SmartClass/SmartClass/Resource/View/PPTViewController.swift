@@ -66,17 +66,17 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     override func shouldAutorotate() -> Bool
     {
-        return false
+        return true
     }
     
     override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation
     {
-        return .LandscapeLeft
+        return .LandscapeRight
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask
     {
-        return .LandscapeLeft
+        return [.LandscapeRight, .LandscapeLeft]
     }
     
     // MARK: - Actions

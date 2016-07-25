@@ -25,7 +25,10 @@ class ResourceListViewModel: NSObject
     func reloadData()
     {
         do {
-            pptNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!)
+            pptNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!).filter({ (fileName) -> Bool in
+                let url = ConvenientFileManager.pptURL.URLByAppendingPathComponent(fileName)
+                return url.pathExtension?.containsString("pptx") ?? false
+            })
             resourceNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.resourceURL.path!)
         } catch let error as NSError {
             print("ResourceListViewModel reloadData error! \(error.userInfo)")

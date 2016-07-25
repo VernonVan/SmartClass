@@ -8,6 +8,7 @@
 
 import UIKit
 import DZNEmptyDataSet
+import DGElasticPullToRefresh
 
 class SignUpSheetListViewController: UITableViewController
 {
@@ -16,32 +17,43 @@ class SignUpSheetListViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+ 
+        initUI()
+        
+    }
 
+    func initUI()
+    {
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = ThemeGreenColor
+        
         tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
-        initSpinner()
-    }
-    
-    func initSpinner()
-    {
-        refreshControl = UIRefreshControl()
-        refreshControl!.backgroundColor = UIColor.whiteColor()
-        refreshControl!.tintColor = ThemeGreenColor
-        refreshControl?.addTarget(self, action: #selector(reloadData), forControlEvents: .ValueChanged)
-    }
-    
-    override func viewWillAppear(animated: Bool)
-    {
-        super.viewWillAppear(animated)
+        tableView.separatorStyle = .None
         
-        reloadData()
+        // pull-to-refresh
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.reloadData()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(ThemeGreenColor)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
     
     func reloadData()
     {
         viewModel?.reloadData()
         tableView.reloadData()
-        refreshControl?.endRefreshing()
+        tableView.dg_stopLoading()
+    }
+    
+    deinit
+    {
+        tableView.dg_removePullToRefresh()
     }
 
     // MARK: - TableView
@@ -116,7 +128,8 @@ class SignUpSheetListViewController: UITableViewController
 }
 
 // MARK: - DZNEmptyDataSet
-extension SignUpSheetListViewController: DZNEmptyDataSetSource
+
+extension SignUpSheetListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
@@ -134,4 +147,10 @@ extension SignUpSheetListViewController: DZNEmptyDataSetSource
                           NSForegroundColorAttributeName : UIColor.lightGrayColor()]
         return NSAttributedString(string: text , attributes: attributes)
     }
+    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool
+    {
+        return true
+    }
+    
 }

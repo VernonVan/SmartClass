@@ -1,11 +1,11 @@
 PODS:
-  - Alamofire (3.4.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - Charts (2.2.5):
     - Charts/Core (= 2.2.5)
   - Charts/Core (2.2.5)
+  - DGElasticPullToRefresh (1.0.3)
   - DZNEmptyDataSet (1.7.3)
   - GCDWebServer/Core (3.3.2)
   - GCDWebServer/WebUploader (3.3.2):
@@ -13,6 +13,7 @@ PODS:
   - GCDWebServer/WebUploader/Core (3.3.2):
     - GCDWebServer/Core
   - IQKeyboardManager (4.0.3)
+  - Reachability (3.2)
   - ReactiveCocoa (4.1.0):
     - ReactiveCocoa/UI (= 4.1.0)
     - Result (~> 2.0)
@@ -29,28 +30,30 @@ PODS:
   - Toast (3.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.4.0)
   - ChameleonFramework/Swift
   - Charts (~> 2.2.4)
+  - DGElasticPullToRefresh (~> 1.0.3)
   - DZNEmptyDataSet (~> 1.7.3)
   - GCDWebServer/WebUploader (~> 3.3.2)
   - IQKeyboardManager (~> 4.0.2)
+  - Reachability (~> 3.2)
   - ReactiveCocoa (~> 4.1.0)
   - SnapKit (~> 0.20.0)
   - Toast (~> 3.0)
 
 SPEC CHECKSUMS:
-  Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
+  DGElasticPullToRefresh: 040f39ae69840b3261d163fe6735c5901bf851e9
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   GCDWebServer: 2a375ec42839a41d7187d04e5b688d32fa5c4cd5
   IQKeyboardManager: be9695ffc5a52077deb4847608f338771022d6d1
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
   SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
 
-PODFILE CHECKSUM: c31477cde791faceba5e8dd80fad80c541d2099f
+PODFILE CHECKSUM: 5ccea3f152bbfdfad3697cfff6eff8b88000b379
 
 COCOAPODS: 1.0.0

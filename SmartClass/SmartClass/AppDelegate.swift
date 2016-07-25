@@ -8,6 +8,7 @@
 
 import UIKit
 import GCDWebServer
+import Reachability
 import IQKeyboardManager
 
 @UIApplicationMain
@@ -16,25 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var window: UIWindow?
     
     let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)
-    lazy var webUploaderURL: String = {
+    var webUploaderURL: String {
         return "\(self.webUploader.serverURL)"
-    }()
+    }
+    
+    var reach: Reachability?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        UITabBar.appearance().tintColor = ThemeGreenColor
+        UIApplication.sharedApplication().idleTimerDisabled = true
         IQKeyboardManager.sharedManager().enable = true
         
-        setViewModels()
-
-        UITabBar.appearance().tintColor = ThemeGreenColor
-
         ConvenientFileManager.createInitDirectory()
-        print(ConvenientFileManager.uploadURL.path!)
+        setViewModels()
 
         webUploader.start()
         
-        
-        
+        // 监控网络状态的变化
+        reach = Reachability.reachabilityForInternetConnection()
+        reach?.reachableOnWWAN = false
+        reach?.startNotifier()
+
         return true
     }
 
@@ -56,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     func applicationWillTerminate(application: UIApplication)
     {
         CoreDataStack.defaultStack.saveContext()
+        reach?.stopNotifier()
     }
 
     

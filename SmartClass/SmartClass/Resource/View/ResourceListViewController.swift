@@ -8,8 +8,9 @@
 
 import UIKit
 import QuickLook
-import SafariServices
+import Reachability
 import DZNEmptyDataSet
+import DGElasticPullToRefresh
 
 enum ResourceListVCSection: Int {
     case PPTSection, ResourceSection
@@ -22,41 +23,65 @@ class ResourceListViewController: UITableViewController
         return ResourceListViewModel()
     }()
     
+    var reach: Reachability?
+    
     // MARK: - Lifecycle
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        initUI()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+                                                         selector: #selector(reachabilityChanged),
+                                                         name: kReachabilityChangedNotification,
+                                                         object: nil)
+    }
+    
+    func initUI()
+    {
         navigationItem.rightBarButtonItem = editButtonItem()
+    
+        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = ThemeGreenColor
         
         tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
         tableView.separatorStyle = .None
         
-        initSpinner()
-    }
-
-    func initSpinner()
-    {
-        refreshControl = UIRefreshControl()
-        refreshControl!.backgroundColor = UIColor.whiteColor()
-        refreshControl!.tintColor = ThemeGreenColor
-        refreshControl?.addTarget(self, action: #selector(reloadData), forControlEvents: .ValueChanged)
+        // pull-to-refresh
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.reloadData()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(ThemeGreenColor)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
     
     func reloadData()
     {
         viewModel.reloadData()
         tableView.reloadData()
-        refreshControl?.endRefreshing()
+        tableView.dg_stopLoading()
     }
     
-    override func viewWillAppear(animated: Bool)
+    // 网络状态变化
+    func reachabilityChanged()
     {
-        super.viewWillAppear(animated)
-        reloadData()
+        tableView.reloadEmptyDataSet()
     }
     
+    deinit
+    {
+        tableView.dg_removePullToRefresh()
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
+    }
+
     // MARK: - TableView
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -161,6 +186,7 @@ class ResourceListViewController: UITableViewController
 }
 
 // MARK: - QLPreviewController
+
 extension ResourceListViewController: QLPreviewControllerDataSource
 {
     func numberOfPreviewItemsInPreviewController(controller: QLPreviewController) -> Int
@@ -177,7 +203,8 @@ extension ResourceListViewController: QLPreviewControllerDataSource
 }
 
 // MARK: - DZNEmptyDataSet
-extension ResourceListViewController: DZNEmptyDataSetSource
+
+extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
 
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
@@ -191,11 +218,21 @@ extension ResourceListViewController: DZNEmptyDataSetSource
     func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
     {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let webUploadURL = NSURL(string: appDelegate.webUploaderURL + "admin/")
-        let text = NSLocalizedString( "访问\(webUploadURL!)上传资源", comment: "" )
+        let webUploadURL = appDelegate.webUploaderURL
+        var text = ""
+        if webUploadURL == "nil" {
+            text = NSLocalizedString( "打开Wifi网络可上传资源", comment: "" )
+        } else{
+            text = NSLocalizedString( "访问\(appDelegate.webUploaderURL + "admin/")上传资源", comment: "" )
+        }
         let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(12.0) ,
                           NSForegroundColorAttributeName : UIColor.lightGrayColor()]
         return NSAttributedString(string: text , attributes: attributes)
+    }
+    
+    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool
+    {
+        return true
     }
 
 }

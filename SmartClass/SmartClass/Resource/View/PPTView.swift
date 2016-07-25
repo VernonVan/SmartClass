@@ -8,7 +8,6 @@
 
 import UIKit
 import Toast
-import Alamofire
 
 class PPTView: UIWebView , UIWebViewDelegate
 {
@@ -60,9 +59,6 @@ class PPTView: UIWebView , UIWebViewDelegate
             }
         }
         scrollView.scrollEnabled = false
-        
-        let image = getScreenShotImage(self)
-        Alamofire.upload(.POST, webUploaderURL, data: UIImagePNGRepresentation(image)!)
     }
     
     func getScreenShotImage(view: UIView) -> UIImage
@@ -102,9 +98,6 @@ class PPTView: UIWebView , UIWebViewDelegate
             stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", currentPage))
             currentPage -= 1
             stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
-
-            let image = getScreenShotImage(self)
-            Alamofire.upload(.POST, webUploaderURL, data: UIImagePNGRepresentation(image)!)
         }
     }
 
@@ -117,9 +110,6 @@ class PPTView: UIWebView , UIWebViewDelegate
             stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", currentPage))
             currentPage += 1
             stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
-            
-            let image = getScreenShotImage(self)
-            Alamofire.upload(.POST, webUploaderURL, data: UIImagePNGRepresentation(image)!)
         }
     }
     
