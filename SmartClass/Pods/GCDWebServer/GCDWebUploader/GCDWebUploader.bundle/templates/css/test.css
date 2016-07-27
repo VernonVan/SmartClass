@@ -61,7 +61,7 @@ html {
     width: 99.4%;
     height: auto;
     padding: 0.3%;
-    font-size: 2vw;
+    font-size: 2.4vw;
     word-wrap: break-word;
 }
 
@@ -83,8 +83,8 @@ html {
     display: inline-block;
     position: relative;
     background: url(../RESOURCES/IMG/grey.png) no-repeat;
-    width: 2.2vw;
-    height: 2.2vw;
+    width: 2.6vw;
+    height: 2.6vw;
     vertical-align: top;
     background-size: 100%;
     cursor: pointer;

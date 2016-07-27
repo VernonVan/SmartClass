@@ -31,6 +31,9 @@ angular.module('starter',[]).controller('main-controller', function($scope, $htt
                 case 404:alert("没有连接到服务器");break;
             }
         });
-
+                                        
+                                        $scope.send = function(model){
+                                        window.location.href = "test.html";
+                                        };
 });
 

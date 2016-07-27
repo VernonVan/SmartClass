@@ -46,7 +46,7 @@ class PaperListViewModel: NSObject
         let paperArray = NSMutableArray()
         
         for index in 0 ..< count {
-            let paper = paperAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
+            let paper = paperAtIndexPath(NSIndexPath(forRow: index, inSection: 1))
             let name = paper.name
             let blurb = paper.blurb ?? ""
             let dict = ["name": name!, "blurb": blurb]
@@ -62,8 +62,10 @@ class PaperListViewModel: NSObject
     // 一有学生提交试卷就保存该学生的成绩到student.plist文件中
     func modifyStudentListFileWithData(resultDict: NSDictionary)
     {
+        print("----------\(resultDict)")
         guard let paperName = resultDict["paper_title"] as? String, let studentName = resultDict["student_name"] as? String,
-            let studentNumber = resultDict["student_number"] as? String, let signDate = resultDict["date"] as? String else {
+            let studentNumber = resultDict["student_number"] as? String//, let signDate = resultDict["date"] as? String 
+            else {
             return
         }
         
@@ -76,8 +78,8 @@ class PaperListViewModel: NSObject
                     if name == studentName && number == studentNumber {
                         if dict[paperName] == nil {
                             dict[paperName] = resultDict["score"]
-                            dict[signDate] = true
-                            self.addSignUpSheet(signDate)
+//                            dict[signDate] = true
+//                            self.addSignUpSheet(signDate)
                             self.modifyPaperResultFile(paperName, studentName: name, correctQuestions: resultDict["correctQuestions"] as! [Int])
                         }
                         stop.memory = true
@@ -235,6 +237,7 @@ private extension PaperListViewModel
     {
         if numberOfSections() > 1 {
             let sectionInfo = fetchedResultsController.sections?[1]
+            print(sectionInfo?.name)
             if convertSectionNameToIssueState(sectionInfo?.name) == .issuing {
                 let issuedPaperNumber = sectionInfo?.numberOfObjects ?? 0
                 return issuedPaperNumber

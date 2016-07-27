@@ -67,6 +67,7 @@
     [self addHandlerForMethod:@"GET" path:@"/templates/table.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
         NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/PaperList"];
         NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
+        NSLog(@"---------------------%@", fileURL.path);
         return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
     }];
     
@@ -79,11 +80,12 @@
         return [GCDWebServerResponse responseWithStatusCode: 200];
     }];
     
-    [self addHandlerForMethod:@"GET" path:@"/templates/test.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
-        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: [[NSString alloc]initWithFormat: @"/Paper/%@", _currentPaperName]];
-        NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
-        return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
-    }];
+//    [self addHandlerForMethod:@"GET" path:@"/templates/test.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
+//        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: [[NSString alloc]initWithFormat: @"/Paper/%@", _currentPaperName]];
+//        NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
+//        NSLog(@"---------------------/templates/test.txt%@", fileURL.path);
+//        return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
+//    }];
     
     
     [self addHandlerForMethod:@"POST" path:@"/templates/post_answer" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {

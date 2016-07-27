@@ -1,3 +1,3 @@
 
-angular.module('starter', ['starter.controllers']);
+angular.module('starter', ['starter.controllers', 'ngTouch']);
 

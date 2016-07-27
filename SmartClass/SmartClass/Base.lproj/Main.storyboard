@@ -691,7 +691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0e8-f3-6GS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1312" y="-2570"/>
+            <point key="canvasLocation" x="-500.5" y="-2570.5"/>
         </scene>
         <!--Canvas Popover View Controller-->
         <scene sceneID="Dbz-Mi-tvc">
@@ -790,7 +790,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAN-fb-5CV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-766" y="-2570"/>
+            <point key="canvasLocation" x="46" y="-2570"/>
         </scene>
         <!--签到情况-->
         <scene sceneID="i8j-CU-rSM">
@@ -842,7 +842,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUT-gY-gdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1312" y="-1785"/>
+            <point key="canvasLocation" x="-500" y="-1785"/>
         </scene>
         <!--New Sign Up Sheet View Controller-->
         <scene sceneID="Ni8-kA-md0">
@@ -1382,7 +1382,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebH-Hl-WyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2150" y="-2570"/>
+            <point key="canvasLocation" x="-1338" y="-2570"/>
         </scene>
         <!--签到表-->
         <scene sceneID="ZHc-md-zWk">
@@ -1437,7 +1437,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5A-fQ-MtX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2150" y="-1785"/>
+            <point key="canvasLocation" x="-1338" y="-1785"/>
         </scene>
         <!--资源-->
         <scene sceneID="vxd-AF-qia">
@@ -1461,7 +1461,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4n8-z1-2Z5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2964" y="-2570"/>
+            <point key="canvasLocation" x="-2152" y="-2570"/>
+        </scene>
+        <!--智慧课堂-->
+        <scene sceneID="FA7-iA-qDE">
+            <objects>
+                <viewController id="lrS-mk-l5F" customClass="HomePageViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cNy-f7-aPz"/>
+                        <viewControllerLayoutGuide type="bottom" id="zL0-wJ-8Dm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gmm-E4-Vqv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sh0-ub-kbd" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                                <rect key="frame" x="340" y="72" width="240" height="197"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YE6-G5-jsU" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                                <rect key="frame" x="340" y="277" width="240" height="197"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNr-ur-2v2" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                                <rect key="frame" x="20" y="277" width="240" height="197"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SjL-2D-3IJ" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                                <rect key="frame" x="20" y="72" width="240" height="197"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="智慧课堂" id="Q9N-rH-iZu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zpS-NO-iki" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3980" y="-2370"/>
         </scene>
         <!--签到-->
         <scene sceneID="xmz-bW-cj1">
@@ -1485,7 +1521,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sax-eK-WDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2976" y="-1785"/>
+            <point key="canvasLocation" x="-2164" y="-1785"/>
         </scene>
         <!--试卷-->
         <scene sceneID="O4J-gG-ajE">
@@ -1528,7 +1564,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSX-cg-ozX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3902" y="-2364"/>
+            <point key="canvasLocation" x="-3090" y="-2364"/>
         </scene>
         <!--Code Navigation Controller-->
         <scene sceneID="ZtG-It-IbY">
@@ -1553,6 +1589,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idn-Mz-wus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1424.5" y="-3172.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4lM-VB-9eN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H7U-LR-6YF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WpC-8p-hv4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lrS-mk-l5F" kind="relationship" relationship="rootViewController" id="rZn-fh-vXP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="thh-cG-rYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4674" y="-2370"/>
         </scene>
     </scenes>
     <resources>

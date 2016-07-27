@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        print(ConvenientFileManager.paperListURL.path)
+        
         UITabBar.appearance().tintColor = ThemeGreenColor
         UIApplication.sharedApplication().idleTimerDisabled = true
         IQKeyboardManager.sharedManager().enable = true
@@ -38,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         reach = Reachability.reachabilityForInternetConnection()
         reach?.reachableOnWWAN = false
         reach?.startNotifier()
+        
+        
 
         return true
     }

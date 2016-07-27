@@ -25,6 +25,9 @@
 		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
 		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
 		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
+		AD10CDE91D45A35E0055B87E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10CDE81D45A35E0055B87E /* HomePageViewController.swift */; };
+		AD10CDED1D45A7B50055B87E /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD10CDEC1D45A7B50055B87E /* CardView.xib */; };
+		AD10CDEF1D45A7CB0055B87E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10CDEE1D45A7CB0055B87E /* CardView.swift */; };
 		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
 		AD4AF5121CB3A404006129C2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */; };
@@ -118,6 +121,9 @@
 		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
 		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
 		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
+		AD10CDE81D45A35E0055B87E /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		AD10CDEC1D45A7B50055B87E /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		AD10CDEE1D45A7CB0055B87E /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
@@ -255,6 +261,32 @@
 				49F7789D6E630B7A0BD5F91D /* Pods-SmartClass.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AD10CDE41D45A2D60055B87E /* Home Page */ = {
+			isa = PBXGroup;
+			children = (
+				AD10CDE51D45A2E70055B87E /* View */,
+			);
+			path = "Home Page";
+			sourceTree = "<group>";
+		};
+		AD10CDE51D45A2E70055B87E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD10CDE81D45A35E0055B87E /* HomePageViewController.swift */,
+				AD10CDEA1D45A7560055B87E /* CardView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD10CDEA1D45A7560055B87E /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				AD10CDEC1D45A7B50055B87E /* CardView.xib */,
+				AD10CDEE1D45A7CB0055B87E /* CardView.swift */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 		AD1D18261C89867F009B9390 /* Paper */ = {
@@ -452,6 +484,7 @@
 				AD4AF5111CB3A404006129C2 /* CoreDataStack.swift */,
 				07BAD4E11CEEF76E00F53E4E /* Model.xcdatamodeld */,
 				AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */,
+				AD10CDE41D45A2D60055B87E /* Home Page */,
 				AD1D18261C89867F009B9390 /* Paper */,
 				AD3B19AD1CC7265200B4E700 /* Resource */,
 				AD3B19AF1CC7269800B4E700 /* SignUpSheet */,
@@ -638,6 +671,7 @@
 				ADA40A091D4205750027A700 /* ChoiceCell.xib in Resources */,
 				AD86A8D41C82DBCC009CEE87 /* LaunchScreen.storyboard in Resources */,
 				AD86A8D11C82DBCC009CEE87 /* Assets.xcassets in Resources */,
+				AD10CDED1D45A7B50055B87E /* CardView.xib in Resources */,
 				ADA40A071D4205320027A700 /* TopicCell.xib in Resources */,
 				ADD7AB091D10FD2800AEE12B /* Student.plist in Resources */,
 				AD86A8CF1C82DBCC009CEE87 /* Main.storyboard in Resources */,
@@ -706,6 +740,7 @@
 				ADF74E0D1D3F0909001C8DEC /* ExamResultViewController.swift in Sources */,
 				07BAD4E31CEEF76E00F53E4E /* Model.xcdatamodeld in Sources */,
 				07DEA8071CEC799B00C7504E /* NewSignUpSheetViewController.swift in Sources */,
+				AD10CDEF1D45A7CB0055B87E /* CardView.swift in Sources */,
 				ADF74DFC1D3F08BD001C8DEC /* PaperViewModel.swift in Sources */,
 				ADF74DEB1D3F0877001C8DEC /* PaperListViewModel.swift in Sources */,
 				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
@@ -735,6 +770,7 @@
 				ADF74DF51D3F08AB001C8DEC /* Paper+CoreDataProperties.swift in Sources */,
 				ADF74E021D3F08D0001C8DEC /* PaperInformationViewController.swift in Sources */,
 				0700D1B21CE4AD0100EB9A81 /* CanvasPopoverViewController.swift in Sources */,
+				AD10CDE91D45A35E0055B87E /* HomePageViewController.swift in Sources */,
 				0792C5F11CD954E7006DF60D /* SignUpSheetViewController.swift in Sources */,
 				ADF74E151D3F093A001C8DEC /* QRCodeViewController.swift in Sources */,
 				0700D1B71CE4AD3100EB9A81 /* ResourceListViewController.swift in Sources */,

@@ -21,103 +21,104 @@
 <body ng-app="starter">
 
 <div class="header">
-	<p>{{data.title}}</p>
+    <p>{{data.title}}</p>
 </div>
 
 <div class="container" ng-controller="main-controller">
-
-	<div class="outsideDiv">
-		<ul class="singleList">
-			<li ng-repeat = 'singleItem in questions[0]' class="singleLi">
-				<p class="text">{{singleItem.topic}}</p>
-				<ul class="options">
-					<li class="optionsLi">
-						<span class="icon" ng-click="singleChoice($event)"></span>
-						<p class="option">{{singleItem.A}}</p>
-					</li>
-					<li class="optionsLi">
-						<span class="icon" ng-click="singleChoice($event)"></span>
-						<p class="option">{{singleItem.B}}</p>
-					</li>
-					<li class="optionsLi">
-						<span class="icon" ng-click="singleChoice($event)"></span>
-						<p class="option">{{singleItem.C}}</p>
-					</li>
-					<li class="optionsLi">
-						<span class="icon" ng-click="singleChoice($event)"></span>
-						<p class="option">{{singleItem.D}}</p>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-
-	<div class="outsideDiv">
-		<ul class="multipleList">
-			<li ng-repeat="multipleItem in questions[1]" class="multipleLi">
-				<p class="text">{{multipleItem.topic}}</p>
-				<ul class="options">
-					<li class="optionsLi">
-						<span class="icon" ng-click="multipleChoice($event)"></span>
-						<p class="option">{{multipleItem.A}}</p>
-					</li>
-					<li class="optionsLi">
-						<span class="icon" ng-click="multipleChoice($event)"></span>
-						<p class="option">{{multipleItem.B}}</p>
-					</li>
-					<li class="optionsLi">
-						<span class="icon" ng-click="multipleChoice($event)"></span>
-						<p class="option">{{multipleItem.C}}</p>
-					</li>
-					<li class="optionsLi">
-						<span class="icon" ng-click="multipleChoice($event)"></span>
-						<p class="option">{{multipleItem.D}}</p>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-
-	<div class="outsideDiv">
-		<ul class="judgeList">
-			<li ng-repeat="judgeItem in questions[2]" class="judgeLi">
-				<p class="text">{{judgeItem.topic}}</p>
-				<ul class="options">
-					<li class="optionsLi">
-						<span class="icon" ng-click="singleChoice($event)"></span>
-						<span class="option">&radic;</span>
-					</li>
-					<li class="optionsLi">
-						<span class="icon" ng-click="singleChoice($event)"></span>
-						<span class="option">&times;</span>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-
+    
+    <div class="outsideDiv" id="single">
+        <ul class="singleList">
+            <li ng-repeat = 'singleItem in questions[0]' class="singleLi">
+                <p class="text">{{singleItem.topic}}</p>
+                <ul class="options">
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="single($event)" ></span>
+                        <p class="option">{{singleItem.A}}</p>
+                    </li>
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="single($event)" ></span>
+                        <p class="option">{{singleItem.B}}</p>
+                    </li>
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="single($event)" ></span>
+                        <p class="option">{{singleItem.C}}</p>
+                    </li>
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="single($event)" ></span>
+                        <p class="option">{{singleItem.D}}</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="outsideDiv" id="multiple">
+        <ul class="multipleList">
+            <li ng-repeat="multipleItem in questions[1]" class="multipleLi">
+                <p class="text">{{multipleItem.topic}}</p>
+                <ul class="options">
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="multiple($event)" ></span>
+                        <p class="option">{{multipleItem.A}}</p>
+                    </li>
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="multiple($event)" ></span>
+                        <p class="option">{{multipleItem.B}}</p>
+                    </li>
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="multiple($event)" ></span>
+                        <p class="option">{{multipleItem.C}}</p>
+                    </li>
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="multiple($event)" ></span>
+                        <p class="option">{{multipleItem.D}}</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="outsideDiv" id="judge">
+        <ul class="judgeList">
+            <li ng-repeat="judgeItem in questions[2]" class="judgeLi">
+                <p class="text">{{judgeItem.topic}}</p>
+                <ul class="options">
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="single($event)" ></span>
+                        <span class="option">&radic;</span>
+                    </li>
+                    <li class="optionsLi">
+                        <span class="icon" ng-click="single($event)" ></span>
+                        <span class="option">&times;</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="footer">
+        <div class="head">
+            <p>填写好学号姓名提交:</p>
+        </div>
+        
+        <div class="information">
+            <div class="nameDiv">
+                <label for="account">学号</label>
+                <input id="account" />
+            </div>
+            <div class="idDiv">
+                <label for="name">姓名</label>
+                <input id="name" />
+            </div>
+        </div>
+        
+        <div class="foot">
+            <button ng-click="send()">提交答案</button>
+        </div>
+    </div>
+    
 </div>
 
-<div class="footer">
-	<div class="head">
-		<p>填写好学号姓名提交:</p>
-	</div>
-
-	<div class="information">
-		<div class="nameDiv">
-			<label for="name">学号</label>
-			<input id="name" />
-		</div>
-		<div class="idDiv">
-			<label for="account">姓名</label>
-			<input id="account" />
-		</div>
-	</div>
-
-	<div class="foot">
-		<button type="submit">提交答案</button>
-	</div>
-</div>
 </body>
 
 <script type="text/javascript">
