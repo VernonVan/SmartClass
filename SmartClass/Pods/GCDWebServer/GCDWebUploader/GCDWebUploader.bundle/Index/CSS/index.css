@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid deepskyblue;*/
+}
+
+.left {
+    /*border: 1px solid gray;*/
+    position: absolute;
+    height: 100%;
+    width: 16%;
+    left: 0;
+    background-color: rgb(232,232,232);
+}
+
+.head {
+    position: relative;
+    /*padding: 8%;*/
+    /*width: 84%;*/
+    /*height: 14%;*/
+    height: 150px;
+}
+
+.head > img {
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tabs {
+    position: relative;
+    width: 100%;
+    height: 64%;
+}
+
+.tabs > ul {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.tab {
+    position: relative;
+    width: 100%;
+    height: 25%;
+    cursor: pointer;
+    /*margin-top: 2%;*/
+    /*border-left: 15px solid rgb(32,184,253);*/
+}
+
+.colorSpan {
+    position: absolute;
+    width: 8%;
+    height: 100%;
+    /*background-color: rgb(32,184,253);*/
+}
+
+.key {
+    position: absolute;
+    width: 92%;
+    height: 100%;
+    left: 8%;
+    /*background-color: white;*/
+}
+
+.key > img {
+    position: absolute;
+    /*height: 50px;*/
+    /*width: 50px;*/
+    /*left: 30%;*/
+    /*top: 10%;*/
+    width: 50px;
+    height: 50px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.key > label {
+    font-size: 1.3vw;
+    position: absolute;
+    left: 33%;
+    top: 80%;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    cursor: pointer;
+    color: rgb(170,170,170);
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.right {
+    position: absolute;
+    padding: 2%;
+    height: 96%;
+    width: 80%;
+    right: 0;
+    background-color: rgb(247,247,247);
+}
+
+.testList {
+    border: 1px solid rgb(228,228,228);
+    position: relative;
+    width: 96%;
+    height: 92%;
+    background-color: white;
+    padding: 2%;
+    overflow-y: scroll;
+}
+
+.testItem {
+    position: relative;
+    padding: 1%;
+    width: 98%;
+    height: 6%;
+    list-style: none;
+    margin-bottom: 1%;
+    border-bottom: 1px solid rgb(228,228,228);
+}
+
+.testTitle {
+    position: relative;
+    top: 30%;
+    left: 0;
+}
+
+.goToCell {
+    position: relative;
+    top: 30%;
+    right: 0;
+    color: rgb(102,207,255);
+    cursor: pointer;
+    float: right;
+}

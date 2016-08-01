@@ -25,23 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        print(ConvenientFileManager.paperListURL.path)
+        print(ConvenientFileManager.resourceURL.path!)
         
-        UITabBar.appearance().tintColor = ThemeGreenColor
         UIApplication.sharedApplication().idleTimerDisabled = true
         IQKeyboardManager.sharedManager().enable = true
         
-        ConvenientFileManager.createInitDirectory()
-        setViewModels()
-
         webUploader.start()
-        
-        // 监控网络状态的变化
-        reach = Reachability.reachabilityForInternetConnection()
-        reach?.reachableOnWWAN = false
-        reach?.startNotifier()
-        
-        
+
+        ConvenientFileManager.createInitDirectory()
+//        setViewModels()
+//        // 监控网络状态的变化
+//        reach = Reachability.reachabilityForInternetConnection()
+//        reach?.reachableOnWWAN = false
+//        reach?.startNotifier()
 
         return true
     }

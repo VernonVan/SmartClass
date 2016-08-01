@@ -4,6 +4,8 @@ target 'SmartClass' do
    use_frameworks!
 
     pod 'ReactiveCocoa', '~> 4.1.0'
+    pod 'RxSwift', '~> 2.5.0'
+    pod 'RxCocoa', '~> 2.5.0'
 
     pod 'GCDWebServer/WebUploader', '~> 3.3.2'
     pod 'Reachability', '~> 3.2'

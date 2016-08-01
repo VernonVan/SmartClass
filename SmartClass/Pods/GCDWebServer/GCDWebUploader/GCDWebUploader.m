@@ -64,21 +64,21 @@
 
 - (void) addHandlerForQuiz
 {
-    [self addHandlerForMethod:@"GET" path:@"/templates/table.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
-        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/PaperList"];
-        NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
-        NSLog(@"---------------------%@", fileURL.path);
-        return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
-    }];
-    
-    [self addHandlerForMethod:@"POST" path:@"/templates/post_paperName" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
-        GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
-        NSDictionary* resultDict = [NSJSONSerialization JSONObjectWithData: dataRequest.data
-                                                                   options: kNilOptions
-                                                                     error: nil];
-        _currentPaperName = [resultDict objectForKey: @"name"];
-        return [GCDWebServerResponse responseWithStatusCode: 200];
-    }];
+//    [self addHandlerForMethod:@"GET" path:@"/templates/table.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
+//        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/PaperList"];
+//        NSData * data = [NSData dataWithContentsOfFile: fileURL.path];
+//        NSLog(@"---------------------%@", fileURL.path);
+//        return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
+//    }];
+//    
+//    [self addHandlerForMethod:@"POST" path:@"/templates/post_paperName" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
+//        GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
+//        NSDictionary* resultDict = [NSJSONSerialization JSONObjectWithData: dataRequest.data
+//                                                                   options: kNilOptions
+//                                                                     error: nil];
+//        _currentPaperName = [resultDict objectForKey: @"name"];
+//        return [GCDWebServerResponse responseWithStatusCode: 200];
+//    }];
     
 //    [self addHandlerForMethod:@"GET" path:@"/templates/test.txt" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
 //        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: [[NSString alloc]initWithFormat: @"/Paper/%@", _currentPaperName]];
@@ -88,14 +88,14 @@
 //    }];
     
     
-    [self addHandlerForMethod:@"POST" path:@"/templates/post_answer" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
-        GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
-        NSDictionary* resultDict = [NSJSONSerialization JSONObjectWithData: dataRequest.data
-                                                                   options: kNilOptions
-                                                                     error: nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName: @"ReceiveExamResultNotification" object: nil userInfo: resultDict];
-        return [GCDWebServerResponse responseWithStatusCode: 200];
-    }];
+//    [self addHandlerForMethod:@"POST" path:@"/templates/post_answer" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
+//        GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
+//        NSDictionary* resultDict = [NSJSONSerialization JSONObjectWithData: dataRequest.data
+//                                                                   options: kNilOptions
+//                                                                     error: nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName: @"ReceiveExamResultNotification" object: nil userInfo: resultDict];
+//        return [GCDWebServerResponse responseWithStatusCode: 200];
+//    }];
     
 }
 
@@ -456,19 +456,14 @@ title=_title, header=_header, prologue=_prologue, epilogue=_epilogue, footer=_fo
 #endif
                 footer = [NSString stringWithFormat:[siteBundle localizedStringForKey:@"FOOTER_FORMAT" value:@"" table:nil], name, version];
             }
-            return [GCDWebServerDataResponse responseWithHTMLTemplate:[siteBundle pathForResource:@"index" ofType:@"html"]
+            return [GCDWebServerDataResponse responseWithHTMLTemplate:[siteBundle pathForResource:@"Index/HTML/index" ofType:@"html"]
                                                             variables:@{
-                                                                        @"device": device,
-                                                                        @"title": title,
-                                                                        @"header": header,
-                                                                        @"prologue": prologue,
-                                                                        @"epilogue": epilogue,
-                                                                        @"footer": footer
+                                                                    
                                                                         }];
             
         }];
         
-        [self addHandlerForQuiz];
+//        [self addHandlerForQuiz];
         
         
         // File listing

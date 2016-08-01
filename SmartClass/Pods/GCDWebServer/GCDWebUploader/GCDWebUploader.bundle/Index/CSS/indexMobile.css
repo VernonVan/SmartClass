@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /*border: 1px solid deepskyblue;*/
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    border-top: 1px solid rgb(232,232,232);
+}
+
+.head , .head > img {
+    display: none;
+}
+
+.tabs {
+    position: relative;
+    padding: 2%;
+    width: 96%;
+    height: 96%;
+    background-color: rgb(235,235,235);
+}
+
+.tabs > ul {
+    position: relative;
+    width: 96%;
+    height: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.tab {
+    position: relative;
+    list-style: none;
+    height: 100%;
+    width: 20%;
+    left: 2%;
+    margin-left: 3%;
+    float: left;
+}
+
+.colorSpan {
+    display: none;
+}
+
+.key {
+    position: relative;
+}
+
+.key > img {
+    position: relative;
+    height: 50%;
+    width: 40%;
+    left: 30%;
+    top: 10%;
+}
+
+.key > label {
+    font-size: 1.5vw;
+    position: relative;
+    left: 33%;
+    top: 16%;
+    cursor: pointer;
+    color: rgb(170,170,170);
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.top {
+}

@@ -8,22 +8,18 @@
 
 import UIKit
 import QuickLook
-import Reachability
 import DZNEmptyDataSet
 import DGElasticPullToRefresh
 
-enum ResourceListVCSection: Int {
-    case PPTSection, ResourceSection
-}
-
-class ResourceListViewController: UITableViewController
+class ResourceListViewController: UIViewController
 {
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    lazy var viewModel: ResourceListViewModel = {
-        return ResourceListViewModel()
-    }()
-    
-    var reach: Reachability?
+    var viewModel: ResourceListViewModel?
+
+    private let reuseIdentifier = "resourceCell"
+    private var selectedIndexPath = NSIndexPath()
     
     // MARK: - Lifecycle
     
@@ -32,144 +28,50 @@ class ResourceListViewController: UITableViewController
         super.viewDidLoad()
         
         initUI()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self,
-                                                         selector: #selector(reachabilityChanged),
-                                                         name: kReachabilityChangedNotification,
-                                                         object: nil)
     }
     
     func initUI()
     {
         navigationItem.rightBarButtonItem = editButtonItem()
-    
-        navigationController?.navigationBar.translucent = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.barTintColor = ThemeGreenColor
         
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         
-        tableView.separatorStyle = .None
-        
-        // pull-to-refresh
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor.whiteColor()
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.reloadData()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(ThemeGreenColor)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor(netHex: 0x2196F3)
+        refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        tableView.addSubview(refreshControl)
     }
     
-    func reloadData()
+    override func viewWillAppear(animated: Bool)
     {
-        viewModel.reloadData()
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(indexPath, animated: animated)
+        }
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool)
+    {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(editing, animated: true)
+    }
+    
+    func refresh(refreshControl: UIRefreshControl)
+    {
+        viewModel?.reloadData()
         tableView.reloadData()
-        tableView.dg_stopLoading()
+        refreshControl.endRefreshing()
     }
     
-    // 网络状态变化
-    func reachabilityChanged()
+    @IBAction func changeDataSourceAction(segmentedControl: UISegmentedControl)
     {
-        tableView.reloadEmptyDataSet()
-    }
-    
-    deinit
-    {
-        tableView.dg_removePullToRefresh()
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
+        tableView.reloadData()
     }
 
-    // MARK: - TableView
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return 2
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return viewModel.numberOfRowsInSection(section)
-    }
-
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        var cell: UITableViewCell
-        var reuseIdentifier: String
-        let section = ResourceListVCSection(rawValue: indexPath.section)!
-        
-        switch section {
-        case .PPTSection:
-            reuseIdentifier = "reusePPTCell"
-            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
-            configurePPTCell(cell, atIndexPath: indexPath)
-        case .ResourceSection:
-            reuseIdentifier = "reuseResourceCell"
-            cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
-            configureResourceCell(cell, atIndexPath: indexPath)
-        }
-        
-        return cell
-    }
- 
-    func configurePPTCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath)
-    {
-        cell.textLabel?.text = viewModel.titleForPPTAtIndexPath(indexPath)
-        cell.detailTextLabel?.text = viewModel.subtitleForPPTAtIndexPath(indexPath)
-    }
-    
-    func configureResourceCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath)
-    {
-        cell.textLabel?.text = viewModel.titleForResourceAtIndexPath(indexPath)
-        cell.detailTextLabel?.text = viewModel.subtitleForResourceAtIndexPath(indexPath)
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
-    {
-        return viewModel.titleForHeaderInSection(section)
-    }
-    
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
-    {
-        return true
-    }
-    
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
-    {
-        if editingStyle == .Delete {
-            let section = ResourceListVCSection(rawValue: indexPath.section)!
-            switch section {
-            case .PPTSection:
-                viewModel.deletePPTAtIndexPath(indexPath)
-            case .ResourceSection:
-                viewModel.deleteResourceAtIndexPath(indexPath)
-            }
-            
-            reloadData()
-        }
-    }
-    
-    var selectedIndexPath: NSIndexPath?
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        if ResourceListVCSection(rawValue: indexPath.section) == .ResourceSection {
-            selectedIndexPath = indexPath
-            let previewController = QLPreviewController()
-            previewController.dataSource = self
-            presentViewController(previewController, animated: true, completion: nil)
-        }
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    {
-        if IDIOM == IPAD {
-            return 66.0
-        }
-        return 44.0
-    }
-    
     // MARK: - Segue
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -179,8 +81,66 @@ class ResourceListViewController: UITableViewController
         let indexPath = tableView.indexPathForSelectedRow
         if segue.identifier == "displayPPT" {
             if let desVC = segue.destinationViewController as? PPTViewController {
-                desVC.pptURL = viewModel.pptURLAtIndexPath(indexPath!)
+                desVC.pptURL = viewModel?.pptURLAtIndexPath(indexPath!)
             }
+        }
+    }
+}
+
+// MARK: - UITableView 
+
+extension ResourceListViewController: UITableViewDelegate, UITableViewDataSource
+{
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            return viewModel!.numberOfPPT()
+        } else {
+            return viewModel!.numberOfResource()
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let ppt = viewModel?.pptAtIndexPath(indexPath)
+            cell.configureCellForPPT(ppt)
+        } else if segmentedControl.selectedSegmentIndex == 1 {
+            let resource = viewModel?.resourceAtIndexPath(indexPath)
+            cell.configureCellForResource(resource)
+        }
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            performSegueWithIdentifier("displayPPT", sender: nil)
+        } else if segmentedControl.selectedSegmentIndex == 1 {
+            let previewController = QLPreviewController()
+            selectedIndexPath = indexPath
+            previewController.dataSource = self
+            presentViewController(previewController, animated: true, completion: nil)
+        }
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == .Delete {
+            if segmentedControl.selectedSegmentIndex == 0 {
+                viewModel?.deletePPTAtIndexPath(indexPath)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            } else if segmentedControl.selectedSegmentIndex == 1 {
+                viewModel?.deleteResourceAtIndexPath(indexPath)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            }
+            tableView.reloadEmptyDataSet()
         }
     }
 }
@@ -196,7 +156,7 @@ extension ResourceListViewController: QLPreviewControllerDataSource
     
     func previewController(controller: QLPreviewController, previewItemAtIndex index: Int) -> QLPreviewItem
     {
-        return viewModel.resourceURLAtIndexPath(selectedIndexPath!)
+        return viewModel!.resourceURLAtIndexPath(selectedIndexPath)
     }
 
     
@@ -209,7 +169,13 @@ extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDele
 
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let text = NSLocalizedString( "还未添加任何资源", comment: "" )
+        var text = ""
+        if segmentedControl.selectedSegmentIndex == 0 {
+            text = NSLocalizedString( "还未添加任何幻灯片", comment: "" )
+        } else if segmentedControl.selectedSegmentIndex == 1 {
+            text = NSLocalizedString( "还未添加任何资源", comment: "" )
+        }
+        
         let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(20.0) ,
                           NSForegroundColorAttributeName : UIColor.darkGrayColor()]
         return NSAttributedString(string: text , attributes: attributes)
@@ -234,5 +200,4 @@ extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDele
     {
         return true
     }
-
 }

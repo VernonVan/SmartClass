@@ -10,10 +10,10 @@ import UIKit
 
 class ResourceListViewModel: NSObject
 {
-    let fileManager = NSFileManager.defaultManager()
+    private var ppts = [PPT]()
+    private var resources = [Resource]()
     
-    var pptNames = [String]()
-    var resourceNames = [String]()
+    private let fileManager = NSFileManager.defaultManager()
     
     override init()
     {
@@ -24,155 +24,139 @@ class ResourceListViewModel: NSObject
     
     func reloadData()
     {
+        ppts = getAllPPTAtUrl(ConvenientFileManager.pptURL)
+        resources = getAllResourceAtUrl(ConvenientFileManager.resourceURL)
+    }
+    
+    func getAllPPTAtUrl(url: NSURL) -> [PPT]
+    {
+        guard let pptFilePath = url.path else {
+            return [PPT]()
+        }
+        
+        var allPPT = [PPT]()
         do {
-            pptNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.pptURL.path!).filter({ (fileName) -> Bool in
+            let allPPTNames = try self.fileManager.contentsOfDirectoryAtPath(pptFilePath).filter({ (fileName) -> Bool in
                 let url = ConvenientFileManager.pptURL.URLByAppendingPathComponent(fileName)
                 return url.pathExtension?.containsString("pptx") ?? false
             })
-            resourceNames = try self.fileManager.contentsOfDirectoryAtPath(ConvenientFileManager.resourceURL.path!)
+            for pptName in allPPTNames {
+                let createDate = getFileCreateDateAtURL(url.URLByAppendingPathComponent(pptName))
+                let pptUrl = ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
+                let pptView = PPTView(frame: CGRect(x: 0, y: 0, width: 100, height: 75), pptURL: pptUrl)
+                pptView.scalesPageToFit = true
+                let ppt = PPT(name: pptName, coverImage: pptView, createDate: createDate)
+                allPPT.append(ppt)
+            }
         } catch let error as NSError {
-            print("ResourceListViewModel reloadData error! \(error.userInfo)")
+            print("ResourceListViewModel getAllPPTAtUrl error! \(error.userInfo)")
         }
         
-    }
-    
-    // MARK: - TableView
-    func numberOfRowsInSection(section: Int) -> Int
-    {
-        let section = ResourceListVCSection(rawValue: section)!
-        switch section
-        {
-        case .PPTSection:
-            return numberOfPPT()
-        case .ResourceSection:
-            return numberOfResource()
-        }
-    }
-    
-    func titleForHeaderInSection(section: Int) -> String?
-    {
-        let section = ResourceListVCSection(rawValue: section)!
-        switch section
-        {
-        case .PPTSection:
-            return pptHeaderTitle()
-        case .ResourceSection:
-            return resourceHeaderTitle()
-        }
-    }
-
-}
-
-// MARK: - PPT
-extension ResourceListViewModel
-{
-    func titleForPPTAtIndexPath(indexPath: NSIndexPath) -> String
-    {
-        let title = pptNames[indexPath.row]
-        return title
-    }
-    
-    func subtitleForPPTAtIndexPath(indexPath: NSIndexPath) -> String
-    {
-        var subtitle: String = ""
-        do {
-            let attrs = try fileManager.attributesOfItemAtPath(ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptNames[indexPath.row]).path!)
-            let creationDate = attrs["NSFileCreationDate"] as! NSDate
-            subtitle = formatDate(creationDate)
-        } catch let error as NSError {
-            print("subtitleForPPTAtIndexPath error: \(error.userInfo)")
-        }
-        
-        return subtitle
-    }
-    
-    func pptHeaderTitle() -> String?
-    {
-        let number = numberOfPPT()
-        return number != 0 ? NSLocalizedString("幻灯片", comment: "") : nil
+        return allPPT
     }
     
     func numberOfPPT() -> Int
     {
-        return pptNames.count
+        return ppts.count
     }
     
+    func pptAtIndexPath(indexPath: NSIndexPath) -> PPT
+    {
+        return ppts[indexPath.row]
+    }
+
     func pptURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
     {
-        let pptName = pptNames[indexPath.row]
-        return ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
+        let pptName = ppts[indexPath.row].name
+        return ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName!)
     }
     
-    func deletePPTAtIndexPath(indexPath: NSIndexPath)
+    func deletePPTAtIndexPath(indexPath: NSIndexPath) -> Bool
     {
-        let pptName = pptNames[indexPath.row]
-        pptNames.removeAtIndex(indexPath.row)
-        let pptURL = ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
-        deleteFileAtURL(pptURL)
-    }
-    
-}
-
-// MARK: Resource
-extension ResourceListViewModel
-{
-    func titleForResourceAtIndexPath(indexPath: NSIndexPath) -> String
-    {
-        let title = resourceNames[indexPath.row]
-        return title
-    }
-    
-    func subtitleForResourceAtIndexPath(indexPath: NSIndexPath) -> String
-    {
-        var subtitle: String = ""
-        do {
-            let attrs = try fileManager.attributesOfItemAtPath(ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceNames[indexPath.row]).path!)
-            let creationDate = attrs["NSFileCreationDate"] as! NSDate
-            subtitle = formatDate(creationDate)
-        } catch let error as NSError {
-            print("subtitleForResourceAtIndexPath error: \(error.userInfo)")
+        guard let pptName = ppts[indexPath.row].name else {
+            return false
         }
         
-        return subtitle
+        let pptUrl = ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
+        deleteFileAtURL(pptUrl)
+        ppts.removeAtIndex(indexPath.row)
+        return true
     }
     
-    func resourceHeaderTitle() -> String?
+    func getAllResourceAtUrl(url: NSURL) -> [Resource]
     {
-        let number = numberOfResource()
-        return number != 0 ? NSLocalizedString("资源", comment: "") : nil
+        guard let resourceFilePath = url.path else {
+            return [Resource]()
+        }
+        
+        var allResource = [Resource]()
+        do {
+            let allResourceNames = try self.fileManager.contentsOfDirectoryAtPath(resourceFilePath)
+            for resourceName in allResourceNames {
+                let createDate = getFileCreateDateAtURL(url.URLByAppendingPathComponent(resourceName))
+                let resource = Resource(name: resourceName, createDate: createDate)
+                allResource.append(resource)
+            }
+        } catch let error as NSError {
+            print("ResourceListViewModel getAllResourceAtUrl error! \(error.userInfo)")
+        }
+        
+        return allResource
     }
     
     func numberOfResource() -> Int
     {
-        return resourceNames.count
+        return resources.count
+    }
+    
+    func resourceAtIndexPath(indexPath: NSIndexPath) -> Resource
+    {
+        return resources[indexPath.row]
     }
     
     func resourceURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
     {
-        let resourceName = resourceNames[indexPath.row]
-        return ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
+        let resourceName = resources[indexPath.row].name
+        return ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName!)
     }
-    
-    func deleteResourceAtIndexPath(indexPath: NSIndexPath)
+
+    func deleteResourceAtIndexPath(indexPath: NSIndexPath) -> Bool
     {
-        let resourceName = resourceNames[indexPath.row]
-        resourceNames.removeAtIndex(indexPath.row)
-        let resourceURL = ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
-        deleteFileAtURL(resourceURL)
+        guard let resourceName = resources[indexPath.row].name else {
+            return false
+        }
+        
+        let resourceUrl = ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
+        deleteFileAtURL(resourceUrl)
+        resources.removeAtIndex(indexPath.row)
+        return true
     }
     
 }
 
-// MARK: private
+// MARK: - private method
+
 private extension ResourceListViewModel
 {
-    func formatDate(date: NSDate) -> String
+    // 获取fileUrl指向的文件的创建日期
+    func getFileCreateDateAtURL(fileUrl: NSURL) -> NSDate?
     {
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy/M/d"
-        return formatter.stringFromDate(date)
+        guard let filePath = fileUrl.path else {
+            return nil
+        }
+        
+        var createDate: NSDate? = nil
+        do {
+            let attrs = try fileManager.attributesOfItemAtPath(filePath)
+            createDate = attrs["NSFileCreationDate"] as? NSDate
+        } catch let error as NSError {
+            print("ResourceListViewModel getFileCreateDate error: \(error.userInfo)")
+        }
+        
+        return createDate
     }
     
+    // 删除磁盘中url指向的文件
     func deleteFileAtURL(url: NSURL)
     {
         do {

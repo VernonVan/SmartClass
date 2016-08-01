@@ -9,7 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
             <connections>
                 <outlet property="iconImageView" destination="Mys-iA-8Hr" id="qdb-g6-1Bu"/>
-                <outlet property="numberLabel" destination="iXN-0e-Jcc" id="Plg-5Y-bey"/>
+                <outlet property="numberLabel" destination="TbO-lI-Y9D" id="HZI-Wj-DMm"/>
                 <outlet property="titleLabel" destination="e8S-zE-mId" id="K46-nk-BPs"/>
             </connections>
         </placeholder>
@@ -19,51 +19,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-iA-8Hr">
-                    <rect key="frame" x="46" y="20" width="147" height="147"/>
+                    <rect key="frame" x="28" y="34" width="183" height="183"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Mys-iA-8Hr" secondAttribute="height" multiplier="1:1" id="DnO-zL-R6D"/>
+                        <constraint firstAttribute="width" secondItem="Mys-iA-8Hr" secondAttribute="height" multiplier="1:1" id="7gL-Kx-ikY"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8S-zE-mId">
-                    <rect key="frame" x="20" y="206" width="199" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8S-zE-mId">
+                    <rect key="frame" x="8" y="225" width="223" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXN-0e-Jcc">
-                    <rect key="frame" x="201" y="0.0" width="18" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEY-LD-2pE">
-                    <rect key="frame" x="20" y="196" width="199" height="2"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="7Ka-oi-cR1"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbO-lI-Y9D">
+                    <rect key="frame" x="201" y="0.0" width="30" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="e8S-zE-mId" secondAttribute="trailing" constant="20" symbolic="YES" id="1fz-bx-D3x"/>
-                <constraint firstAttribute="bottom" secondItem="e8S-zE-mId" secondAttribute="bottom" constant="20" symbolic="YES" id="5fm-6H-Mev"/>
-                <constraint firstItem="iXN-0e-Jcc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ify-TC-fNI"/>
-                <constraint firstItem="e8S-zE-mId" firstAttribute="top" secondItem="vEY-LD-2pE" secondAttribute="bottom" constant="8" symbolic="YES" id="JEf-MY-H1g"/>
-                <constraint firstItem="Mys-iA-8Hr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" symbolic="YES" id="P7B-jw-QAU"/>
-                <constraint firstAttribute="trailing" secondItem="vEY-LD-2pE" secondAttribute="trailing" constant="20" symbolic="YES" id="QnQ-Rn-OTx"/>
-                <constraint firstItem="iXN-0e-Jcc" firstAttribute="leading" secondItem="Mys-iA-8Hr" secondAttribute="trailing" constant="8" symbolic="YES" id="Wrq-pT-xw5"/>
-                <constraint firstItem="vEY-LD-2pE" firstAttribute="top" secondItem="Mys-iA-8Hr" secondAttribute="bottom" constant="8" symbolic="YES" id="cmQ-Za-i7M"/>
-                <constraint firstItem="vEY-LD-2pE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="rUV-BF-SH2"/>
-                <constraint firstAttribute="trailing" secondItem="iXN-0e-Jcc" secondAttribute="trailing" constant="20" symbolic="YES" id="vXK-hM-DGh"/>
-                <constraint firstItem="Mys-iA-8Hr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wJD-G3-Fza"/>
-                <constraint firstItem="e8S-zE-mId" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="yG5-0r-5Jv"/>
+                <constraint firstAttribute="trailing" secondItem="TbO-lI-Y9D" secondAttribute="trailing" constant="8" id="2tJ-Pt-BUl"/>
+                <constraint firstAttribute="bottom" secondItem="e8S-zE-mId" secondAttribute="bottom" constant="8" id="6tI-OD-zlw"/>
+                <constraint firstItem="TbO-lI-Y9D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7WP-Vf-OHY"/>
+                <constraint firstItem="Mys-iA-8Hr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9T0-VM-oLa"/>
+                <constraint firstItem="e8S-zE-mId" firstAttribute="top" secondItem="Mys-iA-8Hr" secondAttribute="bottom" constant="8" symbolic="YES" id="Atr-5k-94l"/>
+                <constraint firstAttribute="trailing" secondItem="e8S-zE-mId" secondAttribute="trailing" constant="8" id="XBU-ME-Mhu"/>
+                <constraint firstAttribute="trailing" secondItem="Mys-iA-8Hr" secondAttribute="trailing" constant="28" id="aLj-Yp-TmV"/>
+                <constraint firstItem="e8S-zE-mId" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="kc9-g5-izb"/>
+                <constraint firstItem="Mys-iA-8Hr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lig-UV-1fe"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="cmQ-Za-i7M"/>
+                    <exclude reference="9T0-VM-oLa"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="454.5" y="453"/>

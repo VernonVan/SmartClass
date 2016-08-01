@@ -26,6 +26,9 @@ PODS:
     - ReactiveCocoa/Core
     - Result (~> 2.0)
   - Result (2.0.0)
+  - RxCocoa (2.5.0):
+    - RxSwift (~> 2.5)
+  - RxSwift (2.5.0)
   - SnapKit (0.20.0)
   - Toast (3.0)
 
@@ -38,6 +41,8 @@ DEPENDENCIES:
   - IQKeyboardManager (~> 4.0.2)
   - Reachability (~> 3.2)
   - ReactiveCocoa (~> 4.1.0)
+  - RxCocoa (~> 2.5.0)
+  - RxSwift (~> 2.5.0)
   - SnapKit (~> 0.20.0)
   - Toast (~> 3.0)
 
@@ -51,9 +56,11 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
+  RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
   SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
 
-PODFILE CHECKSUM: 5ccea3f152bbfdfad3697cfff6eff8b88000b379
+PODFILE CHECKSUM: 9e6e278bf6d1af7329881847ea6145ba83c0c305
 
 COCOAPODS: 1.0.0
