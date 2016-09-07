@@ -15,28 +15,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="correctAnswer" translatesAutoresizingMaskIntoConstraints="NO" id="p9Z-nV-w9K">
-                        <rect key="frame" x="18" y="19" width="22" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="22" id="Gfk-9q-CMW"/>
-                            <constraint firstAttribute="height" constant="22" id="fMo-EQ-sc8"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="294-EK-2nm">
-                        <rect key="frame" x="48" y="8" width="264" height="43"/>
+                        <rect key="frame" x="44" y="8" width="268" height="43"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyChoice" translatesAutoresizingMaskIntoConstraints="NO" id="p9Z-nV-w9K">
+                        <rect key="frame" x="16" y="20" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Gfk-9q-CMW"/>
+                            <constraint firstAttribute="height" constant="20" id="fMo-EQ-sc8"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="p9Z-nV-w9K" firstAttribute="centerY" secondItem="gUs-rO-HYx" secondAttribute="centerY" id="Alj-VG-M2o"/>
                     <constraint firstAttribute="topMargin" secondItem="294-EK-2nm" secondAttribute="top" id="FTc-uX-5Yb"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="p9Z-nV-w9K" secondAttribute="leading" constant="-10" id="GXt-1n-NXl"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="p9Z-nV-w9K" secondAttribute="leading" constant="8" id="GXt-1n-NXl"/>
                     <constraint firstItem="294-EK-2nm" firstAttribute="leading" secondItem="p9Z-nV-w9K" secondAttribute="trailing" constant="8" symbolic="YES" id="RNv-aF-cXh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="294-EK-2nm" secondAttribute="trailing" id="Z6C-WF-U0T"/>
                     <constraint firstAttribute="bottomMargin" secondItem="294-EK-2nm" secondAttribute="bottom" id="hjP-cJ-akW"/>
+                    <constraint firstItem="p9Z-nV-w9K" firstAttribute="leading" secondItem="gUs-rO-HYx" secondAttribute="leadingMargin" constant="8" id="p81-Ld-t55"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="GXt-1n-NXl"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="choiceImageView" destination="p9Z-nV-w9K" id="JjC-Do-4yA"/>
@@ -46,6 +52,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="correctAnswer" width="22" height="22"/>
+        <image name="emptyChoice" width="20" height="20"/>
     </resources>
 </document>

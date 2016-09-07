@@ -7,43 +7,52 @@
 //
 
 import UIKit
-import CoreData
-import ReactiveCocoa
+import RxSwift
+import RealmSwift
 
-class PaperInformationViewModel: RVMViewModel
+class PaperInformationViewModel: NSObject
 {
-    // MARK: - variables
     var paper: Paper
-    var name: String?
-    var blurb: String?
+    var name = Variable("")
+    var blurb = Variable("")
     var isCreate = false
+
+    private let realm = try! Realm()
     
-    // MARK: - Initialize
-    init(paper: Paper)
+    // MARK: - Init
+    
+    init(paper: Paper, isCreate: Bool)
     {
         self.paper = paper
-        super.init()
+        self.name.value = paper.name
+        self.blurb.value = paper.blurb
+        self.isCreate = isCreate
         
-        RACTwoWayBinding(self, keyPath1: "name", target2: paper, keyPath2: "name")
-        RACTwoWayBinding(self, keyPath1: "blurb", target2: paper, keyPath2: "blurb")
+        super.init()
     }
 
-    // MARK: - Core Data
     func save()
     {
-        CoreDataStack.defaultStack.saveContext()
+        try! realm.write {
+            paper.setValue(name.value, forKey: "name")
+            paper.setValue(blurb.value, forKey: "blurb")
+        }
     }
     
     func cancel()
     {
-        paper.managedObjectContext?.deleteObject(paper)
+        try! realm.write {
+            realm.delete(paper)
+        }
     }
     
     func issuePaper()
     {
-        paper.issueState = PaperIssueState.issuing.rawValue
+        save()
+        try! realm.write {
+            paper.state = PaperIssueState.issuing.rawValue
+        }
         generatePaperJSONFile()
-        createPaperResultFile()
     }
     
     func generatePaperJSONFile()
@@ -51,43 +60,40 @@ class PaperInformationViewModel: RVMViewModel
         let paperDict = NSMutableDictionary(capacity: 10)
         let questions = NSMutableArray()
         
-        paperDict["name"] = name
-        paperDict["blurb"] = blurb
-    
-        for question in paper.questions! {
-            let question = question as! Question
+        paperDict["name"] = name.value
+        paperDict["blurb"] = blurb.value
+        
+        for question in paper.questions {
             let questionDict = NSMutableDictionary()
-            questionDict["index"] = Int(question.index)
-            questionDict["type"] = Int(question.type)
+            questionDict["index"] = question.index
+            questionDict["type"] = question.type
             questionDict["topic"] = question.topic
             questionDict["A"] = question.choiceA
             questionDict["B"] = question.choiceB
             questionDict["C"] = question.choiceC
             questionDict["D"] = question.choiceD
             questionDict["answer"] = question.answers
-            questionDict["score"] = Int(question.score)
-            
+            questionDict["score"] = question.score.value
             questions.addObject(questionDict)
         }
         
         paperDict["questions"] = questions
         
-        let outputStream = NSOutputStream(toFileAtPath: ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!).path!, append: false)
-        print(ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!).path!)
+        let outputStream = NSOutputStream(toFileAtPath: ConvenientFileManager.paperURL.URLByAppendingPathComponent(name.value).path!, append: false)
+        print(ConvenientFileManager.paperURL.URLByAppendingPathComponent(name.value).path!)
         outputStream?.open()
         NSJSONSerialization.writeJSONObject(paperDict, toStream: outputStream!, options: .PrettyPrinted, error: nil)
         outputStream?.close()
     }
     
-    func createPaperResultFile()
+    func isPaperCompleted() -> Bool
     {
-        let fileManager = NSFileManager.defaultManager()
-        let resultURL = ConvenientFileManager.paperURL.URLByAppendingPathComponent(name!+"_result.plist")
-        
-        if fileManager.fileExistsAtPath(resultURL.path!) == false {
-            let emptyArray = NSArray()
-            emptyArray.writeToURL(resultURL, atomically: true)
-        }
+        return paper.isCompleted
+    }
+    
+    func paperTotalScore() -> Int
+    {
+        return paper.totalScore
     }
     
     // MARK: - Segue
@@ -96,25 +102,6 @@ class PaperInformationViewModel: RVMViewModel
     {
         let viewModel = PaperViewModel(paper: paper)
         return viewModel
-    }
-    
-    func isCompleted() -> Bool
-    {
-        return paper.isCompleted
-    }
-    
-    func totalScore() -> Int16
-    {
-        return paper.totalScore
-    }
-    
-    // MARK: - RAC extension
-    func RACTwoWayBinding(target1: NSObject, keyPath1: String, target2: NSObject, keyPath2: String)
-    {
-        let channel1 = RACKVOChannel(target: target1, keyPath: keyPath1, nilValue: nil).followingTerminal
-        let channel2 = RACKVOChannel(target: target2, keyPath: keyPath2, nilValue: nil).followingTerminal
-        channel1.subscribe(channel2)
-        channel2.subscribe(channel1)
     }
     
 }

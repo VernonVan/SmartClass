@@ -10,19 +10,31 @@ import UIKit
 
 class QuestionListViewController: UITableViewController
 {
-    private let reuseIdentifier = "QuestionCell"
- 
-    // MARK: - variable
+
     var viewModel: QuestionListViewModel?
     var intentResultDelegate: IntentResultDelegate?
+
+    private var isChanged = false {
+        didSet {
+            if isChanged {
+                navigationItem.leftBarButtonItem = doneBarButton
+            }
+        }
+    }
     
-    private var isChanged = false
+    private let reuseIdentifier = "QuestionCell"
+    
+    private lazy var doneBarButton: UIBarButtonItem = {
+        let doneBarButton = UIBarButtonItem(title: NSLocalizedString("确定", comment: ""), style: .Plain, target: self, action: #selector(doneAction))
+        doneBarButton.tintColor = ThemeBlueColor
+        return doneBarButton
+    }()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        tableView.estimatedRowHeight = 80
+        tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
         
         navigationItem.rightBarButtonItem = editButtonItem()
@@ -33,28 +45,29 @@ class QuestionListViewController: UITableViewController
         super.willMoveToParentViewController(parent)
         if parent == nil {
             if isChanged == true {
-                intentResultDelegate?.selectQuestionAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))
+                intentResultDelegate?.selectQuestionAtIndex(0)
             }
         }
     }
 
-    // MARK: - Table view
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func doneAction()
     {
-        return 1
+        intentResultDelegate?.selectQuestionAtIndex(0)
+        navigationController?.popViewControllerAnimated(true)
     }
+    
+    // MARK: - Table view
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return viewModel!.numberOfItemsInSection(section)
+        return viewModel!.numberOfQuestions()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! QuestionCell
 
-        let question = viewModel!.questionAtIndexPath(indexPath)
+        let question = viewModel?.questionAtIndexPath(indexPath.row)
         cell.configurForQuestion(question)
 
         return cell
@@ -76,26 +89,20 @@ class QuestionListViewController: UITableViewController
         
         if editingStyle == .Delete {
             isChanged = true
-            viewModel?.deleteItemAtIndexPath(indexPath)
+            viewModel?.deleteItemAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
     }
     
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
-    {
-        return true
-    }
-    
-    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
-    {
-        isChanged = true
-        viewModel?.moveItemFromIndex(sourceIndexPath.row, toIndex: destinationIndexPath.row)
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        intentResultDelegate?.selectQuestionAtIndexPath(indexPath)
+        intentResultDelegate?.selectQuestionAtIndex(indexPath.row)
         navigationController?.popViewControllerAnimated(true)
     }
 
+}
+
+protocol IntentResultDelegate
+{
+    func selectQuestionAtIndex(index: Int)
 }

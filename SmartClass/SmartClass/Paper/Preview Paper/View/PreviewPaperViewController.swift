@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PreviewPaperViewController: UIViewController, UITableViewDataSource
 {
@@ -32,6 +33,7 @@ class PreviewPaperViewController: UIViewController, UITableViewDataSource
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.scrollEnabled = false
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor(netHex: 0xF5F5F5)
         tableView.registerNib(UINib(nibName: "TopicCell", bundle: nil), forCellReuseIdentifier: "TopicCell")
         tableView.registerNib(UINib(nibName: "ChoiceCell", bundle: nil), forCellReuseIdentifier: "ChoiceCell")
         return tableView
@@ -82,6 +84,9 @@ class PreviewPaperViewController: UIViewController, UITableViewDataSource
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("TopicCell", forIndexPath: indexPath) as! TopicCell
             cell.configureForQuestion(question!)
+            cell.preservesSuperviewLayoutMargins = false
+            cell.separatorInset = UIEdgeInsetsZero
+            cell.layoutMargins = UIEdgeInsetsZero
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("ChoiceCell", forIndexPath: indexPath) as! ChoiceCell

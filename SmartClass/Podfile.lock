@@ -34,7 +34,7 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
-  - Charts (~> 2.2.4)
+  - Charts
   - DGElasticPullToRefresh (~> 1.0.3)
   - DZNEmptyDataSet (~> 1.7.3)
   - GCDWebServer/WebUploader (~> 3.3.2)
@@ -61,6 +61,6 @@ SPEC CHECKSUMS:
   SnapKit: 5fce3c1bbbf1fbd31de9aa92f33eb9fa03f15650
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
 
-PODFILE CHECKSUM: 9e6e278bf6d1af7329881847ea6145ba83c0c305
+PODFILE CHECKSUM: 89100ca6a0c55ebb27df66fe0870cd27cb6f1fcc
 
 COCOAPODS: 1.0.0

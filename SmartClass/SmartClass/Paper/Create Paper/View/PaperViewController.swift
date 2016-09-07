@@ -1,139 +1,105 @@
 //
-//  AddQuestionsViewController.swift
+//  PaperViewController.swift
 //  SmartClass
 //
-//  Created by Vernon on 16/3/12.
+//  Created by FSQ on 16/8/15.
 //  Copyright © 2016年 Vernon. All rights reserved.
 //
 
 import UIKit
-
-
+import RxSwift
 
 class PaperViewController: UIViewController
 {
-    // MARK: - variable
-    var viewModel: PaperViewModel?
-    
-    // MARK: - outlets
 
-    @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var typeSegControl: UISegmentedControl!
-    @IBOutlet weak var questionView: QuestionView!
-    @IBOutlet weak var questionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var scoreTextField: UITextField!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var newButton: UIButton!
+    @IBOutlet weak var typeSegmentControl: UISegmentedControl!
+    @IBOutlet weak var topicView: TopicView!
+    @IBOutlet weak var choiceAView: ChoiceView!
+    @IBOutlet weak var choiceBView: ChoiceView!
+    @IBOutlet weak var choiceCView: ChoiceView!
+    @IBOutlet weak var choiceDView: ChoiceView!
+    var choiceGroup = ChoiceGroup()
+    @IBOutlet weak var scoreView: ScoreView!
+    @IBOutlet weak var scoreConstraint: NSLayoutConstraint!
     
-    // MARK: - life process
+    var viewModel: PaperViewModel?
+
+    var questionIndex = 0
     
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - Lifecycle
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        toolbar.barTintColor = ThemeGreenColor        
-        scrollViewHeight.constant = newButton.frame.maxY + 20.0
+        choiceGroup.insertCells([choiceAView, choiceBView, choiceCView, choiceDView])
         
-        questionView.paperViewModel = viewModel
-        bindViewModel()
+        bindToViewModel()
         
-        if let question = viewModel!.loadFirstQuestion() {
-            configureUIUsingQuestion(question)
-            scoreTextField.text = String(question.score)
-            viewModel?.configureUIUsingQuestion(question)
-        }
+        viewModel?.loadFirstQuestion()
     }
     
-    override func willMoveToParentViewController(parent: UIViewController?)
+    func bindToViewModel()
     {
-        super.willMoveToParentViewController(parent)
-        if parent == nil {
-            viewModel?.saveQuestion()
-            viewModel?.save()
-        }
-    }
-    
-    // MARK: - RAC binding
-    func bindViewModel()
-    {
-        RACObserve(questionView, keyPath: "viewHeight") ~> RAC(questionViewHeight, "constant")
-        
-        RACObserve(viewModel, keyPath: "isEndQuestion").subscribeNext { [unowned self] (isEnd) in
-            if let isEnd = isEnd as? Bool {
-                self.newButton.hidden = !isEnd
+        typeSegmentControl.rx_value
+            .distinctUntilChanged()
+            .map { return QuestionType(typeNum: $0)! }
+            .subscribeNext { [weak self] (type) in
+                self?.changeToQuestionType(type)
             }
-        }
+            .addDisposableTo(disposeBag)
         
-        RACObserve(viewModel, keyPath: "questionIndex").subscribeNext { [unowned self] (index) in
-            if let index = index as? Int {
-                self.title = "第\(index+1)题"
+        self.rx_observe(Question.self, "viewModel.currentQuestion")
+            .subscribeNext { [weak self] (question) in
+                self?.configureUIForQuestion(question)
             }
-        }
-    
-        scoreTextField.rac_textSignal().subscribeNext { [unowned self] (score) in
-            if let score = score as? String {
-                self.viewModel?.score = Int(score)
-            }
-        }
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction func changeQuestionType(sender: UISegmentedControl)
-    {
-        let type = sender.selectedSegmentIndex
-        viewModel!.type = type
-        questionView.changeQuestionType(QuestionType(rawValue: type)!)
-    }
-    
-    @IBAction func lastAction(sender: UIButton)
-    {
-        viewModel?.saveQuestion()       // 保存当前题目
-        if let question = viewModel!.loadLastQuestion() {
-            clearScreenContent()                // 清空屏幕
-            configureUIUsingQuestion(question)
-            scoreTextField.text = String(question.score)
-            viewModel?.configureUIUsingQuestion(question)
-        } else {
-            view.makeToast(NSLocalizedString("已经是第一题！", comment: ""), duration: 0.1, position: nil)
-        }
-        
+            .addDisposableTo(disposeBag)
     }
 
-    @IBAction func nextAction(sender: UIButton)
+    func changeToQuestionType(type: QuestionType)
     {
-        viewModel?.saveQuestion()       // 保存当前题目
-        if let question = viewModel!.loadNextQuestion() {
-            clearScreenContent()                // 清空屏幕
-            configureUIUsingQuestion(question)
-            scoreTextField.text = String(question.score)
-            viewModel?.configureUIUsingQuestion(question)
+        clearUI()
+
+        if type == .TrueOrFalse {
+            choiceCView.hidden = true
+            choiceDView.hidden = true
+            scoreConstraint.priority = 999
         } else {
-            view.makeToast(NSLocalizedString("已经是最后一题！", comment: ""), duration: 0.1, position: nil)
+            choiceCView.hidden = false
+            choiceDView.hidden = false
+            scoreConstraint.priority = 250
         }
+        
+        choiceGroup.isMultipleAnswer = (type == .MultipleChoice) ? true : false
     }
     
-    @IBAction func newAction(sender: UIButton)
+    // MARK: - Action
+    
+    @IBAction func selectChoiceAction(gestureRecognizer: UITapGestureRecognizer)
     {
-        viewModel!.saveQuestion()
-        clearScreenContent()
-        viewModel?.addQuestion()
-        viewModel!.questionIndex += 1
+        guard let selectedIndex = gestureRecognizer.view?.tag else {
+            return
+        }
+        choiceGroup.selectCellAtIndex(selectedIndex)
+    }
+
+    @IBAction func nextAction()
+    {
+        let question = currentQuestion()
+        viewModel?.saveQuestion(question)
+        
+        let type = QuestionType(typeNum: typeSegmentControl.selectedSegmentIndex)!
+        viewModel?.loadNextQuestionForCurrentIndex(questionIndex, questionType: type)
+        questionIndex += 1
     }
     
-    func clearScreenContent()
+    @IBAction func doneAction(sender: UIBarButtonItem)
     {
-        questionView.clearScreenContent()
-        scoreTextField.text = ""
-    }
-    
-    func configureUIUsingQuestion(question: Question)
-    {
-        let type = Int(question.type)
-        typeSegControl.selectedSegmentIndex = type
-        viewModel?.type = type
-        questionView.configureUIUsingQuestion(question)
+        let question = currentQuestion()
+        viewModel?.saveQuestion(question)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - Segue
@@ -141,33 +107,66 @@ class PaperViewController: UIViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         super.prepareForSegue(segue, sender: sender)
+        
         if segue.identifier == "showQuestionList" {
-            if let listVC = segue.destinationViewController as? QuestionListViewController {
-                viewModel?.saveQuestion()
-                viewModel?.save()
-                listVC.viewModel = QuestionListViewModel(paper: viewModel!.paper!)
-                listVC.intentResultDelegate = self
+            if let questionListVC = segue.destinationViewController as? QuestionListViewController {
+                let question = currentQuestion()
+                viewModel?.saveQuestion(question)
+                let questionListViewModel = viewModel?.questionListViewModel()
+                questionListVC.viewModel = questionListViewModel
+                questionListVC.intentResultDelegate = self
             }
         }
     }
     
+    // MARK: - Private
+    
+    private func configureUIForQuestion(question: Question?)
+    {
+        guard let question = question else {
+            return
+        }
+        
+        clearUI()
+        
+        typeSegmentControl.selectedSegmentIndex = question.type
+        typeSegmentControl.sendActionsForControlEvents(.ValueChanged)
+        topicView.configureWithQuestion(question)
+        choiceGroup.configureWithQuestion(question)
+        scoreView.configureWithQuestion(question)
+    }
+    
+    private func currentQuestion() -> Question
+    {
+        let question = Question()
+        question.index = questionIndex
+        question.type = typeSegmentControl.selectedSegmentIndex
+        question.topic = topicView.topic
+        question.choiceA = choiceAView.choiceText
+        question.choiceB = choiceBView.choiceText
+        question.choiceC = choiceCView.choiceText
+        question.choiceD = choiceDView.choiceText
+        question.answers = choiceGroup.answers
+        question.score.value = scoreView.score
+        return question
+    }
+    
+    private func clearUI()
+    {
+        topicView.clearContent()
+        choiceGroup.clearContents()
+        scoreView.clearContent()
+    }
+
 }
 
-protocol IntentResultDelegate
-{
-    func selectQuestionAtIndexPath(indexPath: NSIndexPath)
-}
+// MARK: - IntentResultDelegate
 
 extension PaperViewController: IntentResultDelegate
 {
-    func selectQuestionAtIndexPath(indexPath: NSIndexPath)
+    func selectQuestionAtIndex(index: Int)
     {
-        if let question = viewModel?.loadQuestionAtIndexPath(indexPath) {
-            clearScreenContent()                // 清空屏幕
-            configureUIUsingQuestion(question)
-            scoreTextField.text = String(question.score)
-            viewModel?.configureUIUsingQuestion(question)
-        }
+        questionIndex = index
+        viewModel?.loadQuestionAtIndex(index)
     }
-    
 }

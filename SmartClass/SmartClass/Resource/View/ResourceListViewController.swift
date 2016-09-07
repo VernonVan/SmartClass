@@ -32,15 +32,13 @@ class ResourceListViewController: UIViewController
     
     func initUI()
     {
-        navigationItem.rightBarButtonItem = editButtonItem()
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         
         let refreshControl = UIRefreshControl()
-        refreshControl.tintColor = UIColor(netHex: 0x2196F3)
+        refreshControl.tintColor = ThemeBlueColor
         refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
         tableView.addSubview(refreshControl)
     }
@@ -93,11 +91,17 @@ extension ResourceListViewController: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        var number = 0
+        
         if segmentedControl.selectedSegmentIndex == 0 {
-            return viewModel!.numberOfPPT()
+            number = viewModel!.numberOfPPT()
         } else {
-            return viewModel!.numberOfResource()
+            number = viewModel!.numberOfResource()
         }
+        
+        tableView.separatorStyle = (number == 0 ? .None : .SingleLine)
+        
+        return number
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -166,17 +170,16 @@ extension ResourceListViewController: QLPreviewControllerDataSource
 
 extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage!
+    {
+        return UIImage(named: "emptyResource")
+    }
 
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
     {
-        var text = ""
-        if segmentedControl.selectedSegmentIndex == 0 {
-            text = NSLocalizedString( "还未添加任何幻灯片", comment: "" )
-        } else if segmentedControl.selectedSegmentIndex == 1 {
-            text = NSLocalizedString( "还未添加任何资源", comment: "" )
-        }
+        let text = NSLocalizedString("还未添加资源", comment: "" )
         
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(20.0) ,
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(16.0) ,
                           NSForegroundColorAttributeName : UIColor.darkGrayColor()]
         return NSAttributedString(string: text , attributes: attributes)
     }
@@ -187,13 +190,13 @@ extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDele
         let webUploadURL = appDelegate.webUploaderURL
         var text = ""
         if webUploadURL == "nil" {
-            text = NSLocalizedString( "打开Wifi网络可上传资源", comment: "" )
+            text = NSLocalizedString("打开Wifi网络可上传资源", comment: "" )
         } else{
-            text = NSLocalizedString( "访问\(appDelegate.webUploaderURL + "admin/")上传资源", comment: "" )
+            text = "访问\(appDelegate.webUploaderURL + "admin/")上传资源"
         }
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(12.0) ,
-                          NSForegroundColorAttributeName : UIColor.lightGrayColor()]
-        return NSAttributedString(string: text , attributes: attributes)
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(14.0),
+                          NSForegroundColorAttributeName: UIColor.lightGrayColor()]
+        return NSAttributedString(string: text, attributes: attributes)
     }
     
     func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool

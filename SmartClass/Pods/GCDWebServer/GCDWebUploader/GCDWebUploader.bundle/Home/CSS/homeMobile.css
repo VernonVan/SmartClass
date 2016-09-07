@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.testList {
+    /*border: 1px solid rgb(228,228,228);*/
+    position: relative;
+    width: 96%;
+    height: 98%;
+    background-color: white;
+    padding: 2%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testItem {
+    position: relative;
+    padding: 1%;
+    width: 98%;
+    height: 6%;
+    list-style: none;
+    margin-bottom: 1%;
+    border-bottom: 1px solid rgb(228,228,228);
+}
+
+.testTitle {
+    font-size: 4.0vw;
+    position: absolute;
+    width: 80%;
+    height: auto;
+    top: 30%;
+    left: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow:hidden;
+}
+
+.goToCell {
+    font-size: 4.0vw;
+    position: absolute;
+    width: 20%;
+    height: auto;
+    top: 30%;
+    right: 0;
+    color: rgb(32,184,254);
+    cursor: pointer;
+    float: right;
+}

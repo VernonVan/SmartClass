@@ -7,46 +7,44 @@
 //
 
 import UIKit
+import RealmSwift
 
 class QuestionListViewModel: NSObject
 {
-    // MARK: - variable
-    var paper: Paper?
+    var paper: Paper
     
-    // MARK: - initialize
+    private let realm = try! Realm()
+    
     init(paper: Paper)
     {
-        super.init()
-        
         self.paper = paper
+        
+        super.init()      
     }
     
-    // MARK: - TableView datasource
+    // MARK: - Table view
     
-    func numberOfItemsInSection(section: Int) -> Int
+    func numberOfQuestions() -> Int
     {
-        return paper!.questions!.count
+        return paper.questions.count
     }
     
-    func questionAtIndexPath(indexPath: NSIndexPath) -> Question
+    func questionAtIndexPath(index: Int) -> Question?
     {
-        return paper?.questions?.objectAtIndex(indexPath.row) as! Question
+        let question = paper.questions.filter("index = \(index)").first
+        return question
     }
 
-    func deleteItemAtIndexPath(indexPath: NSIndexPath)
+    func deleteItemAtIndex(index: Int)
     {
-        let mutableQuestions = paper?.questions?.mutableCopy() as? NSMutableOrderedSet
-        mutableQuestions?.removeObjectAtIndex(indexPath.row)
-        paper?.questions = mutableQuestions?.copy() as? NSOrderedSet
-    }
-    
-    func moveItemFromIndex(fromIndex: Int, toIndex: Int)
-    {
-        let question = paper?.questions?.objectAtIndex(fromIndex)
-        let mutableQuestions = paper?.questions?.mutableCopy() as? NSMutableOrderedSet
-        mutableQuestions?.removeObjectAtIndex(fromIndex)
-        mutableQuestions?.insertObject(question!, atIndex: toIndex)
-        paper?.questions = mutableQuestions?.copy() as? NSOrderedSet
+        try! realm.write({
+            if let question = paper.questions.filter("index = \(index)").first {
+                realm.delete(question)
+            }
+            for afterQuestion in paper.questions.filter("index > \(index)") {
+                afterQuestion.index -= 1
+            }
+        })
     }
     
 }

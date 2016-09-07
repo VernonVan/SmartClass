@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.resourceList {
+    position: relative;
+    width: 96%;
+    height: 98%;
+    background-color: white;
+    padding: 2%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.resourceItem {
+    position: relative;
+    padding: 1%;
+    width: 98%;
+    height: 8%;
+    list-style: none;
+    margin-bottom: 1%;
+    border-bottom: 1px solid rgb(228,228,228);
+}
+
+.resourceTitle {
+    font-size: 4.0vw;
+    position: absolute;
+    width: 80%;
+    height: auto;
+    top: 10%;
+    left: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow:hidden;
+    display: block;
+    color: rgb(32,184,254);
+}
+
+.information {
+    position: absolute;
+    bottom: 40%;
+    width: 100%;
+    height: auto;
+    left: 0;
+}
+
+.date {
+    position: absolute;
+    width: 50%;
+    height: auto;
+    left: 0;
+    text-align: left;
+    font-size: 3.8vw;
+    color: rgb(153,153,153);
+}
+
+.downloadCell {
+    position: absolute;
+    width: 50%;
+    height: auto;
+    right: 0;
+    text-align: right;
+    cursor: pointer;
+    font-size: 4.0vw;
+    color: rgb(32,184,254);
+}

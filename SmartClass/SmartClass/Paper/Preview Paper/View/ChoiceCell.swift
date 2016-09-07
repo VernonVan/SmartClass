@@ -39,7 +39,9 @@ extension ChoiceCell
         }
         
         if question.answers!.characters.contains(Character(UnicodeScalar(choiceNum+65))) {
-            choiceImageView.image = UIImage(named: "correctAnswer")
+            choiceImageView.image = UIImage(named: "selectedChoice")
+        } else {
+            choiceImageView.image = UIImage(named: "emptyChoice")
         }
     }
 }

@@ -22,64 +22,36 @@ class SignUpSheetListViewModel: NSObject
     
     func reloadData()
     {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if let signUpSheets = userDefaults.objectForKey("signUpSheet") {
-            if let signUpSheetArray = signUpSheets as? [String] {
-                self.signUpSheetNames = signUpSheetArray
-            }
+        let signUpSheetUrl = ConvenientFileManager.signUpSheetURL
+        do {
+            try signUpSheetNames = fileManager.contentsOfDirectoryAtPath(signUpSheetUrl.path!)
+            
+        } catch let error as NSError {
+            print("SignUpSheetListViewModel reloadData error: \(error.localizedDescription)")
         }
     }
+
+    func numberOfSignUpSheet() -> Int
+    {
+        return signUpSheetNames.count
+    }
     
-    // TableView
     func titleForSignUpSheetAtIndexPath(indexPath: NSIndexPath) -> String
     {
         let title = signUpSheetNames[indexPath.row]
         return title
     }
     
-    func signUpSheetHeaderTitle() -> String?
-    {
-        let number = numberOfSignUpSheet()
-        return number != 0 ? NSLocalizedString("签到表", comment: "") : nil
-    }
-    
-    func numberOfSignUpSheet() -> Int
-    {
-        return signUpSheetNames.count
-    }
-    
-    func nameAtIndexPath(indexPath: NSIndexPath) -> String
-    {
-        return signUpSheetNames[indexPath.row]
-    }
-    
     func deleteSignUpSheetAtIndexPath(indexPath: NSIndexPath)
     {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        signUpSheetNames.removeAtIndex(indexPath.row)
-        userDefaults.setValue(signUpSheetNames, forKey: "signUpSheet")
-        userDefaults.synchronize()
-    }
-    
-    // MARK: - Segue
-    
-    func viewModelForStudentList() -> StudentListViewModel
-    {
-        return StudentListViewModel()
-    }
-    
-}
-
-// MARK: private
-private extension SignUpSheetListViewModel
-{
-    func deleteFileAtURL(url: NSURL)
-    {
+        let signUpSheetUrl = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetNames[indexPath.row])
         do {
-            try fileManager.removeItemAtURL(url)
+            try fileManager.removeItemAtURL(signUpSheetUrl)
         } catch let error as NSError {
-            print("deleteFileAtURL error: \(error.userInfo)")
+            print("SignUpSheetListViewModel deleteSignUpSheetAtIndexPath error: \(error.localizedDescription)")
         }
+        
+        reloadData()
     }
     
 }

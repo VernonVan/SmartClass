@@ -21,23 +21,18 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    /*border: 1px solid deepskyblue;*/
 }
 
 .left {
-    /*border: 1px solid gray;*/
     position: absolute;
     height: 100%;
-    width: 16%;
+    width: 10%;
     left: 0;
     background-color: rgb(232,232,232);
 }
 
 .head {
     position: relative;
-    /*padding: 8%;*/
-    /*width: 84%;*/
-    /*height: 14%;*/
     height: 150px;
 }
 
@@ -45,8 +40,8 @@ body {
     position: absolute;
     border-radius: 50%;
     background-color: white;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     left: 0;
     right: 0;
     top: 0;
@@ -64,22 +59,20 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
+    list-style: none;
 }
 
 .tab {
     position: relative;
     width: 100%;
-    height: 25%;
+    height: 19%;
     cursor: pointer;
-    /*margin-top: 2%;*/
-    /*border-left: 15px solid rgb(32,184,253);*/
 }
 
 .colorSpan {
     position: absolute;
     width: 8%;
     height: 100%;
-    /*background-color: rgb(32,184,253);*/
 }
 
 .key {
@@ -87,29 +80,25 @@ body {
     width: 92%;
     height: 100%;
     left: 8%;
-    /*background-color: white;*/
 }
 
 .key > img {
     position: absolute;
-    /*height: 50px;*/
-    /*width: 50px;*/
-    /*left: 30%;*/
-    /*top: 10%;*/
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: 25%;
     margin: auto;
+    border: none;
 }
 
 .key > label {
     font-size: 1.3vw;
     position: absolute;
-    left: 33%;
-    top: 80%;
+    left: 20%;
+    top: 75%;
     bottom: 0;
     right: 0;
     margin: auto;
@@ -123,42 +112,107 @@ body {
     position: absolute;
     padding: 2%;
     height: 96%;
-    width: 80%;
+    width: 86%;
     right: 0;
     background-color: rgb(247,247,247);
 }
 
-.testList {
-    border: 1px solid rgb(228,228,228);
-    position: relative;
-    width: 96%;
-    height: 92%;
-    background-color: white;
-    padding: 2%;
-    overflow-y: scroll;
+.outer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
 }
 
-.testItem {
-    position: relative;
-    padding: 1%;
-    width: 98%;
-    height: 6%;
-    list-style: none;
-    margin-bottom: 1%;
-    border-bottom: 1px solid rgb(228,228,228);
+.alert {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    min-width: 200px;
+    min-height: 200px;
+    background-color: rgb(238,238,238);
+    left: 30%;
+    top: 25%;
+    border-radius: 10px;
 }
 
-.testTitle {
-    position: relative;
-    top: 30%;
-    left: 0;
+.alert-head {
+    position: absolute;
+    width: 100%;
+    height: 20%;
 }
 
-.goToCell {
+.alert-head > img {
     position: relative;
-    top: 30%;
-    right: 0;
-    color: rgb(102,207,255);
+    width: 50px;
+    height: 50px;
+    bottom: 18%;
+    left: 44%;
+}
+
+.alert-head > button {
+    position: absolute;
+    width: 10%;
+    height: 50%;
+    border: 0;
+    right: 2%;
+    top: 10%;
+    font-size: 1.8vw;
+    background-color: rgb(238,238,238);
+    color: rgb(106,106,106);
+    outline: none;
     cursor: pointer;
-    float: right;
+}
+
+.alert-container {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 20%;
+}
+
+.id {
+    position: absolute;
+    width: 76%;
+    height: 18%;
+    top: 10%;
+    left: 10%;
+    background-color: white;
+    font-size: 2.0vw;
+    outline: none;
+    border: 1px solid rgb(219,219,219);
+    color: rgb(186,186,186);
+    border-radius: 8px;
+    padding: 0 2% 0 2%;
+}
+
+.name {
+    position: absolute;
+    width: 76%;
+    height: 18%;
+    top: 38%;
+    left: 10%;
+    background-color: white;
+    font-size: 2.0vw;
+    outline: none;
+    border: 1px solid rgb(219,219,219);
+    color: rgb(186,186,186);
+    border-radius: 8px;
+    padding: 0 2% 0 2%;
+}
+
+.send {
+    position: absolute;
+    width: 80%;
+    height: 18%;
+    top: 68%;
+    left: 10%;
+    font-size: 2.0vw;
+    outline: none;
+    border: 1px solid rgb(0,187,254);
+    color: white;
+    border-radius: 8px;
+    background-color: rgb(0,187,254);
+    cursor: pointer;
 }

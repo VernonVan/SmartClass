@@ -10,7 +10,7 @@ target 'SmartClass' do
     pod 'GCDWebServer/WebUploader', '~> 3.3.2'
     pod 'Reachability', '~> 3.2'
 
-    pod 'Charts', '~> 2.2.4'
+    pod 'Charts'
     pod 'SnapKit', '~> 0.20.0'
     pod 'ChameleonFramework/Swift'
 

@@ -7,80 +7,70 @@
 //
 
 import UIKit
+import RealmSwift
 import DZNEmptyDataSet
 
 class SignUpSheetViewController: UITableViewController
 {
-    private var records: NSArray?
     var signUpName: String?
-
+    
+    private var students: Results<Student>!
+    private var signedNames: NSArray!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        tableView.emptyDataSetSource = self
+        title = signUpName
         
-        let fileURL = ConvenientFileManager.studentListURL
-        records = NSArray(contentsOfURL: fileURL)
+        let realm = try! Realm()
+        students = realm.objects(Student).sorted("number")
+        
+        let url = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpName!)
+        signedNames = NSArray(contentsOfURL: url)
+        
+        tableView.emptyDataSetSource = self
+        tableView.registerNib(UINib(nibName: "SignUpSheetCell", bundle: nil), forCellReuseIdentifier: "SignUpSheetCell")
     }
-    
-    // MARK: - TableView
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return records!.count
+        return students.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseSignUpCell", forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("SignUpSheetCell", forIndexPath: indexPath) as! SignUpSheetCell
         configureCellAtIndexPath(cell, atIndexPath: indexPath)
-
         return cell
     }
     
-    func configureCellAtIndexPath(cell: UITableViewCell, atIndexPath indexPath : NSIndexPath)
+    func configureCellAtIndexPath(cell: SignUpSheetCell, atIndexPath indexPath : NSIndexPath)
     {
-        if let dict = records?[indexPath.row] as? NSDictionary {
-            let name = dict["name"] as! String
-            let number = dict["number"] as! String
-            cell.textLabel?.text = name
-            cell.detailTextLabel?.text = number
-            
-            if let signed = dict[signUpName!] as? Bool where signed == true {
-                cell.accessoryType = .Checkmark
-            } else {
-                let label = UILabel(frame: CGRect(origin: CGPointZero, size: CGSize(width: 88.0, height: 44.0)))
-                label.textAlignment = .Right
-                let attributes = [NSFontAttributeName : UIFont.systemFontOfSize(16.0) ,
-                                  NSForegroundColorAttributeName : ThemeLightGreyColor]
-                label.attributedText = NSAttributedString(string: NSLocalizedString( "未签到", comment: "" ) , attributes: attributes)
-                cell.accessoryView = label
-            }
-        }
+        cell.nameLabel.text = "\(students[indexPath.row].name) - \(students[indexPath.row].number)"
+        cell.majorLabel.text = "\(students[indexPath.row].major!)(\(students[indexPath.row].school!))"
         
+        if signedNames.containsObject(students[indexPath.row].name) {
+            cell.selectCell()
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        if IDIOM == IPAD {
-            return 54.0
-        }
-        return 44.0
+        return 60.0
     }
-
 }
 
 // MARK: - DZNEmptyDataSet
+
 extension SignUpSheetViewController: DZNEmptyDataSetSource
 {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let text = NSLocalizedString( "请先添加学生", comment: "" )
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(22.0) ,
-                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
-        return NSAttributedString(string: text , attributes: attributes)
+        let text = NSLocalizedString("请先添加学生", comment: "")
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(22.0),
+                          NSForegroundColorAttributeName: UIColor.darkGrayColor()]
+        return NSAttributedString(string: text, attributes: attributes)
     }
 
 }

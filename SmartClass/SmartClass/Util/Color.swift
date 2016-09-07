@@ -14,8 +14,7 @@ let ThemeGreenColor = UIColor.flatGreenColorDark()
 let ThemeRedColor = UIColor.flatRedColor()
 let ThemeGreyColor = UIColor.flatGrayColor()
 let ThemeLightGreyColor = UIColor.flatGrayColorDark()
-let ThemeBlueColor = UIColor.flatBlueColor()
-
+let ThemeBlueColor = UIColor(netHex: 0x20B9FF)
 
 // PPT
 let CanvasRedColor = UIColor(netHex: 0xF44336)

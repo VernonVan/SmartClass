@@ -1,160 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="/Index/HTML"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="edge" />
     <meta name=”viewport” content=”width='device-width',height='device-height',user-scalable=yes,initial-scale=2.5,maximum-scale=5.0,minimum-scale=1.0”>
     <title>试卷列表</title>
 
-    <link rel="stylesheet" href="/Index/CSS/index.css" />
-    <script type="text/javascript" src="../../AngularJS/angular.min.js"></script>
-    <script type="text/javascript" src="../JS/index.js"></script>
+    <link media="all and (max-device-width: 767px) and (orientation: portrait)" rel="stylesheet" href="Index/CSS/indexMobile.css" />
+    <link media="all and (max-device-width: 767px) and (orientation: landscape)" rel="stylesheet" href="Index/CSS/index.css" />
+    <link media="all and (min-device-width: 768px)" rel="stylesheet" href="Index/CSS/index.css" />
+    <script type="text/javascript" src="AngularJS/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="AngularJS/angular.min.js"></script>
+    <script type="text/javascript" src="AngularJS/ngTouch.js"></script>
+    <script type="text/javascript" src="AngularJS/angular-route.js"></script>
+    <script type="text/javascript" src="AngularJS/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="AngularJS/jquery.jeditable.js"></script>
+    <script type="text/javascript" src="AngularJS/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="AngularJS/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="AngularJS/tmpl.min.js"></script>
+    <script type="text/javascript" src="Index/JS/index.js"></script>
+    <script type="text/javascript" src="Home/JS/home.js"></script>
+    <script type="text/javascript" src="ResourcesTable/JS/table.js"></script>
 </head>
 <body ng-app="starter">
 
-<div class="container" ng-controller="main-controller">
-
+<div class="container"  ng-controller="root-controller">
+    
     <div class="left bottom">
-
-        <div class="head"><img src="/Index/RESOURCES/ICON/BLUE/logo.png" /></div>
-
-        <div class="tabs">
+        
+        <div class="head"><img src="Index/RESOURCES/ICON/BLUE/logo.png" /></div>
+        
+        <div class="tabs" ng-controller="main-controller">
             <ul>
-                <li class="tab">
+                <li class="tab" style="background-color: white;" ng-touch="tabAction($event)" ng-click="tabAction($event)">
                     <span class="colorSpan" style="background-color: rgb(32,184,253);"></span>
-                    <span class="key" style="background-color: rgb(255,255,255);">
-                        <img src="/Index/RESOURCES/ICON/BLUE/test.png"><br>
-                        <label style="color: rgb(32,184,253);">考试列表</label>
-                    </span>
+                    <span class="key">
+                        <img src="Index/RESOURCES/ICON/SMALL/testSmall.png"><br>
+                            <label style="color: rgb(32,184,253);">考试列表</label>
+                            </span>
                 </li>
-                <li class="tab">
+                <li class="tab" ng-touch="tabAction($event)" ng-click="tabAction($event)">
                     <span class="colorSpan"></span>
                     <span class="key">
-                        <img src="/Index/RESOURCES/ICON/BLUE/resource.png"><br>
-                        <label>资源列表</label>
-                    </span>
+                        <img src="Index/RESOURCES/ICON/SMALL/resourceSmall.png"><br>
+                            <label>资源列表</label>
+                            </span>
                 </li>
-                <li class="tab">
+                <li class="tab" ng-touch="tabAction($event)" ng-click="tabAction($event)">
                     <span class="colorSpan"></span>
                     <span class="key">
-                        <img src="/Index/RESOURCES/ICON/BLUE/play.png"><br>
-                        <label>PPT观看</label>
-                    </span>
+                        <img src="Index/RESOURCES/ICON/SMALL/playSmall.png"><br>
+                            <label>PPT观看</label>
+                            </span>
                 </li>
-                <li class="tab">
+                <li class="tab" ng-touch="tabAction($event)" ng-click="tabAction($event)">
                     <span class="colorSpan"></span>
                     <span class="key">
-                        <img src="/Index/RESOURCES/ICON/BLUE/question.png"><br>
-                        <label>学生提问</label>
-                    </span>
+                        <img src="Index/RESOURCES/ICON/SMALL/questionSmall.png"><br>
+                            <label>学生提问</label>
+                            </span>
                 </li>
             </ul>
         </div>
-
+        
     </div>
-
+    
     <div class="right top">
-        <ul class="testList">
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-            <li class="testItem">
-                <span class="testTitle">数学第一次月考</span>
-                <span class="goToCell">进入答题</span>
-            </li>
-        </ul>
+        <ng-view></ng-view>
     </div>
-
+    
+    
+    <div class="outer" ng-controller="alert-controller">
+        <div class="alert">
+            
+            <div class="alert-head">
+                <img src="Index/RESOURCES/ICON/SMALL/alertLogo.png">
+                    <button ng-click="dismiss()" ng-touch="dismiss()">关闭</button>
+            </div>
+            
+            <div class="alert-container">
+                <input class="id" type="text" placeholder="请输入学号..." />
+                <input class="name" type="text" placeholder="请输入姓名..." />
+                <button class="send" type="button" ng-click="send()" ng-touch="send()">核实</button>
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
 </div>
 
 </body>

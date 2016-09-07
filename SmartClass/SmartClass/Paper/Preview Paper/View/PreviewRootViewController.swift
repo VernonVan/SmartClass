@@ -11,13 +11,15 @@ import UIKit
 class PreviewRootViewController: UIViewController
 {
     var paper: Paper?
-    lazy var questionNumber: Int = {
-        return self.paper?.questions?.count ?? 0
-    }()
-    var pageViewControllers = NSMutableArray()
     
+    lazy var questionNumber: Int = {
+        return self.paper!.questions.count
+    }()
+
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    private var pageViewControllers = NSMutableArray()
     
     override func viewDidLoad()
     {
@@ -54,7 +56,7 @@ class PreviewRootViewController: UIViewController
         
         var controller = pageViewControllers[page] as? PreviewPaperViewController
         if controller == nil {
-            controller = PreviewPaperViewController(question: paper?.questions?[page] as? Question)
+            controller = PreviewPaperViewController(question: paper?.questions[page])
             pageViewControllers.replaceObjectAtIndex(page, withObject: controller!)
         }
         

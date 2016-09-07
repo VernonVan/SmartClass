@@ -21,49 +21,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         return "\(self.webUploader.serverURL)"
     }
     
-    var reach: Reachability?
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        print(ConvenientFileManager.resourceURL.path!)
+        print(ConvenientFileManager.paperURL.path!)
+        
+        initUI()
         
         UIApplication.sharedApplication().idleTimerDisabled = true
-        IQKeyboardManager.sharedManager().enable = true
         
+        addHandlerForWebUploader()
         webUploader.start()
-
-        ConvenientFileManager.createInitDirectory()
-//        setViewModels()
-//        // 监控网络状态的变化
-//        reach = Reachability.reachabilityForInternetConnection()
-//        reach?.reachableOnWWAN = false
-//        reach?.startNotifier()
-
+        
         return true
     }
-
-    func setViewModels()
-    {
-        let tabBarController = window?.rootViewController as!  UITabBarController
-        
-        let navigationController = tabBarController.viewControllers![0] as! UINavigationController
-        let paperListVC = navigationController.viewControllers[0] as! PaperListViewController
-        let paperListViewModel = PaperListViewModel(model: CoreDataStack.defaultStack.managedObjectContext)
-        paperListVC.viewModel = paperListViewModel
-        
-        let navigationController2 = tabBarController.viewControllers![2] as! UINavigationController
-        let signUpSheetListVC = navigationController2.viewControllers[0] as! SignUpSheetListViewController
-        let signUpSheetListViewModel = SignUpSheetListViewModel()
-        signUpSheetListVC.viewModel = signUpSheetListViewModel
-    }
-
-    func applicationWillTerminate(application: UIApplication)
-    {
-        CoreDataStack.defaultStack.saveContext()
-        reach?.stopNotifier()
-    }
-
     
+    func initUI()
+    {
+        UITextView.appearance().tintColor = ThemeGreenColor
+        UITextField.appearance().tintColor = ThemeGreenColor
+        
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    func addHandlerForWebUploader()
+    {
+        webUploader.addHandlerForMethod("GET", path: "/getPaperList", requestClass: GCDWebServerRequest.self) { (request) -> GCDWebServerResponse! in
+            var json: NSData!
+            let papers = NSMutableArray()
+            papers.addObject(["name": "小测", "blurb": "呵呵"])
+            let dict = ["papers": papers]
+            do {
+                json = try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions.PrettyPrinted)
+            } catch let error as NSError {
+                print("error: \(error)")
+            }
+            return GCDWebServerDataResponse(data: json, contentType: "txt")
+        }
+        
+        webUploader.addHandlerForMethod("GET", path: "/confirmID", requestClass: GCDWebServerRequest.self) { (request) -> GCDWebServerResponse! in
+            var json: NSData!
+            do {
+                json = try NSJSONSerialization.dataWithJSONObject(["result", true], options: NSJSONWritingOptions.PrettyPrinted)
+            } catch let error as NSError {
+                print("error: \(error)")
+            }
+            return GCDWebServerDataResponse(data: json, contentType: "data")
+        }
+    }
+
 }
 
 

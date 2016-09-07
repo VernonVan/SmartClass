@@ -17,28 +17,34 @@ class QuestionCell: UITableViewCell
     
     @IBOutlet weak var isCompletedImageView: UIImageView!
     
-    
 }
 
 extension QuestionCell
 {
-    func configurForQuestion(question: Question)
+    func configurForQuestion(question: Question?)
     {
-        switch QuestionType(typeNum: question.type)
-        {
-        case .Some(.SingleChoice):
-            typeLabel.text = NSLocalizedString("单选题", comment: "")
-        case .Some(.MultipleChoice):
-            typeLabel.text = NSLocalizedString("多选题", comment: "")
-        case .Some(.TrueOrFalse):
-            typeLabel.text = NSLocalizedString("判断题", comment: "")
-        default:
-            typeLabel.text = nil
+        guard let question = question else {
+            return
         }
         
-        topicLabel.text = question.topic
+        switch QuestionType(typeNum: question.type)!
+        {
+        case .SingleChoice:
+            typeLabel.text = NSLocalizedString("单选", comment: "")
+        case .MultipleChoice:
+            typeLabel.text = NSLocalizedString("多选", comment: "")
+        case .TrueOrFalse:
+            typeLabel.text = NSLocalizedString("判断", comment: "")
+        }
         
-        let isCompletedImageName = question.isCompleted ? "completedQuestion" : "uncompletedQuestion"
+//        topicLabel.text = question.topic
+        let isEmptyTopic = (question.topic ?? "").isEmpty
+        let text = (isEmptyTopic ? NSLocalizedString("尚未填写题目描述", comment: "") : question.topic!)
+        let attributes = [NSForegroundColorAttributeName: (isEmptyTopic ? UIColor.lightGrayColor() : UIColor.darkTextColor())]
+        let attributedText = NSAttributedString(string: text, attributes: attributes)
+        topicLabel.attributedText = attributedText
+        
+        let isCompletedImageName = question.isCompleted ? "completeQuestion" : "uncompleteQuestion"
         isCompletedImageView.image = UIImage(named: isCompletedImageName)
     }
 }

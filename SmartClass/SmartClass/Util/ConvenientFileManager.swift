@@ -10,12 +10,11 @@ class ConvenientFileManager: NSObject
 {
     static let fileManager = NSFileManager.defaultManager()
     
+    static let paperURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Paper")
+    static let signUpSheetURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("SignUpSheet")
     static let uploadURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Upload")
     static let pptURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("PPT")
     static let resourceURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("Resource")
-    static let paperURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Paper")
-    static let paperListURL = paperURL.URLByAppendingPathComponent("PaperList")
-    static let studentListURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("StudentList.plist")
     
     static func documentURL() -> NSURL
     {
@@ -52,16 +51,16 @@ class ConvenientFileManager: NSObject
     
     static func createInitDirectory()
     {
-        let firstRun = !ConvenientFileManager.studentListURL.checkResourceIsReachableAndReturnError(nil)
-        if firstRun {
+        // first run
+        if !NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedOnce") {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedOnce")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            
             do {
                 try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.paperURL, withIntermediateDirectories: true, attributes: nil)
                 try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
                 try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
-                let emptyArray = NSArray()
-                emptyArray.writeToURL(studentListURL, atomically: true)
-                let listPath = NSBundle.mainBundle().pathForResource("Student", ofType: "plist")
-                try NSFileManager.defaultManager().copyItemAtURL(NSURL(string: listPath!)!, toURL: ConvenientFileManager.uploadURL)
+                try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.signUpSheetURL, withIntermediateDirectories: true, attributes: nil)
             } catch let error as NSError {
                 print("createInitDirectory error: \(error.localizedDescription)")
             }

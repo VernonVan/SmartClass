@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.testList {
+    border: 1px solid rgb(228,228,228);
+    position: relative;
+    width: 96%;
+    height: 92%;
+    background-color: white;
+    padding: 2%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testItem {
+    position: relative;
+    padding: 1%;
+    width: 98%;
+    height: 6%;
+    list-style: none;
+    margin-bottom: 1%;
+    border-bottom: 1px solid rgb(228,228,228);
+}
+
+.testTitle {
+    position: absolute;
+    width: 80%;
+    height: auto;
+    top: 30%;
+    left: 0;
+    white-space: nowrap;
+    font-size: 1.8vw;
+    text-overflow: ellipsis;
+    -o-text-overflow:ellipsis;
+    overflow:hidden;
+}
+
+.goToCell {
+    position: absolute;
+    width: 20%;
+    height: auto;
+    top: 30%;
+    right: 0;
+    color: rgb(102,207,255);
+    cursor: pointer;
+    float: right;
+    text-align: right;
+    font-size: 1.8vw;
+}

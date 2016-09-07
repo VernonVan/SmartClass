@@ -8,22 +8,20 @@
 
 import UIKit
 import Toast
-import ReactiveCocoa
+import RxSwift
+import RxCocoa
 
 class PaperInformationViewController: UIViewController
 {
-    // MARK: - outlets
-    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var blurbTextView: UITextView!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    
-    // MARK: - variables
     
     var viewModel: PaperInformationViewModel?
     
-    // MARK: - life process
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad()
     {
@@ -36,9 +34,8 @@ class PaperInformationViewController: UIViewController
     
     func initView()
     {
-        title = viewModel?.name?.length == 0 ? NSLocalizedString("试卷信息", comment: "") : viewModel?.name
-        nameTextField.text = viewModel?.name
-        blurbTextView.text = viewModel?.blurb
+        nameTextField.text = viewModel?.name.value
+        blurbTextView.text = viewModel?.blurb.value
     
         if viewModel?.isCreate == false {
             navigationItem.leftBarButtonItem = nil
@@ -46,54 +43,42 @@ class PaperInformationViewController: UIViewController
         }
     }
     
-    // MARK: - RAC binding
-    
     func bindViewModel()
     {
-        nameTextField.rac_textSignal() ~> RAC(viewModel, "name")
-        blurbTextView.rac_textSignal() ~> RAC(viewModel, "blurb")
+        nameTextField.rx_text.bindTo(viewModel!.name).addDisposableTo(disposeBag)
+        blurbTextView.rx_text.bindTo(viewModel!.blurb).addDisposableTo(disposeBag)
         
-        nameTextField.rac_textSignal().map { (temp) -> AnyObject in
-            if let text = temp as? String {
-                return text.length > 0
-            }
-            return false
-        } ~> RAC(doneButton, "enabled")
+        nameTextField.rx_text.map { return $0.length > 0 }.bindTo(doneButton.rx_enabled).addDisposableTo(disposeBag)
     }
     
     // MARK: - Actions
     
-    @IBAction func doneWasPressed(sender: AnyObject)
-    {
-        dismissSelf()
-    }
-    
-    @IBAction func cancelWasPressed(sender: AnyObject)
-    {
-        viewModel!.cancel()
-        dismissSelf()
-    }
-    
-    func dismissSelf()
+    @IBAction func doneAction(sender: UIBarButtonItem)
     {
         viewModel?.save()
-    
         navigationController?.popViewControllerAnimated(true)
     }
-    
-    @IBAction func issuePaperAction(sender: UIButton)
+
+    @IBAction func cancelAction(sender: UIBarButtonItem)
     {
-        let isCompleted = viewModel?.isCompleted()
-        let totalScore = viewModel?.totalScore()
+        viewModel?.cancel()
+        navigationController?.popViewControllerAnimated(true)
+    }
+
+    @IBAction func issuePaperAction()
+    {
+        let isCompleted = viewModel?.isPaperCompleted()
+        let totalScore = viewModel?.paperTotalScore()
+        
         if isCompleted == true {
             if totalScore == 100 {
                 viewModel?.issuePaper()
-                dismissSelf()
+                navigationController?.popViewControllerAnimated(true)
             } else {
-                   view.makeToast(NSLocalizedString("试卷总分不是100分！", comment: ""), duration: 0.15, position: nil)
+                view.makeToast(NSLocalizedString("试卷总分不是100分！", comment: ""), duration: 0.15, position: nil)
             }
         } else {
-             view.makeToast(NSLocalizedString("试卷还未编辑完全！", comment: ""), duration: 0.15, position: nil)
+            view.makeToast(NSLocalizedString("试卷还未编辑完全！", comment: ""), duration: 0.15, position: nil)
         }
     }
     
@@ -106,7 +91,7 @@ class PaperInformationViewController: UIViewController
             if let paperVC = segue.destinationViewController as? PaperViewController {
                 paperVC.viewModel = viewModel?.viewModelForPaper()
             }
-        } 
+        }
     }
     
 }
