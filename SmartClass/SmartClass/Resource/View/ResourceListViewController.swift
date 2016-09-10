@@ -9,7 +9,6 @@
 import UIKit
 import QuickLook
 import DZNEmptyDataSet
-import DGElasticPullToRefresh
 
 class ResourceListViewController: UIViewController
 {

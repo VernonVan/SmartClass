@@ -32,7 +32,7 @@ class Student: Object
     
 }
 
-extension Student: Equatable {}
+//extension Student: Equatable {}
 
 func ==(lhs: Student, rhs: Student) -> Bool
 {

@@ -22,7 +22,6 @@ enum PaperListVCSection: Int
 class PaperListViewController: UIViewController
 {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var toolBar: UIToolbar!
     
     var viewModel: PaperListViewModel?
   

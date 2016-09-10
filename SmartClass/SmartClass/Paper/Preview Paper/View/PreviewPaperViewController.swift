@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 class PreviewPaperViewController: UIViewController, UITableViewDataSource
 {
@@ -55,10 +54,6 @@ class PreviewPaperViewController: UIViewController, UITableViewDataSource
         super.viewDidLoad()
         
         view.addSubview(tableView)
-        tableView.snp_makeConstraints { (make) in
-            make.edges.equalTo(view)
-        }
-   
     }
     
     // MARK: - Table view data source

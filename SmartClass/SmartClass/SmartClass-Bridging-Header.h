@@ -4,4 +4,3 @@
 
 #import "UIPlaceHolderTextView.h"
 
-#import "RVMViewModel.h"

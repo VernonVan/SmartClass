@@ -7,13 +7,9 @@
 //
 
 import UIKit
-import ChameleonFramework
 
 // Theme
-let ThemeGreenColor = UIColor.flatGreenColorDark()
-let ThemeRedColor = UIColor.flatRedColor()
-let ThemeGreyColor = UIColor.flatGrayColor()
-let ThemeLightGreyColor = UIColor.flatGrayColorDark()
+let ThemeGreenColor = UIColor(netHex: 0x23E5A3)
 let ThemeBlueColor = UIColor(netHex: 0x20B9FF)
 
 // PPT

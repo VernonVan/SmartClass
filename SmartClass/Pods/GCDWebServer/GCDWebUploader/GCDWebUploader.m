@@ -62,22 +62,6 @@
 
 @implementation GCDWebUploader (Quiz)
 
-//    [self addHandlerForMethod:@"GET" path:@"/confirmID" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
-//        NSDictionary *blobData = @{@"result": @FALSE};
-//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject: blobData options: NSJSONWritingPrettyPrinted error: nil];
-//        return [GCDWebServerDataResponse responseWithData: jsonData contentType: @"txt"];
-//    }];
-    
-    
-//    [self addHandlerForMethod:@"GET" path:@"/table.json" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest *request) {
-//        NSURL *fileURL = [[self documentsDirectory] URLByAppendingPathComponent: @"Paper/PaperList"];
-//        NSData *data = [NSData dataWithContentsOfFile: fileURL.path];
-//        NSLog(@"---------------------%@", fileURL.path);
-//        return [GCDWebServerDataResponse responseWithData: data contentType: @"txt"];
-//    }];
-    
-    
-    
 //    [self addHandlerForMethod:@"POST" path:@"/templates/post_paperName" requestClass:[GCDWebServerDataRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest * request) {
 //        GCDWebServerDataRequest * dataRequest = (GCDWebServerDataRequest *) request;
 //        NSDictionary* resultDict = [NSJSONSerialization JSONObjectWithData: dataRequest.data

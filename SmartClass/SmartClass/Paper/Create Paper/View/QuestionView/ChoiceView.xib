@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyChoice" translatesAutoresizingMaskIntoConstraints="NO" id="upe-bx-4WQ">
-                    <rect key="frame" x="8" y="12" width="20" height="20"/>
+                    <rect key="frame" x="16" y="12" width="20" height="20"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="078-oT-X0U"/>
@@ -25,16 +25,26 @@
                     </constraints>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="选项" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ont-w8-KXt">
-                    <rect key="frame" x="36" y="12" width="276" height="20"/>
+                    <rect key="frame" x="44" y="12" width="268" height="20"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkY-oM-o4D">
+                    <rect key="frame" x="36" y="43" width="284" height="1"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="utx-Cq-X6p"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="upe-bx-4WQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="17Z-4C-XdE"/>
+                <constraint firstItem="upe-bx-4WQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="17Z-4C-XdE"/>
+                <constraint firstAttribute="trailing" secondItem="rkY-oM-o4D" secondAttribute="trailing" id="5HE-lM-Vzl"/>
                 <constraint firstAttribute="trailing" secondItem="ont-w8-KXt" secondAttribute="trailing" constant="8" id="IhC-QF-Txd"/>
+                <constraint firstAttribute="bottom" secondItem="rkY-oM-o4D" secondAttribute="bottom" id="J5e-pr-Ta4"/>
                 <constraint firstItem="upe-bx-4WQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="R1b-0c-r5c"/>
+                <constraint firstItem="rkY-oM-o4D" firstAttribute="leading" secondItem="upe-bx-4WQ" secondAttribute="trailing" id="Zfh-db-03I"/>
                 <constraint firstItem="ont-w8-KXt" firstAttribute="leading" secondItem="upe-bx-4WQ" secondAttribute="trailing" constant="8" symbolic="YES" id="oKe-Mh-esz"/>
                 <constraint firstItem="ont-w8-KXt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rcd-h1-JNr"/>
             </constraints>

@@ -34,15 +34,20 @@ class PaperInformationViewController: UIViewController
     
     func initView()
     {
+        let customButton = UIButton(type: .Custom)
+        customButton.setImage(UIImage(named: "Back"), forState: .Normal)
+        customButton.setTitle("试卷列表", forState: .Normal)
+        customButton.setTitleColor(ThemeBlueColor, forState: .Normal)
+        customButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 4)
+        customButton.sizeToFit()
+        customButton.addTarget(self, action: #selector(backAction), forControlEvents: .TouchUpInside)
+        let customBarButtonItem = UIBarButtonItem(customView: customButton)
+        navigationItem.leftBarButtonItem = customBarButtonItem
+        
         nameTextField.text = viewModel?.name.value
         blurbTextView.text = viewModel?.blurb.value
-    
-        if viewModel?.isCreate == false {
-            navigationItem.leftBarButtonItem = nil
-            navigationItem.hidesBackButton = true
-        }
     }
-    
+  
     func bindViewModel()
     {
         nameTextField.rx_text.bindTo(viewModel!.name).addDisposableTo(disposeBag)
@@ -58,12 +63,15 @@ class PaperInformationViewController: UIViewController
         viewModel?.save()
         navigationController?.popViewControllerAnimated(true)
     }
-
-    @IBAction func cancelAction(sender: UIBarButtonItem)
+    
+    func backAction()
     {
-        viewModel?.cancel()
+        if viewModel?.isCreate == true {
+            viewModel?.cancel()
+        }
         navigationController?.popViewControllerAnimated(true)
     }
+    
 
     @IBAction func issuePaperAction()
     {

@@ -118,7 +118,7 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
             if (e == $scope.testData.length) {
                 flag = true;
             }
-            array.push(flag);
+            //array.push(flag);
             array.push(score);
             return array;
         };
@@ -167,12 +167,18 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
                 $scope.isJudge = true;
             }
         }
-
-        $http.get('../RESOURCES/JSON/test.json?callback=JSON_CALLBACK').success(function (data) {
+                
+        var storage = window.localStorage;
+                
+        var paper_name = {
+            "name": storage.getItem("title")
+        };
+                
+        $http.post('requestPaper',paper_name).success(function (data) {
             if (data == "") {
                 alert("老师还没发布试卷!");
             } else {
-
+                console.log(data);
                 $scope.testData = data['questions'];
                 var t = data['questions'][0]['type'];
                 $scope.type = questionTypes[t];
@@ -275,7 +281,7 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
         };
 
     })
-    .controller('submit-controller', function ($scope, $http, userService,$window) {
+    .controller('submit-controller', function ($scope, $http, userService,$location,$window) {
 
         $scope.back = function () {
             if (userService.getIndex() == 0) {
@@ -310,19 +316,21 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
                 alert("考试结束!" + "分数:" + result[result.length - 1]);
             }
 
+            var score = result[result.length-1];
+
             var testData = {
                 "student_number": storage.getItem("stuID"),
-                "student_name": storage.getItem("name"),
+                "student_name": storage.getItem("stuName"),
                 "paper_name": storage.getItem("title"),
-                "result": result
+                "result": result,
+                "score": score
             };
 
-            //console.log(testData);
+            console.log(testData);
 
             $http.post('resultData', testData)
                 .success(function (data) {
-                    alert("成功!");
-                    //$window.location.href  = "TestPage/HTML/testPage.html";
+                    $location.path('/Home');
                 })
                 .error(function (data, status) {
                     switch (status) {

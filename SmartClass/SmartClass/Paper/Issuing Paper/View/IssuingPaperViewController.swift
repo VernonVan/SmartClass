@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 import Charts
 import RxSwift
 import RealmSwift
@@ -121,7 +120,9 @@ class IssuingPaperViewController: UIViewController
     {
         let realm = try! Realm()
         try! realm.write {
+            print("paper name: \(paper?.name)\npaper state: \(paper?.state))")
             paper?.state = PaperIssueState.finished.rawValue
+            print("结束考试之后 paper name: \(paper?.name)\npaper state: \(paper?.state))")
         }
         navigationController?.popViewControllerAnimated(true)
     }

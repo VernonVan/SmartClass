@@ -59,16 +59,6 @@ myAPP.controller('alert-controller', function ($scope, $http, $window) {
         title = obj['title'];
     });
 
-    function confirm() {
-        $http.get('').success(function(data){
-            if(data['message'] == true) {
-                $window.location.href  = "TestPage/HTML/testPage.html";
-            }else {
-                alert("信息填写不准确,请确认后再提交...");
-            }
-        });
-    }
-
     $scope.send = function () {
 
         var id = angular.element('.id').val();
@@ -87,10 +77,14 @@ myAPP.controller('alert-controller', function ($scope, $http, $window) {
             storage.setItem("stuName",name);
             storage.setItem("title",title);
 
-            $http.get('confirmID', confirmData)
+            $http.post('confirmID', confirmData)
                 .success(function (data) {
-                    console.log(data);
-                    //confirm();
+                         console.log(data);
+                    if(data['isMyStudent']) {
+                         $window.location.href  = "TestPage/HTML/testPage.html";
+                    }else {
+                         alert("信息填写不正确,请确认后再提交~");
+                    }
                 })
                 .error(function (data, status) {
                     switch (status) {

@@ -44,6 +44,14 @@ class ResultContainerViewController: UIViewController
             if let desVC = segue.destinationViewController as? PreviewRootViewController {
                 desVC.paper = paper
             }
+        } else if segue.identifier == "showOrder" {
+            if let desVC = segue.destinationViewController as? ExamResultViewController {
+                desVC.paper = paper
+            }
+        } else if segue.identifier == "showChart" {
+            if let desVC = segue.destinationViewController as? ResultChartViewController {
+                desVC.paper = paper
+            }
         }
     }
     

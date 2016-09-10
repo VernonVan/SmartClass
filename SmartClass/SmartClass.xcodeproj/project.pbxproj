@@ -19,7 +19,6 @@
 		0797AE511D61FACE00D51B41 /* ScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0797AE501D61FACE00D51B41 /* ScoreView.xib */; };
 		0797AE531D61FADB00D51B41 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797AE521D61FADB00D51B41 /* ScoreView.swift */; };
 		0797AE551D6201F100D51B41 /* PaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0797AE541D6201F100D51B41 /* PaperViewController.swift */; };
-		07A7E1001D61B33100A2355A /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A7E0FF1D61B33100A2355A /* Reveal.framework */; };
 		07C2BD4A1CE1FF4A003E6454 /* SignUpSheetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */; };
 		07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */; };
 		07DEA8071CEC799B00C7504E /* NewSignUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */; };
@@ -31,9 +30,6 @@
 		AD0A64B31D4A0E7100707C5E /* PPTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A64AF1D4A0E7100707C5E /* PPTView.swift */; };
 		AD0A64B41D4A0E7100707C5E /* PPTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A64B01D4A0E7100707C5E /* PPTViewController.swift */; };
 		AD0A64B61D4A0E8D00707C5E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A64B51D4A0E8D00707C5E /* Resource.swift */; };
-		AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DB1C8E7FE60080BF50 /* RAC.swift */; };
-		AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */; };
-		AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */; };
 		AD0C75621D6FD31000D220F0 /* ChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C755E1D6FD31000D220F0 /* ChoiceCell.swift */; };
 		AD0C75631D6FD31000D220F0 /* ChoiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD0C755F1D6FD31000D220F0 /* ChoiceCell.xib */; };
 		AD0C75641D6FD31000D220F0 /* TopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0C75601D6FD31000D220F0 /* TopicCell.swift */; };
@@ -47,7 +43,6 @@
 		AD2F3C441D791CA200083261 /* SignUpSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2F3C431D791CA200083261 /* SignUpSheetCell.xib */; };
 		AD3838CA1D4AF73E0048D6F3 /* NSDate+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3838C91D4AF73E0048D6F3 /* NSDate+extension.swift */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
-		AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */; };
 		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
 		AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308671CB10028000DEC59 /* UIImage+extension.swift */; };
 		AD75209A1D582066000C5D7A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD90D1501D52CBF4008AEF1A /* Realm.framework */; };
@@ -143,9 +138,6 @@
 		AD0A64AF1D4A0E7100707C5E /* PPTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPTView.swift; sourceTree = "<group>"; };
 		AD0A64B01D4A0E7100707C5E /* PPTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPTViewController.swift; sourceTree = "<group>"; };
 		AD0A64B51D4A0E8D00707C5E /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		AD0B21DB1C8E7FE60080BF50 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RAC.swift; path = Util/RAC.swift; sourceTree = "<group>"; };
-		AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACObserve.swift; path = Util/RACObserve.swift; sourceTree = "<group>"; };
-		AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RACSignal+Extensions.swift"; path = "Util/RACSignal+Extensions.swift"; sourceTree = "<group>"; };
 		AD0C755E1D6FD31000D220F0 /* ChoiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChoiceCell.swift; path = "SmartClass/Paper/Preview Paper/View/ChoiceCell.swift"; sourceTree = SOURCE_ROOT; };
 		AD0C755F1D6FD31000D220F0 /* ChoiceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChoiceCell.xib; path = "SmartClass/Paper/Preview Paper/View/ChoiceCell.xib"; sourceTree = SOURCE_ROOT; };
 		AD0C75601D6FD31000D220F0 /* TopicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopicCell.swift; path = "SmartClass/Paper/Preview Paper/View/TopicCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -160,9 +152,6 @@
 		AD3838C91D4AF73E0048D6F3 /* NSDate+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+extension.swift"; path = "Util/Extension/NSDate+extension.swift"; sourceTree = "<group>"; };
 		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
-		AD4AF5141CB3AE5D006129C2 /* ReactiveViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReactiveViewModel.h; path = Util/ReactiveViewModel/ReactiveViewModel.h; sourceTree = "<group>"; };
-		AD4AF5151CB3AE5D006129C2 /* RVMViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RVMViewModel.h; path = Util/ReactiveViewModel/RVMViewModel.h; sourceTree = "<group>"; };
-		AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RVMViewModel.m; path = Util/ReactiveViewModel/RVMViewModel.m; sourceTree = "<group>"; };
 		AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "Util/Extension/UIColor+extension.swift"; sourceTree = "<group>"; };
 		AD6308671CB10028000DEC59 /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+extension.swift"; path = "Util/Extension/UIImage+extension.swift"; sourceTree = "<group>"; };
 		AD86A8C61C82DBCC009CEE87 /* SmartClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,7 +212,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07A7E1001D61B33100A2355A /* Reveal.framework in Frameworks */,
 				AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */,
 				AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */,
 				AD884BD01C83F31A005A37AE /* libz.1.2.5.tbd in Frameworks */,
@@ -400,26 +388,14 @@
 		AD46B0051C8683C8008CB3F7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				AD4AF5131CB3AE3F006129C2 /* ReactiveViewModel */,
 				ADF3BB7D1CAE625B00638D3B /* Extension */,
 				AD876A791C93C014000E9978 /* PlaceholderTextView */,
-				AD97378B1C92AF100066873E /* RACextensions */,
 				077D61EB1CCA4917007C5ED7 /* ConvenientFileManager.swift */,
 				AD9737891C92AF060066873E /* SegueHandlerType.swift */,
 				AD46B0061C868423008CB3F7 /* Color.swift */,
 				ADE35C991D3DB7E0001A5A13 /* Constant.swift */,
 			);
 			name = Util;
-			sourceTree = "<group>";
-		};
-		AD4AF5131CB3AE3F006129C2 /* ReactiveViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AD4AF5141CB3AE5D006129C2 /* ReactiveViewModel.h */,
-				AD4AF5151CB3AE5D006129C2 /* RVMViewModel.h */,
-				AD4AF5161CB3AE5D006129C2 /* RVMViewModel.m */,
-			);
-			name = ReactiveViewModel;
 			sourceTree = "<group>";
 		};
 		AD4CCDD51CF57DF000831EC5 /* Create Paper */ = {
@@ -553,16 +529,6 @@
 				AD876A7B1C93C053000E9978 /* UIPlaceHolderTextView.m */,
 			);
 			name = PlaceholderTextView;
-			sourceTree = "<group>";
-		};
-		AD97378B1C92AF100066873E /* RACextensions */ = {
-			isa = PBXGroup;
-			children = (
-				AD0B21DB1C8E7FE60080BF50 /* RAC.swift */,
-				AD0B21DC1C8E7FE60080BF50 /* RACObserve.swift */,
-				AD0B21DD1C8E7FE60080BF50 /* RACSignal+Extensions.swift */,
-			);
-			name = RACextensions;
 			sourceTree = "<group>";
 		};
 		AD99E2601D3CBD2B008162D7 /* QRCode */ = {
@@ -849,11 +815,9 @@
 				0797AE551D6201F100D51B41 /* PaperViewController.swift in Sources */,
 				ADB1DBDE1D40B5C200C05A93 /* QuestionCell.swift in Sources */,
 				ADF4F5A01D78112500B3C8DF /* Array+extension.swift in Sources */,
-				AD0B21DE1C8E7FE60080BF50 /* RAC.swift in Sources */,
 				0700D1BA1CE4B5B000EB9A81 /* ResourceListViewModel.swift in Sources */,
 				AD980BEE1D4EDE0100C607B4 /* PaperListViewModel.swift in Sources */,
 				0797AE531D61FADB00D51B41 /* ScoreView.swift in Sources */,
-				AD4AF5171CB3AE5D006129C2 /* RVMViewModel.m in Sources */,
 				AD0A64B31D4A0E7100707C5E /* PPTView.swift in Sources */,
 				AD46B0071C868423008CB3F7 /* Color.swift in Sources */,
 				ADF74E021D3F08D0001C8DEC /* PaperInformationViewController.swift in Sources */,
@@ -864,14 +828,12 @@
 				0797AE4B1D61F18800D51B41 /* TopicView.swift in Sources */,
 				07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */,
 				072EA4B31D65C6FC0001EFFB /* ChoiceGroup.swift in Sources */,
-				AD0B21E01C8E7FE60080BF50 /* RACSignal+Extensions.swift in Sources */,
 				AD0A64B11D4A0E7100707C5E /* CanvasPopoverViewController.swift in Sources */,
 				ADF4F59C1D77CD2900B3C8DF /* StudentListViewController.swift in Sources */,
 				07C2BD4A1CE1FF4A003E6454 /* SignUpSheetListViewController.swift in Sources */,
 				0797AE4D1D61F47D00D51B41 /* ChoiceView.swift in Sources */,
 				ADE7E1DA1D41ACD0005F4DAB /* PreviewRootViewController.swift in Sources */,
 				ADE35C9A1D3DB7E0001A5A13 /* Constant.swift in Sources */,
-				AD0B21DF1C8E7FE60080BF50 /* RACObserve.swift in Sources */,
 				AD23FF5A1D7A6A0C00C6A671 /* StudentCell.swift in Sources */,
 				AD876A7C1C93C053000E9978 /* UIPlaceHolderTextView.m in Sources */,
 				AD0A64B41D4A0E7100707C5E /* PPTViewController.swift in Sources */,
@@ -1036,20 +998,12 @@
 					"-framework",
 					"\"MobileCoreServices\"",
 					"-framework",
-					"\"ReactiveCocoa\"",
-					"-framework",
-					"\"Result\"",
-					"-framework",
 					"\"Security\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"Toast\"",
 					"-ObjC",
-					"-lz",
-					"-ObjC",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1101,20 +1055,12 @@
 					"-framework",
 					"\"MobileCoreServices\"",
 					"-framework",
-					"\"ReactiveCocoa\"",
-					"-framework",
-					"\"Result\"",
-					"-framework",
 					"\"Security\"",
 					"-framework",
 					"\"SystemConfiguration\"",
 					"-framework",
 					"\"Toast\"",
 					"-ObjC",
-					"-lz",
-					"-ObjC",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
