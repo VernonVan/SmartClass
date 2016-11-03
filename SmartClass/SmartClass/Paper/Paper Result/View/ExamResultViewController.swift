@@ -9,6 +9,26 @@
 import UIKit
 import RealmSwift
 import DZNEmptyDataSet
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 struct ResultItem
 {
@@ -22,11 +42,11 @@ class ExamResultViewController: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     
-    private var items = [ResultItem]()
+    fileprivate var items = [ResultItem]()
     
-    private var students: Results<Student>!
+    fileprivate var students: Results<Student>!
     
-    private let realm = try! Realm()
+    fileprivate let realm = try! Realm()
     
     // MARK: - Lifecycle
     
@@ -35,19 +55,19 @@ class ExamResultViewController: UIViewController
         super.viewDidLoad()
 
         
-        students = realm.objects(Student).sorted("number")
+        students = realm.objects(Student.self).sorted(byProperty: "number")
+        configureResultItems()
         
         tableView.dataSource = self
         tableView.emptyDataSetSource = self
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         
-        configureResultItems()
     }
     
     func configureResultItems()
     {
-        let results = paper!.results.sorted("score", ascending: false)
+        let results = paper!.results.sorted(byProperty: "score", ascending: false)
         for result in results {
             let item = ResultItem(studentName: result.name!, score: result.score)
             items.append(item)
@@ -67,34 +87,34 @@ class ExamResultViewController: UIViewController
 extension ExamResultViewController: UITableViewDataSource
 {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return items.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ResultCell", forIndexPath: indexPath) as! ResultCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as! ResultCell
         configureCell(cell, atIndexPath: indexPath)
         return cell
     }
     
-    func configureCell(cell: ResultCell, atIndexPath indexPath: NSIndexPath)
+    func configureCell(_ cell: ResultCell, atIndexPath indexPath: IndexPath)
     {
-        let item = items[indexPath.row]
-        if indexPath.row < 3 && item.score != nil {
-            cell.starImageView.hidden = false
-            cell.orderLabel.hidden = true
+        let item = items[(indexPath as NSIndexPath).row]
+        if (indexPath as NSIndexPath).row < 3 && item.score != nil {
+            cell.starImageView.isHidden = false
+            cell.orderLabel.isHidden = true
         } else {
-            cell.starImageView.hidden = true
-            cell.orderLabel.text = "\(indexPath.row + 1)"
+            cell.starImageView.isHidden = true
+            cell.orderLabel.text = "\((indexPath as NSIndexPath).row + 1)"
         }
 
         cell.nameLabel.text = item.studentName
         cell.scoreLabel.text = (item.score != nil ? "\(item.score!)" : NSLocalizedString("缺考", comment: ""))
-        cell.scoreLabel.textColor = item.score != nil ? (item.score > 60 ? UIColor.redColor() : ThemeBlueColor) : UIColor.lightGrayColor()
+        cell.scoreLabel.textColor = item.score != nil ? (item.score > 60 ? UIColor.red : ThemeBlueColor) : UIColor.lightGray
         
-        cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColor.whiteColor() : UIColor(netHex: 0xf5f5f5)
+        cell.backgroundColor = ((indexPath as NSIndexPath).row % 2 == 0) ? UIColor.white : UIColor(netHex: 0xf5f5f5)
     }
     
 }
@@ -103,11 +123,11 @@ extension ExamResultViewController: UITableViewDataSource
 
 extension ExamResultViewController: DZNEmptyDataSetSource
 {
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
         let text = NSLocalizedString("请先添加学生", comment: "")
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(22.0) ,
-                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 22.0) ,
+                          NSForegroundColorAttributeName : UIColor.darkGray]
         return NSAttributedString(string: text , attributes: attributes)
     }
 

@@ -15,7 +15,7 @@ class CanvasPopoverViewController: UIViewController
     @IBOutlet weak var sizeSlider: UISlider!
     @IBOutlet weak var alphaSlider: UISlider!
     
-    var color = UIColor.redColor()
+    var color = UIColor.red
     var size = 5.0
     var alpha: Float = 1.0
     
@@ -38,7 +38,7 @@ class CanvasPopoverViewController: UIViewController
     
     // MARK: - Actions
 
-    @IBAction func changeColorActions(button: UIButton)
+    @IBAction func changeColorActions(_ button: UIButton)
     {
         let color = button.backgroundColor!
         delegate?.changeCanvasColor(color)
@@ -46,12 +46,12 @@ class CanvasPopoverViewController: UIViewController
         alphaSlider.tintColor = color
     }
     
-    @IBAction func changeSizeAction(slider: UISlider)
+    @IBAction func changeSizeAction(_ slider: UISlider)
     {
         delegate?.changeCanvasSize(Double(slider.value*10))
     }
     
-    @IBAction func changeAlphaAction(slider: UISlider)
+    @IBAction func changeAlphaAction(_ slider: UISlider)
     {
         delegate?.changeCanvasAlpha(slider.value)
     }

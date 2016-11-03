@@ -13,7 +13,7 @@ class QuestionListViewModel: NSObject
 {
     var paper: Paper
     
-    private let realm = try! Realm()
+    fileprivate let realm = try! Realm()
     
     init(paper: Paper)
     {
@@ -29,13 +29,13 @@ class QuestionListViewModel: NSObject
         return paper.questions.count
     }
     
-    func questionAtIndexPath(index: Int) -> Question?
+    func questionAtIndexPath(_ index: Int) -> Question?
     {
         let question = paper.questions.filter("index = \(index)").first
         return question
     }
 
-    func deleteItemAtIndex(index: Int)
+    func deleteItemAtIndex(_ index: Int)
     {
         try! realm.write({
             if let question = paper.questions.filter("index = \(index)").first {

@@ -88,7 +88,7 @@ static int32_t _connectionCounter = 0;
 @implementation GCDWebServerConnection (Read)
 
 - (void)_readData:(NSMutableData*)data withLength:(NSUInteger)length completionBlock:(ReadDataCompletionBlock)block {
-  dispatch_read(_socket, length, kGCDWebServerGCDQueue, ^(dispatch_data_t buffer, int error) {
+  dispatch_read(_socket, length, dispatch_get_global_queue(_server.dispatchQueuePriority, 0), ^(dispatch_data_t buffer, int error) {
     
     @autoreleasepool {
       if (error == 0) {
@@ -105,7 +105,7 @@ static int32_t _connectionCounter = 0;
           if (_bytesRead > 0) {
             GWS_LOG_ERROR(@"No more data available on socket %i", _socket);
           } else {
-            GWS_LOG_WARNING(@"No data received from socket %i", _socket);
+         //   GWS_LOG_WARNING(@"No data received from socket %i", _socket);
           }
           block(NO);
         }
@@ -247,10 +247,10 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
 @implementation GCDWebServerConnection (Write)
 
 - (void)_writeData:(NSData*)data withCompletionBlock:(WriteDataCompletionBlock)block {
-  dispatch_data_t buffer = dispatch_data_create(data.bytes, data.length, kGCDWebServerGCDQueue, ^{
+  dispatch_data_t buffer = dispatch_data_create(data.bytes, data.length, dispatch_get_global_queue(_server.dispatchQueuePriority, 0), ^{
     [data self];  // Keeps ARC from releasing data too early
   });
-  dispatch_write(_socket, buffer, kGCDWebServerGCDQueue, ^(dispatch_data_t remainingData, int error) {
+  dispatch_write(_socket, buffer, dispatch_get_global_queue(_server.dispatchQueuePriority, 0), ^(dispatch_data_t remainingData, int error) {
     
     @autoreleasepool {
       if (error == 0) {
@@ -607,7 +607,7 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
     _localAddress = localAddress;
     _remoteAddress = remoteAddress;
     _socket = socket;
-    GWS_LOG_DEBUG(@"Did open connection on socket %i", _socket);
+ //   GWS_LOG_DEBUG(@"Did open connection on socket %i", _socket);
     
     [_server willStartConnection:self];
     
@@ -635,7 +635,7 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
   if (result != 0) {
     GWS_LOG_ERROR(@"Failed closing socket %i for connection: %s (%i)", _socket, strerror(errno), errno);
   } else {
-    GWS_LOG_DEBUG(@"Did close connection on socket %i", _socket);
+  //  GWS_LOG_DEBUG(@"Did close connection on socket %i", _socket);
   }
   
   if (_opened) {
@@ -676,7 +676,7 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
 }
 
 - (void)didReadBytes:(const void*)bytes length:(NSUInteger)length {
-  GWS_LOG_DEBUG(@"Connection received %lu bytes on socket %i", (unsigned long)length, _socket);
+ // GWS_LOG_DEBUG(@"Connection received %lu bytes on socket %i", (unsigned long)length, _socket);
   _bytesRead += length;
   
 #ifdef __GCDWEBSERVER_ENABLE_TESTING__
@@ -689,7 +689,7 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
 }
 
 - (void)didWriteBytes:(const void*)bytes length:(NSUInteger)length {
-  GWS_LOG_DEBUG(@"Connection sent %lu bytes on socket %i", (unsigned long)length, _socket);
+ // GWS_LOG_DEBUG(@"Connection sent %lu bytes on socket %i", (unsigned long)length, _socket);
   _bytesWritten += length;
   
 #ifdef __GCDWEBSERVER_ENABLE_TESTING__
@@ -707,7 +707,7 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
 
 // https://tools.ietf.org/html/rfc2617
 - (GCDWebServerResponse*)preflightRequest:(GCDWebServerRequest*)request {
-  GWS_LOG_DEBUG(@"Connection on socket %i preflighting request \"%@ %@\" with %lu bytes body", _socket, _virtualHEAD ? @"HEAD" : _request.method, _request.path, (unsigned long)_bytesRead);
+ // GWS_LOG_DEBUG(@"Connection on socket %i preflighting request \"%@ %@\" with %lu bytes body", _socket, _virtualHEAD ? @"HEAD" : _request.method, _request.path, (unsigned long)_bytesRead);
   GCDWebServerResponse* response = nil;
   if (_server.authenticationBasicAccounts) {
     __block BOOL authenticated = NO;
@@ -757,13 +757,8 @@ static inline NSUInteger _ScanHexNumber(const void* bytes, NSUInteger size) {
 }
 
 - (void)processRequest:(GCDWebServerRequest*)request completion:(GCDWebServerCompletionBlock)completion {
-  GWS_LOG_DEBUG(@"Connection on socket %i processing request \"%@ %@\" with %lu bytes body", _socket, _virtualHEAD ? @"HEAD" : _request.method, _request.path, (unsigned long)_bytesRead);
-  @try {
-    _handler.asyncProcessBlock(request, [completion copy]);
-  }
-  @catch (NSException* exception) {
-    GWS_LOG_EXCEPTION(exception);
-  }
+//  GWS_LOG_DEBUG(@"Connection on socket %i processing request \"%@ %@\" with %lu bytes body", _socket, _virtualHEAD ? @"HEAD" : _request.method, _request.path, (unsigned long)_bytesRead);
+  _handler.asyncProcessBlock(request, [completion copy]);
 }
 
 // http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25
@@ -805,7 +800,7 @@ static inline BOOL _CompareResources(NSString* responseETag, NSString* requestET
   [self _writeHeadersWithCompletionBlock:^(BOOL success) {
     ;  // Nothing more to do
   }];
-  GWS_LOG_DEBUG(@"Connection aborted with status code %i on socket %i", (int)statusCode, _socket);
+ // GWS_LOG_DEBUG(@"Connection aborted with status code %i on socket %i", (int)statusCode, _socket);
 }
 
 - (void)close {
@@ -842,9 +837,9 @@ static inline BOOL _CompareResources(NSString* responseETag, NSString* requestET
 #endif
   
   if (_request) {
-    GWS_LOG_VERBOSE(@"[%@] %@ %i \"%@ %@\" (%lu | %lu)", self.localAddressString, self.remoteAddressString, (int)_statusCode, _virtualHEAD ? @"HEAD" : _request.method, _request.path, (unsigned long)_bytesRead, (unsigned long)_bytesWritten);
+  //  GWS_LOG_VERBOSE(@"[%@] %@ %i \"%@ %@\" (%lu | %lu)", self.localAddressString, self.remoteAddressString, (int)_statusCode, _virtualHEAD ? @"HEAD" : _request.method, _request.path, (unsigned long)_bytesRead, (unsigned long)_bytesWritten);
   } else {
-    GWS_LOG_VERBOSE(@"[%@] %@ %i \"(invalid request)\" (%lu | %lu)", self.localAddressString, self.remoteAddressString, (int)_statusCode, (unsigned long)_bytesRead, (unsigned long)_bytesWritten);
+  //  GWS_LOG_VERBOSE(@"[%@] %@ %i \"(invalid request)\" (%lu | %lu)", self.localAddressString, self.remoteAddressString, (int)_statusCode, (unsigned long)_bytesRead, (unsigned long)_bytesWritten);
   }
 }
 

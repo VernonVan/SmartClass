@@ -1,6 +1,6 @@
 //
 //  SubjectType.swift
-//  Rx
+//  RxSwift
 //
 //  Created by Krunoslav Zaher on 3/1/15.
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
@@ -18,11 +18,12 @@ public protocol SubjectType : ObservableType {
     Usually this type is type of subject itself, but it doesn't have to be.
     */
     associatedtype SubjectObserverType : ObserverType
-    
+
     /**
     Returns observer interface for subject.
     
     - returns: Observer interface for subject.
     */
     func asObserver() -> SubjectObserverType
+    
 }

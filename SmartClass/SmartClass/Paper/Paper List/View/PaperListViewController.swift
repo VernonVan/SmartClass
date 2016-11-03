@@ -12,11 +12,31 @@ import GCDWebServer
 import Reachability
 import DZNEmptyDataSet
 
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 enum PaperListVCSection: Int
 {
-    case EditingPaperSection = 0
-    case IssuingPaperSection = 1
-    case FinishedPaperSection = 2
+    case editingPaperSection = 0
+    case issuingPaperSection = 1
+    case finishedPaperSection = 2
 }
 
 class PaperListViewController: UIViewController
@@ -25,8 +45,8 @@ class PaperListViewController: UIViewController
     
     var viewModel: PaperListViewModel?
   
-    private let disposeBag = DisposeBag()
-    private let reuseIdentifier = "reusePaperCell"
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate let reuseIdentifier = "reusePaperCell"
     
     // MARK: - Lifecycle
     
@@ -37,7 +57,7 @@ class PaperListViewController: UIViewController
         initUI()
         
         // 接收网络状态的变化的通知
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(reachabilityChanged), name: kReachabilityChangedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: NSNotification.Name.reachabilityChanged, object: nil)
     }
     
     func initUI()
@@ -45,15 +65,16 @@ class PaperListViewController: UIViewController
         tableView.dataSource = self
         tableView.delegate = self
         tableView.emptyDataSetSource = self
+        tableView.tableFooterView = UIView()
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let webUploaderURL = appDelegate.webUploaderURL
         if webUploaderURL == "nil" {
             view.makeToast(NSLocalizedString("无法发布试卷，请确保Wifi网络可用", comment: ""))
         }
     }
 
-    @IBAction func paperTypeChangeAction(segmentedControl: UISegmentedControl)
+    @IBAction func paperTypeChangeAction(_ segmentedControl: UISegmentedControl)
     {
         viewModel?.paperType = PaperType(rawValue: segmentedControl.selectedSegmentIndex)!
         tableView.reloadData()
@@ -64,7 +85,7 @@ class PaperListViewController: UIViewController
         view.makeToast(NSLocalizedString("网络状态变化", comment: ""))
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -72,32 +93,33 @@ class PaperListViewController: UIViewController
     
     deinit
     {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kReachabilityChangedNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.reachabilityChanged, object: nil)
     }
    
     // MARK: - Segue
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        super.prepareForSegue(segue, sender: sender)
+        super.prepare(for: segue, sender: sender)
         
         if segue.identifier == "createPaper" {
-            if let desVC = segue.destinationViewController as? PaperInformationViewController {
+            if let desVC = segue.destination as? PaperInformationViewController {
                 desVC.viewModel = viewModel?.viewModelForNewPaper()
             }
         } else if segue.identifier == "editPaper" {
-            if let examViewController = segue.destinationViewController as? PaperInformationViewController {
+            if let examViewController = segue.destination as? PaperInformationViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
                 examViewController.viewModel = viewModel?.viewModelForExistPaper(indexPath)
             }
         } else if segue.identifier == "showIssuingPaper" {
-            if let issuingPaperVC = segue.destinationViewController as? IssuingPaperViewController {
+            if let issuingPaperVC = segue.destination as? IssuingPaperViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
                 issuingPaperVC.paper = viewModel?.paperAtIndexPath(indexPath)
             }
         } else if segue.identifier == "showExamResult" {
-            if let desVC = segue.destinationViewController as? ResultContainerViewController {
+            if let desVC = segue.destination as? ResultContainerViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
+//                print("试卷: \(viewModel?.paperAtIndexPath(indexPath))")
                 desVC.paper = viewModel?.paperAtIndexPath(indexPath)
             }
         }
@@ -108,51 +130,56 @@ class PaperListViewController: UIViewController
 
 extension PaperListViewController: UITableViewDataSource, UITableViewDelegate
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         let number = viewModel!.numberOfPapers()
-        tableView.separatorStyle = (number == 0 ? .None : .SingleLine)
+        tableView.separatorStyle = (number == 0 ? .none : .singleLine)
         return number
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! PaperListCell
         let paper = viewModel?.paperAtIndexPath(indexPath)
         configureCell(cell, withPaper: paper)
         return cell
     }
     
-    func configureCell(cell: UITableViewCell, withPaper paper: Paper?)
+    func configureCell(_ cell: PaperListCell, withPaper paper: Paper?)
     {
-        cell.textLabel?.text = paper?.name
-        cell.detailTextLabel?.text = paper?.blurb
+        cell.nameLabel?.text = paper?.name
+        cell.blurbLabel?.text = paper?.blurb
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let paper = viewModel?.paperAtIndexPath(indexPath)
         switch PaperIssueState(rawValue: paper!.state)! {
         case .editing:
-            performSegueWithIdentifier("editPaper", sender: nil)
+            performSegue(withIdentifier: "editPaper", sender: nil)
         case .issuing:
-            performSegueWithIdentifier("showIssuingPaper", sender: nil)
+            performSegue(withIdentifier: "showIssuingPaper", sender: nil)
         case .finished:
-            performSegueWithIdentifier("showExamResult", sender: nil)
+            performSegue(withIdentifier: "showExamResult", sender: nil)
         }
     }
     
-    func tableView(tableView: UITableView, canEditowAtIndexPath indexPath: NSIndexPath) -> Bool
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             viewModel!.deletePaperAtIndexPath(indexPath)
         }
         tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return viewModel?.paperAtIndexPath(indexPath).blurb.length > 0 ? PaperListCell.cellHeight : 44.0
     }
 }
 
@@ -160,16 +187,16 @@ extension PaperListViewController: UITableViewDataSource, UITableViewDelegate
 
 extension PaperListViewController: DZNEmptyDataSetSource
 {
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage!
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
     {
         return UIImage(named: "emptyPaper")
     }
     
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
         let text = NSLocalizedString("点击右上角+开始创建试卷", comment: "" )
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(16.0) ,
-                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 16.0) ,
+                          NSForegroundColorAttributeName : UIColor.darkGray]
         return NSAttributedString(string: text , attributes: attributes)
     }
 

@@ -10,10 +10,10 @@ import UIKit
 
 class ResourceListViewModel: NSObject
 {
-    private var ppts = [PPT]()
-    private var resources = [Resource]()
+    fileprivate var ppts = [PPT]()
+    fileprivate var resources = [Resource]()
     
-    private let fileManager = NSFileManager.defaultManager()
+    fileprivate let fileManager = FileManager.default
     
     override init()
     {
@@ -28,24 +28,20 @@ class ResourceListViewModel: NSObject
         resources = getAllResourceAtUrl(ConvenientFileManager.resourceURL)
     }
     
-    func getAllPPTAtUrl(url: NSURL) -> [PPT]
+    func getAllPPTAtUrl(_ url: URL) -> [PPT]
     {
-        guard let pptFilePath = url.path else {
-            return [PPT]()
-        }
+        let pptFilePath = url.path
         
         var allPPT = [PPT]()
         do {
-            let allPPTNames = try self.fileManager.contentsOfDirectoryAtPath(pptFilePath).filter({ (fileName) -> Bool in
-                let url = ConvenientFileManager.pptURL.URLByAppendingPathComponent(fileName)
-                return url.pathExtension?.containsString("pptx") ?? false
+            let allPPTNames = try self.fileManager.contentsOfDirectory(atPath: pptFilePath).filter({ (fileName) -> Bool in
+                let url = ConvenientFileManager.pptURL.appendingPathComponent(fileName)
+                return url.pathExtension.contains("pptx") 
             })
             for pptName in allPPTNames {
-                let createDate = getFileCreateDateAtURL(url.URLByAppendingPathComponent(pptName))
-                let pptUrl = ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
-                let pptView = PPTView(frame: CGRect(x: 0, y: 0, width: 100, height: 75), pptURL: pptUrl)
-                pptView.scalesPageToFit = true
-                let ppt = PPT(name: pptName, coverImage: pptView, createDate: createDate)
+                let createDate = getFileCreateDateAtURL(url.appendingPathComponent(pptName))
+                let size = getFileSizeAtURL(url.appendingPathComponent(pptName))
+                let ppt = PPT(name: pptName, createDate: createDate, size: size)
                 allPPT.append(ppt)
             }
         } catch let error as NSError {
@@ -60,41 +56,41 @@ class ResourceListViewModel: NSObject
         return ppts.count
     }
     
-    func pptAtIndexPath(indexPath: NSIndexPath) -> PPT
+    func pptAtIndexPath(_ indexPath: IndexPath) -> PPT
     {
-        return ppts[indexPath.row]
+        return ppts[(indexPath as NSIndexPath).row]
     }
 
-    func pptURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
+    func pptURLAtIndexPath(_ indexPath: IndexPath) -> URL
     {
-        let pptName = ppts[indexPath.row].name
-        return ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName!)
+        let pptName = ppts[(indexPath as NSIndexPath).row].name
+        return ConvenientFileManager.pptURL.appendingPathComponent(pptName!)
     }
     
-    func deletePPTAtIndexPath(indexPath: NSIndexPath) -> Bool
+    func deletePPTAtIndexPath(_ indexPath: IndexPath) -> Bool
     {
-        guard let pptName = ppts[indexPath.row].name else {
+        guard let pptName = ppts[(indexPath as NSIndexPath).row].name else {
             return false
         }
         
-        let pptUrl = ConvenientFileManager.pptURL.URLByAppendingPathComponent(pptName)
+        let pptUrl = ConvenientFileManager.pptURL.appendingPathComponent(pptName)
         deleteFileAtURL(pptUrl)
-        ppts.removeAtIndex(indexPath.row)
+        ppts.remove(at: (indexPath as NSIndexPath).row)
         return true
     }
     
-    func getAllResourceAtUrl(url: NSURL) -> [Resource]
+    func getAllResourceAtUrl(_ url: URL) -> [Resource]
     {
-        guard let resourceFilePath = url.path else {
-            return [Resource]()
-        }
+        let resourceFilePath = url.path
         
         var allResource = [Resource]()
         do {
-            let allResourceNames = try self.fileManager.contentsOfDirectoryAtPath(resourceFilePath)
+            let allResourceNames = try self.fileManager.contentsOfDirectory(atPath: resourceFilePath)
             for resourceName in allResourceNames {
-                let createDate = getFileCreateDateAtURL(url.URLByAppendingPathComponent(resourceName))
-                let resource = Resource(name: resourceName, createDate: createDate)
+                let createDate = getFileCreateDateAtURL(url.appendingPathComponent(resourceName))
+                let size = getFileSizeAtURL(url.appendingPathComponent(resourceName))
+                let type = getFileTypeAtURL(url.appendingPathComponent(resourceName))
+                let resource = Resource(name: resourceName, createDate: createDate, size: size, type: type)
                 allResource.append(resource)
             }
         } catch let error as NSError {
@@ -109,26 +105,26 @@ class ResourceListViewModel: NSObject
         return resources.count
     }
     
-    func resourceAtIndexPath(indexPath: NSIndexPath) -> Resource
+    func resourceAtIndexPath(_ indexPath: IndexPath) -> Resource
     {
-        return resources[indexPath.row]
+        return resources[(indexPath as NSIndexPath).row]
     }
     
-    func resourceURLAtIndexPath(indexPath: NSIndexPath) -> NSURL
+    func resourceURLAtIndexPath(_ indexPath: IndexPath) -> URL
     {
-        let resourceName = resources[indexPath.row].name
-        return ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName!)
+        let resourceName = resources[(indexPath as NSIndexPath).row].name
+        return ConvenientFileManager.resourceURL.appendingPathComponent(resourceName!)
     }
 
-    func deleteResourceAtIndexPath(indexPath: NSIndexPath) -> Bool
+    func deleteResourceAtIndexPath(_ indexPath: IndexPath) -> Bool
     {
-        guard let resourceName = resources[indexPath.row].name else {
+        guard let resourceName = resources[(indexPath as NSIndexPath).row].name else {
             return false
         }
         
-        let resourceUrl = ConvenientFileManager.resourceURL.URLByAppendingPathComponent(resourceName)
+        let resourceUrl = ConvenientFileManager.resourceURL.appendingPathComponent(resourceName)
         deleteFileAtURL(resourceUrl)
-        resources.removeAtIndex(indexPath.row)
+        resources.remove(at: (indexPath as NSIndexPath).row)
         return true
     }
     
@@ -139,16 +135,14 @@ class ResourceListViewModel: NSObject
 private extension ResourceListViewModel
 {
     // 获取fileUrl指向的文件的创建日期
-    func getFileCreateDateAtURL(fileUrl: NSURL) -> NSDate?
+    func getFileCreateDateAtURL(_ fileUrl: URL) -> Date?
     {
-        guard let filePath = fileUrl.path else {
-            return nil
-        }
+        let filePath = fileUrl.path
         
-        var createDate: NSDate? = nil
+        var createDate: Date? = nil
         do {
-            let attrs = try fileManager.attributesOfItemAtPath(filePath)
-            createDate = attrs["NSFileCreationDate"] as? NSDate
+            let attrs = try fileManager.attributesOfItem(atPath: filePath)
+            createDate = attrs[FileAttributeKey.creationDate] as? Date
         } catch let error as NSError {
             print("ResourceListViewModel getFileCreateDate error: \(error.userInfo)")
         }
@@ -156,11 +150,46 @@ private extension ResourceListViewModel
         return createDate
     }
     
+    // 获取fileUrl指向的文件的内存大小
+    func getFileSizeAtURL(_ fileUrl: URL) -> String
+    {
+        let filePath = fileUrl.path
+
+        var fileSize: Double = 0
+        
+        do {
+            let attr: NSDictionary? = try FileManager.default.attributesOfItem(atPath: filePath) as NSDictionary?
+            if let _attr = attr {
+                fileSize = Double(_attr.fileSize())
+            }
+        } catch let error as NSError {
+            print("ResourceListViewModel getFileSize error: \(error.userInfo)")
+        }
+        
+        return String(format: "%.2f", fileSize / 1024 / 1024) + "M"
+    }
+    
+    // 获取fileUrl指向的文件的类型
+    func getFileTypeAtURL(_ fileUrl: URL) -> FileType
+    {
+        let fileExtension = fileUrl.pathExtension
+        switch fileExtension {
+        case "pdf":
+            return .pdf
+        case "docx":
+            return .word
+        case "xlsx":
+            return .excel
+        default:
+            return .other
+        }
+    }
+    
     // 删除磁盘中url指向的文件
-    func deleteFileAtURL(url: NSURL)
+    func deleteFileAtURL(_ url: URL)
     {
         do {
-            try fileManager.removeItemAtURL(url)
+            try fileManager.removeItem(at: url)
         } catch let error as NSError {
             print("deleteFileAtURL error: \(error.userInfo)")
         }

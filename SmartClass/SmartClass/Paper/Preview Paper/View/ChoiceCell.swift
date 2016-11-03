@@ -19,7 +19,7 @@ class ChoiceCell: UITableViewCell
 
 extension ChoiceCell
 {
-    func configureForQuestion(question: Question, choiceNum: Int)
+    func configureForQuestion(_ question: Question, choiceNum: Int)
     {
         switch choiceNum {
         case 0:
@@ -38,7 +38,7 @@ extension ChoiceCell
             break
         }
         
-        if question.answers!.characters.contains(Character(UnicodeScalar(choiceNum+65))) {
+        if question.answers!.characters.contains(Character(UnicodeScalar(choiceNum+65)!)) {
             choiceImageView.image = UIImage(named: "selectedChoice")
         } else {
             choiceImageView.image = UIImage(named: "emptyChoice")

@@ -8,6 +8,35 @@
 
 import Foundation
 import RealmSwift
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 class Question: Object
 {
@@ -78,21 +107,21 @@ class Question: Object
 enum QuestionType: Int, CustomStringConvertible
 {
     /// 单选题
-    case SingleChoice = 0
+    case singleChoice = 0
     /// 多选题
-    case MultipleChoice = 1
+    case multipleChoice = 1
     /// 判断题
-    case TrueOrFalse = 2
+    case trueOrFalse = 2
     
     init?(typeNum: Int)
     {
         switch typeNum {
         case 0:
-            self = .SingleChoice
+            self = .singleChoice
         case 1:
-            self = .MultipleChoice
+            self = .multipleChoice
         case 2:
-            self = .TrueOrFalse
+            self = .trueOrFalse
         default:
             return nil
         }
@@ -100,11 +129,11 @@ enum QuestionType: Int, CustomStringConvertible
     
     var description: String {
         switch self {
-        case .SingleChoice:
+        case .singleChoice:
             return NSLocalizedString("单选题", comment: "")
-        case .MultipleChoice:
+        case .multipleChoice:
             return NSLocalizedString("多选题", comment: "")
-        case .TrueOrFalse:
+        case .trueOrFalse:
             return NSLocalizedString("判断题", comment: "")
         }
     }

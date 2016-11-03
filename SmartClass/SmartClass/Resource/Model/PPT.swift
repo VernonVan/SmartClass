@@ -11,19 +11,10 @@ struct PPT
     /// PPT名
     var name: String?
     
-    /// PPT封面
-    var coverImage: PPTView
-    
     /// PPT创建日期
-    var createDate: NSDate?
+    var createDate: Date?
+    
+    /// 内存大小
+    var size: String?
 }
 
-extension UITableViewCell
-{
-    func configureCellForPPT(ppt: PPT?)
-    {
-        textLabel?.text = ppt?.name
-        detailTextLabel?.text = ppt?.createDate?.dateString
-//        addSubview(ppt!.coverImage)
-    }
-}

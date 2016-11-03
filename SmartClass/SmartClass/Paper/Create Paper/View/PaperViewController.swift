@@ -27,7 +27,7 @@ class PaperViewController: UIViewController
 
     var questionIndex = 0
     
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     
     // MARK: - Lifecycle
     override func viewDidLoad()
@@ -43,41 +43,47 @@ class PaperViewController: UIViewController
     
     func bindToViewModel()
     {
-        typeSegmentControl.rx_value
-            .distinctUntilChanged()
-            .map { return QuestionType(typeNum: $0)! }
-            .subscribeNext { [weak self] (type) in
-                self?.changeToQuestionType(type)
-            }
-            .addDisposableTo(disposeBag)
+//        typeSegmentControl.rx.value
+//            .map { return QuestionType(typeNum: $0)! }
+//            .subscribe { [weak self] (type) in
+//                self?.changeToQuestionType(type)
+//            }
+//            .addDisposableTo(disposeBag)
         
-        self.rx_observe(Question.self, "viewModel.currentQuestion")
-            .subscribeNext { [weak self] (question) in
+        self.rx.observe(Question.self, "viewModel.currentQuestion")
+            .subscribe(onNext: { [weak self] (question) in
                 self?.configureUIForQuestion(question)
-            }
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
             .addDisposableTo(disposeBag)
     }
 
-    func changeToQuestionType(type: QuestionType)
+    @IBAction func changeTypeAction(_ segmentControl: UISegmentedControl)
+    {
+        let type = QuestionType(typeNum: segmentControl.selectedSegmentIndex)!
+        changeToQuestionType(type)
+    }
+    
+    
+    func changeToQuestionType(_ type: QuestionType)
     {
         clearUI()
 
-        if type == .TrueOrFalse {
-            choiceCView.hidden = true
-            choiceDView.hidden = true
+        if type == .trueOrFalse {
+            choiceCView.isHidden = true
+            choiceDView.isHidden = true
             scoreConstraint.priority = 999
         } else {
-            choiceCView.hidden = false
-            choiceDView.hidden = false
+            choiceCView.isHidden = false
+            choiceDView.isHidden = false
             scoreConstraint.priority = 250
         }
         
-        choiceGroup.isMultipleAnswer = (type == .MultipleChoice) ? true : false
+        choiceGroup.isMultipleAnswer = (type == .multipleChoice) ? true : false
     }
     
     // MARK: - Action
     
-    @IBAction func selectChoiceAction(gestureRecognizer: UITapGestureRecognizer)
+    @IBAction func selectChoiceAction(_ gestureRecognizer: UITapGestureRecognizer)
     {
         guard let selectedIndex = gestureRecognizer.view?.tag else {
             return
@@ -95,21 +101,21 @@ class PaperViewController: UIViewController
         questionIndex += 1
     }
     
-    @IBAction func doneAction(sender: UIBarButtonItem)
+    @IBAction func doneAction(_ sender: UIBarButtonItem)
     {
         let question = currentQuestion()
         viewModel?.saveQuestion(question)
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Segue
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        super.prepareForSegue(segue, sender: sender)
+        super.prepare(for: segue, sender: sender)
         
         if segue.identifier == "showQuestionList" {
-            if let questionListVC = segue.destinationViewController as? QuestionListViewController {
+            if let questionListVC = segue.destination as? QuestionListViewController {
                 let question = currentQuestion()
                 viewModel?.saveQuestion(question)
                 let questionListViewModel = viewModel?.questionListViewModel()
@@ -121,7 +127,7 @@ class PaperViewController: UIViewController
     
     // MARK: - Private
     
-    private func configureUIForQuestion(question: Question?)
+    fileprivate func configureUIForQuestion(_ question: Question?)
     {
         guard let question = question else {
             return
@@ -130,13 +136,13 @@ class PaperViewController: UIViewController
         clearUI()
         
         typeSegmentControl.selectedSegmentIndex = question.type
-        typeSegmentControl.sendActionsForControlEvents(.ValueChanged)
+        typeSegmentControl.sendActions(for: .valueChanged)
         topicView.configureWithQuestion(question)
         choiceGroup.configureWithQuestion(question)
         scoreView.configureWithQuestion(question)
     }
     
-    private func currentQuestion() -> Question
+    fileprivate func currentQuestion() -> Question
     {
         let question = Question()
         question.index = questionIndex
@@ -151,7 +157,7 @@ class PaperViewController: UIViewController
         return question
     }
     
-    private func clearUI()
+    fileprivate func clearUI()
     {
         topicView.clearContent()
         choiceGroup.clearContents()
@@ -164,7 +170,7 @@ class PaperViewController: UIViewController
 
 extension PaperViewController: IntentResultDelegate
 {
-    func selectQuestionAtIndex(index: Int)
+    func selectQuestionAtIndex(_ index: Int)
     {
         questionIndex = index
         viewModel?.loadQuestionAtIndex(index)

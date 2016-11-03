@@ -7,12 +7,13 @@
 //
 
 import UIKit
+//import ShowFramework
 
 protocol CanvasPopoverDelegate
 {
-    func changeCanvasSize(size: Double)
-    func changeCanvasColor(color: UIColor)
-    func changeCanvasAlpha(alpha: Float)
+    func changeCanvasSize(_ size: Double)
+    func changeCanvasColor(_ color: UIColor)
+    func changeCanvasAlpha(_ alpha: Float)
 }
 
 class PPTViewController: UIViewController, UIPopoverPresentationControllerDelegate, CanvasPopoverDelegate
@@ -21,16 +22,16 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var toolbarBottomConstraint: NSLayoutConstraint!
     
-    var pptURL: NSURL?
+    var pptURL: URL?
     var isCanvas = false
     var isShowToolbar = false {
         didSet {
             if isShowToolbar == false {
-                UIView.animateWithDuration(0.2, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     self.toolbarBottomConstraint.constant -= 44
                 })
             } else {
-                UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: .CurveEaseInOut, animations: {
+                UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 6, options: UIViewAnimationOptions(), animations: {
                     self.toolbarBottomConstraint.constant += 44
                     }, completion: nil)
             }
@@ -56,7 +57,7 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
         view.addGestureRecognizer(tapGesture)
     }
     
-    override func viewDidAppear(animated: Bool)
+    override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
         
@@ -65,37 +66,37 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     }
 
     
-    override func shouldAutorotate() -> Bool
+    override var shouldAutorotate : Bool
     {
         return true
     }
     
-    override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation
+    override var preferredInterfaceOrientationForPresentation : UIInterfaceOrientation
     {
-        return .LandscapeRight
+        return .landscapeRight
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask
     {
-        return [.LandscapeRight, .LandscapeLeft]
+        return [.landscapeRight, .landscapeLeft]
     }
     
     // MARK: - Actions
     
-    @IBAction func closeAction(sender: UIBarButtonItem)
+    @IBAction func closeAction(_ sender: UIBarButtonItem)
     {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func canvasAction(sender: UIBarButtonItem)
+    @IBAction func canvasAction(_ sender: UIBarButtonItem)
     {
         isCanvas = !isCanvas
         if isCanvas {
             toolbar.items![3].tintColor = ThemeGreenColor
             pptView.canvasState()
-            performSegueWithIdentifier("canvasPopover", sender: sender)
+            performSegue(withIdentifier: "canvasPopover", sender: sender)
         } else {
-            toolbar.items![3].tintColor = UIColor.whiteColor()
+            toolbar.items![3].tintColor = UIColor.white
             pptView.playState()
         }
     }
@@ -107,11 +108,11 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     // MARK: - Segue
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "canvasPopover" {
-            let popoverViewController = segue.destinationViewController as! CanvasPopoverViewController
-            popoverViewController.modalPresentationStyle = .Popover
+            let popoverViewController = segue.destination as! CanvasPopoverViewController
+            popoverViewController.modalPresentationStyle = .popover
             popoverViewController.popoverPresentationController!.delegate = self
             popoverViewController.delegate = self
             
@@ -123,24 +124,24 @@ class PPTViewController: UIViewController, UIPopoverPresentationControllerDelega
     
     // MARK: - UIPopoverPresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle
     {
-        return .None
+        return .none
     }
     
     // MARK: - CanvasPopoverDelegate
     
-    func changeCanvasSize(size: Double)
+    func changeCanvasSize(_ size: Double)
     {
         pptView.setCanvasSize(size)
     }
     
-    func changeCanvasColor(color: UIColor)
+    func changeCanvasColor(_ color: UIColor)
     {
         pptView.setCanvasColor(color)
     }
     
-    func changeCanvasAlpha(alpha: Float)
+    func changeCanvasAlpha(_ alpha: Float)
     {
         pptView.setCanvasAlpha(alpha)
     }

@@ -14,8 +14,8 @@ class SignUpSheetViewController: UITableViewController
 {
     var signUpName: String?
     
-    private var students: Results<Student>!
-    private var signedNames: NSArray!
+    fileprivate var students: Results<Student>!
+    fileprivate var signedNames: NSArray!
     
     override func viewDidLoad()
     {
@@ -24,38 +24,39 @@ class SignUpSheetViewController: UITableViewController
         title = signUpName
         
         let realm = try! Realm()
-        students = realm.objects(Student).sorted("number")
+        students = realm.objects(Student.self).sorted(byProperty: "number")
         
-        let url = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpName!)
-        signedNames = NSArray(contentsOfURL: url)
+        let url = ConvenientFileManager.signUpSheetURL.appendingPathComponent(signUpName!)
+        signedNames = NSArray(contentsOf: url)
         
         tableView.emptyDataSetSource = self
-        tableView.registerNib(UINib(nibName: "SignUpSheetCell", bundle: nil), forCellReuseIdentifier: "SignUpSheetCell")
+        tableView.tableFooterView = UIView()
+        tableView.register(UINib(nibName: "SignUpSheetCell", bundle: nil), forCellReuseIdentifier: "SignUpSheetCell")
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return students.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SignUpSheetCell", forIndexPath: indexPath) as! SignUpSheetCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpSheetCell", for: indexPath) as! SignUpSheetCell
         configureCellAtIndexPath(cell, atIndexPath: indexPath)
         return cell
     }
     
-    func configureCellAtIndexPath(cell: SignUpSheetCell, atIndexPath indexPath : NSIndexPath)
+    func configureCellAtIndexPath(_ cell: SignUpSheetCell, atIndexPath indexPath : IndexPath)
     {
-        cell.nameLabel.text = "\(students[indexPath.row].name) - \(students[indexPath.row].number)"
-        cell.majorLabel.text = "\(students[indexPath.row].major!)(\(students[indexPath.row].school!))"
+        cell.nameLabel.text = "\(students[(indexPath as NSIndexPath).row].name) - \(students[(indexPath as NSIndexPath).row].number)"
+        cell.majorLabel.text = "\(students[(indexPath as NSIndexPath).row].major!)(\(students[(indexPath as NSIndexPath).row].school!))"
         
-        if signedNames.containsObject(students[indexPath.row].name) {
+        if signedNames.contains(students[(indexPath as NSIndexPath).row].name) {
             cell.selectCell()
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 60.0
     }
@@ -65,11 +66,11 @@ class SignUpSheetViewController: UITableViewController
 
 extension SignUpSheetViewController: DZNEmptyDataSetSource
 {
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
         let text = NSLocalizedString("请先添加学生", comment: "")
-        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(22.0),
-                          NSForegroundColorAttributeName: UIColor.darkGrayColor()]
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 22.0),
+                          NSForegroundColorAttributeName: UIColor.darkGray]
         return NSAttributedString(string: text, attributes: attributes)
     }
 

@@ -8,116 +8,136 @@
 
 import UIKit
 import RealmSwift
+import DZNEmptyDataSet
 
 class NewSignUpSheetViewController: UITableViewController
 {
     @IBOutlet weak var doneButton: UIBarButtonItem!
     
-    private var students: Results<Student>!
-    private var signedNames = NSMutableArray()
+    fileprivate var students: Results<Student>!
+    fileprivate var signedNames = NSMutableArray()
  
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         let realm = try! Realm()
-        students = realm.objects(Student).sorted("number")
+        students = realm.objects(Student.self).sorted(byProperty: "number")
         
+        tableView.emptyDataSetSource = self
         tableView.allowsMultipleSelection = true
-        tableView.registerNib(UINib(nibName: "SignUpSheetCell", bundle: nil), forCellReuseIdentifier: "SignUpSheetCell")
+        tableView.tableFooterView = UIView()
+        tableView.register(UINib(nibName: "SignUpSheetCell", bundle: nil), forCellReuseIdentifier: "SignUpSheetCell")
     }
     
     // MARK: - TableView
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        tableView.separatorStyle = students.count == 0 ? .none : .singleLine
         return students.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SignUpSheetCell", forIndexPath: indexPath) as! SignUpSheetCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpSheetCell", for: indexPath) as! SignUpSheetCell
         configureCellAtIndexPath(cell, atIndexPath: indexPath)
         return cell
     }
     
-    func configureCellAtIndexPath(cell: SignUpSheetCell, atIndexPath indexPath : NSIndexPath)
+    func configureCellAtIndexPath(_ cell: SignUpSheetCell, atIndexPath indexPath : IndexPath)
     {
-        cell.nameLabel.text = "\(students[indexPath.row].name) - \(students[indexPath.row].number)"
-        cell.majorLabel.text = "\(students[indexPath.row].major!)(\(students[indexPath.row].school!))"
+        cell.nameLabel.text = "\(students[(indexPath as NSIndexPath).row].name) - \(students[(indexPath as NSIndexPath).row].number)"
+        cell.majorLabel.text = "\(students[(indexPath as NSIndexPath).row].major!)(\(students[(indexPath as NSIndexPath).row].school!))"
         cell.signImageView.image = UIImage(named: "unsignedCell")
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SignUpSheetCell
+        let cell = tableView.cellForRow(at: indexPath) as! SignUpSheetCell
         cell.selectCell()
         
-        let student = students[indexPath.row]
-        signedNames.addObject(student.name)
+        let student = students[(indexPath as NSIndexPath).row]
+        signedNames.add(student.name)
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath)
     {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! SignUpSheetCell
+        let cell = tableView.cellForRow(at: indexPath) as! SignUpSheetCell
         cell.deselectCell()
         
-        let student = students[indexPath.row]
-        signedNames.removeObject(student.name)
+        let student = students[(indexPath as NSIndexPath).row]
+        signedNames.remove(student.name)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return 60.0
     }
     
     // MARK: - Action
     
-    @IBAction func doneAction(sender: UIBarButtonItem)
+    @IBAction func doneAction(_ sender: UIBarButtonItem)
     {
-        let alert = UIAlertController(title: nil, message: NSLocalizedString("请输入签到表名称", comment: ""), preferredStyle: .Alert)
+        let alert = UIAlertController(title: nil, message: NSLocalizedString("请输入签到表名称", comment: ""), preferredStyle: .alert)
         
-        let doneAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .Default) { (_) in
+        let doneAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .default) { (_) in
             let textField = alert.textFields![0] as UITextField
             self.addSignUpSheet(textField.text!)
-            self.navigationController?.popViewControllerAnimated(true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
-        doneAction.enabled = false
+        doneAction.isEnabled = false
         alert.addAction(doneAction)
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: ""), style: .Default, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: ""), style: .default, handler: nil)
         alert.addAction(cancelAction)
         
-        alert.addTextFieldWithConfigurationHandler { (textField) in
+        alert.addTextField { (textField) in
             textField.placeholder = NSLocalizedString("签到表名称", comment: "")
             
-            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { (notification) in
-                doneAction.enabled = textField.text != ""
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: textField, queue: OperationQueue.main) { (notification) in
+                doneAction.isEnabled = textField.text != ""
             }
         }
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
-    func addSignUpSheet(name: String)
+    func addSignUpSheet(_ name: String)
     {
-        let url = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(name)
-        signedNames.writeToURL(url, atomically: true)
+        let url = ConvenientFileManager.signUpSheetURL.appendingPathComponent(name)
+        signedNames.write(to: url, atomically: true)
         
         var signUpSheetArray: NSMutableArray
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if userDefaults.objectForKey("signUpSheet") == nil {
+        let userDefaults = UserDefaults.standard
+        if userDefaults.object(forKey: "signUpSheet") == nil {
             signUpSheetArray = NSMutableArray()
         } else {
-            signUpSheetArray = NSMutableArray(array: userDefaults.objectForKey("signUpSheet") as! Array)
+            signUpSheetArray = NSMutableArray(array: userDefaults.object(forKey: "signUpSheet") as! Array)
         }
         
-        if !signUpSheetArray.containsObject(name) {
-            signUpSheetArray.addObject(name)
+        if !signUpSheetArray.contains(name) {
+            signUpSheetArray.add(name)
         }
         userDefaults.setValue(signUpSheetArray, forKey: "signUpSheet")
         userDefaults.synchronize()
     }
-    
+}
 
+// MARK: - DZNEmptyDataSet
+
+extension NewSignUpSheetViewController: DZNEmptyDataSetSource
+{
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
+    {
+        return UIImage(named: "emptyStudent")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = NSLocalizedString("请先添加学生", comment: "")
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 16.0) ,
+                          NSForegroundColorAttributeName : UIColor.darkGray]
+        return NSAttributedString(string: text, attributes: attributes)
+    }
 }

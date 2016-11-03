@@ -17,7 +17,7 @@ class PaperInformationViewModel: NSObject
     var blurb = Variable("")
     var isCreate = false
 
-    private let realm = try! Realm()
+    fileprivate let realm = try! Realm()
     
     // MARK: - Init
     
@@ -74,15 +74,14 @@ class PaperInformationViewModel: NSObject
             questionDict["D"] = question.choiceD
             questionDict["answer"] = question.answers
             questionDict["score"] = question.score.value
-            questions.addObject(questionDict)
+            questions.add(questionDict)
         }
         
         paperDict["questions"] = questions
         
-        let outputStream = NSOutputStream(toFileAtPath: ConvenientFileManager.paperURL.URLByAppendingPathComponent(name.value).path!, append: false)
-        print(ConvenientFileManager.paperURL.URLByAppendingPathComponent(name.value).path!)
+        let outputStream = OutputStream(toFileAtPath: ConvenientFileManager.paperURL.appendingPathComponent(name.value).path, append: false)
         outputStream?.open()
-        NSJSONSerialization.writeJSONObject(paperDict, toStream: outputStream!, options: .PrettyPrinted, error: nil)
+        JSONSerialization.writeJSONObject(paperDict, to: outputStream!, options: .prettyPrinted, error: nil)
         outputStream?.close()
     }
     

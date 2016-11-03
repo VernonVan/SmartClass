@@ -16,7 +16,7 @@ class PaperViewModel: NSObject
     
     dynamic var currentQuestion: Question?
 
-    private let realm = try! Realm()
+    fileprivate let realm = try! Realm()
     
     // MARK: - initialize
     init(paper: Paper)
@@ -38,7 +38,7 @@ class PaperViewModel: NSObject
         currentQuestion = paper.questions.filter("index = 0").first
     }
     
-    func saveQuestion(question: Question)
+    func saveQuestion(_ question: Question)
     {
         try! realm.write({
             if let oldQuestion = paper.questions.filter("index = \(question.index)").first {
@@ -48,7 +48,7 @@ class PaperViewModel: NSObject
         })
     }
     
-    func loadNextQuestionForCurrentIndex(currentIndex: Int, questionType: QuestionType)
+    func loadNextQuestionForCurrentIndex(_ currentIndex: Int, questionType: QuestionType)
     {
         let nextIndex = currentIndex + 1
         if let nextQuestion = paper.questions.filter("index = \(nextIndex)").first {
@@ -64,7 +64,7 @@ class PaperViewModel: NSObject
         }
     }
     
-    func loadQuestionAtIndex(index: Int)
+    func loadQuestionAtIndex(_ index: Int)
     {
         currentQuestion = paper.questions.filter("index = \(index)").first 
     }

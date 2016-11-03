@@ -19,19 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)
     var webUploaderURL: String {
-        return "\(self.webUploader.serverURL)"
+        return "\(self.webUploader!.serverURL)"
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-        print(ConvenientFileManager.paperURL.path!)
+        print(ConvenientFileManager.resourceURL.path)
+        
+        ConvenientFileManager.createInitDirectory()
         
         initUI()
         
-        UIApplication.sharedApplication().idleTimerDisabled = true
+        UIApplication.shared.isIdleTimerDisabled = true
         
         addHandlerForWebUploader()
-        webUploader.start()
+        webUploader?.start()
         
         return true
     }
@@ -41,99 +43,99 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         UITextView.appearance().tintColor = ThemeGreenColor
         UITextField.appearance().tintColor = ThemeGreenColor
         
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared().isEnabled = true
     }
 
     func addHandlerForWebUploader()
     {
         // 发送试卷列表给Web端
-        webUploader.addHandlerForMethod("GET", path: "/getPaperList", requestClass: GCDWebServerRequest.self) { (request, completionBlock) in
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        webUploader?.addHandler(forMethod: "GET", path: "/getPaperList", request: GCDWebServerRequest.self) { (request, completionBlock) in
+            DispatchQueue.global(qos: .default).async(execute: {
                 let issuingPapers = self.getIssuingPaperList()
                 let response = GCDWebServerDataResponse(data: issuingPapers, contentType: "")
-                completionBlock(response)
+                completionBlock!(response)
             })
         }
         
         // 接收确认学生的请求并返回是否是我的学生的确认信息给Web端
-        webUploader.addHandlerForMethod("POST", path: "/confirmID", requestClass: GCDWebServerDataRequest.self) { (request, completionBlock) in
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        webUploader?.addHandler(forMethod: "POST", path: "/confirmID", request: GCDWebServerDataRequest.self) { (request, completionBlock) in
+            DispatchQueue.global(qos: .default).async(execute: {
                 if let dataRequest = request as? GCDWebServerDataRequest {
                     var stuentInformationDict: NSDictionary?
                     do {
-                        stuentInformationDict = try NSJSONSerialization.JSONObjectWithData(dataRequest.data, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                        stuentInformationDict = try JSONSerialization.jsonObject(with: dataRequest.data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
                     } catch let error as NSError {
                         print("AppDelegate confirmID error: \(error)")
                     }
                     
                     guard let _ = stuentInformationDict, let studentName = stuentInformationDict!["student_name"] as? String, let studentNumber = stuentInformationDict!["student_number"] as? String else {
-                        completionBlock(GCDWebServerDataResponse(statusCode: 204))
+                        completionBlock!(GCDWebServerDataResponse(statusCode: 204))
                         return
                     }
                     
                     let isMyStudent = self.confirmStudentName(studentName, number: studentNumber)
                     do {
-                        let responseData = try NSJSONSerialization.dataWithJSONObject(["isMyStudent": isMyStudent], options: NSJSONWritingOptions.PrettyPrinted)
-                        completionBlock(GCDWebServerDataResponse(data: responseData, contentType: ""))
+                        let responseData = try JSONSerialization.data(withJSONObject: ["isMyStudent": isMyStudent], options: JSONSerialization.WritingOptions.prettyPrinted)
+                        completionBlock!(GCDWebServerDataResponse(data: responseData, contentType: ""))
                     } catch let error as NSError {
                         print("AppDelegate confirmID error: \(error)")
                     }
                 } else {
-                    completionBlock(GCDWebServerDataResponse(statusCode: 204))
+                    completionBlock!(GCDWebServerDataResponse(statusCode: 204))
                 }
             })
         }
         
         // 接收某份试卷的请求并返回该试卷的json数据给Web端
-        webUploader.addHandlerForMethod("POST", path: "/TestPage/HTML/requestPaper", requestClass: GCDWebServerDataRequest.self) { (request, completionBlock) in
+        webUploader?.addHandler(forMethod: "POST", path: "/TestPage/HTML/requestPaper", request: GCDWebServerDataRequest.self) { (request, completionBlock) in
             if let dataRequest = request as? GCDWebServerDataRequest {
                 var paperNameDict: NSDictionary?
                 do {
-                    paperNameDict = try NSJSONSerialization.JSONObjectWithData(dataRequest.data, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
+                    paperNameDict = try JSONSerialization.jsonObject(with: dataRequest.data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
                 } catch let error as NSError {
                     print("AppDelegate requestPaper error: \(error)")
                 }
                 guard let _ = paperNameDict, let paperName = paperNameDict!["name"] as? String else {
-                    completionBlock(GCDWebServerDataResponse(statusCode: 204))
+                    completionBlock!(GCDWebServerDataResponse(statusCode: 204))
                     return
                 }
 
                 let paperData = self.getPaperJsonWithName(paperName)
-                completionBlock(GCDWebServerDataResponse(data: paperData, contentType: ""))
+                completionBlock!(GCDWebServerDataResponse(data: paperData, contentType: ""))
             } else {
-                completionBlock(GCDWebServerDataResponse(statusCode: 204))
+                completionBlock!(GCDWebServerDataResponse(statusCode: 204))
             }
         }
         
         // 接收学生考试的答题情况
-        webUploader.addHandlerForMethod("POST", path: "/TestPage/HTML/resultData", requestClass: GCDWebServerDataRequest.self) { (request, completionBlock) in
+        webUploader?.addHandler(forMethod: "POST", path: "/TestPage/HTML/resultData", request: GCDWebServerDataRequest.self) { (request, completionBlock) in
             if let dataRequest = request as? GCDWebServerDataRequest {
                 do {
-                    if let paperResultDict = try NSJSONSerialization.JSONObjectWithData(dataRequest.data, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary {
+                    if let paperResultDict = try JSONSerialization.jsonObject(with: dataRequest.data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         self.addPaperResultForDict(paperResultDict)
                     }
                 } catch let error as NSError {
                     print("AppDelegate addHandlerForWebUploader error: \(error)")
                 }
-                completionBlock(GCDWebServerDataResponse(statusCode: 200))
+                completionBlock!(GCDWebServerDataResponse(statusCode: 200))
             } else {
-                completionBlock(GCDWebServerDataResponse(statusCode: 204))
+                completionBlock!(GCDWebServerDataResponse(statusCode: 204))
             }
         }
     }
     
     // 将所有发布中的试卷组织成NSData
-    func getIssuingPaperList() -> NSData
+    func getIssuingPaperList() -> Data
     {
         let paperArray = NSMutableArray()
         let realm = try! Realm()
-        let issuingPapers = realm.objects(Paper).filter("state == 1")
+        let issuingPapers = realm.objects(Paper.self).filter("state == 1")
         for paper in issuingPapers {
-            paperArray.addObject(["name": paper.name, "blurb": paper.blurb])
+            paperArray.add(["name": paper.name, "blurb": paper.blurb])
         }
-        var paperData: NSData!
+        var paperData: Data!
         do {
-            paperData = try NSJSONSerialization.dataWithJSONObject(["papers": paperArray], options: NSJSONWritingOptions.PrettyPrinted)
+            paperData = try JSONSerialization.data(withJSONObject: ["papers": paperArray], options: JSONSerialization.WritingOptions.prettyPrinted)
         } catch let error as NSError {
             print("AppDelegate getIssuingPaperList error: \(error)")
         }
@@ -141,24 +143,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     }
     
     // 确定该学生是否是我的学生
-    func confirmStudentName(name: String, number: String) -> Bool
+    func confirmStudentName(_ name: String, number: String) -> Bool
     {
         let realm = try! Realm()
-        if let _ = realm.objects(Student).filter("name = '\(name)' AND number = '\(number)'").first {
+        if let _ = realm.objects(Student.self).filter("name = '\(name)' AND number = '\(number)'").first {
             return true
         }
         return false
     }
     
     // 将试卷的信息封装为NSData
-    func getPaperJsonWithName(name: String) -> NSData
+    func getPaperJsonWithName(_ name: String) -> Data
     {
-        let paperUrl = ConvenientFileManager.paperURL.URLByAppendingPathComponent(name)
-        return NSData(contentsOfURL: paperUrl)!
+        let paperUrl = ConvenientFileManager.paperURL.appendingPathComponent(name)
+        return (try! Data(contentsOf: paperUrl))
     }
     
     // 添加学生的考试结果
-    func addPaperResultForDict(paperResultDict: NSDictionary)
+    func addPaperResultForDict(_ paperResultDict: NSDictionary)
     {
         print("学生成绩: \(paperResultDict)")
         guard let paperName = paperResultDict["paper_name"] as? String, let studentName = paperResultDict["student_name"] as? String,
@@ -169,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         correctQuestions.removeLast()
         
         let realm = try! Realm()
-        guard let paper = realm.objects(Paper).filter("name == '\(paperName)'").first else {
+        guard let paper = realm.objects(Paper.self).filter("name == '\(paperName)'").first else {
             return
         }
         

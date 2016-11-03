@@ -8,26 +8,26 @@
 
 class ConvenientFileManager: NSObject
 {
-    static let fileManager = NSFileManager.defaultManager()
+    static let fileManager = FileManager.default
     
-    static let paperURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Paper")
-    static let signUpSheetURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("SignUpSheet")
-    static let uploadURL = ConvenientFileManager.documentURL().URLByAppendingPathComponent("Upload")
-    static let pptURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("PPT")
-    static let resourceURL = ConvenientFileManager.uploadURL.URLByAppendingPathComponent("Resource")
+    static let paperURL = ConvenientFileManager.documentURL().appendingPathComponent("Paper")
+    static let signUpSheetURL = ConvenientFileManager.documentURL().appendingPathComponent("SignUpSheet")
+    static let uploadURL = ConvenientFileManager.documentURL().appendingPathComponent("Upload")
+    static let pptURL = ConvenientFileManager.uploadURL.appendingPathComponent("PPT")
+    static let resourceURL = ConvenientFileManager.uploadURL.appendingPathComponent("Resource")
     
-    static func documentURL() -> NSURL
+    static func documentURL() -> URL
     {
-        return NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0])
+        return URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])
     }
     
-    static func hasFilesAtURL(url: NSURL) -> Bool
+    static func hasFilesAtURL(_ url: URL) -> Bool
     {
         var isHas = false
         
         if checkIsDirectioyAtPath(url) == true {
             do {
-                let fileList =  try fileManager.contentsOfDirectoryAtPath(url.path!)
+                let fileList =  try fileManager.contentsOfDirectory(atPath: url.path)
                 isHas = fileList.count > 0
             } catch let error as NSError {
                 print("hasFilesAtPath error! \(error.userInfo)")
@@ -37,11 +37,11 @@ class ConvenientFileManager: NSObject
         return isHas
     }
     
-    static func checkIsDirectioyAtPath(url: NSURL) -> Bool
+    static func checkIsDirectioyAtPath(_ url: URL) -> Bool
     {
         var isDir: ObjCBool = false
-        if fileManager.fileExistsAtPath(url.path!, isDirectory: &isDir) {
-            if isDir {
+        if fileManager.fileExists(atPath: url.path, isDirectory: &isDir) {
+            if isDir.boolValue {
                 return true
             }
         }
@@ -52,15 +52,15 @@ class ConvenientFileManager: NSObject
     static func createInitDirectory()
     {
         // first run
-        if !NSUserDefaults.standardUserDefaults().boolForKey("HasLaunchedOnce") {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "HasLaunchedOnce")
-            NSUserDefaults.standardUserDefaults().synchronize()
+        if !UserDefaults.standard.bool(forKey: "HasLaunchedOnce") {
+            UserDefaults.standard.set(true, forKey: "HasLaunchedOnce")
+            UserDefaults.standard.synchronize()
             
             do {
-                try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.paperURL, withIntermediateDirectories: true, attributes: nil)
-                try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
-                try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
-                try NSFileManager.defaultManager().createDirectoryAtURL(ConvenientFileManager.signUpSheetURL, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(at: ConvenientFileManager.paperURL, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(at: ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(at: ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(at: ConvenientFileManager.signUpSheetURL, withIntermediateDirectories: true, attributes: nil)
             } catch let error as NSError {
                 print("createInitDirectory error: \(error.localizedDescription)")
             }

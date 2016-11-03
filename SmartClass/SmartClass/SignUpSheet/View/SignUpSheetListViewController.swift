@@ -26,10 +26,11 @@ class SignUpSheetListViewController: UIViewController
     {
         tableView.dataSource = self
         tableView.emptyDataSetSource = self
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         viewModel?.reloadData()
@@ -38,12 +39,12 @@ class SignUpSheetListViewController: UIViewController
     
     // MARK: - Segue
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        super.prepareForSegue(segue, sender: sender)
+        super.prepare(for: segue, sender: sender)
         
         if segue.identifier == "SignUpSheet" {
-            if let desVC = segue.destinationViewController as? SignUpSheetViewController {
+            if let desVC = segue.destination as? SignUpSheetViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
                 let name =  viewModel?.titleForSignUpSheetAtIndexPath(indexPath)
                 desVC.signUpName = name
@@ -57,28 +58,28 @@ class SignUpSheetListViewController: UIViewController
 
 extension SignUpSheetListViewController: UITableViewDataSource
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         let count = viewModel?.numberOfSignUpSheet() ?? 0
-        tableView.separatorStyle = (count == 0 ? .None : .SingleLine)
+        tableView.separatorStyle = (count == 0 ? .none : .singleLine)
         return count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SignUpSheetListCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpSheetListCell", for: indexPath)
         cell.textLabel?.text = viewModel?.titleForSignUpSheetAtIndexPath(indexPath)
         return cell
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             viewModel?.deleteSignUpSheetAtIndexPath(indexPath)
             tableView.reloadData()
         }
@@ -89,24 +90,24 @@ extension SignUpSheetListViewController: UITableViewDataSource
 
 extension SignUpSheetListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage!
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
     {
         return UIImage(named: "emptySignUpSheet")
     }
     
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
         let text = NSLocalizedString("没有签到记录", comment: "")
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(16.0),
-                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 16.0),
+                          NSForegroundColorAttributeName : UIColor.darkGray]
         return NSAttributedString(string: text , attributes: attributes)
     }
 
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
         let text = NSLocalizedString("点击右上角+开始签到（学生进行考试也会自动签到）", comment: "")
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(14.0),
-                          NSForegroundColorAttributeName : UIColor.lightGrayColor()]
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 14.0),
+                          NSForegroundColorAttributeName : UIColor.lightGray]
         return NSAttributedString(string: text , attributes: attributes)
     }
     

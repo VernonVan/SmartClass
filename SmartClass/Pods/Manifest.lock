@@ -1,40 +1,51 @@
 PODS:
-  - Charts (2.2.5):
-    - Charts/Core (= 2.2.5)
-  - Charts/Core (2.2.5)
+  - CocoaLumberjack (2.4.0):
+    - CocoaLumberjack/Default (= 2.4.0)
+    - CocoaLumberjack/Extensions (= 2.4.0)
+  - CocoaLumberjack/Core (2.4.0)
+  - CocoaLumberjack/Default (2.4.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.4.0):
+    - CocoaLumberjack/Default
   - DZNEmptyDataSet (1.7.3)
-  - GCDWebServer/Core (3.3.2)
-  - GCDWebServer/WebUploader (3.3.2):
-    - GCDWebServer/WebUploader/Core (= 3.3.2)
-  - GCDWebServer/WebUploader/Core (3.3.2):
+  - GCDWebServer/CocoaLumberjack (3.3.3):
+    - CocoaLumberjack (~> 2)
     - GCDWebServer/Core
-  - IQKeyboardManager (4.0.3)
+  - GCDWebServer/Core (3.3.3)
+  - GCDWebServer/WebUploader (3.3.3):
+    - GCDWebServer/WebUploader/CocoaLumberjack (= 3.3.3)
+    - GCDWebServer/WebUploader/Core (= 3.3.3)
+  - GCDWebServer/WebUploader/CocoaLumberjack (3.3.3):
+    - GCDWebServer/CocoaLumberjack
+    - GCDWebServer/WebUploader/Core
+  - GCDWebServer/WebUploader/Core (3.3.3):
+    - GCDWebServer/Core
+  - IQKeyboardManager (4.0.7)
   - Reachability (3.2)
-  - RxCocoa (2.5.0):
-    - RxSwift (~> 2.5)
-  - RxSwift (2.5.0)
+  - RxCocoa (3.0.0-rc.1):
+    - RxSwift (~> 3.0.0-rc.1)
+  - RxSwift (3.0.0-rc.1)
   - Toast (3.0)
 
 DEPENDENCIES:
-  - Charts
   - DZNEmptyDataSet (~> 1.7.3)
-  - GCDWebServer/WebUploader (~> 3.3.2)
-  - IQKeyboardManager (~> 4.0.2)
+  - GCDWebServer/WebUploader (~> 3.3.3)
+  - IQKeyboardManager (~> 4.0.7)
   - Reachability (~> 3.2)
-  - RxCocoa (~> 2.5.0)
-  - RxSwift (~> 2.5.0)
+  - RxCocoa (= 3.0.0-rc.1)
+  - RxSwift (= 3.0.0-rc.1)
   - Toast (~> 3.0)
 
 SPEC CHECKSUMS:
-  Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
+  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
-  GCDWebServer: 2a375ec42839a41d7187d04e5b688d32fa5c4cd5
-  IQKeyboardManager: be9695ffc5a52077deb4847608f338771022d6d1
+  GCDWebServer: 1c39a1f0763e4eb492bee021e4270fce097d3555
+  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
-  RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
+  RxCocoa: e72a074a7f38896ec0382d096df5f58df10115c7
+  RxSwift: d7a3819dd71789c473e3cbf1a0c02d58b2692739
   Toast: 32c59229abfcf41850162b83bb9259dc84372473
 
-PODFILE CHECKSUM: 58f3dffccdc226402fa4ca00ee9874e967ba752d
+PODFILE CHECKSUM: f1ebba41c60ef1615e9e95cb00526fe6ddd5bb7d
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.0.beta.2

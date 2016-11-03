@@ -19,7 +19,7 @@ class PreviewRootViewController: UIViewController
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    private var pageViewControllers = NSMutableArray()
+    fileprivate var pageViewControllers = NSMutableArray()
     
     override func viewDidLoad()
     {
@@ -27,7 +27,7 @@ class PreviewRootViewController: UIViewController
         
         let controllers = NSMutableArray()
         for _ in 0 ..< questionNumber {
-            controllers.addObject(NSNull())
+            controllers.add(NSNull())
         }
         pageViewControllers = controllers
 
@@ -42,13 +42,13 @@ class PreviewRootViewController: UIViewController
     {
         super.viewDidLayoutSubviews()
         
-        scrollView.contentSize = CGSize(width: CGRectGetWidth(scrollView.frame) * CGFloat(questionNumber), height: CGRectGetHeight(scrollView.frame))
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(questionNumber), height: scrollView.frame.height)
         
         loadScrollViewWithPage(0)
         loadScrollViewWithPage(1)
     }
     
-    func loadScrollViewWithPage(page: Int)
+    func loadScrollViewWithPage(_ page: Int)
     {
         if page >= questionNumber || page < 0 {
             return
@@ -57,32 +57,32 @@ class PreviewRootViewController: UIViewController
         var controller = pageViewControllers[page] as? PreviewPaperViewController
         if controller == nil {
             controller = PreviewPaperViewController(question: paper?.questions[page])
-            pageViewControllers.replaceObjectAtIndex(page, withObject: controller!)
+            pageViewControllers.replaceObject(at: page, with: controller!)
         }
         
         if controller?.view.superview == nil {
             var frame = scrollView.frame
-            frame.origin.x = CGRectGetWidth(frame) * CGFloat(page)
+            frame.origin.x = frame.width * CGFloat(page)
             frame.origin.y = 0
             controller?.view.frame = frame
             
             addChildViewController(controller!)
             scrollView.addSubview(controller!.view)
-            controller?.didMoveToParentViewController(self)
+            controller?.didMove(toParentViewController: self)
         }
     }
     
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation)
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation)
     {
         for view in scrollView.subviews {
             view.removeFromSuperview()
         }
         
-        scrollView.contentSize = CGSize(width: CGRectGetWidth(scrollView.frame) * CGFloat(questionNumber), height: CGRectGetHeight(scrollView.frame))
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(questionNumber), height: scrollView.frame.height)
         pageViewControllers.removeAllObjects()
         let controllers = NSMutableArray()
         for _ in 0 ..< questionNumber {
-            controllers.addObject(NSNull())
+            controllers.add(NSNull())
         }
         pageViewControllers = controllers
         
@@ -93,7 +93,7 @@ class PreviewRootViewController: UIViewController
         gotoPage(false)
     }
     
-    func gotoPage(animated: Bool)
+    func gotoPage(_ animated: Bool)
     {
         let page = pageControl.currentPage
         loadScrollViewWithPage(page - 1)
@@ -101,7 +101,7 @@ class PreviewRootViewController: UIViewController
         loadScrollViewWithPage(page + 1)
         
         var bounds = scrollView.bounds
-        bounds.origin.x = CGRectGetWidth(bounds) * CGFloat(page)
+        bounds.origin.x = bounds.width * CGFloat(page)
         bounds.origin.y = 0
         scrollView.scrollRectToVisible(bounds, animated: animated)
     }
@@ -115,9 +115,9 @@ class PreviewRootViewController: UIViewController
 
 extension PreviewRootViewController: UIScrollViewDelegate
 {
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
     {
-        let pageWidth = CGRectGetWidth(self.scrollView.frame)
+        let pageWidth = self.scrollView.frame.width
         let page = Int(floor((self.scrollView.contentOffset.x - pageWidth/2) / pageWidth) + 1)
         pageControl.currentPage = page
         

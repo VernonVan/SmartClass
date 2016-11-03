@@ -11,25 +11,25 @@ import Toast
 
 class PPTView: UIWebView, UIWebViewDelegate
 {
-    private var totalPage = 0
-    private var currentPage = 0
+    fileprivate var totalPage = 0
+    fileprivate var currentPage = 0
     
     var gestureView: UIView?
     var canvasView: CanvasView?
     
-    init(frame: CGRect, pptURL: NSURL)
+    init(frame: CGRect, pptURL: URL)
     {
         super.init(frame: frame)
         
         delegate = self
-        loadRequest(NSURLRequest(URL: pptURL))
+        loadRequest(URLRequest(url: pptURL))
         
         gestureView = UIView(frame: bounds)
         addGestureOntoGestureView()
         addSubview(gestureView!)
         
         canvasView = CanvasView(frame: bounds)
-        canvasView!.backgroundColor = UIColor.clearColor()
+        canvasView!.backgroundColor = UIColor.clear
     }
 
     required init?(coder aDecoder: NSCoder)
@@ -39,21 +39,21 @@ class PPTView: UIWebView, UIWebViewDelegate
 
     // MARK: - UIWebView Delegate
     
-    func webViewDidFinishLoad(webView: UIWebView)
+    func webViewDidFinishLoad(_ webView: UIWebView)
     {
-        totalPage = Int(webView.stringByEvaluatingJavaScriptFromString("document.getElementsByClassName('slide').length")!)!
+        totalPage = Int(webView.stringByEvaluatingJavaScript(from: "document.getElementsByClassName('slide').length")!)!
         currentPage = 0
 
         let pptViewHeight = frame.size.height
         let pptViewWidth = frame.size.width
 
         for i in 0 ..< totalPage {
-            webView.stringByEvaluatingJavaScriptFromString(String(format: "var ppt_width=document.getElementsByClassName('slide')[%d].style.width.replace('px','') ; var percent = %f / ppt_width ; var ppt_height=document.getElementsByClassName('slide')[%d].style.height.replace('px','') * percent  ;   var pptspaceheight=(%f -ppt_height)/2 ; document.getElementsByClassName('slide')[%d].style.top = pptspaceheight + 'px' ; document.body.style.background='black';", i, pptViewWidth, i, pptViewHeight, i))
+            webView.stringByEvaluatingJavaScript(from: String(format: "var ppt_width=document.getElementsByClassName('slide')[%d].style.width.replace('px','') ; var percent = %f / ppt_width ; var ppt_height=document.getElementsByClassName('slide')[%d].style.height.replace('px','') * percent  ;   var pptspaceheight=(%f -ppt_height)/2 ; document.getElementsByClassName('slide')[%d].style.top = pptspaceheight + 'px' ; document.body.style.background='black';", i, pptViewWidth, i, pptViewHeight, i))
             if i != 0 {
-                webView.stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", i))
+                webView.stringByEvaluatingJavaScript(from: String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", i))
             }
         }
-        scrollView.scrollEnabled = false
+        scrollView.isScrollEnabled = false
     }
     
     // MARK: - gesture
@@ -61,11 +61,11 @@ class PPTView: UIWebView, UIWebViewDelegate
     func addGestureOntoGestureView()
     {
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(pageDown))
-        swipeLeftGesture.direction = .Left
+        swipeLeftGesture.direction = .left
         gestureView!.addGestureRecognizer(swipeLeftGesture)
         
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(pageUp))
-        swipeRightGesture.direction = .Right
+        swipeRightGesture.direction = .right
         gestureView!.addGestureRecognizer(swipeRightGesture)
     }
     
@@ -75,9 +75,9 @@ class PPTView: UIWebView, UIWebViewDelegate
             superview?.makeToast(NSLocalizedString("已经到达首页", comment: ""), duration: 0.15, position: CSToastPositionCenter)
             return
         } else {
-            stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", currentPage))
+            stringByEvaluatingJavaScript(from: String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", currentPage))
             currentPage -= 1
-            stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
+            stringByEvaluatingJavaScript(from: String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
         }
     }
 
@@ -87,9 +87,9 @@ class PPTView: UIWebView, UIWebViewDelegate
             superview?.makeToast(NSLocalizedString("已经到达尾页", comment: ""), duration: 0.15, position: CSToastPositionCenter)
             return
         } else {
-            stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", currentPage))
+            stringByEvaluatingJavaScript(from: String(format: "document.getElementsByClassName('slide')[%d].style.display='none';", currentPage))
             currentPage += 1
-            stringByEvaluatingJavaScriptFromString(String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
+            stringByEvaluatingJavaScript(from: String(format: "document.getElementsByClassName('slide')[%d].style.display='block';", currentPage))
         }
     }
     
@@ -125,17 +125,17 @@ class PPTView: UIWebView, UIWebViewDelegate
         return canvasView!.canvasAlpha
     }
     
-    func setCanvasColor(color: UIColor)
+    func setCanvasColor(_ color: UIColor)
     {
         canvasView?.canvasColor = color
     }
     
-    func setCanvasSize(size: Double)
+    func setCanvasSize(_ size: Double)
     {
         canvasView?.canvasSize = size
     }
     
-    func setCanvasAlpha(alpha: Float)
+    func setCanvasAlpha(_ alpha: Float)
     {
         canvasView?.canvasAlpha = alpha
     }

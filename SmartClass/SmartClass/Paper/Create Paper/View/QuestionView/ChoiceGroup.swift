@@ -23,20 +23,20 @@ class ChoiceGroup
     /// 可多选的
     var isMultipleAnswer = false
     
-    private var cells = [ChoiceView]()
+    fileprivate var cells = [ChoiceView]()
     
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     
-    func insertCells(cells: [ChoiceView])
+    func insertCells(_ cells: [ChoiceView])
     {
         var index = 0
         for cell in cells {
-            self.cells.insert(cell, atIndex: index)
+            self.cells.insert(cell, at: index)
             index += 1
         }
     }
     
-    func selectCellAtIndex(index: Int)
+    func selectCellAtIndex(_ index: Int)
     {
         if isMultipleAnswer == false {
             for cell in cells {
@@ -47,7 +47,7 @@ class ChoiceGroup
         cells[index].selectAnswer()
     }
     
-    func configureWithQuestion(question: Question)
+    func configureWithQuestion(_ question: Question)
     {
         cells[0].choiceTextField.text = question.choiceA
         cells[1].choiceTextField.text = question.choiceB
@@ -57,7 +57,7 @@ class ChoiceGroup
         guard let type = QuestionType(typeNum: question.type) else {
             return
         }
-        isMultipleAnswer = (type == .MultipleChoice) ? true : false
+        isMultipleAnswer = (type == .multipleChoice) ? true : false
         
         guard let answers = question.answers else {
             return

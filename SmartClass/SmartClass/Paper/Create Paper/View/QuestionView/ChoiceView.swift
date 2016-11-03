@@ -43,28 +43,28 @@ import RxSwift
     {
         super.init(frame: frame)
         
-        loadViewFromNib()
+        _ = loadViewFromNib()
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         
-        loadViewFromNib()
+        _ = loadViewFromNib()
     }
     
     func loadViewFromNib() -> UIView
     {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: String(self.dynamicType), bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = bounds
         addSubview(view)
         return view
     }
     
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
-        if let value = value as? Int? where key == "index" {
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        if let value = value as? Int? , key == "index" {
             self.index = value
         }
     }
@@ -97,17 +97,17 @@ import RxSwift
 
 enum ChoiceIndex: Int, CustomStringConvertible
 {
-    case A = 0, B, C, D
+    case a = 0, b, c, d
     
     var description: String {
         switch self {
-        case .A:
+        case .a:
             return "选项A"
-        case .B:
+        case .b:
             return "选项B"
-        case .C:
+        case .c:
             return "选项C"
-        case .D:
+        case .d:
             return "选项D"
         }
     }

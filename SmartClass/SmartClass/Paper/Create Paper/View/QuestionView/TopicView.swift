@@ -38,21 +38,21 @@ import UIKit
     {
         super.init(frame: frame)
         
-        loadViewFromNib()
+        _ = loadViewFromNib()
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
         
-        loadViewFromNib()
+        _ = loadViewFromNib()
     }
     
     func loadViewFromNib() -> UIView
     {
-        let bundle = NSBundle(forClass: self.dynamicType)
-        let nib = UINib(nibName: String(self.dynamicType), bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = bounds
         addSubview(view)
         return view
@@ -67,7 +67,7 @@ import UIKit
 
 extension TopicView
 {
-    func configureWithQuestion(question: Question)
+    func configureWithQuestion(_ question: Question)
     {
         numberLabel.text = "\(question.index+1)."
         topicTextView.text = question.topic

@@ -16,14 +16,14 @@ class ResultChartViewController: UIViewController
     
     @IBOutlet weak var chartView: BarChartView!
  
-    private let realm = try! Realm()
-    private var studentNumber = 0
+    fileprivate let realm = try! Realm()
+    fileprivate var studentNumber = 0
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        studentNumber = realm.objects(Student).count
+        studentNumber = realm.objects(Student.self).count
         
         initChartView()
         setChartViewData()
@@ -32,8 +32,9 @@ class ResultChartViewController: UIViewController
     
     func initChartView()
     {
-        chartView.descriptionText = ""
-        chartView.maxVisibleValueCount = 20
+        chartView.chartDescription?.text = ""
+        chartView.maxVisibleCount = 20
+//        chartView.maxVisibleValueCount = 20
         chartView.pinchZoomEnabled = false
         chartView.doubleTapToZoomEnabled = false
         chartView.scaleXEnabled = false
@@ -41,18 +42,18 @@ class ResultChartViewController: UIViewController
         chartView.legend.enabled = true
         
         let xAxis = chartView.xAxis
-        xAxis.labelPosition = .Bottom
+        xAxis.labelPosition = .bottom
         xAxis.drawGridLinesEnabled = false
 
-        let leftAxisFormatter = NSNumberFormatter()
+        let leftAxisFormatter = NumberFormatter()
         leftAxisFormatter.minimumFractionDigits = 0
         leftAxisFormatter.maximumFractionDigits = 100
         leftAxisFormatter.positiveSuffix = "%"
         leftAxisFormatter.negativeSuffix = "%"
         
         let leftAxis = chartView.leftAxis
-        leftAxis.valueFormatter = leftAxisFormatter
-        leftAxis.axisMinValue = 0
+//        leftAxis.valueFormatter = leftAxisFormatter
+        leftAxis.axisMinimum = 0
         
         let rightAxis = chartView.rightAxis
         rightAxis.enabled = false
@@ -65,7 +66,7 @@ class ResultChartViewController: UIViewController
         var yVals = [BarChartDataEntry]()
         
         var correctNumbers = [Double]()
-        for _ in 0..<questionCount {
+        for _ in 0..<questionCount+1 {
             correctNumbers.append(0)
         }
         
@@ -76,14 +77,16 @@ class ResultChartViewController: UIViewController
         }
         
         for index in 0..<questionCount {
-            yVals.append(BarChartDataEntry(value: correctNumbers[index] / Double(studentNumber) * 100, xIndex: index))
+            yVals.append(BarChartDataEntry(x: correctNumbers[index] / Double(studentNumber) * 100, y: Double(index)))
+//            yVals.append(BarChartDataEntry(value: correctNumbers[index] / Double(studentNumber) * 100, xIndex: index))
             index == 0 ? xVals.append("第1题") : xVals.append("\(index+1)")
         }
         
-        let dataSet = BarChartDataSet(yVals: yVals, label: "每道题的答对比例")
+        let dataSet = BarChartDataSet(values: yVals, label: "每道题的答对比例")
         dataSet.colors = ChartColorTemplates.material()
         dataSet.drawValuesEnabled = true
-        let data = BarChartData(xVals: xVals, dataSets: [dataSet])
+        let data = BarChartData(dataSets: [dataSet])
+//        let data = BarChartData(xVals: xVals, dataSets: [dataSet])
         chartView.data = data
     }
     

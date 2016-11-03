@@ -21,15 +21,15 @@ class ResultContainerViewController: UIViewController
 
     }
 
-    @IBAction func showComponent(segmentControl: UISegmentedControl)
+    @IBAction func showComponent(_ segmentControl: UISegmentedControl)
     {
         if segmentControl.selectedSegmentIndex == 0 {
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.resultContainerView.alpha = 1
                 self.chartContainerView.alpha = 0
             })
         } else {
-            UIView.animateWithDuration(0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.resultContainerView.alpha = 0
                 self.chartContainerView.alpha = 1
             })
@@ -38,18 +38,19 @@ class ResultContainerViewController: UIViewController
 
     // MARK: - Segue
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         if segue.identifier == "previewPaper" {
-            if let desVC = segue.destinationViewController as? PreviewRootViewController {
+            if let desVC = segue.destination as? PreviewRootViewController {
                 desVC.paper = paper
             }
         } else if segue.identifier == "showOrder" {
-            if let desVC = segue.destinationViewController as? ExamResultViewController {
+            if let desVC = segue.destination as? ExamResultViewController {
                 desVC.paper = paper
             }
         } else if segue.identifier == "showChart" {
-            if let desVC = segue.destinationViewController as? ResultChartViewController {
+            if let desVC = segue.destination as? ResultChartViewController {
                 desVC.paper = paper
             }
         }

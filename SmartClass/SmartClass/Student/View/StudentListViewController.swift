@@ -12,8 +12,8 @@ import DZNEmptyDataSet
 
 protocol StudentInformationDelegate
 {
-    func addStudent(student: Student)
-    func modifyStudentAtIndexPath(indexPath: NSIndexPath, newStudent student: Student)
+    func addStudent(_ student: Student)
+    func modifyStudentAtIndexPath(_ indexPath: IndexPath, newStudent student: Student)
 }
 
 class StudentListViewController: UIViewController
@@ -30,23 +30,24 @@ class StudentListViewController: UIViewController
         tableView.dataSource = self
         tableView.delegate = self
         tableView.emptyDataSetSource = self
+        tableView.tableFooterView = UIView()
 
         addButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 4.0)
     }
 
     // MARK: - Segue
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "modifyStudent" {
-            if let desVC = segue.destinationViewController as? StudentInformationViewController {
+            if let desVC = segue.destination as? StudentInformationViewController {
                 let indexPath = tableView.indexPathForSelectedRow
                 desVC.indexPath = indexPath
                 desVC.student = viewModel?.studentAtIndexPath(indexPath!)
                 desVC.delegate = self
             }
         } else if segue.identifier == "addStudent" {
-            if let desVC = segue.destinationViewController as? StudentInformationViewController {
+            if let desVC = segue.destination as? StudentInformationViewController {
                 desVC.delegate = self
             }
         }
@@ -58,38 +59,40 @@ class StudentListViewController: UIViewController
 
 extension StudentListViewController: UITableViewDataSource, UITableViewDelegate
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return viewModel!.numberOfStudents()
+        let count = viewModel!.numberOfStudents()
+        tableView.separatorStyle = count == 0 ? .none : .singleLine
+        return count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("StudentCell", forIndexPath: indexPath) as! StudentCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentCell
         configureCellAtIndexPath(cell, atIndexPath: indexPath)
         return cell
     }
     
-    func configureCellAtIndexPath(cell: StudentCell, atIndexPath indexPath: NSIndexPath)
+    func configureCellAtIndexPath(_ cell: StudentCell, atIndexPath indexPath: IndexPath)
     {
-        cell.nameLabel?.text = "\(viewModel!.nameAtIndexPath(indexPath)) - \(viewModel!.numberAtIndexPath(indexPath))"
-        cell.majorLabel?.text = "\(viewModel!.majorAtIndexPath(indexPath))(\(viewModel!.schoolAtIndexPath(indexPath)))"
+        cell.nameLabel?.text = "\(viewModel!.nameAtIndexPath(indexPath))  \(viewModel!.numberAtIndexPath(indexPath))"
+        cell.majorLabel?.text = "\(viewModel!.schoolAtIndexPath(indexPath))  \(viewModel!.majorAtIndexPath(indexPath))"
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             viewModel?.deleteStudentAtIndexPath(indexPath)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return StudentCell.cellHeight
     }
@@ -99,13 +102,13 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate
 
 extension StudentListViewController: StudentInformationDelegate
 {
-    func addStudent(student: Student)
+    func addStudent(_ student: Student)
     {
         viewModel?.addStudent(student)
         tableView.reloadData()
     }
     
-    func modifyStudentAtIndexPath(indexPath: NSIndexPath, newStudent student: Student)
+    func modifyStudentAtIndexPath(_ indexPath: IndexPath, newStudent student: Student)
     {
         viewModel?.modifyStudentAtIndexPath(indexPath, newStudent: student)
         tableView.reloadData()
@@ -116,11 +119,16 @@ extension StudentListViewController: StudentInformationDelegate
 
 extension StudentListViewController: DZNEmptyDataSetSource
 {
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
     {
-        let text = NSLocalizedString("尚未添加学生", comment: "" )
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(18.0) ,
-                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
-        return NSAttributedString(string: text , attributes: attributes)
+        return UIImage(named: "emptyStudent")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let text = NSLocalizedString("尚未添加学生", comment: "")
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 16.0) ,
+                          NSForegroundColorAttributeName : UIColor.darkGray]
+        return NSAttributedString(string: text, attributes: attributes)
     }
 }

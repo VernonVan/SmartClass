@@ -63,6 +63,7 @@ NSString* const GCDWebServerOption_AuthenticationAccounts = @"AuthenticationAcco
 NSString* const GCDWebServerOption_ConnectionClass = @"ConnectionClass";
 NSString* const GCDWebServerOption_AutomaticallyMapHEADToGET = @"AutomaticallyMapHEADToGET";
 NSString* const GCDWebServerOption_ConnectedStateCoalescingInterval = @"ConnectedStateCoalescingInterval";
+NSString* const GCDWebServerOption_DispatchQueuePriority = @"DispatchQueuePriority";
 #if TARGET_OS_IPHONE
 NSString* const GCDWebServerOption_AutomaticallySuspendInBackground = @"AutomaticallySuspendInBackground";
 #endif
@@ -91,7 +92,7 @@ static BOOL _run;
 #ifdef __GCDWEBSERVER_LOGGING_FACILITY_BUILTIN__
 
 void GCDWebServerLogMessage(GCDWebServerLoggingLevel level, NSString* format, ...) {
-  static const char* levelNames[] = {"DEBUG", "VERBOSE", "INFO", "WARNING", "ERROR", "EXCEPTION"};
+  static const char* levelNames[] = {"DEBUG", "VERBOSE", "INFO", "WARNING", "ERROR"};
   static int enableLogging = -1;
   if (enableLogging < 0) {
     enableLogging = (isatty(STDERR_FILENO) ? 1 : 0);
@@ -170,6 +171,7 @@ static void _ExecuteMainThreadRunLoopSources() {
   Class _connectionClass;
   BOOL _mapHEADToGET;
   CFTimeInterval _disconnectDelay;
+  dispatch_queue_priority_t _dispatchQueuePriority;
   NSUInteger _port;
   dispatch_source_t _source4;
   dispatch_source_t _source6;
@@ -195,7 +197,7 @@ static void _ExecuteMainThreadRunLoopSources() {
 
 @synthesize delegate=_delegate, handlers=_handlers, port=_port, serverName=_serverName, authenticationRealm=_authenticationRealm,
             authenticationBasicAccounts=_authenticationBasicAccounts, authenticationDigestAccounts=_authenticationDigestAccounts,
-            shouldAutomaticallyMapHEADToGET=_mapHEADToGET;
+            shouldAutomaticallyMapHEADToGET=_mapHEADToGET, dispatchQueuePriority=_dispatchQueuePriority;
 
 + (void)initialize {
   GCDWebServerInitializeFunctions();
@@ -231,10 +233,10 @@ static void _ExecuteMainThreadRunLoopSources() {
 - (void)_startBackgroundTask {
   GWS_DCHECK([NSThread isMainThread]);
   if (_backgroundTask == UIBackgroundTaskInvalid) {
-    GWS_LOG_DEBUG(@"Did start background task");
+  //  GWS_LOG_DEBUG(@"Did start background task");
     _backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
       
-      GWS_LOG_WARNING(@"Application is being suspended while %@ is still connected", [self class]);
+   //   GWS_LOG_WARNING(@"Application is being suspended while %@ is still connected", [self class]);
       [self _endBackgroundTask];
       
     }];
@@ -250,7 +252,7 @@ static void _ExecuteMainThreadRunLoopSources() {
   GWS_DCHECK([NSThread isMainThread]);
   GWS_DCHECK(_connected == NO);
   _connected = YES;
-  GWS_LOG_DEBUG(@"Did connect");
+ // GWS_LOG_DEBUG(@"Did connect");
   
 #if TARGET_OS_IPHONE
   if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateBackground) {
@@ -295,7 +297,7 @@ static void _ExecuteMainThreadRunLoopSources() {
     }
     [[UIApplication sharedApplication] endBackgroundTask:_backgroundTask];
     _backgroundTask = UIBackgroundTaskInvalid;
-    GWS_LOG_DEBUG(@"Did end background task");
+  //  GWS_LOG_DEBUG(@"Did end background task");
   }
 }
 
@@ -306,7 +308,7 @@ static void _ExecuteMainThreadRunLoopSources() {
   GWS_DCHECK([NSThread isMainThread]);
   GWS_DCHECK(_connected == YES);
   _connected = NO;
-  GWS_LOG_DEBUG(@"Did disconnect");
+ // GWS_LOG_DEBUG(@"Did disconnect");
   
 #if TARGET_OS_IPHONE
   [self _endBackgroundTask];
@@ -377,7 +379,7 @@ static void _NetServiceRegisterCallBack(CFNetServiceRef service, CFStreamError* 
       GWS_LOG_ERROR(@"Bonjour registration error %i (domain %i)", (int)error->error, (int)error->domain);
     } else {
       GCDWebServer* server = (__bridge GCDWebServer*)info;
-      GWS_LOG_VERBOSE(@"Bonjour registration complete for %@", [server class]);
+    //  GWS_LOG_VERBOSE(@"Bonjour registration complete for %@", [server class]);
       if (!CFNetServiceResolveWithTimeout(server->_resolutionService, kBonjourResolutionTimeout, NULL)) {
         GWS_LOG_ERROR(@"Failed starting Bonjour resolution");
         GWS_DNOT_REACHED();
@@ -395,7 +397,7 @@ static void _NetServiceResolveCallBack(CFNetServiceRef service, CFStreamError* e
       }
     } else {
       GCDWebServer* server = (__bridge GCDWebServer*)info;
-      GWS_LOG_INFO(@"%@ now locally reachable at %@", [server class], server.bonjourServerURL);
+   //   GWS_LOG_INFO(@"%@ now locally reachable at %@", [server class], server.bonjourServerURL);
       if ([server.delegate respondsToSelector:@selector(webServerDidCompleteBonjourRegistration:)]) {
         [server.delegate webServerDidCompleteBonjourRegistration:server];
       }
@@ -415,7 +417,7 @@ static void _DNSServiceCallBack(DNSServiceRef sdRef, DNSServiceFlags flags, uint
       addr4.sin_addr.s_addr = externalAddress;  // Already in network byte order
       server->_dnsAddress = GCDWebServerStringFromSockAddr((const struct sockaddr*)&addr4, NO);
       server->_dnsPort = ntohs(externalPort);
-      GWS_LOG_INFO(@"%@ now publicly reachable at %@", [server class], server.publicServerURL);
+    //  GWS_LOG_INFO(@"%@ now publicly reachable at %@", [server class], server.publicServerURL);
     } else {
       GWS_LOG_ERROR(@"DNS service error %i", errorCode);
       server->_dnsAddress = nil;
@@ -465,7 +467,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
     
     if (bind(listeningSocket, address, length) == 0) {
       if (listen(listeningSocket, (int)maxPendingConnections) == 0) {
-        GWS_LOG_DEBUG(@"Did open %s listening socket %i", useIPv6 ? "IPv6" : "IPv4", listeningSocket);
+     //   GWS_LOG_DEBUG(@"Did open %s listening socket %i", useIPv6 ? "IPv6" : "IPv4", listeningSocket);
         return listeningSocket;
       } else {
         if (error) {
@@ -493,7 +495,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
 
 - (dispatch_source_t)_createDispatchSourceWithListeningSocket:(int)listeningSocket isIPv6:(BOOL)isIPv6 {
   dispatch_group_enter(_sourceGroup);
-  dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, listeningSocket, 0, kGCDWebServerGCDQueue);
+  dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_READ, listeningSocket, 0, dispatch_get_global_queue(_dispatchQueuePriority, 0));
   dispatch_source_set_cancel_handler(source, ^{
     
     @autoreleasepool {
@@ -501,7 +503,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
       if (result != 0) {
         GWS_LOG_ERROR(@"Failed closing %s listening socket: %s (%i)", isIPv6 ? "IPv6" : "IPv4", strerror(errno), errno);
       } else {
-        GWS_LOG_DEBUG(@"Did close %s listening socket %i", isIPv6 ? "IPv6" : "IPv4", listeningSocket);
+      //  GWS_LOG_DEBUG(@"Did close %s listening socket %i", isIPv6 ? "IPv6" : "IPv4", listeningSocket);
       }
     }
     dispatch_group_leave(_sourceGroup);
@@ -599,6 +601,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
   _connectionClass = _GetOption(_options, GCDWebServerOption_ConnectionClass, [GCDWebServerConnection class]);
   _mapHEADToGET = [_GetOption(_options, GCDWebServerOption_AutomaticallyMapHEADToGET, @YES) boolValue];
   _disconnectDelay = [_GetOption(_options, GCDWebServerOption_ConnectedStateCoalescingInterval, @1.0) doubleValue];
+  _dispatchQueuePriority = [_GetOption(_options, GCDWebServerOption_DispatchQueuePriority, @(DISPATCH_QUEUE_PRIORITY_DEFAULT)) longValue];
   
   _source4 = [self _createDispatchSourceWithListeningSocket:listeningSocket4 isIPv6:NO];
   _source6 = [self _createDispatchSourceWithListeningSocket:listeningSocket6 isIPv6:YES];
@@ -654,7 +657,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
   
   dispatch_resume(_source4);
   dispatch_resume(_source6);
-  GWS_LOG_INFO(@"%@ started on port %i and reachable at %@", [self class], (int)_port, self.serverURL);
+  //GWS_LOG_INFO(@"%@ started on port %i and reachable at %@", [self class], (int)_port, self.serverURL);
   if ([_delegate respondsToSelector:@selector(webServerDidStart:)]) {
     dispatch_async(dispatch_get_main_queue(), ^{
       [_delegate webServerDidStart:self];
@@ -726,7 +729,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
     }
   });
   
-  GWS_LOG_INFO(@"%@ stopped", [self class]);
+ // GWS_LOG_INFO(@"%@ stopped", [self class]);
   if ([_delegate respondsToSelector:@selector(webServerDidStop:)]) {
     dispatch_async(dispatch_get_main_queue(), ^{
       [_delegate webServerDidStop:self];
@@ -738,7 +741,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
 
 - (void)_didEnterBackground:(NSNotification*)notification {
   GWS_DCHECK([NSThread isMainThread]);
-  GWS_LOG_DEBUG(@"Did enter background");
+ // GWS_LOG_DEBUG(@"Did enter background");
   if ((_backgroundTask == UIBackgroundTaskInvalid) && _source4) {
     [self _stop];
   }
@@ -746,7 +749,7 @@ static inline NSString* _EncodeBase64(NSString* string) {
 
 - (void)_willEnterForeground:(NSNotification*)notification {
   GWS_DCHECK([NSThread isMainThread]);
-  GWS_LOG_DEBUG(@"Will enter foreground");
+ // GWS_LOG_DEBUG(@"Will enter foreground");
   if (!_source4) {
     [self _start:NULL];  // TODO: There's probably nothing we can do on failure
   }
@@ -1103,21 +1106,21 @@ static inline NSString* _EncodeBase64(NSString* string) {
 - (void)logVerbose:(NSString*)format, ... {
   va_list arguments;
   va_start(arguments, format);
-  GWS_LOG_VERBOSE(@"%@", [[NSString alloc] initWithFormat:format arguments:arguments]);
+ // GWS_LOG_VERBOSE(@"%@", [[NSString alloc] initWithFormat:format arguments:arguments]);
   va_end(arguments);
 }
 
 - (void)logInfo:(NSString*)format, ... {
   va_list arguments;
   va_start(arguments, format);
-  GWS_LOG_INFO(@"%@", [[NSString alloc] initWithFormat:format arguments:arguments]);
+ // GWS_LOG_INFO(@"%@", [[NSString alloc] initWithFormat:format arguments:arguments]);
   va_end(arguments);
 }
 
 - (void)logWarning:(NSString*)format, ... {
   va_list arguments;
   va_start(arguments, format);
-  GWS_LOG_WARNING(@"%@", [[NSString alloc] initWithFormat:format arguments:arguments]);
+ // GWS_LOG_WARNING(@"%@", [[NSString alloc] initWithFormat:format arguments:arguments]);
   va_end(arguments);
 }
 
@@ -1126,10 +1129,6 @@ static inline NSString* _EncodeBase64(NSString* string) {
   va_start(arguments, format);
   GWS_LOG_ERROR(@"%@", [[NSString alloc] initWithFormat:format arguments:arguments]);
   va_end(arguments);
-}
-
-- (void)logException:(NSException*)exception {
-  GWS_LOG_EXCEPTION(exception);
 }
 
 @end

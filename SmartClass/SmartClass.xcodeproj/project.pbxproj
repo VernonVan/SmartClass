@@ -37,6 +37,9 @@
 		AD10CDE91D45A35E0055B87E /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10CDE81D45A35E0055B87E /* HomePageViewController.swift */; };
 		AD10CDED1D45A7B50055B87E /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD10CDEC1D45A7B50055B87E /* CardView.xib */; };
 		AD10CDEF1D45A7CB0055B87E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD10CDEE1D45A7CB0055B87E /* CardView.swift */; };
+		AD12A5FD1D89447400308B6F /* QuizListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD12A5FC1D89447400308B6F /* QuizListViewController.swift */; };
+		AD12A5FF1D8948C400308B6F /* QuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD12A5FE1D8948C400308B6F /* QuizCell.swift */; };
+		AD12A6021D894E8700308B6F /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD12A6011D894E8700308B6F /* Quiz.swift */; };
 		AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1DF6521CC471A8001B67E1 /* String+extension.swift */; };
 		AD23FF5A1D7A6A0C00C6A671 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23FF591D7A6A0C00C6A671 /* StudentCell.swift */; };
 		AD2F3C421D791C7E00083261 /* SignUpSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F3C411D791C7E00083261 /* SignUpSheetCell.swift */; };
@@ -45,10 +48,6 @@
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
 		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
 		AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308671CB10028000DEC59 /* UIImage+extension.swift */; };
-		AD75209A1D582066000C5D7A /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD90D1501D52CBF4008AEF1A /* Realm.framework */; };
-		AD75209B1D582066000C5D7A /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD90D1501D52CBF4008AEF1A /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AD75209C1D58206A000C5D7A /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD90D1511D52CBF4008AEF1A /* RealmSwift.framework */; };
-		AD75209D1D58206A000C5D7A /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD90D1511D52CBF4008AEF1A /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */; };
 		AD86A8CF1C82DBCC009CEE87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */; };
 		AD86A8D11C82DBCC009CEE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD86A8D01C82DBCC009CEE87 /* Assets.xcassets */; };
@@ -69,12 +68,22 @@
 		AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AD884BD31C83F357005A37AE /* libicucore.tbd */; };
 		AD8C9D861D52CD58003722F8 /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8C9D851D52CD58003722F8 /* Paper.swift */; };
 		AD8C9D881D52CD78003722F8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8C9D871D52CD78003722F8 /* Question.swift */; };
+		AD920B2F1DBB07C000F4D0DE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2C1DBB07A900F4D0DE /* RealmSwift.framework */; };
+		AD920B301DBB07C000F4D0DE /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2C1DBB07A900F4D0DE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AD920B321DBB07DC00F4D0DE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2B1DBB07A900F4D0DE /* Realm.framework */; };
+		AD920B331DBB07DC00F4D0DE /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2B1DBB07A900F4D0DE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AD920B401DBB0AC500F4D0DE /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B3B1DBB0A9F00F4D0DE /* Charts.framework */; };
+		AD920B411DBB0AC500F4D0DE /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B3B1DBB0A9F00F4D0DE /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD97378A1C92AF060066873E /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9737891C92AF060066873E /* SegueHandlerType.swift */; };
 		AD980BEE1D4EDE0100C607B4 /* PaperListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD980BED1D4EDE0100C607B4 /* PaperListViewModel.swift */; };
 		AD980BF01D4EDE0900C607B4 /* PaperListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD980BEF1D4EDE0900C607B4 /* PaperListViewController.swift */; };
+		AD9F88BF1D83F2EC008E3A3B /* PaperListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F88BE1D83F2EC008E3A3B /* PaperListCell.swift */; };
+		AD9F88C11D83F865008E3A3B /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9F88C01D83F865008E3A3B /* ResourceCell.swift */; };
 		ADAD353A1D70238C0082CC3C /* ResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAD35391D70238C0082CC3C /* ResultContainerViewController.swift */; };
 		ADAD353C1D702BFF0082CC3C /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAD353B1D702BFF0082CC3C /* ResultCell.swift */; };
 		ADB1DBDE1D40B5C200C05A93 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB1DBDD1D40B5C200C05A93 /* QuestionCell.swift */; };
+		ADDC5E781D8E37B200CD6221 /* HistoryQuizListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC5E771D8E37B200CD6221 /* HistoryQuizListViewController.swift */; };
+		ADDC5E7A1D8E38F400CD6221 /* HistoryQuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDC5E791D8E38F400CD6221 /* HistoryQuizCell.swift */; };
 		ADE35C9A1D3DB7E0001A5A13 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE35C991D3DB7E0001A5A13 /* Constant.swift */; };
 		ADE7E1D91D41ACD0005F4DAB /* PreviewPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE7E1D71D41ACD0005F4DAB /* PreviewPaperViewController.swift */; };
 		ADE7E1DA1D41ACD0005F4DAB /* PreviewRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE7E1D81D41ACD0005F4DAB /* PreviewRootViewController.swift */; };
@@ -96,15 +105,47 @@
 		ADFE31C81D5571860016FFD4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE31C71D5571860016FFD4 /* Result.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AD920B3A1DBB0A9F00F4D0DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F241D8110E600722320;
+			remoteInfo = Charts;
+		};
+		AD920B3C1DBB0A9F00F4D0DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06B120D51D811E6200D14B02;
+			remoteInfo = ChartsRealm;
+		};
+		AD920B3E1DBB0A9F00F4D0DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
+		AD920B421DBB0AC500F4D0DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 06165F231D8110E600722320;
+			remoteInfo = Charts;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
-		07DDC7EC1CEE833F00E5155C /* Embed Frameworks */ = {
+		AD920B311DBB07C000F4D0DE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AD75209D1D58206A000C5D7A /* RealmSwift.framework in Embed Frameworks */,
-				AD75209B1D582066000C5D7A /* Realm.framework in Embed Frameworks */,
+				AD920B411DBB0AC500F4D0DE /* Charts.framework in Embed Frameworks */,
+				AD920B331DBB07DC00F4D0DE /* Realm.framework in Embed Frameworks */,
+				AD920B301DBB07C000F4D0DE /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,7 +165,6 @@
 		0797AE501D61FACE00D51B41 /* ScoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScoreView.xib; path = "SmartClass/Paper/Create Paper/View/QuestionView/ScoreView.xib"; sourceTree = SOURCE_ROOT; };
 		0797AE521D61FADB00D51B41 /* ScoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoreView.swift; path = "SmartClass/Paper/Create Paper/View/QuestionView/ScoreView.swift"; sourceTree = SOURCE_ROOT; };
 		0797AE541D6201F100D51B41 /* PaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperViewController.swift; path = "SmartClass/Paper/Create Paper/View/PaperViewController.swift"; sourceTree = SOURCE_ROOT; };
-		07A7E0FF1D61B33100A2355A /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewController.swift; path = SignUpSheet/View/SignUpSheetListViewController.swift; sourceTree = "<group>"; };
 		07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewModel.swift; path = SignUpSheet/ViewModel/SignUpSheetListViewModel.swift; sourceTree = "<group>"; };
 		07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSignUpSheetViewController.swift; path = SignUpSheet/View/NewSignUpSheetViewController.swift; sourceTree = "<group>"; };
@@ -145,16 +185,18 @@
 		AD10CDE81D45A35E0055B87E /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		AD10CDEC1D45A7B50055B87E /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
 		AD10CDEE1D45A7CB0055B87E /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		AD12A5FC1D89447400308B6F /* QuizListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizListViewController.swift; sourceTree = "<group>"; };
+		AD12A5FE1D8948C400308B6F /* QuizCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizCell.swift; sourceTree = "<group>"; };
+		AD12A6011D894E8700308B6F /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quiz.swift; path = Model/Quiz.swift; sourceTree = "<group>"; };
 		AD1DF6521CC471A8001B67E1 /* String+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+extension.swift"; path = "Util/Extension/String+extension.swift"; sourceTree = "<group>"; };
 		AD23FF591D7A6A0C00C6A671 /* StudentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
 		AD2F3C411D791C7E00083261 /* SignUpSheetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetCell.swift; path = SignUpSheet/View/SignUpSheetCell.swift; sourceTree = "<group>"; };
 		AD2F3C431D791CA200083261 /* SignUpSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpSheetCell.xib; path = SignUpSheet/View/SignUpSheetCell.xib; sourceTree = "<group>"; };
 		AD3838C91D4AF73E0048D6F3 /* NSDate+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+extension.swift"; path = "Util/Extension/NSDate+extension.swift"; sourceTree = "<group>"; };
-		AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
 		AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "Util/Extension/UIColor+extension.swift"; sourceTree = "<group>"; };
 		AD6308671CB10028000DEC59 /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+extension.swift"; path = "Util/Extension/UIImage+extension.swift"; sourceTree = "<group>"; };
-		AD86A8C61C82DBCC009CEE87 /* SmartClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD86A8C61C82DBCC009CEE87 /* 智慧课堂.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "智慧课堂.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD86A8CE1C82DBCC009CEE87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD86A8D01C82DBCC009CEE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -178,14 +220,19 @@
 		AD884BD31C83F357005A37AE /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		AD8C9D851D52CD58003722F8 /* Paper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = "SmartClass/Paper/Create Paper/Model/Paper.swift"; sourceTree = SOURCE_ROOT; };
 		AD8C9D871D52CD78003722F8 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = "SmartClass/Paper/Create Paper/Model/Question.swift"; sourceTree = SOURCE_ROOT; };
-		AD90D1501D52CBF4008AEF1A /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		AD90D1511D52CBF4008AEF1A /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		AD920B2B1DBB07A900F4D0DE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		AD920B2C1DBB07A900F4D0DE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		AD9737891C92AF060066873E /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegueHandlerType.swift; path = Util/SegueHandlerType.swift; sourceTree = "<group>"; };
 		AD980BED1D4EDE0100C607B4 /* PaperListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperListViewModel.swift; path = "SmartClass/Paper/Paper List/ViewModel/PaperListViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		AD980BEF1D4EDE0900C607B4 /* PaperListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperListViewController.swift; path = "SmartClass/Paper/Paper List/View/PaperListViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AD9F88BE1D83F2EC008E3A3B /* PaperListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaperListCell.swift; path = "SmartClass/Paper/Paper List/View/PaperListCell.swift"; sourceTree = SOURCE_ROOT; };
+		AD9F88C01D83F865008E3A3B /* ResourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		ADAD35391D70238C0082CC3C /* ResultContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultContainerViewController.swift; path = "SmartClass/Paper/Paper Result/View/ResultContainerViewController.swift"; sourceTree = SOURCE_ROOT; };
 		ADAD353B1D702BFF0082CC3C /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultCell.swift; path = "SmartClass/Paper/Paper Result/View/ResultCell.swift"; sourceTree = SOURCE_ROOT; };
 		ADB1DBDD1D40B5C200C05A93 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionCell.swift; path = "SmartClass/Paper/Create Paper/View/QuestionCell.swift"; sourceTree = SOURCE_ROOT; };
+		ADDC5E771D8E37B200CD6221 /* HistoryQuizListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryQuizListViewController.swift; sourceTree = "<group>"; };
+		ADDC5E791D8E38F400CD6221 /* HistoryQuizCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryQuizCell.swift; sourceTree = "<group>"; };
 		ADE35C991D3DB7E0001A5A13 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = Util/Constant.swift; sourceTree = "<group>"; };
 		ADE7E1D71D41ACD0005F4DAB /* PreviewPaperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviewPaperViewController.swift; path = "SmartClass/Paper/Preview Paper/View/PreviewPaperViewController.swift"; sourceTree = SOURCE_ROOT; };
 		ADE7E1D81D41ACD0005F4DAB /* PreviewRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreviewRootViewController.swift; path = "SmartClass/Paper/Preview Paper/View/PreviewRootViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -212,8 +259,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD920B321DBB07DC00F4D0DE /* Realm.framework in Frameworks */,
 				AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */,
 				AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */,
+				AD920B2F1DBB07C000F4D0DE /* RealmSwift.framework in Frameworks */,
+				AD920B401DBB0AC500F4D0DE /* Charts.framework in Frameworks */,
 				AD884BD01C83F31A005A37AE /* libz.1.2.5.tbd in Frameworks */,
 				AD884BCE1C83F310005A37AE /* MediaPlayer.framework in Frameworks */,
 				AD884BCC1C83F304005A37AE /* AVFoundation.framework in Frameworks */,
@@ -221,12 +271,10 @@
 				AD884BC81C83F2F1005A37AE /* CoreTelephony.framework in Frameworks */,
 				AD884BC61C83F2E7005A37AE /* CFNetwork.framework in Frameworks */,
 				AD884BC41C83F2DE005A37AE /* MobileCoreServices.framework in Frameworks */,
-				AD75209A1D582066000C5D7A /* Realm.framework in Frameworks */,
 				AD884BC21C83F2D2005A37AE /* CoreGraphics.framework in Frameworks */,
 				AD884BC01C83F2CA005A37AE /* Security.framework in Frameworks */,
 				AD884BBE1C83F2C3005A37AE /* CoreLocation.framework in Frameworks */,
 				AD884BBC1C83F2AF005A37AE /* Foundation.framework in Frameworks */,
-				AD75209C1D58206A000C5D7A /* RealmSwift.framework in Frameworks */,
 				261BAB7FCB1D014C99987C7F /* Pods_SmartClass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,13 +301,12 @@
 		5B800375E992113887F3BF95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				07A7E0FF1D61B33100A2355A /* Reveal.framework */,
+				AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */,
 				AD884BD31C83F357005A37AE /* libicucore.tbd */,
 				AD884BD11C83F340005A37AE /* libsqlite3.tbd */,
 				AD884BCF1C83F31A005A37AE /* libz.1.2.5.tbd */,
-				AD4263BC1CB0B94F00BEDEF4 /* Reveal.framework */,
-				AD90D1501D52CBF4008AEF1A /* Realm.framework */,
-				AD90D1511D52CBF4008AEF1A /* RealmSwift.framework */,
+				AD920B2B1DBB07A900F4D0DE /* Realm.framework */,
+				AD920B2C1DBB07A900F4D0DE /* RealmSwift.framework */,
 				AD884BCD1C83F310005A37AE /* MediaPlayer.framework */,
 				AD884BCB1C83F304005A37AE /* AVFoundation.framework */,
 				AD884BC91C83F2FB005A37AE /* SystemConfiguration.framework */,
@@ -317,6 +364,34 @@
 				AD10CDEE1D45A7CB0055B87E /* CardView.swift */,
 			);
 			path = CardView;
+			sourceTree = "<group>";
+		};
+		AD12A5FA1D89440B00308B6F /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				AD12A6001D894E4100308B6F /* Model */,
+				AD12A5FB1D89442B00308B6F /* View */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		AD12A5FB1D89442B00308B6F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD12A5FE1D8948C400308B6F /* QuizCell.swift */,
+				AD12A5FC1D89447400308B6F /* QuizListViewController.swift */,
+				ADDC5E791D8E38F400CD6221 /* HistoryQuizCell.swift */,
+				ADDC5E771D8E37B200CD6221 /* HistoryQuizListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD12A6001D894E4100308B6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD12A6011D894E8700308B6F /* Quiz.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		AD158B821D54918200DB4CE8 /* QuestionView */ = {
@@ -379,6 +454,7 @@
 		AD3B19B01CC726FA00B4E700 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD9F88C01D83F865008E3A3B /* ResourceCell.swift */,
 				0700D1B61CE4AD3000EB9A81 /* ResourceListViewController.swift */,
 				ADB853041CE5593400619C86 /* PPT */,
 			);
@@ -474,6 +550,7 @@
 		AD4CCDE01CF57EBE00831EC5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AD9F88BE1D83F2EC008E3A3B /* PaperListCell.swift */,
 				AD980BEF1D4EDE0900C607B4 /* PaperListViewController.swift */,
 			);
 			path = View;
@@ -500,7 +577,7 @@
 		AD86A8C71C82DBCC009CEE87 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD86A8C61C82DBCC009CEE87 /* SmartClass.app */,
+				AD86A8C61C82DBCC009CEE87 /* 智慧课堂.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -514,6 +591,7 @@
 				AD1D18261C89867F009B9390 /* Paper */,
 				AD3B19AD1CC7265200B4E700 /* Resource */,
 				ADF4F5911D77CC0B00B3C8DF /* Student */,
+				AD12A5FA1D89440B00308B6F /* Quiz */,
 				AD3B19AF1CC7269800B4E700 /* SignUpSheet */,
 				AD99E2601D3CBD2B008162D7 /* QRCode */,
 				AD46B0051C8683C8008CB3F7 /* Util */,
@@ -529,6 +607,16 @@
 				AD876A7B1C93C053000E9978 /* UIPlaceHolderTextView.m */,
 			);
 			name = PlaceholderTextView;
+			sourceTree = "<group>";
+		};
+		AD920B351DBB0A9F00F4D0DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD920B3B1DBB0A9F00F4D0DE /* Charts.framework */,
+				AD920B3D1DBB0A9F00F4D0DE /* ChartsRealm.framework */,
+				AD920B3F1DBB0A9F00F4D0DE /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		AD99E2601D3CBD2B008162D7 /* QRCode */ = {
@@ -666,21 +754,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD86A8D81C82DBCC009CEE87 /* Build configuration list for PBXNativeTarget "SmartClass" */;
 			buildPhases = (
-				D176F40F4CD92EC46A94813C /* 📦 Check Pods Manifest.lock */,
+				D176F40F4CD92EC46A94813C /* [CP] Check Pods Manifest.lock */,
 				AD86A8C21C82DBCC009CEE87 /* Sources */,
 				AD86A8C31C82DBCC009CEE87 /* Frameworks */,
 				AD86A8C41C82DBCC009CEE87 /* Resources */,
-				07DDC7EC1CEE833F00E5155C /* Embed Frameworks */,
-				876649D62B95758CCD59B2D4 /* 📦 Embed Pods Frameworks */,
-				A71E7DFB8AC2437F7B180204 /* 📦 Copy Pods Resources */,
+				876649D62B95758CCD59B2D4 /* [CP] Embed Pods Frameworks */,
+				A71E7DFB8AC2437F7B180204 /* [CP] Copy Pods Resources */,
+				AD920B311DBB07C000F4D0DE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AD920B431DBB0AC500F4D0DE /* PBXTargetDependency */,
 			);
 			name = SmartClass;
 			productName = SmartClass;
-			productReference = AD86A8C61C82DBCC009CEE87 /* SmartClass.app */;
+			productReference = AD86A8C61C82DBCC009CEE87 /* 智慧课堂.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -690,12 +779,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Vernon;
 				TargetAttributes = {
 					AD86A8C51C82DBCC009CEE87 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = R6964LXMCM;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -710,12 +800,42 @@
 			mainGroup = AD86A8BD1C82DBCC009CEE87;
 			productRefGroup = AD86A8C71C82DBCC009CEE87 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AD920B351DBB0A9F00F4D0DE /* Products */;
+					ProjectRef = AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AD86A8C51C82DBCC009CEE87 /* SmartClass */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AD920B3B1DBB0A9F00F4D0DE /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = AD920B3A1DBB0A9F00F4D0DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD920B3D1DBB0A9F00F4D0DE /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = AD920B3C1DBB0A9F00F4D0DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AD920B3F1DBB0A9F00F4D0DE /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = AD920B3E1DBB0A9F00F4D0DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AD86A8C41C82DBCC009CEE87 /* Resources */ = {
@@ -738,14 +858,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		876649D62B95758CCD59B2D4 /* 📦 Embed Pods Frameworks */ = {
+		876649D62B95758CCD59B2D4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,14 +873,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A71E7DFB8AC2437F7B180204 /* 📦 Copy Pods Resources */ = {
+		A71E7DFB8AC2437F7B180204 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,19 +888,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D176F40F4CD92EC46A94813C /* 📦 Check Pods Manifest.lock */ = {
+		D176F40F4CD92EC46A94813C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -801,18 +921,24 @@
 				ADF4F5981D77CD2000B3C8DF /* StudentListViewModel.swift in Sources */,
 				ADF74DFC1D3F08BD001C8DEC /* PaperViewModel.swift in Sources */,
 				AD2F3C421D791C7E00083261 /* SignUpSheetCell.swift in Sources */,
+				ADDC5E781D8E37B200CD6221 /* HistoryQuizListViewController.swift in Sources */,
 				ADAD353C1D702BFF0082CC3C /* ResultCell.swift in Sources */,
 				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
 				ADF74DFD1D3F08BD001C8DEC /* QuestionListViewModel.swift in Sources */,
+				ADDC5E7A1D8E38F400CD6221 /* HistoryQuizCell.swift in Sources */,
+				AD12A6021D894E8700308B6F /* Quiz.swift in Sources */,
 				ADF74E071D3F08E2001C8DEC /* IssuingPaperViewController.swift in Sources */,
 				AD0C75641D6FD31000D220F0 /* TopicCell.swift in Sources */,
 				AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */,
 				AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */,
+				AD12A5FF1D8948C400308B6F /* QuizCell.swift in Sources */,
 				ADF3BB7C1CAE624E00638D3B /* CALayer+extension.swift in Sources */,
 				AD1DF6531CC471A8001B67E1 /* String+extension.swift in Sources */,
 				ADAD353A1D70238C0082CC3C /* ResultContainerViewController.swift in Sources */,
 				AD8C9D881D52CD78003722F8 /* Question.swift in Sources */,
+				AD9F88BF1D83F2EC008E3A3B /* PaperListCell.swift in Sources */,
 				0797AE551D6201F100D51B41 /* PaperViewController.swift in Sources */,
+				AD9F88C11D83F865008E3A3B /* ResourceCell.swift in Sources */,
 				ADB1DBDE1D40B5C200C05A93 /* QuestionCell.swift in Sources */,
 				ADF4F5A01D78112500B3C8DF /* Array+extension.swift in Sources */,
 				0700D1BA1CE4B5B000EB9A81 /* ResourceListViewModel.swift in Sources */,
@@ -825,6 +951,7 @@
 				AD8C9D861D52CD58003722F8 /* Paper.swift in Sources */,
 				0792C5F11CD954E7006DF60D /* SignUpSheetViewController.swift in Sources */,
 				0700D1B71CE4AD3100EB9A81 /* ResourceListViewController.swift in Sources */,
+				AD12A5FD1D89447400308B6F /* QuizListViewController.swift in Sources */,
 				0797AE4B1D61F18800D51B41 /* TopicView.swift in Sources */,
 				07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */,
 				072EA4B31D65C6FC0001EFFB /* ChoiceGroup.swift in Sources */,
@@ -853,6 +980,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD920B431DBB0AC500F4D0DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = AD920B421DBB0AC500F4D0DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AD86A8CD1C82DBCC009CEE87 /* Main.storyboard */ = {
@@ -887,8 +1022,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -910,7 +1047,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -932,8 +1069,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -949,9 +1088,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -961,17 +1101,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9701591E8D25DBA22E5A0EF4 /* Pods-SmartClass.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SmartClass/Frameworks",
 				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1006,10 +1148,11 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "智慧课堂";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/SmartClass-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1018,17 +1161,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 49F7789D6E630B7A0BD5F91D /* Pods-SmartClass.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SmartClass/Frameworks",
 				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1063,9 +1208,10 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "智慧课堂";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/SmartClass-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

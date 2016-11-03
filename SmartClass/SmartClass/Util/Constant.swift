@@ -7,7 +7,7 @@
 //
 
 let IDIOM = UI_USER_INTERFACE_IDIOM()
-let IPAD = UIUserInterfaceIdiom.Pad
+let IPAD = UIUserInterfaceIdiom.pad
 
-let ScreenWidth = UIScreen.mainScreen().bounds.size.width
-let ScreenHeight = UIScreen.mainScreen().bounds.size.height
+let ScreenWidth = UIScreen.main.bounds.size.width
+let ScreenHeight = UIScreen.main.bounds.size.height

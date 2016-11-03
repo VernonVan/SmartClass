@@ -17,8 +17,8 @@ class ResourceListViewController: UIViewController
     
     var viewModel: ResourceListViewModel?
 
-    private let reuseIdentifier = "resourceCell"
-    private var selectedIndexPath = NSIndexPath()
+    fileprivate let reuseIdentifier = "resourceCell"
+    fileprivate var selectedIndexPath = IndexPath()
     
     // MARK: - Lifecycle
     
@@ -35,49 +35,56 @@ class ResourceListViewController: UIViewController
         tableView.delegate = self
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
         
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = ThemeBlueColor
-        refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRowAtIndexPath(indexPath, animated: animated)
+            tableView.deselectRow(at: indexPath, animated: animated)
         }
     }
     
-    override func setEditing(editing: Bool, animated: Bool)
+    override func setEditing(_ editing: Bool, animated: Bool)
     {
         super.setEditing(editing, animated: animated)
         tableView.setEditing(editing, animated: true)
     }
     
-    func refresh(refreshControl: UIRefreshControl)
+    func refresh(_ refreshControl: UIRefreshControl)
     {
-        viewModel?.reloadData()
-        tableView.reloadData()
-        refreshControl.endRefreshing()
+        DispatchQueue.global(qos: .default).async {
+            self.viewModel?.reloadData()
+            
+            DispatchQueue.main.async(execute: {
+                self.tableView.reloadData()
+                refreshControl.endRefreshing()
+            })
+        }      
     }
     
-    @IBAction func changeDataSourceAction(segmentedControl: UISegmentedControl)
+    @IBAction func changeDataSourceAction(_ segmentedControl: UISegmentedControl)
     {
         tableView.reloadData()
     }
 
     // MARK: - Segue
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        super.prepareForSegue(segue, sender: sender)
+        super.prepare(for: segue, sender: sender)
         
         let indexPath = tableView.indexPathForSelectedRow
         if segue.identifier == "displayPPT" {
-            if let desVC = segue.destinationViewController as? PPTViewController {
+            if let desVC = segue.destination as? PPTViewController {
                 desVC.pptURL = viewModel?.pptURLAtIndexPath(indexPath!)
             }
         }
@@ -88,7 +95,7 @@ class ResourceListViewController: UIViewController
 
 extension ResourceListViewController: UITableViewDelegate, UITableViewDataSource
 {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         var number = 0
         
@@ -98,14 +105,12 @@ extension ResourceListViewController: UITableViewDelegate, UITableViewDataSource
             number = viewModel!.numberOfResource()
         }
         
-        tableView.separatorStyle = (number == 0 ? .None : .SingleLine)
-        
         return number
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ResourceCell
         if segmentedControl.selectedSegmentIndex == 0 {
             let ppt = viewModel?.pptAtIndexPath(indexPath)
             cell.configureCellForPPT(ppt)
@@ -116,35 +121,40 @@ extension ResourceListViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         if segmentedControl.selectedSegmentIndex == 0 {
-            performSegueWithIdentifier("displayPPT", sender: nil)
+            performSegue(withIdentifier: "displayPPT", sender: nil)
         } else if segmentedControl.selectedSegmentIndex == 1 {
             let previewController = QLPreviewController()
             selectedIndexPath = indexPath
             previewController.dataSource = self
-            presentViewController(previewController, animated: true, completion: nil)
+            present(previewController, animated: true, completion: nil)
         }
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             if segmentedControl.selectedSegmentIndex == 0 {
-                viewModel?.deletePPTAtIndexPath(indexPath)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                _ = viewModel?.deletePPTAtIndexPath(indexPath)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             } else if segmentedControl.selectedSegmentIndex == 1 {
-                viewModel?.deleteResourceAtIndexPath(indexPath)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                _ = viewModel?.deleteResourceAtIndexPath(indexPath)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             }
             tableView.reloadEmptyDataSet()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return ResourceCell.cellHeight
     }
 }
 
@@ -152,14 +162,14 @@ extension ResourceListViewController: UITableViewDelegate, UITableViewDataSource
 
 extension ResourceListViewController: QLPreviewControllerDataSource
 {
-    func numberOfPreviewItemsInPreviewController(controller: QLPreviewController) -> Int
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int
     {
         return 1
     }
     
-    func previewController(controller: QLPreviewController, previewItemAtIndex index: Int) -> QLPreviewItem
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem
     {
-        return viewModel!.resourceURLAtIndexPath(selectedIndexPath)
+        return viewModel!.resourceURLAtIndexPath(selectedIndexPath) as QLPreviewItem
     }
 
     
@@ -169,23 +179,23 @@ extension ResourceListViewController: QLPreviewControllerDataSource
 
 extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage!
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
     {
         return UIImage(named: "emptyResource")
     }
 
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
         let text = NSLocalizedString("还未添加资源", comment: "" )
         
-        let attributes = [NSFontAttributeName : UIFont.boldSystemFontOfSize(16.0) ,
-                          NSForegroundColorAttributeName : UIColor.darkGrayColor()]
+        let attributes = [NSFontAttributeName : UIFont.boldSystemFont(ofSize: 16.0) ,
+                          NSForegroundColorAttributeName : UIColor.darkGray]
         return NSAttributedString(string: text , attributes: attributes)
     }
     
-    func descriptionForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString!
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let webUploadURL = appDelegate.webUploaderURL
         var text = ""
         if webUploadURL == "nil" {
@@ -193,12 +203,12 @@ extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDele
         } else{
             text = "访问\(appDelegate.webUploaderURL + "admin/")上传资源"
         }
-        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(14.0),
-                          NSForegroundColorAttributeName: UIColor.lightGrayColor()]
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14.0),
+                          NSForegroundColorAttributeName: UIColor.lightGray]
         return NSAttributedString(string: text, attributes: attributes)
     }
     
-    func emptyDataSetShouldAllowScroll(scrollView: UIScrollView!) -> Bool
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool
     {
         return true
     }

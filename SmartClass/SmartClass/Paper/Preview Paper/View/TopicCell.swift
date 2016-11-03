@@ -19,15 +19,15 @@ class TopicCell: UITableViewCell
 
 extension TopicCell
 {
-    func configureForQuestion(question: Question)
+    func configureForQuestion(_ question: Question)
     {
         switch QuestionType(typeNum: question.type)
         {
-        case .Some(.SingleChoice):
+        case .some(.singleChoice):
             typeLabel.text = NSLocalizedString("单选题", comment: "")
-        case .Some(.MultipleChoice):
+        case .some(.multipleChoice):
             typeLabel.text = NSLocalizedString("多选题", comment: "")
-        case .Some(.TrueOrFalse):
+        case .some(.trueOrFalse):
             typeLabel.text = NSLocalizedString("判断题", comment: "")
         default:
             typeLabel.text = nil

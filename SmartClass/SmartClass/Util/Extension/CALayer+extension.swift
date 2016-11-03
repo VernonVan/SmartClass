@@ -10,17 +10,17 @@ extension CALayer
 {
     var borderUIColor: UIColor {
         set {
-            self.borderColor = newValue.CGColor
+            self.borderColor = newValue.cgColor
         } get {
-            return UIColor(CGColor: self.borderColor!)
+            return UIColor(cgColor: self.borderColor!)
         }
     }
     
     var shadowUIColor: UIColor {
         set {
-            self.shadowColor = newValue.CGColor
+            self.shadowColor = newValue.cgColor
         } get {
-            return UIColor(CGColor: self.shadowColor!)
+            return UIColor(cgColor: self.shadowColor!)
         }
     }
 }

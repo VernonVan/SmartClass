@@ -21,7 +21,7 @@ class QuestionCell: UITableViewCell
 
 extension QuestionCell
 {
-    func configurForQuestion(question: Question?)
+    func configurForQuestion(_ question: Question?)
     {
         guard let question = question else {
             return
@@ -29,18 +29,18 @@ extension QuestionCell
         
         switch QuestionType(typeNum: question.type)!
         {
-        case .SingleChoice:
+        case .singleChoice:
             typeLabel.text = NSLocalizedString("单选", comment: "")
-        case .MultipleChoice:
+        case .multipleChoice:
             typeLabel.text = NSLocalizedString("多选", comment: "")
-        case .TrueOrFalse:
+        case .trueOrFalse:
             typeLabel.text = NSLocalizedString("判断", comment: "")
         }
         
 //        topicLabel.text = question.topic
         let isEmptyTopic = (question.topic ?? "").isEmpty
         let text = (isEmptyTopic ? NSLocalizedString("尚未填写题目描述", comment: "") : question.topic!)
-        let attributes = [NSForegroundColorAttributeName: (isEmptyTopic ? UIColor.lightGrayColor() : UIColor.darkTextColor())]
+        let attributes = [NSForegroundColorAttributeName: (isEmptyTopic ? UIColor.lightGray : UIColor.darkText)]
         let attributedText = NSAttributedString(string: text, attributes: attributes)
         topicLabel.attributedText = attributedText
         

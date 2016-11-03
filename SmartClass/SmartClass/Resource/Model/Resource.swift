@@ -6,20 +6,23 @@
 //  Copyright © 2016年 Vernon. All rights reserved.
 //
 
+enum FileType
+{
+    case word, excel, pdf, other
+}
+
 struct Resource
 {
     /// 资源名
     var name: String?
     
     /// 创建日期
-    var createDate: NSDate?
+    var createDate: Date?
+    
+    /// 内存大小
+    var size: String?
+    
+    /// 文件类型
+    var type: FileType
 }
 
-extension UITableViewCell
-{
-    func configureCellForResource(resource: Resource?)
-    {
-        textLabel?.text = resource?.name
-        detailTextLabel?.text = resource?.createDate?.dateString
-    }
-}

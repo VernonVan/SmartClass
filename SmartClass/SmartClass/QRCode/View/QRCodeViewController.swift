@@ -16,7 +16,7 @@ class QRCodeViewController: UIViewController
     @IBOutlet weak var qrCodeImageView: UIImageView!
     @IBOutlet weak var urlLabel: UILabel!
     
-    private var qrCodeImage: UIImage?
+    fileprivate var qrCodeImage: UIImage?
     
     override func viewDidLoad()
     {
@@ -25,12 +25,12 @@ class QRCodeViewController: UIViewController
         if url == "nil" {
             let alert = UIAlertController(title: NSLocalizedString("无法生成二维码", comment: ""),
                                           message: NSLocalizedString("请确保Wifi网络可用", comment: ""),
-                                          preferredStyle: .Alert)
-            let doneAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .Default, handler: { (_) in
+                                          preferredStyle: .alert)
+            let doneAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .default, handler: { (_) in
                 self.backAction()
             })
             alert.addAction(doneAction)
-            presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
             return
         }
         
@@ -40,48 +40,48 @@ class QRCodeViewController: UIViewController
     func initUI()
     {
         let text = NSMutableAttributedString(string: "或者访问\(url!)")
-        text.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGrayColor(), range: NSRange(location: 0, length: 4))
+        text.addAttribute(NSForegroundColorAttributeName, value: UIColor.lightGray, range: NSRange(location: 0, length: 4))
         text.addAttribute(NSForegroundColorAttributeName, value: UIColor(netHex: 0x2196F3), range: NSRange(location: 4, length: text.length-4))
         urlLabel.attributedText = text
         
         qrCodeImageView.image = convertStringToQRCodeImage(url)
     }
     
-    func convertStringToQRCodeImage(string: String?) -> UIImage
+    func convertStringToQRCodeImage(_ string: String?) -> UIImage
     {
-        let data = string?.dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
+        let data = string?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")          // 需要编码的信息
         filter?.setValue("Q", forKey: "inputCorrectionLevel")   // 二维码对象的修正格式
         let ciImage = filter?.outputImage
-        let image = UIImage(CIImage: ciImage!)
+        let image = UIImage(ciImage: ciImage!)
         
         // 无损的整点缩放，获得放大15倍的清晰二维码图像
         UIGraphicsBeginImageContext(CGSize(width: image.size.width * 15, height: image.size.height * 15))
         let resizeContext = UIGraphicsGetCurrentContext()
-        CGContextSetInterpolationQuality(resizeContext, .None)
-        image.drawInRect(CGRect(x: 0, y: 0, width: image.size.width * 15, height: image.size.height * 15))
+        resizeContext!.interpolationQuality = .none
+        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width * 15, height: image.size.height * 15))
         let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return resizeImage
+        return resizeImage!
     }
     
     // MARK: - Action
     
-    @IBAction func saveAction(sender: UIBarButtonItem)
+    @IBAction func saveAction(_ sender: UIBarButtonItem)
     {
-        let alert = UIAlertController(title: NSLocalizedString("保存图片", comment: ""), message: nil, preferredStyle: .Alert)
+        let alert = UIAlertController(title: NSLocalizedString("保存图片", comment: ""), message: nil, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: ""), style: .Destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("取消", comment: ""), style: .destructive, handler: nil)
         alert.addAction(cancelAction)
         
-        let doneAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .Default) { [weak self] (_) in
+        let doneAction = UIAlertAction(title: NSLocalizedString("确定", comment: ""), style: .default) { [weak self] (_) in
             self?.saveImageAction()
         }
         alert.addAction(doneAction)  
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     func saveImageAction()
@@ -89,7 +89,7 @@ class QRCodeViewController: UIViewController
         UIImageWriteToSavedPhotosAlbum(qrCodeImageView.image!, self, #selector(QRCodeViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
-    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>)
+    func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer)
     {
         guard error == nil else {
             view.makeToast(NSLocalizedString("保存失败！", comment: ""), duration: 0.2, position: CSToastPositionBottom)
@@ -101,7 +101,7 @@ class QRCodeViewController: UIViewController
     
     func backAction()
     {
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
 }

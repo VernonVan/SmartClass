@@ -11,13 +11,13 @@ import RealmSwift
 
 class StudentListViewModel: NSObject
 {
-    private var students: Results<Student>
+    fileprivate var students: Results<Student>
     
-    private let realm = try! Realm()
+    fileprivate let realm = try! Realm()
     
     override init()
     {
-        students = realm.objects(Student).sorted("number")
+        students = realm.objects(Student.self).sorted(byProperty: "number")
         
         super.init()
     }
@@ -29,54 +29,54 @@ class StudentListViewModel: NSObject
         return students.count
     }
     
-    func nameAtIndexPath(indexPath: NSIndexPath) -> String
+    func nameAtIndexPath(_ indexPath: IndexPath) -> String
     {
-        return students[indexPath.row].name
+        return students[(indexPath as NSIndexPath).row].name
     }
     
-    func numberAtIndexPath(indexPath: NSIndexPath) -> String
+    func numberAtIndexPath(_ indexPath: IndexPath) -> String
     {
-        return students[indexPath.row].number
+        return students[(indexPath as NSIndexPath).row].number
     }
     
-    func majorAtIndexPath(indexPath: NSIndexPath) -> String
+    func majorAtIndexPath(_ indexPath: IndexPath) -> String
     {
-        return students[indexPath.row].major!
+        return students[(indexPath as NSIndexPath).row].major!
     }
     
-    func schoolAtIndexPath(indexPath: NSIndexPath) -> String
+    func schoolAtIndexPath(_ indexPath: IndexPath) -> String
     {
-        return students[indexPath.row].school!
+        return students[(indexPath as NSIndexPath).row].school!
     }
     
-    func studentAtIndexPath(indexPath: NSIndexPath) -> Student
+    func studentAtIndexPath(_ indexPath: IndexPath) -> Student
     {
-        return students[indexPath.row]
+        return students[(indexPath as NSIndexPath).row]
     }
     
-    func modifyStudentAtIndexPath(indexPath: NSIndexPath, newStudent student: Student)
+    func modifyStudentAtIndexPath(_ indexPath: IndexPath, newStudent student: Student)
     {
         try! realm.write({
-            let oldStudent = students[indexPath.row]
+            let oldStudent = students[(indexPath as NSIndexPath).row]
             realm.delete(oldStudent)
             realm.add(student)
         })
-        students = realm.objects(Student).sorted("number")
+        students = realm.objects(Student.self).sorted(byProperty: "number")
     }
     
-    func addStudent(student: Student)
+    func addStudent(_ student: Student)
     {
         try! realm.write({
             realm.add(student)
         })
-        students = realm.objects(Student).sorted("number")
+        students = realm.objects(Student.self).sorted(byProperty: "number")
     }
     
-    func deleteStudentAtIndexPath(indexPath: NSIndexPath)
+    func deleteStudentAtIndexPath(_ indexPath: IndexPath)
     {
         try! realm.write({
-            realm.delete(students[indexPath.row])
+            realm.delete(students[(indexPath as NSIndexPath).row])
         })
-        students = realm.objects(Student).sorted("number")
+        students = realm.objects(Student.self).sorted(byProperty: "number")
     }
 }

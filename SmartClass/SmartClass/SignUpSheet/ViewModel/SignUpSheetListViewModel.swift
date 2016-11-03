@@ -10,7 +10,7 @@ import UIKit
 
 class SignUpSheetListViewModel: NSObject
 {
-    let fileManager = NSFileManager.defaultManager()
+    let fileManager = FileManager.default
     var signUpSheetNames = [String]()
     
     override init()
@@ -24,7 +24,7 @@ class SignUpSheetListViewModel: NSObject
     {
         let signUpSheetUrl = ConvenientFileManager.signUpSheetURL
         do {
-            try signUpSheetNames = fileManager.contentsOfDirectoryAtPath(signUpSheetUrl.path!)
+            try signUpSheetNames = fileManager.contentsOfDirectory(atPath: signUpSheetUrl.path)
             
         } catch let error as NSError {
             print("SignUpSheetListViewModel reloadData error: \(error.localizedDescription)")
@@ -36,17 +36,17 @@ class SignUpSheetListViewModel: NSObject
         return signUpSheetNames.count
     }
     
-    func titleForSignUpSheetAtIndexPath(indexPath: NSIndexPath) -> String
+    func titleForSignUpSheetAtIndexPath(_ indexPath: IndexPath) -> String
     {
-        let title = signUpSheetNames[indexPath.row]
+        let title = signUpSheetNames[(indexPath as NSIndexPath).row]
         return title
     }
     
-    func deleteSignUpSheetAtIndexPath(indexPath: NSIndexPath)
+    func deleteSignUpSheetAtIndexPath(_ indexPath: IndexPath)
     {
-        let signUpSheetUrl = ConvenientFileManager.signUpSheetURL.URLByAppendingPathComponent(signUpSheetNames[indexPath.row])
+        let signUpSheetUrl = ConvenientFileManager.signUpSheetURL.appendingPathComponent(signUpSheetNames[(indexPath as NSIndexPath).row])
         do {
-            try fileManager.removeItemAtURL(signUpSheetUrl)
+            try fileManager.removeItem(at: signUpSheetUrl)
         } catch let error as NSError {
             print("SignUpSheetListViewModel deleteSignUpSheetAtIndexPath error: \(error.localizedDescription)")
         }

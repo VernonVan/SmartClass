@@ -15,6 +15,6 @@ class StudentCell: UITableViewCell
 
     @IBOutlet weak var majorLabel: UILabel!
     
-    static let cellHeight: CGFloat = 60.0
+    static let cellHeight: CGFloat = 70.0
 
 }

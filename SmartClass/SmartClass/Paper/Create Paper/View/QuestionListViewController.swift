@@ -14,7 +14,7 @@ class QuestionListViewController: UITableViewController
     var viewModel: QuestionListViewModel?
     var intentResultDelegate: IntentResultDelegate?
 
-    private var isChanged = false {
+    fileprivate var isChanged = false {
         didSet {
             if isChanged {
                 navigationItem.leftBarButtonItem = doneBarButton
@@ -22,10 +22,10 @@ class QuestionListViewController: UITableViewController
         }
     }
     
-    private let reuseIdentifier = "QuestionCell"
+    fileprivate let reuseIdentifier = "QuestionCell"
     
-    private lazy var doneBarButton: UIBarButtonItem = {
-        let doneBarButton = UIBarButtonItem(title: NSLocalizedString("确定", comment: ""), style: .Plain, target: self, action: #selector(doneAction))
+    fileprivate lazy var doneBarButton: UIBarButtonItem = {
+        let doneBarButton = UIBarButtonItem(title: NSLocalizedString("确定", comment: ""), style: .plain, target: self, action: #selector(doneAction))
         doneBarButton.tintColor = ThemeBlueColor
         return doneBarButton
     }()
@@ -34,75 +34,85 @@ class QuestionListViewController: UITableViewController
     {
         super.viewDidLoad()
 
+        tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 60
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        navigationItem.rightBarButtonItem = editButtonItem()
-    }
 
-    override func willMoveToParentViewController(parent: UIViewController?)
-    {
-        super.willMoveToParentViewController(parent)
-        if parent == nil {
-            if isChanged == true {
-                intentResultDelegate?.selectQuestionAtIndex(0)
-            }
-        }
     }
 
     func doneAction()
     {
         intentResultDelegate?.selectQuestionAtIndex(0)
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func backAction(_ sender: UIBarButtonItem)
+    {
+        if isChanged == true {
+            intentResultDelegate?.selectQuestionAtIndex(0)
+        }
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func editAction(_ sender: UIBarButtonItem)
+    {
+        tableView.setEditing(!tableView.isEditing, animated: true)
+    }
+    
     
     // MARK: - Table view
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return viewModel!.numberOfQuestions()
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! QuestionCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! QuestionCell
 
-        let question = viewModel?.questionAtIndexPath(indexPath.row)
+        let question = viewModel?.questionAtIndexPath((indexPath as NSIndexPath).row)
         cell.configurForQuestion(question)
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
-        if tableView.numberOfRowsInSection(0) == 1 {
+        if tableView.numberOfRows(inSection: 0) == 1 {
             return false
         }
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        if tableView.numberOfRowsInSection(0) == 1 {
+        if tableView.numberOfRows(inSection: 0) == 1 {
             setEditing(false, animated: true)
         }
         
-        if editingStyle == .Delete {
+        if editingStyle == .delete {
             isChanged = true
-            viewModel?.deleteItemAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            viewModel?.deleteItemAtIndex((indexPath as NSIndexPath).row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        intentResultDelegate?.selectQuestionAtIndex(indexPath.row)
-        navigationController?.popViewControllerAnimated(true)
+        intentResultDelegate?.selectQuestionAtIndex((indexPath as NSIndexPath).row)
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return 54.0
     }
 
 }
 
 protocol IntentResultDelegate
 {
-    func selectQuestionAtIndex(index: Int)
+    func selectQuestionAtIndex(_ index: Int)
 }

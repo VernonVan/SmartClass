@@ -13,7 +13,7 @@ class StudentInformationViewController: UIViewController
 {
     var student: Student?
 
-    var indexPath: NSIndexPath?
+    var indexPath: IndexPath?
     
     var delegate: StudentInformationDelegate?
 
@@ -23,7 +23,7 @@ class StudentInformationViewController: UIViewController
     @IBOutlet weak var schoolTextField: UITextField!
     @IBOutlet weak var doneButton: UIButton!
     
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     
     override func viewDidLoad()
     {
@@ -41,12 +41,12 @@ class StudentInformationViewController: UIViewController
             schoolTextField.text = student.school
         }
         
-        Observable.combineLatest(numberTextField.rx_text.asObservable(), nameTextField.rx_text.asObservable(), majorTextField.rx_text.asObservable(), schoolTextField.rx_text.asObservable()) { (number, name, major, school) -> Bool in
-                let temp = number.length > 0 && name.length > 0
-                return temp && major.length > 0 && school.length > 0
+        Observable.combineLatest(numberTextField.rx.textInput.text.asObservable(), nameTextField.rx.textInput.text.asObservable(), majorTextField.rx.textInput.text.asObservable(), schoolTextField.rx.textInput.text.asObservable()) { (number, name, major, school) -> Bool in
+                let temp = (number?.length)! > 0 && (name?.length)! > 0
+                return temp && major!.length > 0 && school!.length > 0
             }
-            .subscribeNext({ (enabled) in
-                self.doneButton.enabled = enabled
+            .subscribe(onNext: { (enabled) in
+                self.doneButton.isEnabled = enabled
                 self.doneButton.alpha = (enabled ? 1 : 0.5)
             })
             .addDisposableTo(disposeBag)
@@ -61,6 +61,6 @@ class StudentInformationViewController: UIViewController
         } else {
             delegate?.addStudent(student)
         }
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
 }
