@@ -1,0 +1,466 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.header {
+    position: absolute;
+    width: 99%;
+    height: 8%;
+    padding: 0.5% 1% 0.5% 1%;
+    background-color: white;
+    top: 0;
+}
+
+.imgIcon {
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    display: block;
+    text-align: center;
+}
+
+.imgIcon > img {
+    border-radius: 50%;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.tab {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    left: 35%;
+    display: block;
+    text-align: center;
+}
+
+.title {
+    position: relative;
+    font-size: 4.5vw;
+    color: rgb(0,187,254);
+    width: 40%;
+    height: auto;
+    top: 40%;
+    display: inline-block;
+}
+
+.icon {
+    position: absolute;
+    width: 25%;
+    height: 50%;
+    top: 30%;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.icon > img {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.number {
+    position: absolute;
+    font-size: 4.5vw;
+    right: 2%;
+    top: 40%;
+    width: 30%;
+    text-align: right;
+    color: rgb(35,227,162);
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    background-color: rgb(245,245,245);
+    top: 10%;
+}
+
+.page {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+    border: 1px solid rgb(221,221,221);
+    background-color: white;
+}
+
+.inner {
+    position: absolute;
+    width: 95%;
+    height: 90%;
+    top: 5%;
+    left: 2.5%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.question {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.questionType {
+    position: absolute;
+    width: 15%;
+    height: auto;
+    top: 0;
+    left: 0;
+    font-size: 4.5vw;
+    color: rgb(80,203,252);
+    text-align: left;
+}
+
+.questionText {
+    position: relative;
+    width: 85%;
+    height: auto;
+    top: 0;
+    left: 15%;
+    display: inline-block;
+    color: rgb(63,63,63);
+    font-size: 4.5vw;
+    font-family: Times New Roman;
+    text-align: left;
+}
+
+.selections {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 2.5% 0 0 0;
+    list-style: none;
+}
+
+.selection {
+    width: 100%;
+    height: auto;
+    margin-top: 4%;
+    position: relative;
+    min-height: 22px;
+}
+
+.selectIcon {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 30px;
+    border: 1px solid rgb(221,221,221);
+    left: 0;
+    cursor: pointer;
+}
+
+.left {
+    position: absolute;
+    height: 100%;
+    width: 10%;
+    background-color: white;
+    min-height: 22px;
+}
+
+.text {
+    position: relative;
+    width: 90%;
+    height: auto;
+    left: 10%;
+    text-align: left;
+    display: block;
+    color: rgb(63,63,63);
+    font-size: 4.5vw;
+    font-family: Times New Roman;
+}
+
+.judgeText {
+    position: relative;
+    width: 90%;
+    height: auto;
+    left: 10%;
+    text-align: left;
+    display: block;
+    color: rgb(63,63,63);
+    font-size: 4.5vw;
+}
+
+.progress {
+    display: none;
+    position: absolute;
+    width: 25%;
+    height: 80%;
+    left: 65%;
+    top: 10%;
+}
+
+#indicatorContainer {
+    position: absolute;
+    left: 15%;
+    top: 28%;
+}
+
+.options {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    left: 20%;
+    top: 0;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 8px;
+    display: none;
+}
+
+.topButton {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+}
+
+.topButton > img {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+
+.option {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+}
+
+.optionList {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+    left: 5%;
+    list-style: none;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.optionLi {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 80px;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 5%;
+    color: white;
+    font-size: 4.5vw;
+    cursor: pointer;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    bottom: 0;
+    border-top: 1px solid rgb(151,151,151);
+}
+
+.toLast {
+    position: absolute;
+    height: 60%;
+    width: 20%;
+    top: 30%;
+    left: 0;
+    text-align: center;
+    color: rgb(80,203,252);
+    font-size: 3.5vw;
+    cursor: pointer;
+}
+
+.toNext {
+    position: absolute;
+    height: 60%;
+    width: 20%;
+    top: 30%;
+    right: 0;
+    text-align: center;
+    color: rgb(80,203,252);
+    font-size: 3.5vw;
+    cursor: pointer;
+}
+
+.submit {
+    position: absolute;
+    height: 60%;
+    width: 60%;
+    left: 20%;
+    top: 30%;
+}
+
+.submit > .submitImg {
+    position: absolute;
+    width: 50%;
+    height: auto;
+    display: inline-block;
+    padding: auto 0 auto auto;
+}
+
+.submit > .submitImg > img {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    left: 70%;
+}
+
+.submit > .submitTitle {
+    display: inline-block;
+    background-color: white;
+    position: absolute;
+    width: auto;
+    height: 50%;
+    left: 50%;
+    font-size: 4.5vw;
+    color: rgb(239,68,55);
+    cursor: pointer;
+}
+
+.outer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+}
+
+.alert {
+    position: absolute;
+    width: 70%;
+    height: 25%;
+    min-width: 200px;
+    min-height: 200px;
+    background-color: rgb(238,238,238);
+    left: 15%;
+    top: 25%;
+    border-radius: 10px;
+}
+
+.alert-head {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+}
+
+.alert-head > img {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    bottom: 18%;
+    left: 44%;
+}
+
+.alert-head > button {
+    position: absolute;
+    width: 10%;
+    height: 50%;
+    border: 0;
+    right: 2%;
+    top: 10%;
+    font-size: 1.8vw;
+    background-color: rgb(238,238,238);
+    color: rgb(106,106,106);
+    outline: none;
+    cursor: pointer;
+}
+
+.alert-container {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 20%;
+}
+
+.container-title {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    display: block;
+    top: 0;
+    left: 0;
+}
+
+.container-title > p {
+    position: relative;
+    width: auto;
+    height: auto;
+    top: 20%;
+    font-size: 3.0vw;
+    text-align: center;
+}
+
+.container-buttons {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 20%;
+    left: 0;
+    display: block;
+}
+
+.container-buttons > button {
+    position: relative;
+    width: 25%;
+    height: 25%;
+    border: 1px solid rgb(238,238,238);
+    border-radius: 4px;
+    color: white;
+    margin-left: 10%;
+    left: 10%;
+    top: 30%;
+    min-height: 40px;
+    font-size: 3.0vw;
+}
+
+.selected {
+    background-color: rgb(52,229,163);
+}
+
+.unSelected {
+    background-color: white;
+}
+
+.unSelectedColor {
+    color: rgb(63,63,63);
+}
+
+.selectedColor {
+    color: rgb(52,229,163);
+}

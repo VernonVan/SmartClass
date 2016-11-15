@@ -18,14 +18,14 @@ class HomePageViewController: UIViewController
     @IBOutlet weak var quizCardView: CardView!
     @IBOutlet weak var signUpSheetCardView: CardView!
 
-    fileprivate let realm = try! Realm()
+    let realm = try! Realm()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool)
+    override func viewWillAppear(animated: Bool)
     {
         super.viewWillAppear(animated)
         
@@ -98,6 +98,5 @@ class HomePageViewController: UIViewController
         }
         navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
-    
 
 }

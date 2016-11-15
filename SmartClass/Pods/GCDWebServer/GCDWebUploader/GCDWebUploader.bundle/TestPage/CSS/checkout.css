@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+}
+
+.header > span {
+    position: absolute;
+    width: 50%;
+    height: 95%;
+    left: 25%;
+    bottom: 0;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.header > span > img {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    left: 41%;
+    min-width: 50px;
+    max-width: 90px;
+    bottom: 20%;
+}
+
+.header > span > p {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    font-size: 2.2vw;
+    bottom: 0;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 68%;
+    top: 32%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.checkB {
+    position: absolute;
+    left: 37.5%;
+    top: 20%;
+    width: 21%;
+    height: auto;
+    border-radius: 8px;
+    padding: 2% 2% 2% 2%;
+    font-size: 2.2vw;
+    background-color: rgb(235,79,56);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.checkList {
+    position: absolute;
+    width: 78%;
+    height: 97%;
+    padding: 1% 10% 0 10%;
+    left: 1%;
+    border-top: 1px solid rgb(236,236,236);
+    background-color: white;
+    list-style: none;
+}
+
+.checkLi {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.contextTop {
+    position: relative;
+    display: block;
+    width: 98%;
+    height: auto;
+    padding: 1% 1% 0 1%;
+}
+
+.contextTop > .title {
+    position: relative;
+    height: auto;
+    width: 85%;
+    display: inline-block;
+    font-size: 2.2vw;
+    word-break: break-all;
+}
+
+.contextTop > .title > .titleIndex {
+    position: relative;
+    width: 10%;
+}
+
+.contextTop > .title > .titleType {
+    position: relative;
+    width: 10%;
+}
+
+.contextTop > .title > .titleTitle {
+    position: relative;
+    width: 80%;
+}
+
+.contextTop > .checkTag {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    max-width: 10%;
+    right: 1%;
+    display: inline-block;
+}
+
+.contextTop > .checkTag > img {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+
+.contextBottom {
+    position: relative;
+    width: 98%;
+    height: auto;
+    padding: 2% 1% 0 1%;
+}
+
+.contextBottom > .selectAnswer {
+    position: relative;
+    display: block;
+    width: 99%;
+    height: auto;
+    padding: 0 0 0 1%;
+}
+
+.selectAnswer > .tag {
+    position: absolute;
+    width: 15%;
+    height: auto;
+    font-size: 2.2vw;
+}
+
+.correctAnswer > .tag {
+    position: absolute;
+    width: 15%;
+    height: auto;
+    font-size: 2.2vw;
+    margin-top: 1%;
+}
+
+.selectAnswer > .selectOptions , .correctAnswer > .correctOptions {
+    position: relative;
+    width: 85%;
+    height: auto;
+    left: 15%;
+    list-style: none;
+}
+
+.selectAnswer > .selectOptions > .selectOption , .correctAnswer > .correctOptions > .correctOption {
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-size: 2.2vw;
+    margin-top: 1%;
+    word-break: break-all;
+}
+
+.contextBottom > .correctAnswer {
+    position: relative;
+    display: block;
+    width: 99%;
+    height: auto;
+    padding: 2% 0 0 1%;
+}
+
+.blue {
+    color: rgb(52,229,163);
+}
+
+.red {
+    color: rgb(235,79,56);
+}

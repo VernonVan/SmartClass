@@ -22,7 +22,10 @@
 		07C2BD4A1CE1FF4A003E6454 /* SignUpSheetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */; };
 		07C2BD4C1CE202DF003E6454 /* SignUpSheetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */; };
 		07DEA8071CEC799B00C7504E /* NewSignUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */; };
-		261BAB7FCB1D014C99987C7F /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 337D1242388DBB22ECD9F1E7 /* Pods_SmartClass.framework */; };
+		12FE84AC1DD175B8003F7F9B /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FE84AB1DD175B8003F7F9B /* Pods_SmartClass.framework */; };
+		12FE84AE1DD176CB003F7F9B /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FE84AD1DD176CB003F7F9B /* RxSwift.framework */; };
+		12FE84AF1DD176DA003F7F9B /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FE84AB1DD175B8003F7F9B /* Pods_SmartClass.framework */; };
+		12FE84B01DD176DA003F7F9B /* Pods_SmartClass.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12FE84AB1DD175B8003F7F9B /* Pods_SmartClass.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD0A64A91D49FCA900707C5E /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A64A71D49FCA900707C5E /* QRCodeViewController.swift */; };
 		AD0A64AC1D4A0C3E00707C5E /* PPT.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A64AB1D4A0C3E00707C5E /* PPT.swift */; };
 		AD0A64B11D4A0E7100707C5E /* CanvasPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0A64AD1D4A0E7100707C5E /* CanvasPopoverViewController.swift */; };
@@ -45,7 +48,9 @@
 		AD2F3C421D791C7E00083261 /* SignUpSheetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2F3C411D791C7E00083261 /* SignUpSheetCell.swift */; };
 		AD2F3C441D791CA200083261 /* SignUpSheetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2F3C431D791CA200083261 /* SignUpSheetCell.xib */; };
 		AD3838CA1D4AF73E0048D6F3 /* NSDate+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3838C91D4AF73E0048D6F3 /* NSDate+extension.swift */; };
+		AD42D9E71DCC222B00D5CC90 /* PPTDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD42D9E61DCC222B00D5CC90 /* PPTDisplayViewController.swift */; };
 		AD46B0071C868423008CB3F7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD46B0061C868423008CB3F7 /* Color.swift */; };
+		AD481FE41DCC5A8F008ECEA7 /* videocore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD481FE31DCC5A8F008ECEA7 /* videocore.framework */; };
 		AD6308641CB0FFEE000DEC59 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */; };
 		AD6308681CB10028000DEC59 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6308671CB10028000DEC59 /* UIImage+extension.swift */; };
 		AD86A8CA1C82DBCC009CEE87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD86A8C91C82DBCC009CEE87 /* AppDelegate.swift */; };
@@ -70,7 +75,6 @@
 		AD8C9D881D52CD78003722F8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8C9D871D52CD78003722F8 /* Question.swift */; };
 		AD920B2F1DBB07C000F4D0DE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2C1DBB07A900F4D0DE /* RealmSwift.framework */; };
 		AD920B301DBB07C000F4D0DE /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2C1DBB07A900F4D0DE /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AD920B321DBB07DC00F4D0DE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2B1DBB07A900F4D0DE /* Realm.framework */; };
 		AD920B331DBB07DC00F4D0DE /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B2B1DBB07A900F4D0DE /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AD920B401DBB0AC500F4D0DE /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B3B1DBB0A9F00F4D0DE /* Charts.framework */; };
 		AD920B411DBB0AC500F4D0DE /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AD920B3B1DBB0A9F00F4D0DE /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -103,6 +107,7 @@
 		ADF74E0C1D3F0909001C8DEC /* ResultChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF74E081D3F0909001C8DEC /* ResultChartViewController.swift */; };
 		ADF74E0D1D3F0909001C8DEC /* ExamResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF74E091D3F0909001C8DEC /* ExamResultViewController.swift */; };
 		ADFE31C81D5571860016FFD4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFE31C71D5571860016FFD4 /* Result.swift */; };
+		F4BAB2115A3CFC2C09423028 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C2D02326B20E6D7EC6BDE0 /* Pods_SmartClass.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +151,7 @@
 				AD920B411DBB0AC500F4D0DE /* Charts.framework in Embed Frameworks */,
 				AD920B331DBB07DC00F4D0DE /* Realm.framework in Embed Frameworks */,
 				AD920B301DBB07C000F4D0DE /* RealmSwift.framework in Embed Frameworks */,
+				12FE84B01DD176DA003F7F9B /* Pods_SmartClass.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,8 +174,10 @@
 		07C2BD491CE1FF4A003E6454 /* SignUpSheetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewController.swift; path = SignUpSheet/View/SignUpSheetListViewController.swift; sourceTree = "<group>"; };
 		07C2BD4B1CE202DF003E6454 /* SignUpSheetListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetListViewModel.swift; path = SignUpSheet/ViewModel/SignUpSheetListViewModel.swift; sourceTree = "<group>"; };
 		07DEA8061CEC799B00C7504E /* NewSignUpSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSignUpSheetViewController.swift; path = SignUpSheet/View/NewSignUpSheetViewController.swift; sourceTree = "<group>"; };
-		337D1242388DBB22ECD9F1E7 /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FE84AB1DD175B8003F7F9B /* Pods_SmartClass.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_SmartClass.framework; path = "../../../Library/Developer/Xcode/DerivedData/SmartClass-gonhhygxkcxqafaygcowwpwarjna/Build/Products/Debug-iphonesimulator/Pods_SmartClass.framework"; sourceTree = "<group>"; };
+		12FE84AD1DD176CB003F7F9B /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../../Library/Developer/Xcode/DerivedData/SmartClass-gonhhygxkcxqafaygcowwpwarjna/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		49F7789D6E630B7A0BD5F91D /* Pods-SmartClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.release.xcconfig"; sourceTree = "<group>"; };
+		78C2D02326B20E6D7EC6BDE0 /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9701591E8D25DBA22E5A0EF4 /* Pods-SmartClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.debug.xcconfig"; sourceTree = "<group>"; };
 		AD0A64A71D49FCA900707C5E /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		AD0A64AB1D4A0C3E00707C5E /* PPT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPT.swift; sourceTree = "<group>"; };
@@ -193,7 +201,9 @@
 		AD2F3C411D791C7E00083261 /* SignUpSheetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpSheetCell.swift; path = SignUpSheet/View/SignUpSheetCell.swift; sourceTree = "<group>"; };
 		AD2F3C431D791CA200083261 /* SignUpSheetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpSheetCell.xib; path = SignUpSheet/View/SignUpSheetCell.xib; sourceTree = "<group>"; };
 		AD3838C91D4AF73E0048D6F3 /* NSDate+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+extension.swift"; path = "Util/Extension/NSDate+extension.swift"; sourceTree = "<group>"; };
+		AD42D9E61DCC222B00D5CC90 /* PPTDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PPTDisplayViewController.swift; sourceTree = "<group>"; };
 		AD46B0061C868423008CB3F7 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Util/Color.swift; sourceTree = "<group>"; };
+		AD481FE31DCC5A8F008ECEA7 /* videocore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = videocore.framework; path = "/Users/vernon/Library/Developer/Xcode/DerivedData/SmartClass-fsdlqusgekgvrockqwphxslrximo/Build/Products/Debug-iphonesimulator/VideoCore/videocore.framework"; sourceTree = "<absolute>"; };
 		AD6308631CB0FFEE000DEC59 /* UIColor+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+extension.swift"; path = "Util/Extension/UIColor+extension.swift"; sourceTree = "<group>"; };
 		AD6308671CB10028000DEC59 /* UIImage+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+extension.swift"; path = "Util/Extension/UIImage+extension.swift"; sourceTree = "<group>"; };
 		AD86A8C61C82DBCC009CEE87 /* 智慧课堂.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "智慧课堂.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,7 +269,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD920B321DBB07DC00F4D0DE /* Realm.framework in Frameworks */,
+				12FE84AE1DD176CB003F7F9B /* RxSwift.framework in Frameworks */,
+				12FE84AC1DD175B8003F7F9B /* Pods_SmartClass.framework in Frameworks */,
+				AD481FE41DCC5A8F008ECEA7 /* videocore.framework in Frameworks */,
 				AD884BD41C83F357005A37AE /* libicucore.tbd in Frameworks */,
 				AD884BD21C83F340005A37AE /* libsqlite3.tbd in Frameworks */,
 				AD920B2F1DBB07C000F4D0DE /* RealmSwift.framework in Frameworks */,
@@ -267,6 +279,7 @@
 				AD884BD01C83F31A005A37AE /* libz.1.2.5.tbd in Frameworks */,
 				AD884BCE1C83F310005A37AE /* MediaPlayer.framework in Frameworks */,
 				AD884BCC1C83F304005A37AE /* AVFoundation.framework in Frameworks */,
+				12FE84AF1DD176DA003F7F9B /* Pods_SmartClass.framework in Frameworks */,
 				AD884BCA1C83F2FB005A37AE /* SystemConfiguration.framework in Frameworks */,
 				AD884BC81C83F2F1005A37AE /* CoreTelephony.framework in Frameworks */,
 				AD884BC61C83F2E7005A37AE /* CFNetwork.framework in Frameworks */,
@@ -275,7 +288,7 @@
 				AD884BC01C83F2CA005A37AE /* Security.framework in Frameworks */,
 				AD884BBE1C83F2C3005A37AE /* CoreLocation.framework in Frameworks */,
 				AD884BBC1C83F2AF005A37AE /* Foundation.framework in Frameworks */,
-				261BAB7FCB1D014C99987C7F /* Pods_SmartClass.framework in Frameworks */,
+				F4BAB2115A3CFC2C09423028 /* Pods_SmartClass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +314,8 @@
 		5B800375E992113887F3BF95 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12FE84AD1DD176CB003F7F9B /* RxSwift.framework */,
+				12FE84AB1DD175B8003F7F9B /* Pods_SmartClass.framework */,
 				AD920B341DBB0A9F00F4D0DE /* Charts.xcodeproj */,
 				AD884BD31C83F357005A37AE /* libicucore.tbd */,
 				AD884BD11C83F340005A37AE /* libsqlite3.tbd */,
@@ -317,7 +332,7 @@
 				AD884BBF1C83F2CA005A37AE /* Security.framework */,
 				AD884BBD1C83F2C3005A37AE /* CoreLocation.framework */,
 				AD884BBB1C83F2AF005A37AE /* Foundation.framework */,
-				337D1242388DBB22ECD9F1E7 /* Pods_SmartClass.framework */,
+				78C2D02326B20E6D7EC6BDE0 /* Pods_SmartClass.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -652,6 +667,7 @@
 			children = (
 				AD0A64AF1D4A0E7100707C5E /* PPTView.swift */,
 				AD0A64B01D4A0E7100707C5E /* PPTViewController.swift */,
+				AD42D9E61DCC222B00D5CC90 /* PPTDisplayViewController.swift */,
 				AD0A64AE1D4A0E7100707C5E /* CanvasView.swift */,
 				AD0A64AD1D4A0E7100707C5E /* CanvasPopoverViewController.swift */,
 			);
@@ -779,12 +795,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Vernon;
 				TargetAttributes = {
 					AD86A8C51C82DBCC009CEE87 = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = R6964LXMCM;
+						DevelopmentTeam = 2893EMTL7G;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -924,6 +940,7 @@
 				ADDC5E781D8E37B200CD6221 /* HistoryQuizListViewController.swift in Sources */,
 				ADAD353C1D702BFF0082CC3C /* ResultCell.swift in Sources */,
 				077D61EC1CCA4917007C5ED7 /* ConvenientFileManager.swift in Sources */,
+				AD42D9E71DCC222B00D5CC90 /* PPTDisplayViewController.swift in Sources */,
 				ADF74DFD1D3F08BD001C8DEC /* QuestionListViewModel.swift in Sources */,
 				ADDC5E7A1D8E38F400CD6221 /* HistoryQuizCell.swift in Sources */,
 				AD12A6021D894E8700308B6F /* Quiz.swift in Sources */,
@@ -1102,15 +1119,19 @@
 			baseConfigurationReference = 9701591E8D25DBA22E5A0EF4 /* Pods-SmartClass.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2893EMTL7G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/SmartClass/Frameworks",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/VideoCore",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1147,13 +1168,14 @@
 					"\"Toast\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass1;
 				PRODUCT_NAME = "智慧课堂";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/SmartClass-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -1162,15 +1184,19 @@
 			baseConfigurationReference = 49F7789D6E630B7A0BD5F91D /* Pods-SmartClass.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2893EMTL7G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/SmartClass/Frameworks",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/VideoCore",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1207,12 +1233,13 @@
 					"\"Toast\"",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass1;
 				PRODUCT_NAME = "智慧课堂";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/SmartClass-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};

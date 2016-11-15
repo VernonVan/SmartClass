@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta name=”viewport” content=”width='device-width',height='device-height',user-scalable=yes,initial-scale=2.5,maximum-scale=5.0,minimum-scale=1.0”>
+    <title>查看答题情况</title>
+
+    <link rel="stylesheet" href="../../TestPage/CSS/checkout.css" />
+
+    <script type="text/javascript" src="../../AngularJS/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../../AngularJS/angular.min.js"></script>
+    <script type="text/javascript" src="../../AngularJS/angular-touch.js"></script>
+    <script type="text/javascript" src="../JS/checkout.js"></script>
+
+</head>
+<body ng-app="check">
+
+<div class="header">
+    <span>
+        <img src="../RESOURCES/ICON/right.png">
+        <p>提交试卷成功</p>
+    </span>
+</div>
+
+<div class="content" ng-controller="check-controller">
+    <label for="check" class="checkB" ng-show="show">查看答题情况</label>
+    <input id="check" type="button" style="display: none" action="checkDetail()" />
+
+    <ul class="checkList" ng-hide="show">
+        <li class="checkLi" ng-repeat="item in result">
+            <span class="contextTop">
+                <span class="title"><span class="titleIndex">{{item['index']+1}} </span><span class="titleType" style="color: rgb(80,203,252)">{{item['type']}} </span><span class="titleTitle">{{item['title']}}</span></span>
+                <span class="checkTag"><img src="../RESOURCES/ICON/wrong.png" ng-hide="item['tag']"></span>
+                <span class="checkTag"><img src="../RESOURCES/ICON/right.png" ng-show="item['tag']"></span>
+            </span>
+            <span class="contextBottom">
+                <span class="selectAnswer">
+                    <label class="tag">你的选择: </label>
+                    <ul class="selectOptions">
+                        <li class="selectOption" ng-repeat="selectItem in item['select']" ng-class="{true: 'blue',false: 'red'}[item['tag']]">{{selectItem}}</li>
+                    </ul>
+                </span>
+                <span class="correctAnswer" ng-hide="item['tag']">
+                    <label class="tag">正确答案: </label>
+                    <ul class="correctOptions">
+                        <li class="correctOption" ng-repeat="correctItem in item['correct']">{{correctItem}}</li>
+                    </ul>
+                </span>
+            </span>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

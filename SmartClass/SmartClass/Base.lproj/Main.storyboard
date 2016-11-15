@@ -751,7 +751,7 @@
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reusePaperCell" rowHeight="60" id="nSy-3t-huh" customClass="PaperListCell" customModule="智慧课堂" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reusePaperCell" rowHeight="60" id="nSy-3t-huh" customClass="PaperListCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nSy-3t-huh" id="8M7-5O-eVp">
@@ -802,7 +802,7 @@
                     <navigationItem key="navigationItem" id="faJ-Mg-hTk">
                         <barButtonItem key="backBarButtonItem" title="    " id="aDl-Ss-23I"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Gcn-vh-Bkb">
-                            <rect key="frame" x="212" y="7" width="176" height="30"/>
+                            <rect key="frame" x="100" y="7" width="176" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="编辑中"/>
@@ -871,7 +871,7 @@
                     <navigationItem key="navigationItem" id="Low-Wh-Ux4">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="G0J-Ww-Pkv">
-                            <rect key="frame" x="245" y="7" width="110" height="30"/>
+                            <rect key="frame" x="133" y="7" width="110" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="排名"/>
@@ -1126,7 +1126,7 @@
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="X1d-YP-H9R">
-                            <rect key="frame" x="92.5" y="7" width="190" height="30"/>
+                            <rect key="frame" x="205" y="7" width="190" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="单选题"/>
@@ -1134,9 +1134,6 @@
                                 <segment title="判断题"/>
                             </segments>
                             <color key="tintColor" red="0.12549019610000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="changeTypeAction:" destination="vyb-aQ-4YA" eventType="valueChanged" id="vUP-oj-pG1"/>
-                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" title="列表" id="byM-bA-O8a">
                             <color key="tintColor" red="0.12549019610000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1408,7 +1405,74 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAN-fb-5CV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3540" y="-3025"/>
+            <point key="canvasLocation" x="-3453" y="-3287"/>
+        </scene>
+        <!--Display View Controller-->
+        <scene sceneID="mhC-5e-Iba">
+            <objects>
+                <viewController id="mrG-0k-fSE" customClass="PPTDisplayViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EId-cS-Ki4"/>
+                        <viewControllerLayoutGuide type="bottom" id="yXO-TD-CeE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4nj-op-wjM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQb-et-KLo">
+                                <state key="normal" title="previous"/>
+                                <connections>
+                                    <action selector="PreviousButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="gjR-BH-P6B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvF-pp-94d">
+                                <state key="normal" title="开始直播PPT"/>
+                                <connections>
+                                    <action selector="playButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="UZ6-M2-DTM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSf-dy-13F">
+                                <state key="normal" title="back"/>
+                                <connections>
+                                    <action selector="BackButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="gUn-LA-bHY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYX-sW-Wgv">
+                                <state key="normal" title="next"/>
+                                <connections>
+                                    <action selector="NextButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="qGB-ac-8TK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="RYX-sW-Wgv" secondAttribute="trailing" constant="10" id="Fva-7U-Bdp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hQb-et-KLo" secondAttribute="trailing" constant="10" id="Gyu-rh-wqJ"/>
+                            <constraint firstItem="yXO-TD-CeE" firstAttribute="top" secondItem="hQb-et-KLo" secondAttribute="bottom" constant="30" id="bzi-ZG-qQ1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uSf-dy-13F" secondAttribute="trailing" constant="10" id="fsw-tf-FXm"/>
+                            <constraint firstItem="RYX-sW-Wgv" firstAttribute="top" secondItem="uSf-dy-13F" secondAttribute="bottom" constant="30" id="g4T-Ph-7uR"/>
+                            <constraint firstItem="yXO-TD-CeE" firstAttribute="top" secondItem="JvF-pp-94d" secondAttribute="bottom" constant="20" id="vBe-gF-p7t"/>
+                            <constraint firstItem="JvF-pp-94d" firstAttribute="centerX" secondItem="4nj-op-wjM" secondAttribute="centerX" id="xSq-Gf-Qu5"/>
+                            <constraint firstItem="hQb-et-KLo" firstAttribute="top" secondItem="RYX-sW-Wgv" secondAttribute="bottom" constant="30" id="z6g-5O-089"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="PPTwebView" destination="U17-T2-rLM" id="mIJ-le-BHn"/>
+                        <outlet property="backButton" destination="uSf-dy-13F" id="EzI-E4-9R0"/>
+                        <outlet property="beginButton" destination="JvF-pp-94d" id="Lg6-TA-XhT"/>
+                        <outlet property="nextButton" destination="RYX-sW-Wgv" id="6Kf-lO-EsR"/>
+                        <outlet property="previousButton" destination="hQb-et-KLo" id="0RH-aP-abg"/>
+                        <segue destination="lEX-L5-bea" kind="presentation" identifier="backToList" id="Spo-Ar-P5p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UCv-2W-Czm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <webView contentMode="scaleToFill" id="U17-T2-rLM">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="590"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </webView>
+            </objects>
+            <point key="canvasLocation" x="-2572" y="-2708"/>
         </scene>
         <!--历史提问-->
         <scene sceneID="OkJ-u0-Sxv">
@@ -1425,7 +1489,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tUv-Rf-6aY">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryQuizCell" rowHeight="80" id="ltK-Ke-iby" customClass="HistoryQuizCell" customModule="智慧课堂" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryQuizCell" rowHeight="80" id="ltK-Ke-iby" customClass="HistoryQuizCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ltK-Ke-iby" id="0yk-6t-aEg">
@@ -2210,6 +2274,34 @@
                                 <exclude reference="t8M-kb-VMX"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="FCQ-np-SJF"/>
+                                <exclude reference="JTI-q6-4AK"/>
+                                <exclude reference="ewh-qg-Rop"/>
+                                <exclude reference="cWO-JN-2eZ"/>
+                                <exclude reference="egk-bq-71d"/>
+                                <exclude reference="iRe-Px-eDX"/>
+                                <exclude reference="qwl-C5-IJ9"/>
+                                <exclude reference="uvo-71-kWt"/>
+                                <exclude reference="xMC-sf-DD5"/>
+                                <exclude reference="2Tx-i2-cht"/>
+                                <exclude reference="5fs-C3-cMP"/>
+                                <exclude reference="NN7-Da-Aqb"/>
+                                <exclude reference="6z9-tp-rZx"/>
+                                <exclude reference="8dI-vF-JlG"/>
+                                <exclude reference="Z4n-2b-yhR"/>
+                                <exclude reference="bZD-L8-w2Q"/>
+                                <exclude reference="hkz-Ew-zSz"/>
+                                <exclude reference="nmk-B8-Zgh"/>
+                                <exclude reference="oy1-Cc-wDm"/>
+                                <exclude reference="0wS-LA-Mfn"/>
+                                <exclude reference="8Jo-xb-goU"/>
+                                <exclude reference="CNP-DK-7Bv"/>
+                                <exclude reference="ENb-iJ-itH"/>
+                                <exclude reference="EQV-Zs-W9Y"/>
+                                <exclude reference="WEc-lc-vlF"/>
+                                <exclude reference="n7G-Q1-7Xn"/>
+                                <exclude reference="pfJ-2n-agz"/>
+                                <exclude reference="qbF-2e-83x"/>
                                 <exclude reference="7WE-BR-7O3"/>
                                 <exclude reference="7qc-3M-NUR"/>
                                 <exclude reference="9pu-LH-PVv"/>
@@ -2231,34 +2323,6 @@
                                 <exclude reference="k7J-Jl-CMu"/>
                                 <exclude reference="qEZ-66-kyN"/>
                                 <exclude reference="sxl-VA-ARB"/>
-                                <exclude reference="FCQ-np-SJF"/>
-                                <exclude reference="JTI-q6-4AK"/>
-                                <exclude reference="ewh-qg-Rop"/>
-                                <exclude reference="cWO-JN-2eZ"/>
-                                <exclude reference="egk-bq-71d"/>
-                                <exclude reference="iRe-Px-eDX"/>
-                                <exclude reference="qwl-C5-IJ9"/>
-                                <exclude reference="uvo-71-kWt"/>
-                                <exclude reference="xMC-sf-DD5"/>
-                                <exclude reference="2Tx-i2-cht"/>
-                                <exclude reference="5fs-C3-cMP"/>
-                                <exclude reference="NN7-Da-Aqb"/>
-                                <exclude reference="0wS-LA-Mfn"/>
-                                <exclude reference="8Jo-xb-goU"/>
-                                <exclude reference="CNP-DK-7Bv"/>
-                                <exclude reference="ENb-iJ-itH"/>
-                                <exclude reference="EQV-Zs-W9Y"/>
-                                <exclude reference="WEc-lc-vlF"/>
-                                <exclude reference="n7G-Q1-7Xn"/>
-                                <exclude reference="pfJ-2n-agz"/>
-                                <exclude reference="qbF-2e-83x"/>
-                                <exclude reference="6z9-tp-rZx"/>
-                                <exclude reference="8dI-vF-JlG"/>
-                                <exclude reference="Z4n-2b-yhR"/>
-                                <exclude reference="bZD-L8-w2Q"/>
-                                <exclude reference="hkz-Ew-zSz"/>
-                                <exclude reference="nmk-B8-Zgh"/>
-                                <exclude reference="oy1-Cc-wDm"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -2272,36 +2336,36 @@
                                 <exclude reference="jrz-AS-URX"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="FCQ-np-SJF"/>
+                                <exclude reference="Mvp-Hs-E3L"/>
+                                <exclude reference="QFY-sb-x34"/>
+                                <exclude reference="qHg-DD-vYe"/>
+                                <include reference="qwl-C5-IJ9"/>
+                                <include reference="xMC-sf-DD5"/>
+                                <exclude reference="AK7-bf-UjT"/>
+                                <exclude reference="C1N-MH-nGU"/>
+                                <exclude reference="Rda-BR-DdZ"/>
+                                <exclude reference="UPe-2f-Ktz"/>
+                                <exclude reference="wLD-Mr-XDE"/>
+                                <include reference="5fs-C3-cMP"/>
+                                <exclude reference="Bgl-kh-lYY"/>
+                                <exclude reference="NQi-qt-vfX"/>
+                                <exclude reference="YR3-yw-WVH"/>
+                                <include reference="8dI-vF-JlG"/>
+                                <exclude reference="ZDh-bV-6pR"/>
+                                <exclude reference="gzH-fT-y0g"/>
+                                <include reference="nmk-B8-Zgh"/>
+                                <exclude reference="9Jo-c7-fHJ"/>
+                                <include reference="CNP-DK-7Bv"/>
+                                <include reference="ENb-iJ-itH"/>
+                                <include reference="EQV-Zs-W9Y"/>
+                                <exclude reference="l4n-VH-aGB"/>
                                 <include reference="7WE-BR-7O3"/>
                                 <include reference="BV1-F4-ZXi"/>
                                 <include reference="KNV-VO-RiH"/>
                                 <include reference="OCn-PA-1Vs"/>
                                 <include reference="OMe-AU-Kbn"/>
                                 <include reference="qEZ-66-kyN"/>
-                                <include reference="FCQ-np-SJF"/>
-                                <exclude reference="Mvp-Hs-E3L"/>
-                                <exclude reference="QFY-sb-x34"/>
-                                <exclude reference="AK7-bf-UjT"/>
-                                <exclude reference="C1N-MH-nGU"/>
-                                <exclude reference="Rda-BR-DdZ"/>
-                                <exclude reference="UPe-2f-Ktz"/>
-                                <exclude reference="wLD-Mr-XDE"/>
-                                <exclude reference="qHg-DD-vYe"/>
-                                <include reference="qwl-C5-IJ9"/>
-                                <include reference="xMC-sf-DD5"/>
-                                <include reference="5fs-C3-cMP"/>
-                                <exclude reference="Bgl-kh-lYY"/>
-                                <exclude reference="NQi-qt-vfX"/>
-                                <exclude reference="YR3-yw-WVH"/>
-                                <exclude reference="9Jo-c7-fHJ"/>
-                                <include reference="CNP-DK-7Bv"/>
-                                <include reference="ENb-iJ-itH"/>
-                                <include reference="EQV-Zs-W9Y"/>
-                                <include reference="8dI-vF-JlG"/>
-                                <exclude reference="ZDh-bV-6pR"/>
-                                <exclude reference="gzH-fT-y0g"/>
-                                <include reference="nmk-B8-Zgh"/>
-                                <exclude reference="l4n-VH-aGB"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -2310,6 +2374,31 @@
                                 <exclude reference="jrz-AS-URX"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="JTI-q6-4AK"/>
+                                <exclude reference="Mvp-Hs-E3L"/>
+                                <exclude reference="QFY-sb-x34"/>
+                                <include reference="cWO-JN-2eZ"/>
+                                <include reference="iRe-Px-eDX"/>
+                                <exclude reference="qHg-DD-vYe"/>
+                                <exclude reference="AK7-bf-UjT"/>
+                                <exclude reference="C1N-MH-nGU"/>
+                                <exclude reference="Rda-BR-DdZ"/>
+                                <exclude reference="UPe-2f-Ktz"/>
+                                <exclude reference="wLD-Mr-XDE"/>
+                                <include reference="2Tx-i2-cht"/>
+                                <exclude reference="Bgl-kh-lYY"/>
+                                <exclude reference="NQi-qt-vfX"/>
+                                <exclude reference="YR3-yw-WVH"/>
+                                <exclude reference="Z4n-2b-yhR"/>
+                                <exclude reference="ZDh-bV-6pR"/>
+                                <include reference="bZD-L8-w2Q"/>
+                                <exclude reference="gzH-fT-y0g"/>
+                                <include reference="hkz-Ew-zSz"/>
+                                <exclude reference="9Jo-c7-fHJ"/>
+                                <include reference="WEc-lc-vlF"/>
+                                <include reference="n7G-Q1-7Xn"/>
+                                <include reference="pfJ-2n-agz"/>
+                                <exclude reference="l4n-VH-aGB"/>
                                 <include reference="7qc-3M-NUR"/>
                                 <include reference="9pu-LH-PVv"/>
                                 <include reference="HX1-nE-cNk"/>
@@ -2319,31 +2408,6 @@
                                 <include reference="Zfe-R9-zC2"/>
                                 <include reference="fQK-EI-71D"/>
                                 <exclude reference="sxl-VA-ARB"/>
-                                <include reference="JTI-q6-4AK"/>
-                                <exclude reference="Mvp-Hs-E3L"/>
-                                <exclude reference="QFY-sb-x34"/>
-                                <exclude reference="AK7-bf-UjT"/>
-                                <exclude reference="C1N-MH-nGU"/>
-                                <exclude reference="Rda-BR-DdZ"/>
-                                <exclude reference="UPe-2f-Ktz"/>
-                                <exclude reference="wLD-Mr-XDE"/>
-                                <include reference="cWO-JN-2eZ"/>
-                                <include reference="iRe-Px-eDX"/>
-                                <exclude reference="qHg-DD-vYe"/>
-                                <include reference="2Tx-i2-cht"/>
-                                <exclude reference="Bgl-kh-lYY"/>
-                                <exclude reference="NQi-qt-vfX"/>
-                                <exclude reference="YR3-yw-WVH"/>
-                                <exclude reference="9Jo-c7-fHJ"/>
-                                <include reference="WEc-lc-vlF"/>
-                                <include reference="n7G-Q1-7Xn"/>
-                                <include reference="pfJ-2n-agz"/>
-                                <exclude reference="Z4n-2b-yhR"/>
-                                <exclude reference="ZDh-bV-6pR"/>
-                                <include reference="bZD-L8-w2Q"/>
-                                <exclude reference="gzH-fT-y0g"/>
-                                <include reference="hkz-Ew-zSz"/>
-                                <exclude reference="l4n-VH-aGB"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -2352,36 +2416,36 @@
                                 <exclude reference="jrz-AS-URX"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Mvp-Hs-E3L"/>
+                                <exclude reference="QFY-sb-x34"/>
+                                <include reference="ewh-qg-Rop"/>
+                                <include reference="egk-bq-71d"/>
+                                <exclude reference="qHg-DD-vYe"/>
+                                <include reference="uvo-71-kWt"/>
+                                <exclude reference="AK7-bf-UjT"/>
+                                <exclude reference="C1N-MH-nGU"/>
+                                <exclude reference="Rda-BR-DdZ"/>
+                                <exclude reference="UPe-2f-Ktz"/>
+                                <exclude reference="wLD-Mr-XDE"/>
+                                <exclude reference="Bgl-kh-lYY"/>
+                                <include reference="NN7-Da-Aqb"/>
+                                <exclude reference="NQi-qt-vfX"/>
+                                <exclude reference="YR3-yw-WVH"/>
+                                <include reference="6z9-tp-rZx"/>
+                                <exclude reference="ZDh-bV-6pR"/>
+                                <exclude reference="gzH-fT-y0g"/>
+                                <include reference="oy1-Cc-wDm"/>
+                                <include reference="0wS-LA-Mfn"/>
+                                <include reference="8Jo-xb-goU"/>
+                                <exclude reference="9Jo-c7-fHJ"/>
+                                <include reference="qbF-2e-83x"/>
+                                <exclude reference="l4n-VH-aGB"/>
                                 <include reference="EMC-R3-oq5"/>
                                 <include reference="Wd5-1z-Liu"/>
                                 <include reference="aSZ-75-1qf"/>
                                 <include reference="eZ5-jm-cO6"/>
                                 <include reference="f9D-kD-DRw"/>
                                 <include reference="k7J-Jl-CMu"/>
-                                <exclude reference="Mvp-Hs-E3L"/>
-                                <exclude reference="QFY-sb-x34"/>
-                                <include reference="ewh-qg-Rop"/>
-                                <exclude reference="AK7-bf-UjT"/>
-                                <exclude reference="C1N-MH-nGU"/>
-                                <exclude reference="Rda-BR-DdZ"/>
-                                <exclude reference="UPe-2f-Ktz"/>
-                                <exclude reference="wLD-Mr-XDE"/>
-                                <include reference="egk-bq-71d"/>
-                                <exclude reference="qHg-DD-vYe"/>
-                                <include reference="uvo-71-kWt"/>
-                                <exclude reference="Bgl-kh-lYY"/>
-                                <include reference="NN7-Da-Aqb"/>
-                                <exclude reference="NQi-qt-vfX"/>
-                                <exclude reference="YR3-yw-WVH"/>
-                                <include reference="0wS-LA-Mfn"/>
-                                <include reference="8Jo-xb-goU"/>
-                                <exclude reference="9Jo-c7-fHJ"/>
-                                <include reference="qbF-2e-83x"/>
-                                <include reference="6z9-tp-rZx"/>
-                                <exclude reference="ZDh-bV-6pR"/>
-                                <exclude reference="gzH-fT-y0g"/>
-                                <include reference="oy1-Cc-wDm"/>
-                                <exclude reference="l4n-VH-aGB"/>
                             </mask>
                         </variation>
                     </view>
@@ -2568,19 +2632,19 @@
                     <connections>
                         <outlet property="segmentedControl" destination="La7-aG-Vft" id="MIR-Ld-FTA"/>
                         <outlet property="tableView" destination="Ynn-5V-u9C" id="grq-sb-KOp"/>
-                        <segue destination="jvz-UL-0Tr" kind="presentation" identifier="displayPPT" id="Mbp-t8-5JW"/>
+                        <segue destination="mrG-0k-fSE" kind="presentation" identifier="displayPPT" id="3EF-Fa-V71"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j56-Mj-93z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4844" y="-3286"/>
+            <point key="canvasLocation" x="-4852" y="-3278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4lM-VB-9eN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H7U-LR-6YF" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WpC-8p-hv4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WpC-8p-hv4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.12549019610000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2606,7 +2670,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Spq-J8-iLg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mlC-6o-wMu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NKn-aZ-Hlj">
@@ -2665,10 +2729,10 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="LfW-4x-OaI"/>
-                                                    <exclude reference="Ogm-vy-lqx"/>
                                                     <exclude reference="5y9-Jt-ObC"/>
                                                     <exclude reference="Wkv-GG-8Hl"/>
+                                                    <exclude reference="LfW-4x-OaI"/>
+                                                    <exclude reference="Ogm-vy-lqx"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -2707,7 +2771,7 @@
                         <viewControllerLayoutGuide type="bottom" id="V13-Qv-poi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="s0y-5V-HHK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O05-ko-I0l" customClass="BarChartView" customModule="Charts">
@@ -2746,7 +2810,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5w-Bc-XMQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3365" y="-3511"/>
+            <point key="canvasLocation" x="-3365" y="-3503"/>
         </scene>
     </scenes>
     <resources>
@@ -2769,6 +2833,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="0f8-Ji-kBf"/>
         <segue reference="O2b-wD-mhy"/>
+        <segue reference="Spo-Ar-P5p"/>
         <segue reference="H3Z-EB-SqU"/>
     </inferredMetricsTieBreakers>
 </document>
