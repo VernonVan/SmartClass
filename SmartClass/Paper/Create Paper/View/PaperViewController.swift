@@ -42,14 +42,7 @@ class PaperViewController: UIViewController
     }
     
     func bindToViewModel()
-    {
-//        typeSegmentControl.rx.value
-//            .map { return QuestionType(typeNum: $0)! }
-//            .subscribe { [weak self] (type) in
-//                self?.changeToQuestionType(type)
-//            }
-//            .addDisposableTo(disposeBag)
-        
+    {  
         self.rx.observe(Question.self, "viewModel.currentQuestion")
             .subscribe(onNext: { [weak self] (question) in
                 self?.configureUIForQuestion(question)

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎教师</title>
+
+    <link rel="stylesheet" href="Admin/CSS/admin.css" />
+
+    <script type="text/javascript" src="../../AngularJS/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../../AngularJS/angular.js"></script>
+    <script type="text/javascript" src="../../AngularJS/ngTouch.js"></script>
+    <script type="text/javascript" src="../../AngularJS/angular-route.js"></script>
+
+    <script type="text/javascript" src="../../AngularJS/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="../../AngularJS/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="../../Admin/JS/admin.js"></script>
+
+</head>
+<body ng-app="teacher">
+
+<div  class="container" ng-controller="root-controller">
+    <div class="left">
+
+        <div class="head"><img src="Admin/RESOURCES/ICON/logo.png" /></div>
+
+        <div class="tabs" ng-controller="admin-controller">
+            <ul>
+                <li style="background-color: white;" class="tab" ng-touch="tabAction($event)" ng-click="tabAction($event)">
+                    <span class="colorSpan" style="background-color: rgb(32,184,253);"></span>
+                    <span class="key">
+                        <img src="Admin/RESOURCES/ICON/resourceSmall.png"><br>
+                        <label style="color: rgb(32,184,253);">资源列表</label>
+                    </span>
+                </li>
+                <li class="tab" ng-touch="tabAction($event)" ng-click="tabAction($event)">
+                    <span class="colorSpan"></span>
+                    <span class="key">
+                        <img src="Admin/RESOURCES/ICON/playSmall.png"><br>
+                        <label>PPT观看</label>
+                    </span>
+                </li>
+                <li class="tab" ng-touch="tabAction($event)" ng-click="tabAction($event)">
+                    <span class="colorSpan"></span>
+                    <span class="key">
+                        <img src="Admin/RESOURCES/ICON/student.png"><br>
+                        <label>导入学生</label>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="rightTop" ng-controller="button-controller">
+        <label for="upload" style="background-color: rgb(35,229,163) ; border: 1px solid rgb(35,229,163) " ng-show='first'>上传</label>
+        <input type="file" id="upload" style="display: none" name="files[]" />
+
+        <label for="import" style="background-color: rgb(35,229,163) ; border: 1px solid rgb(35,229,163) " ng-hide='first'>导入</label>
+        <input type="file" id="import" style="display: none" name="xlfile" />
+
+        <label for="refresh" style="background-color: rgb(245,166,35) ; border: 1px solid rgb(245,166,35) " ng-show='second'>刷新</label>
+        <input type="button" id="refresh" style="display: none" />
+    </div>
+
+    <div class="rightBottom">
+        <ng-view></ng-view>
+    </div>
+
+</div>
+
+</body>
+</html>

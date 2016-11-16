@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta name=”viewport” content=”width='device-width',height='device-height',user-scalable=yes,initial-scale=2.5,maximum-scale=5.0,minimum-scale=1.0”>
+    <title>开始考试</title>
+
+    <link media="all and (max-device-width: 767px) and (orientation: portrait)" rel="stylesheet" href="../CSS/testPageMobile.css" />
+    <link media="all and (max-device-width: 767px) and (orientation: landscape)" rel="stylesheet" href="../CSS/testPage.css" />
+    <link media="all and (min-device-width: 768px)" rel="stylesheet" href="../CSS/testPage.css" />
+
+    <script type="text/javascript" src="../../AngularJS/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../../AngularJS/angular.min.js"></script>
+    <script type="text/javascript" src="../../AngularJS/angular-route.js"></script>
+    <script type="text/javascript" src="../../AngularJS/ngTouch.js"></script>
+    <script type="text/javascript" src="../../AngularJS/radialIndicator.js"></script>
+    <script type="text/javascript" src="../../AngularJS/angular.radialIndicator.js"></script>
+    <script type="text/javascript" src="../JS/testPage.js"></script>
+
+</head>
+<body ng-app="page" ng-controller="root-controller">
+
+<div class="header" ng-controller="head-controller">
+    <span class="imgIcon">
+        <img src="../RESOURCES/ICON/logo.png">
+    </span>
+
+    <span class="tab">
+        <span class="title">第{{index}}题</span>
+        <span class="icon" ng-click="optionsDialogAction()" ng-touch="optionsDialogAction()"><img src="../RESOURCES/ICON/down.png"></span>
+    </span>
+
+<span class="number">{{pro}} / {{length}}</span>
+</div>
+
+<div class="content" ng-controller="page-controller">
+
+    <div class="page">
+        <div class="inner">
+            <div class="question">
+                <span class="questionType">{{type}}</span>
+                <p class="questionText">{{questionText}}</p>
+            </div>
+            <ul class="selections">
+                <li class="selection" ng-show="isChoice">
+                    <span class="left">
+                        <label for="firstChoice" class="selectIcon" action="selectAction($event)" ng-class="{true: 'selected', false: 'unSelected'}[isSelected[0]]"></label>
+                        <input type="checkbox" style="display: none" id="firstChoice" ng-model="isSelected[0]" />
+                    </span>
+                    <span class="text" ng-class="{true: 'selectedColor', false: 'unSelectedColor'}[isSelected[0]]">{{optionFirstText}}</span>
+                </li>
+                <li class="selection" ng-show="isChoice">
+                    <span class="left">
+                        <label for="secondChoice" class="selectIcon" action="selectAction($event)" ng-class="{true: 'selected', false: 'unSelected'}[isSelected[1]]"></label>
+                        <input type="checkbox" style="display: none" id="secondChoice" ng-model="isSelected[1]" />
+                    </span>
+                    <span class="text" ng-class="{true: 'selectedColor', false: 'unSelectedColor'}[isSelected[1]]">{{optionSecondText}}</span>
+                </li>
+                <li class="selection" ng-show="isChoice">
+                    <span class="left">
+                        <label for="thirdChoice" class="selectIcon" action="selectAction($event)" ng-class="{true: 'selected', false: 'unSelected'}[isSelected[2]]"></label>
+                        <input type="checkbox" style="display: none" id="thirdChoice" ng-model="isSelected[2]" />
+                    </span>
+                    <span class="text" ng-class="{true: 'selectedColor', false: 'unSelectedColor'}[isSelected[2]]">{{optionThirdText}}</span>
+                </li>
+                <li class="selection" ng-show="isChoice">
+                    <span class="left">
+                        <label for="fourthChoice" class="selectIcon" action="selectAction($event)" ng-class="{true: 'selected', false: 'unSelected'}[isSelected[3]]"></label>
+                        <input type="checkbox" style="display: none" id="fourthChoice" ng-model="isSelected[3]" />
+                    </span>
+                    <span class="text" ng-class="{true: 'selectedColor', false: 'unSelectedColor'}[isSelected[3]]">{{optionFourthText}}</span>
+                </li>
+                <li class="selection" ng-show="isJudge">
+                    <span class="left">
+                        <label for="fifthChoice" class="selectIcon" action="selectAction($event)" ng-class="{true: 'selected', false: 'unSelected'}[isSelected[4]]"></label>
+                        <input type="checkbox" style="display: none" id="fifthChoice" ng-model="isSelected[4]" />
+                    </span>
+                    <span class="judgeText" ng-class="{true: 'selectedColor', false: 'unSelectedColor'}[isSelected[4]]">&radic;</span>
+                </li>
+                <li class="selection" ng-show="isJudge">
+                    <span class="left">
+                        <label for="sixthChoice" class="selectIcon" action="selectAction($event)" ng-class="{true: 'selected', false: 'unSelected'}[isSelected[5]]"></label>
+                        <input type="checkbox" style="display: none" id="sixthChoice" ng-model="isSelected[5]" />
+                    </span>
+                    <span class="judgeText" ng-class="{true: 'selectedColor', false: 'unSelectedColor'}[isSelected[5]]">&times;</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="progress">
+        <div id="indicatorContainer"></div>
+    </div>
+
+    <div class="options">
+        <div class="topButton">
+            <img src="../RESOURCES/ICON/up.png" action="dismissDialog()">
+        </div>
+        <div class="option">
+            <ul class="optionList">
+                <li class="optionLi" ng-repeat="i in testIndexs" action="optionLiAction($event)">{{i+1}}</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer" ng-controller="submit-controller">
+    <span class="toLast" action="back()">&lt;&lt;上一题</span>
+    <span class="submit"><span class="submitImg"><img src="../RESOURCES/ICON/submit.png"></span><span class="submitTitle" action="submit()">提交试卷</span></span>
+    <span class="toNext" action="next()">下一题&gt;&gt;</span>
+</div>
+
+<div class="outer" ng-controller="alert-controller">
+    <div class="alert">
+
+        <div class="alert-head">
+            <img src="../RESOURCES/ICON/alertLogo.png">
+        </div>
+
+        <div class="alert-container">
+            <span class="container-title">
+                <p>你确定要提交试卷吗</p>
+            </span>
+            <span class="container-buttons">
+                <button style="background-color: rgb(235,79,56)" action="dismiss()">再等等</button>
+                <button style="background-color: rgb(32,185,255)" action="check()">提交</button>
+            </span>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

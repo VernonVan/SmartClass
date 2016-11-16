@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta name=”viewport” content=”width='device-width',height='device-height',user-scalable=yes,initial-scale=2.5,maximum-scale=5.0,minimum-scale=1.0”>
+    <title>学生提问</title>
+
+    <link media="all and (max-device-width: 767px) and (orientation: portrait)" rel="stylesheet" href="../../StudentQuestion/CSS/questionMobile.css" />
+    <link media="all and (max-device-width: 767px) and (orientation: landscape)" rel="stylesheet" href="../../StudentQuestion/CSS/question.css" />
+    <link media="all and (min-device-width: 768px)" rel="stylesheet" href="../../StudentQuestion/CSS/question.css" />
+</head>
+<body>
+
+<div class="question" ng-controller="question-controller">
+    <ul class="qList">
+        <li class="qLi" ng-repeat="item in questionList">
+            <span class="date">{{item['t']}}</span>
+            <span class="qText">{{item['q']}}</span>
+        </li>
+    </ul>
+</div>
+
+<div class="haveQuestion" ng-controller="haveQuestion-controller">
+    <span class="input"><input class="text" placeholder="请输入要提问的内容..." /></span>
+    <span class="submit"><button ng-click="sendQuestion()" ng-Touch="sendQuestion()">提问</button></span>
+</div>
+
+</body>
+</html>

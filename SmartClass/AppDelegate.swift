@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)
     var webUploaderURL: String {
-        return "\(self.webUploader!.serverURL)"
+        return "\(self.webUploader!.serverURL!)"
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
@@ -122,6 +122,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 completionBlock!(GCDWebServerDataResponse(statusCode: 204))
             }
         }
+        
+        // 接收学生提问
+        webUploader?.addHandler(forMethod: "POST", path: "/haveQuestion", request: GCDWebServerDataRequest.self) { (request, completionBlock) in
+            if let dataRequest = request as? GCDWebServerDataRequest {
+                do {
+                    if let questionDict = try JSONSerialization.jsonObject(with: dataRequest.data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                        print("接收到学生提问: \(questionDict)")
+                        let realm = try! Realm()
+                        try! realm.write {
+                            let quiz = Quiz(value: ["content": questionDict["question"], "name": questionDict["name"], "date": NSDate()])
+                            realm.add(quiz)
+                        }
+                    }
+                } catch let error as NSError {
+                    print("AppDelegate addHandlerForWebUploader error: \(error)")
+                }
+                completionBlock!(GCDWebServerDataResponse(statusCode: 200))
+            } else {
+                completionBlock!(GCDWebServerDataResponse(statusCode: 204))
+            }
+        }
+        
+        // 接收学生名单
+        webUploader?.addHandler(forMethod: "POST", path: "/studentList", request: GCDWebServerDataRequest.self) { (request, completionBlock) in
+            if let dataRequest = request as? GCDWebServerDataRequest {
+                do {
+                    if let studentListDict = try JSONSerialization.jsonObject(with: dataRequest.data, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary {
+                        print("接收到学生名单: \(studentListDic)")
+                    }
+                } catch let error as NSError {
+                    print("AppDelegate addHandlerForWebUploader error: \(error)")
+                }
+                completionBlock!(GCDWebServerDataResponse(statusCode: 200))
+            } else {
+                completionBlock!(GCDWebServerDataResponse(statusCode: 204))
+            }
+        }
     }
     
     // 将所有发布中的试卷组织成NSData
@@ -165,18 +202,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         print("学生成绩: \(paperResultDict)")
         guard let paperName = paperResultDict["paper_name"] as? String, let studentName = paperResultDict["student_name"] as? String,
             let studentNumber = paperResultDict["student_number"] as? String, let score = paperResultDict["score"] as? Int,
-            var correctQuestions = paperResultDict["result"] as? [Int] else {
-            return
+            let correctQuestions = paperResultDict["result"] as? NSArray else {
+                print("解析失败")
+                return
         }
-        correctQuestions.removeLast()
+        print("\(paperName)\t\(studentName)\t\(score)")
         
         let realm = try! Realm()
         guard let paper = realm.objects(Paper.self).filter("name == '\(paperName)'").first else {
             return
         }
-        
-        print("paper name: \(paper.name)\npaper state: \(paper.state))")
-        
         if paper.state == 1 {
             if let _ = paper.results.filter("name == '\(studentName)'").first {
                 return
@@ -184,8 +219,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             
             try! realm.write {
                 let result = Result(value: ["name": studentName, "number": studentNumber, "score": score])
-                for number in correctQuestions {
-                    let questionNumber = QuestionNumber(value: ["number": number])
+                
+                for i in 0..<correctQuestions.count-1 {
+                    let questionNumber = QuestionNumber(value: ["number": correctQuestions[i]])
                     result.correctQuestionNumbers.append(questionNumber)
                 }
                 print("Result: \(result)")
