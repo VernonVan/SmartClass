@@ -76,6 +76,8 @@
  */
 @interface GCDWebUploader : GCDWebServer
 
+@property(nonatomic, readonly) NSString* currentPaperName;
+
 /**
  *  Returns the upload directory as specified when the uploader was initialized.
  */
