@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="roundLogo" translatesAutoresizingMaskIntoConstraints="NO" id="SbP-H6-3oR">
+                                <rect key="frame" x="240" y="144" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="hD1-gG-mmy">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="120" id="mrN-Xu-NZl">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="150"/>
+                                    </constraint>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="智慧课堂" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7S-kN-wJA">
+                                <rect key="frame" x="266" y="289" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="让教学更智慧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UF-tk-PFB">
+                                <rect key="frame" x="255" y="330" width="90" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="o7S-kN-wJA" firstAttribute="top" secondItem="SbP-H6-3oR" secondAttribute="bottom" constant="25" id="0zh-kh-CJG"/>
+                            <constraint firstItem="5UF-tk-PFB" firstAttribute="top" secondItem="o7S-kN-wJA" secondAttribute="bottom" constant="20" id="JaR-Q8-Vrr"/>
+                            <constraint firstItem="5UF-tk-PFB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Qqx-ZC-qn4"/>
+                            <constraint firstItem="o7S-kN-wJA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aJi-Yy-s5R"/>
+                            <constraint firstItem="SbP-H6-3oR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ldw-b6-r96"/>
+                            <constraint firstItem="o7S-kN-wJA" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="zau-VH-UsC"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93" y="251"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="roundLogo" width="416" height="416"/>
+    </resources>
+</document>

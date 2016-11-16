@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+            <connections>
+                <outlet property="iconImageView" destination="Mys-iA-8Hr" id="qdb-g6-1Bu"/>
+                <outlet property="numberLabel" destination="TbO-lI-Y9D" id="HZI-Wj-DMm"/>
+                <outlet property="titleLabel" destination="e8S-zE-mId" id="K46-nk-BPs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="239" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-iA-8Hr">
+                    <rect key="frame" x="32" y="34" width="175" height="175"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Mys-iA-8Hr" secondAttribute="height" multiplier="1:1" id="7gL-Kx-ikY"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8S-zE-mId">
+                    <rect key="frame" x="8" y="221" width="223" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbO-lI-Y9D">
+                    <rect key="frame" x="201" y="0.0" width="30" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="TbO-lI-Y9D" secondAttribute="trailing" constant="8" id="2tJ-Pt-BUl"/>
+                <constraint firstAttribute="bottom" secondItem="e8S-zE-mId" secondAttribute="bottom" constant="12" id="6tI-OD-zlw"/>
+                <constraint firstItem="TbO-lI-Y9D" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7WP-Vf-OHY"/>
+                <constraint firstItem="Mys-iA-8Hr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="9T0-VM-oLa"/>
+                <constraint firstItem="e8S-zE-mId" firstAttribute="top" secondItem="Mys-iA-8Hr" secondAttribute="bottom" constant="12" id="Atr-5k-94l"/>
+                <constraint firstAttribute="trailing" secondItem="e8S-zE-mId" secondAttribute="trailing" constant="8" id="XBU-ME-Mhu"/>
+                <constraint firstAttribute="trailing" secondItem="Mys-iA-8Hr" secondAttribute="trailing" constant="32" id="aLj-Yp-TmV"/>
+                <constraint firstItem="e8S-zE-mId" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="kc9-g5-izb"/>
+                <constraint firstItem="Mys-iA-8Hr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lig-UV-1fe"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="9T0-VM-oLa"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="454.5" y="453"/>
+        </view>
+    </objects>
+</document>

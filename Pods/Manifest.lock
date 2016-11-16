@@ -1,0 +1,64 @@
+PODS:
+  - Charts (3.0.0):
+    - Charts/Core (= 3.0.0)
+  - Charts/Core (3.0.0)
+  - CocoaLumberjack (2.4.0):
+    - CocoaLumberjack/Default (= 2.4.0)
+    - CocoaLumberjack/Extensions (= 2.4.0)
+  - CocoaLumberjack/Core (2.4.0)
+  - CocoaLumberjack/Default (2.4.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.4.0):
+    - CocoaLumberjack/Default
+  - DZNEmptyDataSet (1.7.3)
+  - GCDWebServer/CocoaLumberjack (3.3.3):
+    - CocoaLumberjack (~> 2)
+    - GCDWebServer/Core
+  - GCDWebServer/Core (3.3.3)
+  - GCDWebServer/WebUploader (3.3.3):
+    - GCDWebServer/WebUploader/CocoaLumberjack (= 3.3.3)
+    - GCDWebServer/WebUploader/Core (= 3.3.3)
+  - GCDWebServer/WebUploader/CocoaLumberjack (3.3.3):
+    - GCDWebServer/CocoaLumberjack
+    - GCDWebServer/WebUploader/Core
+  - GCDWebServer/WebUploader/Core (3.3.3):
+    - GCDWebServer/Core
+  - IQKeyboardManager (4.0.7)
+  - Reachability (3.2)
+  - Realm (2.0.3):
+    - Realm/Headers (= 2.0.3)
+  - Realm/Headers (2.0.3)
+  - RealmSwift (2.0.3):
+    - Realm (= 2.0.3)
+  - RxCocoa (3.0.1):
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.1)
+  - Toast (3.1.0)
+
+DEPENDENCIES:
+  - Charts
+  - DZNEmptyDataSet (~> 1.7.3)
+  - GCDWebServer/WebUploader (~> 3.0)
+  - IQKeyboardManager (~> 4.0.7)
+  - Reachability (~> 3.2)
+  - RealmSwift
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
+  - Toast (~> 3.0)
+
+SPEC CHECKSUMS:
+  Charts: beb341928d2135613b4325a6c6aff9f2f6de895e
+  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
+  GCDWebServer: 1c39a1f0763e4eb492bee021e4270fce097d3555
+  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
+  RealmSwift: 5afb451f65b682242f272dbb52d5c6f6e343c980
+  RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
+  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+
+PODFILE CHECKSUM: 2a4edb921dc97053ccd0e0d843848fe1aa4fafe2
+
+COCOAPODS: 1.1.1
