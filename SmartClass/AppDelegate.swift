@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     var window: UIWindow?
     
     let webUploader = GCDWebUploader(uploadDirectory: ConvenientFileManager.uploadURL.path)
-    var webUploaderURL: String {
-        return "\(self.webUploader!.serverURL!)"
+    var webUploaderURL: URL? {
+        return self.webUploader?.serverURL
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
@@ -144,12 +144,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate
             }
         }
         
-        // 接收学生名单
+        // 导入学生名单
         webUploader?.addHandler(forMethod: "POST", path: "/studentList", request: GCDWebServerDataRequest.self) { (request, completionBlock) in
             if let dataRequest = request as? GCDWebServerDataRequest {
                 do {
                     if let studentListDict = try JSONSerialization.jsonObject(with: dataRequest.data, options: JSONSerialization.ReadingOptions.allowFragments) as? NSDictionary {
-                        print("接收到学生名单: \(studentListDic)")
+                        print("接收到学生名单: \(studentListDict)")
+                        self.importStudentList(studentListDict: studentListDict)
                     }
                 } catch let error as NSError {
                     print("AppDelegate addHandlerForWebUploader error: \(error)")
@@ -228,6 +229,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 paper.results.append(result)
             }
         }
+    }
+    
+    // 导入学生名单
+    func importStudentList(studentListDict: NSDictionary)
+    {
+        guard let table = studentListDict["table"] as? NSArray else {
+            fatalError("导入学生名单失败")
+        }
+
+        var newStudents = [Student]()
+        for tempStudent in table {
+            guard let studentDict = tempStudent as? NSDictionary, let number = studentDict["学号"] as? String,
+                let name = studentDict["姓名"] as? String, let school = studentDict["学校"] as? String,
+                let major = studentDict["专业"] as? String else {
+                fatalError("导入学生名单失败")
+            }
+           // print("学号: \(number)\t姓名: \(name)\t学校: \(school)\t专业: \(major)")
+            if newStudents.filter({ $0.number == number }).count == 0 {
+                let student = Student(value: ["number": number, "name": name, "major": major, "school": school])
+                newStudents.append(student)
+            }
+        }
+        
+        let realm = try! Realm()
+        try! realm.write({
+            // 删除所有已有的学生
+            let oldStudents = realm.objects(Student.self)
+            realm.delete(oldStudents)
+            // 添加新的学生
+            for student in newStudents {
+                realm.add(student)
+            }
+        })
+        print("导入学生名单成功，共导入\(newStudents.count)名学生")
     }
 
 }

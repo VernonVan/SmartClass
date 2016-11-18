@@ -54,22 +54,36 @@ class StudentListViewModel: NSObject
         return students[(indexPath as NSIndexPath).row]
     }
     
-    func modifyStudentAtIndexPath(_ indexPath: IndexPath, newStudent student: Student)
+    func modifyStudentAtIndexPath(_ indexPath: IndexPath, newStudent student: Student) -> Bool
     {
-        try! realm.write({
-            let oldStudent = students[(indexPath as NSIndexPath).row]
-            realm.delete(oldStudent)
-            realm.add(student)
-        })
+        if realm.objects(Student.self).filter("number = \(student.number)").count == 0 {
+            try! realm.write({
+                let oldStudent = students[(indexPath as NSIndexPath).row]
+                realm.delete(oldStudent)
+                realm.add(student)
+            })
+        } else {
+            return false
+        }
+        
         students = realm.objects(Student.self).sorted(byProperty: "number")
+        
+        return true
     }
     
-    func addStudent(_ student: Student)
+    func addStudent(_ student: Student) -> Bool
     {
-        try! realm.write({
-            realm.add(student)
-        })
+        if realm.objects(Student.self).filter("number = \(student.number)").count == 0 {
+            try! realm.write({
+                realm.add(student)
+            })
+        } else {
+            return false
+        }
+        
         students = realm.objects(Student.self).sorted(byProperty: "number")
+        
+        return true
     }
     
     func deleteStudentAtIndexPath(_ indexPath: IndexPath)

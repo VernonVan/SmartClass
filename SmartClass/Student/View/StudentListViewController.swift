@@ -34,6 +34,22 @@ class StudentListViewController: UIViewController
 
         addButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 4.0)
     }
+    
+    
+    @IBAction func importStudentAction(_ sender: UIBarButtonItem)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var message = ""
+        if let webUploadURL = appDelegate.webUploaderURL {
+            message = "访问\(webUploadURL.absoluteString + "admin/")导入学生名单"
+        } else{
+            message = NSLocalizedString("打开Wifi方可导入学生名单", comment: "" )
+        }
+        let alert = UIAlertController(title: "导入学生", message: message, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "确定", style: .default, handler: nil)
+        alert.addAction(doneAction)
+        present(alert, animated: true, completion: nil)
+    }
 
     // MARK: - Segue
     

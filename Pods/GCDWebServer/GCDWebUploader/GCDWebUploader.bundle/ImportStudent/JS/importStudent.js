@@ -112,7 +112,7 @@ function process_wb(wb) {
     var temp = JSON.stringify(dataObj);
     $.post('/studentList',temp);
     alert("导入成功...");
-    //console.log(dataObj);
+    console.log(temp);
     $('#studentTable').empty();
     var head = $('<tr><th style="border-bottom: 1px solid rgb(228,228,228)">学号</th><th style="border-bottom: 1px solid rgb(228,228,228)">姓名</th><th style="border-bottom: 1px solid rgb(228,228,228)">学校</th><th style="border-bottom: 1px solid rgb(228,228,228)">专业</th></tr>');
     head.appendTo('#studentTable');

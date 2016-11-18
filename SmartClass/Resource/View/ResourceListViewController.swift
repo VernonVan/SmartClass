@@ -196,12 +196,11 @@ extension ResourceListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDele
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let webUploadURL = appDelegate.webUploaderURL
         var text = ""
-        if webUploadURL == "nil" {
-            text = NSLocalizedString("打开Wifi网络可上传资源", comment: "" )
+        if let webUploadURL = appDelegate.webUploaderURL {
+            text = "访问\(webUploadURL.absoluteString + "admin/")上传资源"
         } else{
-            text = "访问\(appDelegate.webUploaderURL + "admin/")上传资源"
+            text = NSLocalizedString("打开Wifi方可上传资源", comment: "" )
         }
         let attributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14.0),
                           NSForegroundColorAttributeName: UIColor.lightGray]

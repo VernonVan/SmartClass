@@ -69,7 +69,7 @@ class PaperListViewController: UIViewController
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let webUploaderURL = appDelegate.webUploaderURL
-        if webUploaderURL == "nil" {
+        if webUploaderURL == nil {
             view.makeToast(NSLocalizedString("无法发布试卷，请确保Wifi网络可用", comment: ""))
         }
     }

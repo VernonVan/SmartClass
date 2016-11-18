@@ -11,7 +11,7 @@ import Toast
 
 class QRCodeViewController: UIViewController
 {
-    var url: String?
+    var url: URL?
 
     @IBOutlet weak var qrCodeImageView: UIImageView!
     @IBOutlet weak var urlLabel: UILabel!
@@ -22,7 +22,7 @@ class QRCodeViewController: UIViewController
     {
         super.viewDidLoad()
                 
-        if url == "nil" {
+        if url == nil {
             let alert = UIAlertController(title: NSLocalizedString("无法生成二维码", comment: ""),
                                           message: NSLocalizedString("请确保Wifi网络可用", comment: ""),
                                           preferredStyle: .alert)
@@ -44,12 +44,16 @@ class QRCodeViewController: UIViewController
         text.addAttribute(NSForegroundColorAttributeName, value: UIColor(netHex: 0x2196F3), range: NSRange(location: 4, length: text.length-4))
         urlLabel.attributedText = text
         
-        qrCodeImageView.image = convertStringToQRCodeImage(url)
+        qrCodeImageView.image = convertStringToQRCodeImageWith(url: url)
     }
     
-    func convertStringToQRCodeImage(_ string: String?) -> UIImage
+    func convertStringToQRCodeImageWith(url: URL?) -> UIImage?
     {
-        let data = string?.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
+        guard let url = url else {
+            return nil
+        }
+        
+        let data = url.absoluteString.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
         let filter = CIFilter(name: "CIQRCodeGenerator")
         filter?.setValue(data, forKey: "inputMessage")          // 需要编码的信息
         filter?.setValue("Q", forKey: "inputCorrectionLevel")   // 二维码对象的修正格式
