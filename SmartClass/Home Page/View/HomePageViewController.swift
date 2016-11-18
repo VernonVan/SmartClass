@@ -24,7 +24,7 @@ class HomePageViewController: UIViewController
     {
         super.viewDidLoad()
         
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+       // print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -44,7 +44,7 @@ class HomePageViewController: UIViewController
             do {
                 let pptCount = try FileManager.default.contentsOfDirectory(atPath: pptPath).filter({ (fileName) -> Bool in
                     let url = ConvenientFileManager.pptURL.appendingPathComponent(fileName)
-                    return url.pathExtension.contains("pptx")
+                    return url.pathExtension.contains("ppt")
                 }).count
                 let otherCount = try FileManager.default.contentsOfDirectory(atPath: resourcePath).count
                 resourceCount = pptCount + otherCount

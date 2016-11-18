@@ -120,14 +120,20 @@ extension StudentListViewController: StudentInformationDelegate
 {
     func addStudent(_ student: Student)
     {
-        viewModel?.addStudent(student)
-        tableView.reloadData()
+        if viewModel!.addStudent(student) {
+            tableView.reloadData()
+        } else {
+            view.makeToast("添加失败，学号\(student.number)的学生已经存在", duration: 0.15, position: CSToastPositionCenter)
+        }
     }
     
     func modifyStudentAtIndexPath(_ indexPath: IndexPath, newStudent student: Student)
     {
-        viewModel?.modifyStudentAtIndexPath(indexPath, newStudent: student)
-        tableView.reloadData()
+        if viewModel!.modifyStudentAtIndexPath(indexPath, newStudent: student) {
+            tableView.reloadData()
+        } else {
+            view.makeToast("修改失败，学号\(student.number)的学生已经存在", duration: 0.15, position: CSToastPositionCenter)
+        }
     }
 }
 

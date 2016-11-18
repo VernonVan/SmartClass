@@ -83,7 +83,6 @@
 		AD78E3591DDB0D5100AC0B63 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3561DDB0D5100AC0B63 /* Color.swift */; };
 		AD78E35A1DDB0D5100AC0B63 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3571DDB0D5100AC0B63 /* Constant.swift */; };
 		AD78E35B1DDB0D5100AC0B63 /* ConvenientFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3581DDB0D5100AC0B63 /* ConvenientFileManager.swift */; };
-		AD9C3C181DDEBA4900F543A2 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9C3C171DDEBA4900F543A2 /* Reveal.framework */; };
 		ADFCE22D1DDEAF3C000F5930 /* LiveChanel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE2261DDEAF3C000F5930 /* LiveChanel.m */; };
 		ADFCE22E1DDEAF3C000F5930 /* LiveStreamKey.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE2281DDEAF3C000F5930 /* LiveStreamKey.m */; };
 		ADFCE22F1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE22A1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m */; };
@@ -95,7 +94,7 @@
 		1AEDFA31B17BFAA25C4E4F83 /* Pods_SmartClass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartClass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E1D4B4DA7148C66B2E1F993 /* Pods-SmartClass.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.debug.xcconfig"; sourceTree = "<group>"; };
 		7B7179B26DF66F40AE6ED69B /* Pods-SmartClass.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartClass.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartClass/Pods-SmartClass.release.xcconfig"; sourceTree = "<group>"; };
-		AD78E28E1DDB045D00AC0B63 /* SmartClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD78E28E1DDB045D00AC0B63 /* 智慧课堂.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "智慧课堂.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD78E2911DDB045D00AC0B63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD78E2961DDB045D00AC0B63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD78E2981DDB045D00AC0B63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -192,7 +191,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C89DFCDC709D45F4FE2201E9 /* Pods_SmartClass.framework in Frameworks */,
-				AD9C3C181DDEBA4900F543A2 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +219,7 @@
 		AD78E28F1DDB045D00AC0B63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AD78E28E1DDB045D00AC0B63 /* SmartClass.app */,
+				AD78E28E1DDB045D00AC0B63 /* 智慧课堂.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -662,7 +660,7 @@
 			);
 			name = SmartClass;
 			productName = SmartClass;
-			productReference = AD78E28E1DDB045D00AC0B63 /* SmartClass.app */;
+			productReference = AD78E28E1DDB045D00AC0B63 /* 智慧课堂.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1016,13 +1014,9 @@
 					"\"UriParser\"",
 					"-framework",
 					"\"videocore\"",
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "智慧课堂";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/Util/UIPlaceHolderTextView/SmartClass-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1081,13 +1075,9 @@
 					"\"UriParser\"",
 					"-framework",
 					"\"videocore\"",
-					"-ObjC",
-					"-lz",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "智慧课堂";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/Util/UIPlaceHolderTextView/SmartClass-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

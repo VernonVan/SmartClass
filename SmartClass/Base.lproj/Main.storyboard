@@ -15,7 +15,7 @@
         <!--编辑试卷-->
         <scene sceneID="Qln-7K-A5s">
             <objects>
-                <viewController id="Vd4-C1-oyo" customClass="PaperInformationViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vd4-C1-oyo" customClass="PaperInformationViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="faS-L4-ds2"/>
                         <viewControllerLayoutGuide type="bottom" id="X1Z-qD-C5z"/>
@@ -186,7 +186,7 @@
         <!--二维码-->
         <scene sceneID="ToI-ZY-Ocz">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="oAB-DJ-HoC" customClass="QRCodeViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="oAB-DJ-HoC" customClass="QRCodeViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tGA-Tp-NuX"/>
                         <viewControllerLayoutGuide type="bottom" id="Xn0-xH-mJb"/>
@@ -258,7 +258,7 @@
         <!--签到表-->
         <scene sceneID="Cyv-O3-t1o">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xqc-f7-qPA" customClass="SignUpSheetListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xqc-f7-qPA" customClass="SignUpSheetListViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GT0-sb-tJC"/>
                         <viewControllerLayoutGuide type="bottom" id="W2P-xK-DHO"/>
@@ -275,11 +275,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fVV-xT-5MD" id="Kyb-l2-a8C">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gBr-yd-cAx">
-                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -321,7 +321,7 @@
         <!--签到表-->
         <scene sceneID="CxP-ry-EYi">
             <objects>
-                <tableViewController id="SWb-Te-ziI" customClass="SignUpSheetViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="SWb-Te-ziI" customClass="SignUpSheetViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mm5-bc-azJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +341,7 @@
         <!--新建签到表-->
         <scene sceneID="awp-hY-oHj">
             <objects>
-                <tableViewController id="ImL-GE-YBG" customClass="NewSignUpSheetViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ImL-GE-YBG" customClass="NewSignUpSheetViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wmG-ci-S2R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -371,7 +371,7 @@
         <!--学生管理-->
         <scene sceneID="kQT-Cg-oqM">
             <objects>
-                <viewController id="07d-eK-utP" customClass="StudentListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="07d-eK-utP" customClass="StudentListViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="U5c-uJ-cod"/>
                         <viewControllerLayoutGuide type="bottom" id="6JA-yU-g6Z"/>
@@ -405,11 +405,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentCell" rowHeight="70" id="aFD-Vx-cwS" customClass="StudentCell" customModule="SmartClass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentCell" rowHeight="70" id="aFD-Vx-cwS" customClass="StudentCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aFD-Vx-cwS" id="700-yJ-fp5">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boN-ux-0H0">
@@ -495,7 +495,7 @@
         <!--学生提问-->
         <scene sceneID="4kH-0w-rNu">
             <objects>
-                <viewController storyboardIdentifier="QuizListViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CVb-si-w3P" customClass="QuizListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuizListViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CVb-si-w3P" customClass="QuizListViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6GW-A1-wch"/>
                         <viewControllerLayoutGuide type="bottom" id="izx-Sb-zy9"/>
@@ -508,11 +508,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuizCell" rowHeight="85" id="4sd-zb-kDe" customClass="QuizCell" customModule="SmartClass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuizCell" rowHeight="85" id="4sd-zb-kDe" customClass="QuizCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4sd-zb-kDe" id="hAE-Qz-MKa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cax-hT-apX">
@@ -616,7 +616,7 @@
         <!--学生信息-->
         <scene sceneID="NGU-75-Ti9">
             <objects>
-                <viewController id="f3M-YN-5lR" customClass="StudentInformationViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f3M-YN-5lR" customClass="StudentInformationViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4T5-q6-p8v"/>
                         <viewControllerLayoutGuide type="bottom" id="7xj-j1-grE"/>
@@ -626,7 +626,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOb-bO-evd">
-                                <rect key="frame" x="0.0" y="84" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="40" width="375" height="36"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="学号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KTy-6R-bJS">
                                         <rect key="frame" x="20" y="9" width="335" height="19"/>
@@ -644,7 +644,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlV-bx-BkN">
-                                <rect key="frame" x="0.0" y="128" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="36"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="姓名" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b2c-32-XGh">
                                         <rect key="frame" x="20" y="9" width="335" height="19"/>
@@ -662,7 +662,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0e-PG-FtO">
-                                <rect key="frame" x="0.0" y="172" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="128" width="375" height="36"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="专业" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="uhI-mA-Eaj">
                                         <rect key="frame" x="20" y="9" width="335" height="19"/>
@@ -680,7 +680,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZy-QX-q8b">
-                                <rect key="frame" x="0.0" y="216" width="375" height="36"/>
+                                <rect key="frame" x="0.0" y="172" width="375" height="36"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="学校" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UDT-HV-c5L">
                                         <rect key="frame" x="20" y="9" width="335" height="19"/>
@@ -698,7 +698,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbJ-Kz-f6B">
-                                <rect key="frame" x="16" y="272" width="343" height="40"/>
+                                <rect key="frame" x="16" y="228" width="343" height="40"/>
                                 <color key="backgroundColor" red="0.12549019610000001" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="BNA-px-ac3">
@@ -773,7 +773,7 @@
         <!--Paper List View Controller-->
         <scene sceneID="z5b-0k-RXI">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ABW-vW-DOT" customClass="PaperListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ABW-vW-DOT" customClass="PaperListViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6M3-aX-4wi"/>
                         <viewControllerLayoutGuide type="bottom" id="2Ok-nW-mvi"/>
@@ -790,11 +790,11 @@
                                 </constraints>
                                 <color key="sectionIndexBackgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reusePaperCell" rowHeight="60" id="nSy-3t-huh" customClass="PaperListCell" customModule="SmartClass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reusePaperCell" rowHeight="60" id="nSy-3t-huh" customClass="PaperListCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nSy-3t-huh" id="8M7-5O-eVp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ir3-NU-Bda">
@@ -877,7 +877,7 @@
         <!--Result Container View Controller-->
         <scene sceneID="yX2-i0-Nje">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0tR-ZX-9w7" customClass="ResultContainerViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="0tR-ZX-9w7" customClass="ResultContainerViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BsB-HR-7cY"/>
                         <viewControllerLayoutGuide type="bottom" id="F9f-ms-8Aq"/>
@@ -945,7 +945,7 @@
         <!--PPT-->
         <scene sceneID="04M-NL-xK4">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="jvz-UL-0Tr" customClass="PPTViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="jvz-UL-0Tr" customClass="PPTViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zny-6C-lLL"/>
                         <viewControllerLayoutGuide type="bottom" id="kzQ-o2-X8l"/>
@@ -1004,7 +1004,7 @@
         <!--Paper View Controller-->
         <scene sceneID="vSY-u9-IKf">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vyb-aQ-4YA" customClass="PaperViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vyb-aQ-4YA" customClass="PaperViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DxP-ny-QP0"/>
                         <viewControllerLayoutGuide type="bottom" id="vwT-PY-v3h"/>
@@ -1019,7 +1019,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teU-pp-5tl">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="536"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-Dc-y3N" customClass="ChoiceView" customModule="SmartClass" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHP-Dc-y3N" customClass="ChoiceView" customModule="智慧课堂" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="90" width="375" height="44"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
@@ -1036,7 +1036,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="xV5-7P-JdV" appends="YES" id="n1B-nf-16G"/>
                                                 </connections>
                                             </view>
-                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7L-z1-97m" customClass="ChoiceView" customModule="SmartClass" customModuleProvider="target">
+                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7L-z1-97m" customClass="ChoiceView" customModule="智慧课堂" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="134" width="375" height="44"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
@@ -1053,7 +1053,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="wMN-Cj-1r1" appends="YES" id="qv3-wm-wZf"/>
                                                 </connections>
                                             </view>
-                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVd-Rw-s25" customClass="ChoiceView" customModule="SmartClass" customModuleProvider="target">
+                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVd-Rw-s25" customClass="ChoiceView" customModule="智慧课堂" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="178" width="375" height="44"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
@@ -1070,7 +1070,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="0Uf-q5-zSe" appends="YES" id="UTo-i0-mQr"/>
                                                 </connections>
                                             </view>
-                                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJA-pc-4iO" customClass="ChoiceView" customModule="SmartClass" customModuleProvider="target">
+                                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJA-pc-4iO" customClass="ChoiceView" customModule="智慧课堂" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="222" width="375" height="44"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
@@ -1087,7 +1087,7 @@
                                                     <outletCollection property="gestureRecognizers" destination="oJe-V6-4TK" appends="YES" id="YCf-15-Tkq"/>
                                                 </connections>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLm-50-Kol" customClass="ScoreView" customModule="SmartClass" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLm-50-Kol" customClass="ScoreView" customModule="智慧课堂" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="266" width="375" height="44"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -1116,7 +1116,7 @@
                                                     <action selector="nextAction" destination="vyb-aQ-4YA" eventType="touchUpInside" id="jm1-hE-LAu"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTR-lt-Slz" customClass="TopicView" customModule="SmartClass" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTR-lt-Slz" customClass="TopicView" customModule="智慧课堂" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -1238,7 +1238,7 @@
         <!--Issuing Paper View Controller-->
         <scene sceneID="vAq-dy-OyT">
             <objects>
-                <viewController id="C1o-uy-L8F" customClass="IssuingPaperViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C1o-uy-L8F" customClass="IssuingPaperViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nyn-eQ-Wiv"/>
                         <viewControllerLayoutGuide type="bottom" id="pPF-Yd-UgI"/>
@@ -1343,7 +1343,7 @@
         <!--Canvas Popover View Controller-->
         <scene sceneID="Dbz-Mi-tvc">
             <objects>
-                <viewController id="1SV-bB-Q9R" customClass="CanvasPopoverViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1SV-bB-Q9R" customClass="CanvasPopoverViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P0k-fa-cP6"/>
                         <viewControllerLayoutGuide type="bottom" id="Cs7-XM-0ij"/>
@@ -1477,7 +1477,7 @@
         <!--Display View Controller-->
         <scene sceneID="mhC-5e-Iba">
             <objects>
-                <viewController id="mrG-0k-fSE" customClass="PPTDisplayViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mrG-0k-fSE" customClass="PPTDisplayViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EId-cS-Ki4"/>
                         <viewControllerLayoutGuide type="bottom" id="yXO-TD-CeE"/>
@@ -1486,53 +1486,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQb-et-KLo">
-                                <rect key="frame" x="290" y="607" width="59" height="30"/>
-                                <state key="normal" title="previous"/>
-                                <connections>
-                                    <action selector="PreviousButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="gjR-BH-P6B"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvF-pp-94d">
-                                <rect key="frame" x="143" y="617" width="90" height="30"/>
-                                <state key="normal" title="开始直播PPT"/>
-                                <connections>
-                                    <action selector="playButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="UZ6-M2-DTM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSf-dy-13F">
-                                <rect key="frame" x="315" y="487" width="34" height="30"/>
-                                <state key="normal" title="back"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSf-dy-13F">
+                                <rect key="frame" x="338" y="20" width="21" height="22"/>
+                                <state key="normal" image="dismiss"/>
                                 <connections>
                                     <action selector="BackButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="gUn-LA-bHY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYX-sW-Wgv">
-                                <rect key="frame" x="319" y="547" width="30" height="30"/>
-                                <state key="normal" title="next"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="vv3-9f-arS">
+                                <rect key="frame" x="114" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvF-pp-94d">
+                                <rect key="frame" x="142" y="318" width="90" height="30"/>
+                                <state key="normal" title="开始演示PPT"/>
                                 <connections>
-                                    <action selector="NextButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="qGB-ac-8TK"/>
+                                    <action selector="playButton:" destination="mrG-0k-fSE" eventType="touchUpInside" id="UZ6-M2-DTM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="RYX-sW-Wgv" secondAttribute="trailing" constant="10" id="Fva-7U-Bdp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hQb-et-KLo" secondAttribute="trailing" constant="10" id="Gyu-rh-wqJ"/>
-                            <constraint firstItem="yXO-TD-CeE" firstAttribute="top" secondItem="hQb-et-KLo" secondAttribute="bottom" constant="30" id="bzi-ZG-qQ1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uSf-dy-13F" secondAttribute="trailing" constant="10" id="fsw-tf-FXm"/>
-                            <constraint firstItem="RYX-sW-Wgv" firstAttribute="top" secondItem="uSf-dy-13F" secondAttribute="bottom" constant="30" id="g4T-Ph-7uR"/>
-                            <constraint firstItem="yXO-TD-CeE" firstAttribute="top" secondItem="JvF-pp-94d" secondAttribute="bottom" constant="20" id="vBe-gF-p7t"/>
-                            <constraint firstItem="JvF-pp-94d" firstAttribute="centerX" secondItem="4nj-op-wjM" secondAttribute="centerX" id="xSq-Gf-Qu5"/>
-                            <constraint firstItem="hQb-et-KLo" firstAttribute="top" secondItem="RYX-sW-Wgv" secondAttribute="bottom" constant="30" id="z6g-5O-089"/>
+                            <constraint firstItem="uSf-dy-13F" firstAttribute="top" secondItem="4nj-op-wjM" secondAttribute="top" constant="20" symbolic="YES" id="3s8-wq-521"/>
+                            <constraint firstItem="JvF-pp-94d" firstAttribute="leading" secondItem="vv3-9f-arS" secondAttribute="trailing" constant="8" symbolic="YES" id="9C1-4S-ve5"/>
+                            <constraint firstItem="JvF-pp-94d" firstAttribute="centerX" secondItem="4nj-op-wjM" secondAttribute="centerX" id="GlI-X9-iSP"/>
+                            <constraint firstItem="uSf-dy-13F" firstAttribute="trailing" secondItem="4nj-op-wjM" secondAttribute="trailingMargin" id="Lai-7N-lrR"/>
+                            <constraint firstItem="vv3-9f-arS" firstAttribute="centerY" secondItem="4nj-op-wjM" secondAttribute="centerY" id="PJH-Ps-FOn"/>
+                            <constraint firstItem="JvF-pp-94d" firstAttribute="centerY" secondItem="4nj-op-wjM" secondAttribute="centerY" id="UAD-KR-aHh"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="PPTwebView" destination="U17-T2-rLM" id="mIJ-le-BHn"/>
                         <outlet property="backButton" destination="uSf-dy-13F" id="EzI-E4-9R0"/>
                         <outlet property="beginButton" destination="JvF-pp-94d" id="Lg6-TA-XhT"/>
-                        <outlet property="nextButton" destination="RYX-sW-Wgv" id="6Kf-lO-EsR"/>
-                        <outlet property="previousButton" destination="hQb-et-KLo" id="0RH-aP-abg"/>
+                        <outlet property="spinner" destination="vv3-9f-arS" id="kXv-RL-8G4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UCv-2W-Czm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1547,7 +1534,7 @@
         <!--历史提问-->
         <scene sceneID="OkJ-u0-Sxv">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Hlq-cu-Uxm" customClass="HistoryQuizListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Hlq-cu-Uxm" customClass="HistoryQuizListViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NOt-hm-cTQ"/>
                         <viewControllerLayoutGuide type="bottom" id="BSy-Rq-Pup"/>
@@ -1560,11 +1547,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryQuizCell" rowHeight="80" id="ltK-Ke-iby" customClass="HistoryQuizCell" customModule="SmartClass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryQuizCell" rowHeight="80" id="ltK-Ke-iby" customClass="HistoryQuizCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ltK-Ke-iby" id="0yk-6t-aEg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhw-ZL-OpP">
@@ -1651,7 +1638,7 @@
         <!--试卷预览-->
         <scene sceneID="4f7-rX-oVw">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="4kP-K4-zDn" customClass="PreviewRootViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="4kP-K4-zDn" customClass="PreviewRootViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ibU-m2-3ir"/>
                         <viewControllerLayoutGuide type="bottom" id="WBA-3C-oxw"/>
@@ -1698,17 +1685,17 @@
         <!--题目列表-->
         <scene sceneID="FAJ-RX-Fgr">
             <objects>
-                <tableViewController id="EO4-fO-GsD" customClass="QuestionListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="EO4-fO-GsD" customClass="QuestionListViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qrm-Ta-jh1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="60" id="arE-R7-6vy" customClass="QuestionCell" customModule="SmartClass" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionCell" rowHeight="60" id="arE-R7-6vy" customClass="QuestionCell" customModule="智慧课堂" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="arE-R7-6vy" id="A76-jV-8ha">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRS-H4-ufO">
@@ -1773,7 +1760,7 @@
         <!--试卷预览-->
         <scene sceneID="exx-11-Q3C">
             <objects>
-                <viewController storyboardIdentifier="PreviewPaperViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zjV-xC-Thp" customClass="PreviewPaperViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PreviewPaperViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zjV-xC-Thp" customClass="PreviewPaperViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fE2-BO-TR2"/>
                         <viewControllerLayoutGuide type="bottom" id="2CQ-1f-4Tt"/>
@@ -1792,7 +1779,7 @@
         <!--智慧课堂-->
         <scene sceneID="FA7-iA-qDE">
             <objects>
-                <viewController id="lrS-mk-l5F" customClass="HomePageViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lrS-mk-l5F" customClass="HomePageViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cNy-f7-aPz"/>
                         <viewControllerLayoutGuide type="bottom" id="zL0-wJ-8Dm"/>
@@ -1831,7 +1818,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qT0-cI-c3e" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qT0-cI-c3e" customClass="CardView" customModule="智慧课堂" customModuleProvider="target">
                                 <rect key="frame" x="198" y="431" width="130" height="130"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -1890,7 +1877,7 @@
                                     <outletCollection property="gestureRecognizers" destination="QcG-JX-I2q" appends="YES" id="H3k-8m-GWt"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SjL-2D-3IJ" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SjL-2D-3IJ" customClass="CardView" customModule="智慧课堂" customModuleProvider="target">
                                 <rect key="frame" x="47" y="147" width="130" height="130"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -1952,7 +1939,7 @@
                                     <outletCollection property="gestureRecognizers" destination="nqk-Rv-FFD" appends="YES" id="qa0-Vb-yVS"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Auo-Tz-gz0" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Auo-Tz-gz0" customClass="CardView" customModule="智慧课堂" customModuleProvider="target">
                                 <rect key="frame" x="47" y="289" width="130" height="130"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -2015,7 +2002,7 @@
                                     <outletCollection property="gestureRecognizers" destination="phW-Hd-cLU" appends="YES" id="cZx-5Y-9ql"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3X-HP-S2a" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m3X-HP-S2a" customClass="CardView" customModule="智慧课堂" customModuleProvider="target">
                                 <rect key="frame" x="198" y="289" width="130" height="130"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -2080,7 +2067,7 @@
                                     <outletCollection property="gestureRecognizers" destination="9I3-ZX-ehV" appends="YES" id="czc-8g-YT4"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfV-td-pX8" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfV-td-pX8" customClass="CardView" customModule="智慧课堂" customModuleProvider="target">
                                 <rect key="frame" x="198" y="147" width="130" height="130"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -2142,7 +2129,7 @@
                                     <outletCollection property="gestureRecognizers" destination="Iet-nC-RdS" appends="YES" id="CVH-ov-HZ6"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRH-LA-T2w" customClass="CardView" customModule="SmartClass" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rRH-LA-T2w" customClass="CardView" customModule="智慧课堂" customModuleProvider="target">
                                 <rect key="frame" x="47" y="431" width="130" height="130"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -2591,7 +2578,7 @@
         <!--Resource List View Controller-->
         <scene sceneID="fwS-s2-yrK">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lEX-L5-bea" customClass="ResourceListViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lEX-L5-bea" customClass="ResourceListViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wdV-Ix-TtL"/>
                         <viewControllerLayoutGuide type="bottom" id="KQH-SV-uib"/>
@@ -2604,11 +2591,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resourceCell" rowHeight="80" id="Wlr-8n-tbG" customClass="ResourceCell" customModule="SmartClass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resourceCell" rowHeight="80" id="Wlr-8n-tbG" customClass="ResourceCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wlr-8n-tbG" id="IX0-s4-iaW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="none" translatesAutoresizingMaskIntoConstraints="NO" id="zOl-Xc-0fp">
@@ -2761,7 +2748,7 @@
         <!--Exam Result View Controller-->
         <scene sceneID="Abi-dB-t71">
             <objects>
-                <viewController id="U9I-Wq-8hg" customClass="ExamResultViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="U9I-Wq-8hg" customClass="ExamResultViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BNv-d5-45v"/>
                         <viewControllerLayoutGuide type="bottom" id="Spq-J8-iLg"/>
@@ -2774,11 +2761,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResultCell" id="ohS-vy-o18" customClass="ResultCell" customModule="SmartClass" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResultCell" id="ohS-vy-o18" customClass="ResultCell" customModule="智慧课堂" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ohS-vy-o18" id="xdg-0S-GSm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="gZq-Kg-amg">
@@ -2867,7 +2854,7 @@
         <!--Result Chart View Controller-->
         <scene sceneID="RwI-c2-T0O">
             <objects>
-                <viewController id="8nj-YN-NxF" customClass="ResultChartViewController" customModule="SmartClass" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8nj-YN-NxF" customClass="ResultChartViewController" customModule="智慧课堂" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hpd-5d-CNZ"/>
                         <viewControllerLayoutGuide type="bottom" id="V13-Qv-poi"/>
@@ -2922,6 +2909,7 @@
         <image name="add" width="25" height="25"/>
         <image name="completeQuestion" width="23" height="23"/>
         <image name="disclosureIndicator" width="8" height="14"/>
+        <image name="dismiss" width="21" height="22"/>
         <image name="exam" width="78" height="78"/>
         <image name="historyQuiz" width="23" height="23"/>
         <image name="location" width="96" height="120"/>
