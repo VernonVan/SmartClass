@@ -1,0 +1,6 @@
+framework module UriParser {
+  umbrella header "UriParser-cpp-umbrella.h"
+
+  export *
+  module * { export * }
+}

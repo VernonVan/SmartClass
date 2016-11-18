@@ -83,6 +83,11 @@
 		AD78E3591DDB0D5100AC0B63 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3561DDB0D5100AC0B63 /* Color.swift */; };
 		AD78E35A1DDB0D5100AC0B63 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3571DDB0D5100AC0B63 /* Constant.swift */; };
 		AD78E35B1DDB0D5100AC0B63 /* ConvenientFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3581DDB0D5100AC0B63 /* ConvenientFileManager.swift */; };
+		AD9C3C181DDEBA4900F543A2 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9C3C171DDEBA4900F543A2 /* Reveal.framework */; };
+		ADFCE22D1DDEAF3C000F5930 /* LiveChanel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE2261DDEAF3C000F5930 /* LiveChanel.m */; };
+		ADFCE22E1DDEAF3C000F5930 /* LiveStreamKey.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE2281DDEAF3C000F5930 /* LiveStreamKey.m */; };
+		ADFCE22F1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE22A1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m */; };
+		ADFCE2301DDEAF3C000F5930 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE22C1DDEAF3C000F5930 /* User.m */; };
 		C89DFCDC709D45F4FE2201E9 /* Pods_SmartClass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AEDFA31B17BFAA25C4E4F83 /* Pods_SmartClass.framework */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +175,15 @@
 		AD78E3561DDB0D5100AC0B63 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		AD78E3571DDB0D5100AC0B63 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		AD78E3581DDB0D5100AC0B63 /* ConvenientFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenientFileManager.swift; sourceTree = "<group>"; };
+		AD9C3C171DDEBA4900F543A2 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		ADFCE2251DDEAF3C000F5930 /* LiveChanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveChanel.h; sourceTree = "<group>"; };
+		ADFCE2261DDEAF3C000F5930 /* LiveChanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveChanel.m; sourceTree = "<group>"; };
+		ADFCE2271DDEAF3C000F5930 /* LiveStreamKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamKey.h; sourceTree = "<group>"; };
+		ADFCE2281DDEAF3C000F5930 /* LiveStreamKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveStreamKey.m; sourceTree = "<group>"; };
+		ADFCE2291DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectResolutionTableViewDataSource.h; sourceTree = "<group>"; };
+		ADFCE22A1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectResolutionTableViewDataSource.m; sourceTree = "<group>"; };
+		ADFCE22B1DDEAF3C000F5930 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		ADFCE22C1DDEAF3C000F5930 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C89DFCDC709D45F4FE2201E9 /* Pods_SmartClass.framework in Frameworks */,
+				AD9C3C181DDEBA4900F543A2 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +202,7 @@
 		A22A6708C168B9568B0B2F4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD9C3C171DDEBA4900F543A2 /* Reveal.framework */,
 				1AEDFA31B17BFAA25C4E4F83 /* Pods_SmartClass.framework */,
 			);
 			name = Frameworks;
@@ -494,6 +510,14 @@
 		AD78E3021DDB0BCF00AC0B63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ADFCE2251DDEAF3C000F5930 /* LiveChanel.h */,
+				ADFCE2261DDEAF3C000F5930 /* LiveChanel.m */,
+				ADFCE2271DDEAF3C000F5930 /* LiveStreamKey.h */,
+				ADFCE2281DDEAF3C000F5930 /* LiveStreamKey.m */,
+				ADFCE2291DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.h */,
+				ADFCE22A1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m */,
+				ADFCE22B1DDEAF3C000F5930 /* User.h */,
+				ADFCE22C1DDEAF3C000F5930 /* User.m */,
 				AD78E3041DDB0BFA00AC0B63 /* PPT.swift */,
 				AD78E3051DDB0BFA00AC0B63 /* Resource.swift */,
 			);
@@ -800,6 +824,7 @@
 				AD78E2BC1DDB0AD600AC0B63 /* PaperListViewModel.swift in Sources */,
 				AD78E3141DDB0C0E00AC0B63 /* CanvasView.swift in Sources */,
 				AD78E33B1DDB0CBD00AC0B63 /* SignUpSheetCell.swift in Sources */,
+				ADFCE2301DDEAF3C000F5930 /* User.m in Sources */,
 				AD78E2E41DDB0B4600AC0B63 /* PaperViewController.swift in Sources */,
 				AD78E2F31DDB0B8C00AC0B63 /* PreviewPaperViewController.swift in Sources */,
 				AD78E33A1DDB0CBD00AC0B63 /* NewSignUpSheetViewController.swift in Sources */,
@@ -809,6 +834,7 @@
 				AD78E34B1DDB0D2A00AC0B63 /* Array+extension.swift in Sources */,
 				AD78E3161DDB0C0E00AC0B63 /* PPTView.swift in Sources */,
 				AD78E2C01DDB0ADD00AC0B63 /* PaperListViewController.swift in Sources */,
+				ADFCE22F1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m in Sources */,
 				AD78E2CE1DDB0B3500AC0B63 /* PaperInformationViewModel.swift in Sources */,
 				AD78E2FD1DDB0BA900AC0B63 /* ResultCell.swift in Sources */,
 				AD78E2C81DDB0B2E00AC0B63 /* Paper.swift in Sources */,
@@ -816,6 +842,8 @@
 				AD78E2F11DDB0B8C00AC0B63 /* ChoiceCell.swift in Sources */,
 				AD78E2DB1DDB0B3E00AC0B63 /* ScoreView.swift in Sources */,
 				AD78E32E1DDB0C8700AC0B63 /* HistoryQuizListViewController.swift in Sources */,
+				ADFCE22D1DDEAF3C000F5930 /* LiveChanel.m in Sources */,
+				ADFCE22E1DDEAF3C000F5930 /* LiveStreamKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,8 +972,55 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = R6964LXMCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"${PODS_ROOT}/boost",
+					"\"${PODS_ROOT}/boost\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/boost\"",
+					"\"${PODS_ROOT}/Headers/Public/glm\"",
+					"\"${SRCROOT}/Pods/VideoCore/api/iOS\"",
+				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"CocoaLumberjack\"",
+					"-framework",
+					"\"DZNEmptyDataSet\"",
+					"-framework",
+					"\"GCDWebServer\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"RxCocoa\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"Toast\"",
+					"-framework",
+					"\"UriParser\"",
+					"-framework",
+					"\"videocore\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/Util/UIPlaceHolderTextView/SmartClass-Bridging-Header.h";
@@ -962,8 +1037,55 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = R6964LXMCM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"${PODS_ROOT}/boost",
+					"\"${PODS_ROOT}/boost\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/boost\"",
+					"\"${PODS_ROOT}/Headers/Public/glm\"",
+					"\"${SRCROOT}/Pods/VideoCore/api/iOS\"",
+				);
 				INFOPLIST_FILE = SmartClass/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"CocoaLumberjack\"",
+					"-framework",
+					"\"DZNEmptyDataSet\"",
+					"-framework",
+					"\"GCDWebServer\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"Reachability\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"RxCocoa\"",
+					"-framework",
+					"\"RxSwift\"",
+					"-framework",
+					"\"Toast\"",
+					"-framework",
+					"\"UriParser\"",
+					"-framework",
+					"\"videocore\"",
+					"-ObjC",
+					"-lz",
+					"-framework",
+					Reveal,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.edu.scnu.SmartClass;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SmartClass/Util/UIPlaceHolderTextView/SmartClass-Bridging-Header.h";

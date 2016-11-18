@@ -36,7 +36,7 @@ class ResourceListViewModel: NSObject
         do {
             let allPPTNames = try self.fileManager.contentsOfDirectory(atPath: pptFilePath).filter({ (fileName) -> Bool in
                 let url = ConvenientFileManager.pptURL.appendingPathComponent(fileName)
-                return url.pathExtension.contains("pptx") 
+                return url.pathExtension.contains("ppt")
             })
             for pptName in allPPTNames {
                 let createDate = getFileCreateDateAtURL(url.appendingPathComponent(pptName))

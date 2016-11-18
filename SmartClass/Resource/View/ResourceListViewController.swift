@@ -84,8 +84,9 @@ class ResourceListViewController: UIViewController
         
         let indexPath = tableView.indexPathForSelectedRow
         if segue.identifier == "displayPPT" {
-            if let desVC = segue.destination as? PPTViewController {
-                desVC.pptURL = viewModel?.pptURLAtIndexPath(indexPath!)
+            if let desVC = segue.destination as? PPTDisplayViewController {
+//                print("before pptURL: \(pptURL)")
+                desVC.pptURL = viewModel?.pptURLAtIndexPath(indexPath!) as NSURL?
             }
         }
     }

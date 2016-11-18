@@ -16,6 +16,8 @@ pod 'Charts'
 pod 'DZNEmptyDataSet', '~> 1.7.3'
 pod 'IQKeyboardManager', '~> 4.0.7'
 
+pod 'VideoCore', '~> 0.3.2'
+
 end
 
 post_install do |installer|

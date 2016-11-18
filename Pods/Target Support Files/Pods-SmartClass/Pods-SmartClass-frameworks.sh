@@ -95,6 +95,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Toast/Toast.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UriParser-cpp/UriParser.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/VideoCore/videocore.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Charts/Charts.framework"
@@ -108,4 +110,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/RxCocoa/RxCocoa.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RxSwift/RxSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Toast/Toast.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/UriParser-cpp/UriParser.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/VideoCore/videocore.framework"
 fi
