@@ -16,8 +16,8 @@ class ResultChartViewController: UIViewController
     
     @IBOutlet weak var chartView: BarChartView!
  
-    fileprivate let realm = try! Realm()
-    fileprivate var studentNumber = 0
+    let realm = try! Realm()
+    var studentNumber = 0
     
     override func viewDidLoad()
     {
@@ -49,11 +49,10 @@ class ResultChartViewController: UIViewController
         leftAxisFormatter.maximumFractionDigits = 100
         leftAxisFormatter.positiveSuffix = "%"
         leftAxisFormatter.negativeSuffix = "%"
-        
         let leftAxis = chartView.leftAxis
-//        leftAxis.valueFormatter = leftAxisFormatter
         leftAxis.axisMinimum = 0
-        
+        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+
         let rightAxis = chartView.rightAxis
         rightAxis.enabled = false
     }
@@ -65,28 +64,51 @@ class ResultChartViewController: UIViewController
         var yVals = [BarChartDataEntry]()
         
         var correctNumbers = [Double]()
-        for _ in 0..<questionCount+1 {
+        for _ in 0 ..< questionCount {
             correctNumbers.append(0)
         }
         
+        统计不准确的问题！！！！！！！！！
+        
         for result in paper.results {
-            for correctNumber in result.correctQuestionNumbers {
-                correctNumbers[correctNumber.number] += 1
+            if realm.objects(Student.self).filter("number = '\(result.number)'").count > 0 &&
+               realm.objects(Student.self).filter("name = '\(result.name)'").count > 0 {
+                for correctNumber in result.correctQuestionNumbers {
+                    correctNumbers[correctNumber.number] += 1
+                }
             }
         }
         
-        for index in 0..<questionCount {
-            yVals.append(BarChartDataEntry(x: correctNumbers[index] / Double(studentNumber) * 100, y: Double(index)))
-//            yVals.append(BarChartDataEntry(value: correctNumbers[index] / Double(studentNumber) * 100, xIndex: index))
-            index == 0 ? xVals.append("第1题") : xVals.append("\(index+1)")
+        for index in 0 ..< questionCount {
+            yVals.append(BarChartDataEntry(x: Double(index), y: correctNumbers[index] / Double(studentNumber) * 100))
+            (index == 0) ? xVals.append("第1题") : xVals.append("\(index+1)")
         }
         
         let dataSet = BarChartDataSet(values: yVals, label: "每道题的答对比例")
         dataSet.colors = ChartColorTemplates.material()
         dataSet.drawValuesEnabled = true
         let data = BarChartData(dataSets: [dataSet])
-//        let data = BarChartData(xVals: xVals, dataSets: [dataSet])
         chartView.data = data
+        
+        chartView.xAxis.valueFormatter = XValsFormatter(xVals: xVals)
+        chartView.xAxis.granularity = 1.0
+    }
+    
+}
+
+class XValsFormatter: NSObject, IAxisValueFormatter
+{
+    
+    let xVals: [String]
+    
+    init(xVals: [String])
+    {
+        self.xVals = xVals
+    }
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String
+    {
+        return xVals[Int(value)]
     }
     
 }

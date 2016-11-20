@@ -768,7 +768,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqR-Kh-CSh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4844" y="-1754"/>
+            <point key="canvasLocation" x="-4844" y="-1755"/>
         </scene>
         <!--Paper List View Controller-->
         <scene sceneID="z5b-0k-RXI">
@@ -2212,6 +2212,16 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y08-Aa-a4H">
+                                <rect key="frame" x="156" y="627" width="62" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="关于智慧课堂">
+                                    <color key="titleColor" red="0.12549019607843137" green="0.72549019607843135" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="x2V-CL-B10" kind="show" id="kF3-7t-GpP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2288,6 +2298,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="8" symbolic="YES"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="t8M-kb-VMX" secondAttribute="trailing" id="Wd5-1z-Liu"/>
+                            <constraint firstItem="Y08-Aa-a4H" firstAttribute="centerX" secondItem="gmm-E4-Vqv" secondAttribute="centerX" id="Xvw-h4-Nmi"/>
                             <constraint firstItem="m3X-HP-S2a" firstAttribute="top" secondItem="FfV-td-pX8" secondAttribute="bottom" constant="12" id="YR3-yw-WVH"/>
                             <constraint firstItem="qT0-cI-c3e" firstAttribute="leading" secondItem="t8M-kb-VMX" secondAttribute="trailing" id="Z4n-2b-yhR"/>
                             <constraint firstItem="qT0-cI-c3e" firstAttribute="leading" secondItem="jrz-AS-URX" secondAttribute="trailing" constant="8" symbolic="YES" id="ZDh-bV-6pR"/>
@@ -2329,6 +2340,7 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="20"/>
                             </constraint>
                             <constraint firstItem="rRH-LA-T2w" firstAttribute="centerX" secondItem="gmm-E4-Vqv" secondAttribute="centerX" id="pfJ-2n-agz"/>
+                            <constraint firstItem="zL0-wJ-8Dm" firstAttribute="top" secondItem="Y08-Aa-a4H" secondAttribute="bottom" constant="16" id="pvv-nb-gCE"/>
                             <constraint firstAttribute="trailing" secondItem="t8M-kb-VMX" secondAttribute="trailing" id="qEZ-66-kyN"/>
                             <constraint firstItem="FfV-td-pX8" firstAttribute="leading" secondItem="jrz-AS-URX" secondAttribute="trailing" constant="8" symbolic="YES" id="qHg-DD-vYe"/>
                             <constraint firstItem="rRH-LA-T2w" firstAttribute="top" secondItem="t8M-kb-VMX" secondAttribute="bottom" constant="8" id="qbF-2e-83x">
@@ -2526,13 +2538,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="智慧课堂" id="Q9N-rH-iZu">
-                        <barButtonItem key="rightBarButtonItem" image="aboutUs" id="JF3-P1-naX">
-                            <connections>
-                                <segue destination="x2V-CL-B10" kind="show" id="3eD-mQ-OSG"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="智慧课堂" id="Q9N-rH-iZu"/>
                     <connections>
                         <outlet property="paperCardView" destination="SjL-2D-3IJ" id="WnJ-cC-B7I"/>
                         <outlet property="quizCardView" destination="m3X-HP-S2a" id="ToY-VU-fl4"/>
@@ -2905,7 +2911,6 @@
     </scenes>
     <resources>
         <image name="Back" width="13" height="22"/>
-        <image name="aboutUs" width="23" height="23"/>
         <image name="add" width="25" height="25"/>
         <image name="completeQuestion" width="23" height="23"/>
         <image name="disclosureIndicator" width="8" height="14"/>
