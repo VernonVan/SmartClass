@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 import GCDWebServer
-import Reachability
 import IQKeyboardManager
 
 @UIApplicationMain
@@ -24,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
-     //   print(ConvenientFileManager.resourceURL.path)
-        
         ConvenientFileManager.createInitDirectory()
         
         initUI()

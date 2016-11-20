@@ -34,7 +34,6 @@ class ResultChartViewController: UIViewController
     {
         chartView.chartDescription?.text = ""
         chartView.maxVisibleCount = 20
-//        chartView.maxVisibleValueCount = 20
         chartView.pinchZoomEnabled = false
         chartView.doubleTapToZoomEnabled = false
         chartView.scaleXEnabled = false

@@ -9,28 +9,7 @@
 import UIKit
 import RxSwift
 import GCDWebServer
-import Reachability
 import DZNEmptyDataSet
-
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
 
 enum PaperListVCSection: Int
 {
@@ -55,9 +34,6 @@ class PaperListViewController: UIViewController
         super.viewDidLoad()
         
         initUI()
-        
-        // 接收网络状态的变化的通知
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: NSNotification.Name.reachabilityChanged, object: nil)
     }
     
     func initUI()
@@ -80,20 +56,10 @@ class PaperListViewController: UIViewController
         tableView.reloadData()
     }
     
-    func reachabilityChanged()
-    {
-        view.makeToast(NSLocalizedString("网络状态变化", comment: ""))
-    }
-    
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         tableView.reloadData()
-    }
-    
-    deinit
-    {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.reachabilityChanged, object: nil)
     }
    
     // MARK: - Segue
@@ -119,7 +85,6 @@ class PaperListViewController: UIViewController
         } else if segue.identifier == "showExamResult" {
             if let desVC = segue.destination as? ResultContainerViewController {
                 let indexPath = tableView.indexPathForSelectedRow!
-//                print("试卷: \(viewModel?.paperAtIndexPath(indexPath))")
                 desVC.paper = viewModel?.paperAtIndexPath(indexPath)
             }
         }
@@ -179,7 +144,7 @@ extension PaperListViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return viewModel?.paperAtIndexPath(indexPath).blurb.length > 0 ? PaperListCell.cellHeight : 44.0
+        return viewModel!.paperAtIndexPath(indexPath).blurb.length > 0 ? PaperListCell.cellHeight : 44.0
     }
 }
 

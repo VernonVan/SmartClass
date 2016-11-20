@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class PreviewPaperViewController: UIViewController, UITableViewDataSource
 {
@@ -25,7 +26,7 @@ class PreviewPaperViewController: UIViewController, UITableViewDataSource
     }()
     
     lazy var tableView: UITableView = {
-       let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), style: .plain)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: ScreenWidth, height: ScreenHeight), style: .plain)
         tableView.dataSource = self
         tableView.allowsSelection = false
         tableView.estimatedRowHeight = 80
@@ -54,6 +55,9 @@ class PreviewPaperViewController: UIViewController, UITableViewDataSource
         super.viewDidLoad()
         
         view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
     }
     
     // MARK: - Table view data source

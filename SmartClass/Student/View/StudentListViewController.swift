@@ -123,7 +123,7 @@ extension StudentListViewController: StudentInformationDelegate
         if viewModel!.addStudent(student) {
             tableView.reloadData()
         } else {
-            view.makeToast("添加失败，学号\(student.number)的学生已经存在", duration: 0.15, position: CSToastPositionCenter)
+            view.makeToast("添加失败，学号\(student.number)的学生已经存在", duration: 1.0, position: CSToastPositionCenter)
         }
     }
     
@@ -132,7 +132,7 @@ extension StudentListViewController: StudentInformationDelegate
         if viewModel!.modifyStudentAtIndexPath(indexPath, newStudent: student) {
             tableView.reloadData()
         } else {
-            view.makeToast("修改失败，学号\(student.number)的学生已经存在", duration: 0.15, position: CSToastPositionCenter)
+            view.makeToast("修改失败，学号\(student.number)的学生已经存在", duration: 1.0, position: CSToastPositionCenter)
         }
     }
 }

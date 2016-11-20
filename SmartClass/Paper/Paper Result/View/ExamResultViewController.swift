@@ -9,26 +9,6 @@
 import UIKit
 import RealmSwift
 import DZNEmptyDataSet
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 struct ResultItem
 {
@@ -42,27 +22,26 @@ class ExamResultViewController: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     
-    fileprivate var items = [ResultItem]()
+    var items = [ResultItem]()
     
-    fileprivate var students: Results<Student>!
+    var students: Results<Student>!
     
-    fileprivate let realm = try! Realm()
+    let realm = try! Realm()
     
     // MARK: - Lifecycle
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
         
         students = realm.objects(Student.self).sorted(byProperty: "number")
-        configureResultItems()
         
         tableView.dataSource = self
         tableView.emptyDataSetSource = self
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         
+        configureResultItems()
     }
     
     func configureResultItems()
@@ -98,23 +77,23 @@ extension ExamResultViewController: UITableViewDataSource
         configureCell(cell, atIndexPath: indexPath)
         return cell
     }
-    
+
     func configureCell(_ cell: ResultCell, atIndexPath indexPath: IndexPath)
     {
-        let item = items[(indexPath as NSIndexPath).row]
-        if (indexPath as NSIndexPath).row < 3 && item.score != nil {
+        let item = items[indexPath.row]
+        if indexPath.row < 3 && item.score != nil {
             cell.starImageView.isHidden = false
             cell.orderLabel.isHidden = true
         } else {
             cell.starImageView.isHidden = true
-            cell.orderLabel.text = "\((indexPath as NSIndexPath).row + 1)"
+            cell.orderLabel.text = "\(indexPath.row + 1)"
         }
-
+        
         cell.nameLabel.text = item.studentName
         cell.scoreLabel.text = (item.score != nil ? "\(item.score!)" : NSLocalizedString("缺考", comment: ""))
-        cell.scoreLabel.textColor = item.score != nil ? (item.score > 60 ? UIColor.red : ThemeBlueColor) : UIColor.lightGray
+        cell.scoreLabel.textColor = item.score != nil ? (item.score! > 60 ? UIColor.red : ThemeBlueColor) : UIColor.lightGray
         
-        cell.backgroundColor = ((indexPath as NSIndexPath).row % 2 == 0) ? UIColor.white : UIColor(netHex: 0xf5f5f5)
+        cell.backgroundColor = (indexPath.row % 2 == 0) ? UIColor.white : UIColor(netHex: 0xf5f5f5)
     }
     
 }
@@ -130,5 +109,5 @@ extension ExamResultViewController: DZNEmptyDataSetSource
                           NSForegroundColorAttributeName : UIColor.darkGray]
         return NSAttributedString(string: text , attributes: attributes)
     }
-
+    
 }

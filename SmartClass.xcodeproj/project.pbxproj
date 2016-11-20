@@ -174,7 +174,6 @@
 		AD78E3561DDB0D5100AC0B63 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		AD78E3571DDB0D5100AC0B63 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		AD78E3581DDB0D5100AC0B63 /* ConvenientFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenientFileManager.swift; sourceTree = "<group>"; };
-		AD9C3C171DDEBA4900F543A2 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		ADFCE2251DDEAF3C000F5930 /* LiveChanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveChanel.h; sourceTree = "<group>"; };
 		ADFCE2261DDEAF3C000F5930 /* LiveChanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveChanel.m; sourceTree = "<group>"; };
 		ADFCE2271DDEAF3C000F5930 /* LiveStreamKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamKey.h; sourceTree = "<group>"; };
@@ -200,7 +199,6 @@
 		A22A6708C168B9568B0B2F4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AD9C3C171DDEBA4900F543A2 /* Reveal.framework */,
 				1AEDFA31B17BFAA25C4E4F83 /* Pods_SmartClass.framework */,
 			);
 			name = Frameworks;
@@ -466,12 +464,12 @@
 		AD78E2EA1DDB0B7000AC0B63 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD78E2EB1DDB0B8C00AC0B63 /* ChoiceCell.swift */,
-				AD78E2EC1DDB0B8C00AC0B63 /* ChoiceCell.xib */,
-				AD78E2ED1DDB0B8C00AC0B63 /* PreviewPaperViewController.swift */,
-				AD78E2EE1DDB0B8C00AC0B63 /* PreviewRootViewController.swift */,
-				AD78E2EF1DDB0B8C00AC0B63 /* TopicCell.swift */,
 				AD78E2F01DDB0B8C00AC0B63 /* TopicCell.xib */,
+				AD78E2EF1DDB0B8C00AC0B63 /* TopicCell.swift */,
+				AD78E2EC1DDB0B8C00AC0B63 /* ChoiceCell.xib */,
+				AD78E2EB1DDB0B8C00AC0B63 /* ChoiceCell.swift */,
+				AD78E2EE1DDB0B8C00AC0B63 /* PreviewRootViewController.swift */,
+				AD78E2ED1DDB0B8C00AC0B63 /* PreviewPaperViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -479,10 +477,10 @@
 		AD78E2F71DDB0B9400AC0B63 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AD78E2F81DDB0BA900AC0B63 /* ExamResultViewController.swift */,
-				AD78E2F91DDB0BA900AC0B63 /* ResultCell.swift */,
-				AD78E2FA1DDB0BA900AC0B63 /* ResultChartViewController.swift */,
 				AD78E2FB1DDB0BA900AC0B63 /* ResultContainerViewController.swift */,
+				AD78E2F91DDB0BA900AC0B63 /* ResultCell.swift */,
+				AD78E2F81DDB0BA900AC0B63 /* ExamResultViewController.swift */,
+				AD78E2FA1DDB0BA900AC0B63 /* ResultChartViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -966,7 +964,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E1D4B4DA7148C66B2E1F993 /* Pods-SmartClass.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = R6964LXMCM;
@@ -998,8 +995,6 @@
 					"\"GCDWebServer\"",
 					"-framework",
 					"\"IQKeyboardManager\"",
-					"-framework",
-					"\"Reachability\"",
 					"-framework",
 					"\"Realm\"",
 					"-framework",
@@ -1027,7 +1022,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7B7179B26DF66F40AE6ED69B /* Pods-SmartClass.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = R6964LXMCM;
@@ -1059,8 +1053,6 @@
 					"\"GCDWebServer\"",
 					"-framework",
 					"\"IQKeyboardManager\"",
-					"-framework",
-					"\"Reachability\"",
 					"-framework",
 					"\"Realm\"",
 					"-framework",

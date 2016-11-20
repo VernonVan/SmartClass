@@ -15,9 +15,7 @@ class QRCodeViewController: UIViewController
 
     @IBOutlet weak var qrCodeImageView: UIImageView!
     @IBOutlet weak var urlLabel: UILabel!
-    
-    fileprivate var qrCodeImage: UIImage?
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -68,7 +66,7 @@ class QRCodeViewController: UIViewController
         let resizeImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return resizeImage!
+        return resizeImage
     }
     
     // MARK: - Action
@@ -90,7 +88,11 @@ class QRCodeViewController: UIViewController
     
     func saveImageAction()
     {
-        UIImageWriteToSavedPhotosAlbum(qrCodeImageView.image!, self, #selector(QRCodeViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        guard let qrCodeImage = qrCodeImageView.image else {
+            view.makeToast(NSLocalizedString("保存失败！", comment: ""), duration: 0.2, position: CSToastPositionBottom)
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(qrCodeImage, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     
     func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer)

@@ -56,7 +56,7 @@ class StudentListViewModel: NSObject
     
     func modifyStudentAtIndexPath(_ indexPath: IndexPath, newStudent student: Student) -> Bool
     {
-        if realm.objects(Student.self).filter("number = \(student.number)").count == 0 {
+        if realm.objects(Student.self).filter("number = '\(student.number)'").count == 0 {
             try! realm.write({
                 let oldStudent = students[(indexPath as NSIndexPath).row]
                 realm.delete(oldStudent)
@@ -73,7 +73,7 @@ class StudentListViewModel: NSObject
     
     func addStudent(_ student: Student) -> Bool
     {
-        if realm.objects(Student.self).filter("number = \(student.number)").count == 0 {
+        if realm.objects(Student.self).filter("number = '\(student.number)'").count == 0 {
             try! realm.write({
                 realm.add(student)
             })
