@@ -67,12 +67,10 @@ class ResultChartViewController: UIViewController
         for _ in 0 ..< questionCount {
             correctNumbers.append(0)
         }
-        
-        统计不准确的问题！！！！！！！！！
-        
+
         for result in paper.results {
-            if realm.objects(Student.self).filter("number = '\(result.number)'").count > 0 &&
-               realm.objects(Student.self).filter("name = '\(result.name)'").count > 0 {
+            let student = realm.objects(Student.self).filter("number = '\(result.number)'").first
+            if student?.name == result.name {
                 for correctNumber in result.correctQuestionNumbers {
                     correctNumbers[correctNumber.number] += 1
                 }

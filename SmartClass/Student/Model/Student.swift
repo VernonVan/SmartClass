@@ -34,7 +34,7 @@ class Student: Object
 
 //extension Student: Equatable {}
 
-func ==(lhs: Student, rhs: Student) -> Bool
+func == (lhs: Student, rhs: Student) -> Bool
 {
     return lhs.name == rhs.name && lhs.number == rhs.number && lhs.major == rhs.major && lhs.school == rhs.school
 }

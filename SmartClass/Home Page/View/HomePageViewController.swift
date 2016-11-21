@@ -24,7 +24,7 @@ class HomePageViewController: UIViewController
     {
         super.viewDidLoad()
         
-       // print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print("Realm file path: \(Realm.Configuration.defaultConfiguration.fileURL!)")
     }
     
     override func viewWillAppear(_ animated: Bool)

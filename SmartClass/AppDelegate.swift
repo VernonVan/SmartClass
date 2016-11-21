@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         ConvenientFileManager.createInitDirectory()
         
+        print(ConvenientFileManager.documentURL().path)
+        
         initUI()
         
         UIApplication.shared.isIdleTimerDisabled = true
@@ -204,21 +206,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 print("解析失败")
                 return
         }
-        print("\(paperName)\t\(studentName)\t\(score)")
-        
+
         let realm = try! Realm()
         guard let paper = realm.objects(Paper.self).filter("name == '\(paperName)'").first else {
             return
         }
         if paper.state == 1 {
-            if let _ = paper.results.filter("name == '\(studentName)'").first {
+            let result = paper.results.filter("number == '\(studentNumber)'").first
+            if result?.name == studentName {
+                print("学号: \(studentNumber)姓名: \(studentName)的学生已经提交过试卷了，不能重复提交")
                 return
             }
-            
+
             try! realm.write {
                 let result = Result(value: ["name": studentName, "number": studentNumber, "score": score])
                 
-                for i in 0..<correctQuestions.count-1 {
+                for i in 0..<correctQuestions.count-2 {
                     let questionNumber = QuestionNumber(value: ["number": correctQuestions[i]])
                     result.correctQuestionNumbers.append(questionNumber)
                 }

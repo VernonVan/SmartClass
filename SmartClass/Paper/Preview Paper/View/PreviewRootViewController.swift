@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PreviewRootViewController: UIViewController
 {
     var paper: Paper?
+    
+    var questions: Results<Question>?
     
     lazy var questionNumber: Int = {
         return self.paper!.questions.count
@@ -25,6 +28,8 @@ class PreviewRootViewController: UIViewController
     {
         super.viewDidLoad()
         
+        
+        
         let controllers = NSMutableArray()
         for _ in 0 ..< questionNumber {
             controllers.add(NSNull())
@@ -36,6 +41,8 @@ class PreviewRootViewController: UIViewController
         
         pageControl.numberOfPages = questionNumber
         pageControl.currentPage = 0
+        
+        questions = paper?.questions.sorted(byProperty: "index")
     }
     
     override func viewDidLayoutSubviews()
@@ -56,7 +63,7 @@ class PreviewRootViewController: UIViewController
         
         var controller = pageViewControllers[page] as? PreviewPaperViewController
         if controller == nil {
-            controller = PreviewPaperViewController(question: paper?.questions[page])
+            controller = PreviewPaperViewController(question: questions?[page])
             pageViewControllers.replaceObject(at: page, with: controller!)
         }
         

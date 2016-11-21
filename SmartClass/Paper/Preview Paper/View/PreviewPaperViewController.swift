@@ -84,8 +84,8 @@ class PreviewPaperViewController: UIViewController, UITableViewDataSource
             let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as! TopicCell
             cell.configureForQuestion(question!)
             cell.preservesSuperviewLayoutMargins = false
-            cell.separatorInset = UIEdgeInsets.zero
-            cell.layoutMargins = UIEdgeInsets.zero
+            cell.separatorInset = .zero
+            cell.layoutMargins = .zero
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChoiceCell", for: indexPath) as! ChoiceCell

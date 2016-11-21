@@ -33,6 +33,6 @@ extension TopicCell
             typeLabel.text = nil
         }
         
-        topicLabel.text = question.topic
+        topicLabel.text = "\(question.index+1).\(question.topic!)"
     }
 }
