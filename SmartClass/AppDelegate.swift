@@ -159,6 +159,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate
                 completionBlock!(GCDWebServerDataResponse(statusCode: 204))
             }
         }
+        
+        // 发送直播网址给网页
+        webUploader?.addHandler(forMethod: "GET", path: "/getLiveAddress", request: GCDWebServerRequest.self) { (request, completionBlock) in
+            DispatchQueue.global(qos: .default).async(execute: {
+                let liveAddress = "w.gdou.com/?ppt_20161118"
+                let data = try! JSONSerialization.data(withJSONObject: ["isLiving": true, "address": liveAddress], options: JSONSerialization.WritingOptions.prettyPrinted)
+                let response = GCDWebServerDataResponse(data: data, contentType: "")
+                completionBlock!(response)
+            })
+        }
     }
     
     // 将所有发布中的试卷组织成NSData

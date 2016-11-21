@@ -382,7 +382,7 @@ static void _ExecuteMainThreadRunLoopSources() {
                 //  GWS_LOG_VERBOSE(@"Bonjour registration complete for %@", [server class]);
                 if (!CFNetServiceResolveWithTimeout(server->_resolutionService, kBonjourResolutionTimeout, NULL)) {
                     GWS_LOG_ERROR(@"Failed starting Bonjour resolution");
-                    GWS_DNOT_REACHED();
+                //    GWS_DNOT_REACHED();
                 }
             }
         }
