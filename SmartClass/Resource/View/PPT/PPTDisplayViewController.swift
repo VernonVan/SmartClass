@@ -20,6 +20,7 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var beginButton: UIButton!
+    @IBOutlet weak var onlyShowPPT: UIButton!
     @IBOutlet weak var PPTwebView: UIWebView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
@@ -28,11 +29,12 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
         super.viewDidLoad()
         
         beginButton.isHidden = false
+        onlyShowPPT.isHidden = true
         backButton.isHidden = true
         streamKey = LiveStreamKey()
         
         streamKey?.userName = "ppt"
-        streamKey?.resolution = "360p"
+        streamKey?.resolution = "720p"
         streamKey?.date = getTodaysDate()
         streamKey?.channel = "channel1"
         
@@ -92,13 +94,12 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
         session.addPixelBufferSource(white, with: CGRect(x: 500, y: 300, width: 10000, height: 10000), withNum: 0)
         view.insertSubview(session.previewView, at: 0)
         session.previewView.frame = self.view.bounds
-        session.previewView.addGestureRecognizer(leftSwipeGestureRecognizer)
-        session.previewView.addGestureRecognizer(rightSwipeGestureRecognizer)
         session.delegate = self
         beginButton.titleLabel?.text = "开始演示PPT"
         spinner.stopAnimating()
         spinner.isHidden = true
         beginButton.isUserInteractionEnabled = true
+        onlyShowPPT.isHidden = false
         backButton.isHidden = false
     }
     
@@ -117,7 +118,12 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
             var so = PPTwebView.scrollView.contentOffset;
             so.y = CGFloat(offset) * scale
             PPTwebView.scrollView.contentOffset = so;
-            UIGraphicsBeginImageContext(bounds.size);
+            if (pptURL?.pathExtension.contains("ppt"))! && !(pptURL?.pathExtension.contains("pptx"))!
+            {
+                UIGraphicsBeginImageContext(bounds.size);
+            } else {
+                UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+            }
             PPTwebView.layer.render(in: UIGraphicsGetCurrentContext()!)
             let slideThumbnailImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
@@ -142,12 +148,15 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
 
     @IBAction func playButton(_ sender: AnyObject)
     {
+        session.previewView.addGestureRecognizer(leftSwipeGestureRecognizer)
+        session.previewView.addGestureRecognizer(rightSwipeGestureRecognizer)
         livechannel?.updateGeneratedStreamKey()
-        session.startRtmpSession(withURL: livechannel?.url, andStreamKey: livechannel?.streamKey)
         let picturePath:NSString? = pictureAddressArray![nowPage!-1] as? NSString
         let PPT = UIImage(contentsOfFile: picturePath as! String)!
         self.addPPT(image: PPT, num: 1)
+        session.startRtmpSession(withURL: livechannel?.url, andStreamKey: livechannel?.streamKey)
         beginButton.isHidden = true
+        onlyShowPPT.isHidden = true
         
     }
 
@@ -158,14 +167,25 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
         dismiss(animated: false, completion: nil)
     }
     
+    @IBAction func ShowButton(_ sender: AnyObject)
+    {
+        session.previewView.addGestureRecognizer(leftSwipeGestureRecognizer)
+        session.previewView.addGestureRecognizer(rightSwipeGestureRecognizer)
+        let picturePath:NSString? = pictureAddressArray![nowPage!-1] as? NSString
+        let PPT = UIImage(contentsOfFile: picturePath as! String)!
+        self.addPPT(image: PPT, num: 1)
+        onlyShowPPT.isHidden = true
+        beginButton.isHidden = true
+    }
+    
     // 手势方法
     func handleSwipes(gesture: UISwipeGestureRecognizer)
     {
         if gesture.direction == .right {
             if nowPage! != 1 {
                 let PPT = UIImage(contentsOfFile: pictureAddressArray![nowPage!-2] as! String)!
-                addPPT(image: PPT, num: Int32(nowPage!-1))
                 session.removePixelBufferSource(Int32(nowPage!))
+                addPPT(image: PPT, num: Int32(nowPage!-1))
                 nowPage! -= 1
             } else {
                 view.makeToast("已经到达首页", duration: 0.15, position: CSToastPositionCenter)
@@ -173,9 +193,9 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
         } else if gesture.direction == .left {
             if nowPage! < (pictureAddressArray?.count)! {
                 let picture = UIImage(contentsOfFile: pictureAddressArray![nowPage!] as! String)!
-                addPPT(image: picture, num: nowPage!+1)
                 session.removePixelBufferSource(Int32(nowPage!))
-                nowPage! += 1
+                addPPT(image: picture, num: nowPage!+1)
+                                nowPage! += 1
             } else {
                 view.makeToast("已经到达尾页", duration: 0.15, position: CSToastPositionCenter)
             }
