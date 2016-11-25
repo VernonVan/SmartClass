@@ -21,6 +21,7 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var beginButton: UIButton!
     @IBOutlet weak var onlyShowPPT: UIButton!
+    @IBOutlet weak var showLabel: UILabel!
     @IBOutlet weak var PPTwebView: UIWebView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
@@ -29,6 +30,7 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
         super.viewDidLoad()
         
         beginButton.isHidden = false
+        onlyShowPPT.isHidden = true
         onlyShowPPT.isHidden = true
         backButton.isHidden = true
         streamKey = LiveStreamKey()
@@ -51,7 +53,7 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
     {
         spinner.startAnimating()
         beginButton.isUserInteractionEnabled = false
-        beginButton.titleLabel?.text = "正在加载"
+        beginButton.titleLabel?.text = "正在加载PPT"
         loadppt(path: pptURL!)
     }
     
@@ -90,15 +92,17 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
     {
         generateThumbnailForAllSlides()
         webView.removeFromSuperview()
-        let white = UIImage(named: "white")
+        let white = UIImage(named: "black")
         session.addPixelBufferSource(white, with: CGRect(x: 500, y: 300, width: 10000, height: 10000), withNum: 0)
         view.insertSubview(session.previewView, at: 0)
         session.previewView.frame = self.view.bounds
         session.delegate = self
-        beginButton.titleLabel?.text = "开始演示PPT"
+        beginButton.setTitle(nil, for: .normal)
+        beginButton.setBackgroundImage(UIImage(named: "play"), for: .normal)
         spinner.stopAnimating()
         spinner.isHidden = true
         beginButton.isUserInteractionEnabled = true
+        showLabel.isHidden = false
         onlyShowPPT.isHidden = false
         backButton.isHidden = false
     }
@@ -157,7 +161,7 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
         session.startRtmpSession(withURL: livechannel?.url, andStreamKey: livechannel?.streamKey)
         beginButton.isHidden = true
         onlyShowPPT.isHidden = true
-        
+        showLabel.isHidden = true
     }
 
     @IBAction func BackButton(_ sender: AnyObject)
@@ -176,6 +180,7 @@ class PPTDisplayViewController: UIViewController, UIWebViewDelegate, VCSessionDe
         self.addPPT(image: PPT, num: 1)
         onlyShowPPT.isHidden = true
         beginButton.isHidden = true
+        showLabel.isHidden = true
     }
     
     // 手势方法

@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.pptOuter {
+    position: relative;
+    width: 96%;
+    height: 96%;
+    padding: 2%;
+    left: 0;
+    top: 0;
+    background-color: white;
+}
+
+.pptOuter > iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border: none;
+}

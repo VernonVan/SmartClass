@@ -163,12 +163,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         // 发送直播网址给网页
         webUploader?.addHandler(forMethod: "GET", path: "/getLiveAddress", request: GCDWebServerRequest.self) { (request, completionBlock) in
             DispatchQueue.global(qos: .default).async(execute: {
-                let liveAddress = "w.gdou.com/?ppt_20161118"
+                let liveAddress = "http://w.gdou.com/?ppt_\(self.getTodaysDate())"
                 let data = try! JSONSerialization.data(withJSONObject: ["isLiving": true, "address": liveAddress], options: JSONSerialization.WritingOptions.prettyPrinted)
                 let response = GCDWebServerDataResponse(data: data, contentType: "")
                 completionBlock!(response)
             })
         }
+    }
+    
+    func getTodaysDate() -> String
+    {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        return formatter.string(from: date)
     }
     
     // 将所有发布中的试卷组织成NSData

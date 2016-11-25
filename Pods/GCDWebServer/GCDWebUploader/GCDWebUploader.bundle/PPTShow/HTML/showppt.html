@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="edge" />
+    <meta name=”viewport” content=”width='device-width',height='device-height',user-scalable=yes,initial-scale=2.5,maximum-scale=5.0,minimum-scale=1.0”>
     <title>PPT观看</title>
+
+    <link media="all and (max-device-width: 767px) and (orientation: portrait)" rel="stylesheet" href="../../PPTShow/CSS/showpptMobile.css" />
+    <link media="all and (max-device-width: 767px) and (orientation: landscape)" rel="stylesheet" href="../../PPTShow/CSS/showppt.css" />
+    <link media="all and (min-device-width: 768px)" rel="stylesheet" href="../../PPTShow/CSS/showppt.css" />
+
 </head>
 <body>
 
-<p>showPPT</p>
+<div class="pptOuter" ng-controller="showppt-controller">
+    <iframe ng-src="{{trustSrc(livesrc)}}"></iframe>
+</div>
 
 </body>
 </html>

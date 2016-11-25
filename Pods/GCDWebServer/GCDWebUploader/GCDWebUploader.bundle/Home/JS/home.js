@@ -3,9 +3,17 @@
  */
 myAPP.controller('home-controller', function ($scope,$http,$window,informationService) {
 
+    $scope.f = false;
+    $scope.$on('to-infoConfirm', function () {
+        alert("老师没有发布任何试卷!");
+        $scope.f = true;
+    });
+
     $http.get("getPaperList?callback=JSON_CALLBACK").success(function (data) {
         if (data['papers'] == "") {
-            alert("老师没有发布任何试卷!");
+            if($scope.f == true) {
+                alert("老师没有发布任何试卷!");
+            }
         } else {
             $scope.textList = data["papers"];
         }

@@ -42,6 +42,10 @@ myAPP.controller('root-controller', function ($scope) {
     $scope.$on('to-rootForAddLi', function (event, obj) {
         $scope.$broadcast('to-question', obj);
     });
+
+    $scope.$on('to-rootForInfoConfirm', function () {
+        $scope.$broadcast('to-infoConfirm');
+    });
 });
 
 myAPP.controller('alert-controller', function ($scope, $http, $window,informationService) {
@@ -65,6 +69,7 @@ myAPP.controller('alert-controller', function ($scope, $http, $window,informatio
                         informationService.setID(id);
                         informationService.setName(name);
                         angular.element('.outer').css('display', 'none');
+                        $scope.$emit('to-rootForInfoConfirm');
                     }else {
                         alert("信息填写不正确,请确认后再提交~");
                     }

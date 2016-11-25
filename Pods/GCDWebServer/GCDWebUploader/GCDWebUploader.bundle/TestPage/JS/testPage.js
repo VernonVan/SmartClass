@@ -41,9 +41,9 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
         });
 
     })
-    .controller('head-controller', function ($scope) {
+    .controller('head-controller', function ($scope,userService) {
 
-        $scope.index = 1;
+        $scope.index = 0;
         $scope.pro = 0;
         $scope.length = 0;
 
@@ -52,7 +52,7 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
         };
 
         $scope.$on('to-child', function (event, obj) {
-            $scope.index = obj['index'] + 1;
+            $scope.index = userService.getIndex();
         });
 
         $scope.$on('to-head', function (event, progress) {
@@ -197,7 +197,7 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
 
         function initialize() {
             for (var i = 0; i < $scope.testDataLength; i++) {
-                $scope.testIndexs.push(i);
+                $scope.testIndexs.push(i+1);
             }
         }
 
@@ -214,9 +214,13 @@ angular.module('page', ['radialIndicator', 'ngTouch'])
         var paper_name = {
             "name": userService.getInformation()['title']
         };
-                
+
+        $scope.f = false;
+        $scope.$on('to-infoConfirm',function() {
+            $scope.f = true;
+        });
         $http.post('requestPaper',paper_name).success(function (data) {
-            if (data == "") {
+            if (data == "" && $scope.f == true) {
                 alert("老师还没发布试卷!");
             } else {
                 console.log(data);

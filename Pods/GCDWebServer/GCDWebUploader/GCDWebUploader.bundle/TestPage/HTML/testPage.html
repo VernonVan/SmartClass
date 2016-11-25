@@ -27,7 +27,7 @@
     </span>
 
     <span class="tab">
-        <span class="title">第{{index}}题</span>
+        <span class="title">第{{index+1}}题</span>
         <span class="icon" ng-click="optionsDialogAction()" ng-touch="optionsDialogAction()"><img src="../RESOURCES/ICON/down.png"></span>
     </span>
 
@@ -99,7 +99,7 @@
         </div>
         <div class="option">
             <ul class="optionList">
-                <li class="optionLi" ng-repeat="i in testIndexs" action="optionLiAction($event)">{{i+1}}</li>
+                <li class="optionLi" ng-repeat="i in testIndexs" action="optionLiAction($event)">{{i}}</li>
             </ul>
         </div>
     </div>
