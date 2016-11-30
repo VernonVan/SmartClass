@@ -7,7 +7,7 @@ myAPP.controller('showppt-controller',function($scope,$http, $sce) {
         if(data['isLiving'] == true) {
             $scope.livesrc = data['address'];
         }else {
-            console.log("no live");
+            alert("同屏演示功能暂未上线");
         }
     }).error(function(status) {
         switch (status) {

@@ -10,6 +10,14 @@ myAPP.factory('informationService',function(){
         setID: function(id){
             studentID = id;
         },
+        isLogin: function() {
+              if(studentID == "") {
+              return false;
+              }else
+              {
+              return true;
+              }
+        },
         setName: function(name){
             studentName = name;
         },

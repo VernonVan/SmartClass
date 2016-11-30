@@ -83,6 +83,8 @@
 		AD78E3591DDB0D5100AC0B63 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3561DDB0D5100AC0B63 /* Color.swift */; };
 		AD78E35A1DDB0D5100AC0B63 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3571DDB0D5100AC0B63 /* Constant.swift */; };
 		AD78E35B1DDB0D5100AC0B63 /* ConvenientFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD78E3581DDB0D5100AC0B63 /* ConvenientFileManager.swift */; };
+		AD8701C71DEEA904001A79F0 /* students.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = AD8701C61DEEA904001A79F0 /* students.xlsx */; };
+		AD8701C81DEEA994001A79F0 /* students.xlsx in Sources */ = {isa = PBXBuildFile; fileRef = AD8701C61DEEA904001A79F0 /* students.xlsx */; };
 		ADFCE22D1DDEAF3C000F5930 /* LiveChanel.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE2261DDEAF3C000F5930 /* LiveChanel.m */; };
 		ADFCE22E1DDEAF3C000F5930 /* LiveStreamKey.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE2281DDEAF3C000F5930 /* LiveStreamKey.m */; };
 		ADFCE22F1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFCE22A1DDEAF3C000F5930 /* SelectResolutionTableViewDataSource.m */; };
@@ -174,6 +176,7 @@
 		AD78E3561DDB0D5100AC0B63 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		AD78E3571DDB0D5100AC0B63 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		AD78E3581DDB0D5100AC0B63 /* ConvenientFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenientFileManager.swift; sourceTree = "<group>"; };
+		AD8701C61DEEA904001A79F0 /* students.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = students.xlsx; sourceTree = "<group>"; };
 		ADFCE2251DDEAF3C000F5930 /* LiveChanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveChanel.h; sourceTree = "<group>"; };
 		ADFCE2261DDEAF3C000F5930 /* LiveChanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveChanel.m; sourceTree = "<group>"; };
 		ADFCE2271DDEAF3C000F5930 /* LiveStreamKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveStreamKey.h; sourceTree = "<group>"; };
@@ -321,6 +324,7 @@
 		AD78E2AB1DDB09D000AC0B63 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				AD8701C61DEEA904001A79F0 /* students.xlsx */,
 				AD78E3521DDB0D3700AC0B63 /* SmartClass-Bridging-Header.h */,
 				AD78E2981DDB045D00AC0B63 /* Assets.xcassets */,
 				AD78E29A1DDB045D00AC0B63 /* LaunchScreen.storyboard */,
@@ -705,6 +709,7 @@
 				AD78E29C1DDB045D00AC0B63 /* LaunchScreen.storyboard in Resources */,
 				AD78E33C1DDB0CBD00AC0B63 /* SignUpSheetCell.xib in Resources */,
 				AD78E2DC1DDB0B3E00AC0B63 /* ScoreView.xib in Resources */,
+				AD8701C71DEEA904001A79F0 /* students.xlsx in Resources */,
 				AD78E2F21DDB0B8C00AC0B63 /* ChoiceCell.xib in Resources */,
 				AD78E2991DDB045D00AC0B63 /* Assets.xcassets in Resources */,
 				AD78E2B11DDB0A5D00AC0B63 /* CardView.xib in Resources */,
@@ -770,6 +775,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8701C81DEEA994001A79F0 /* students.xlsx in Sources */,
 				AD78E3341DDB0CB700AC0B63 /* SignUpSheetListViewModel.swift in Sources */,
 				AD78E2CF1DDB0B3500AC0B63 /* PaperViewModel.swift in Sources */,
 				AD78E35B1DDB0D5100AC0B63 /* ConvenientFileManager.swift in Sources */,

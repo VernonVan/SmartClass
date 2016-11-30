@@ -71,6 +71,22 @@ class ResourceListViewController: UIViewController
         }      
     }
     
+    @IBAction func uploadAction(_ sender: UIBarButtonItem)
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var message = ""
+        if let webUploadURL = appDelegate.webUploaderURL {
+            message = "访问\(webUploadURL.absoluteString + "admin/")上传资源"
+        } else{
+            message = NSLocalizedString("打开Wifi方可上传资源", comment: "" )
+        }
+        let alert = UIAlertController(title: "上传资源", message: message, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "确定", style: .default, handler: nil)
+        alert.addAction(doneAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func changeDataSourceAction(_ segmentedControl: UISegmentedControl)
     {
         tableView.reloadData()

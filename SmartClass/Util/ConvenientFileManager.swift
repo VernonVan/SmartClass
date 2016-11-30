@@ -61,6 +61,11 @@ class ConvenientFileManager: NSObject
                 try FileManager.default.createDirectory(at: ConvenientFileManager.resourceURL, withIntermediateDirectories: true, attributes: nil)
                 try FileManager.default.createDirectory(at: ConvenientFileManager.pptURL, withIntermediateDirectories: true, attributes: nil)
                 try FileManager.default.createDirectory(at: ConvenientFileManager.signUpSheetURL, withIntermediateDirectories: true, attributes: nil)
+                
+                let sourcePath = Bundle.main.path(forResource: "students", ofType: "xlsx")
+                let destinationPath = ConvenientFileManager.resourceURL.appendingPathComponent("示例学生名册.xlsx")
+                try FileManager.default.moveItem(atPath: sourcePath!, toPath: destinationPath.path)
+                
             } catch let error as NSError {
                 print("createInitDirectory error: \(error.localizedDescription)")
             }

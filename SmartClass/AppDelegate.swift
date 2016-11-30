@@ -164,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         webUploader?.addHandler(forMethod: "GET", path: "/getLiveAddress", request: GCDWebServerRequest.self) { (request, completionBlock) in
             DispatchQueue.global(qos: .default).async(execute: {
                 let liveAddress = "http://w.gdou.com/?ppt_\(self.getTodaysDate())"
-                let data = try! JSONSerialization.data(withJSONObject: ["isLiving": true, "address": liveAddress], options: JSONSerialization.WritingOptions.prettyPrinted)
+                let data = try! JSONSerialization.data(withJSONObject: ["isLiving": false, "address": liveAddress], options: JSONSerialization.WritingOptions.prettyPrinted)
                 let response = GCDWebServerDataResponse(data: data, contentType: "")
                 completionBlock!(response)
             })

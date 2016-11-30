@@ -5,25 +5,54 @@ myAPP.controller('home-controller', function ($scope,$http,$window,informationSe
 
     $scope.f = false;
     $scope.$on('to-infoConfirm', function () {
-        alert("老师没有发布任何试卷!");
+        //alert("老师没有发布任何试卷!");
+               $http.get("getPaperList?callback=JSON_CALLBACK").success(function (data) {
+                    if (data['papers'] == "") {
+                        alert("老师没有发布任何试卷!");
+                    } else {
+                        $scope.textList = data["papers"];
+                    }
+                    }).error(function (status) {
+                            switch (status) {
+                            case 404:
+                                alert("没有连接到服务器");
+                                break;
+                                }
+                    });
         $scope.f = true;
     });
+                 
+                 if(informationService.isLogin() == true) {
+                 $http.get("getPaperList?callback=JSON_CALLBACK").success(function (data) {
+                                                                          if (data['papers'] == "") {
+                                                                          alert("老师没有发布任何试卷!");
+                                                                          } else {
+                                                                          $scope.textList = data["papers"];
+                                                                          }
+                                                                          }).error(function (status) {
+                                                                                   switch (status) {
+                                                                                   case 404:
+                                                                                   alert("没有连接到服务器");
+                                                                                   break;
+                                                                                   }
+                                                                                   });
+                 }
 
-    $http.get("getPaperList?callback=JSON_CALLBACK").success(function (data) {
-        if (data['papers'] == "") {
-            if($scope.f == true) {
-                alert("老师没有发布任何试卷!");
-            }
-        } else {
-            $scope.textList = data["papers"];
-        }
-    }).error(function (status) {
-        switch (status) {
-            case 404:
-                alert("没有连接到服务器");
-                break;
-        }
-    });
+//    $http.get("getPaperList?callback=JSON_CALLBACK").success(function (data) {
+//        if (data['papers'] == "") {
+//            if($scope.f == true) {
+//                alert("老师没有发布任何试卷!");
+//            }
+//        } else {
+//            $scope.textList = data["papers"];
+//        }
+//    }).error(function (status) {
+//        switch (status) {
+//            case 404:
+//                alert("没有连接到服务器");
+//                break;
+//        }
+//    });
 
     $scope.goToTest = function ($event) {
         var id = informationService.getID();
